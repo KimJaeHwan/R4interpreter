@@ -95,6 +95,10 @@ def main():
     parser.add_argument("--limit", type=int, default=2_000_000)
     parser.add_argument("--markers-only", action="store_true",
                         help="record selected path sites only (useful for input zero)")
+    parser.add_argument("--capture-handler", action="store_true",
+                        help="record every step from 0x4164b8 through 0x415b22")
+    parser.add_argument("--snapshot-bytes", type=int, default=256,
+                        help="bytes to capture at handler entry from RBX")
     args = parser.parse_args()
     with args.binary.open("rb") as handle:
         elf = ELFFile(handle)
@@ -128,6 +132,7 @@ def main():
         input_word = args.input & MASK
         count = 0
         candidates = 0
+        capturing = False
         markers = {0x401490, 0x40149B, 0x4014B3, 0x4014B6,
                    0x402A00, 0x402A04, 0x402A07, 0x403300,
                    0x411B50, 0x411B54, 0x416EA1, 0x416EA7,
@@ -140,6 +145,8 @@ def main():
             for count in range(args.limit):
                 before = getregs(child)
                 pc = before.rip
+                if args.capture_handler and pc == 0x4164B8:
+                    capturing = True
                 if pc not in instruction_cache:
                     if text_start <= pc < text_start + len(text_bytes):
                         code = text_bytes[pc - text_start: pc - text_start + 15]
@@ -154,6 +161,16 @@ def main():
                 insn = instruction_cache[pc]
                 accesses = [] if insn is None else memory_operands(insn, before)
                 reads = [(a, n, access, peek(child, a, n)) for a, n, access in accesses]
+                entry_memory = None
+                if args.capture_handler and pc == 0x4164B8:
+                    snapshot = bytearray()
+                    for offset in range(0, args.snapshot_bytes, 8):
+                        size = min(8, args.snapshot_bytes - offset)
+                        word = peek(child, before.rbx + offset, size)
+                        if word is None:
+                            raise RuntimeError(f"unreadable handler entry memory at +{offset}")
+                        snapshot.extend(word.to_bytes(size, "little"))
+                    entry_memory = {"base": before.rbx, "bytes_hex": snapshot.hex()}
                 ptrace(SINGLESTEP, child)
                 _, status = os.waitpid(child, 0)
                 if not os.WIFSTOPPED(status):
@@ -165,7 +182,7 @@ def main():
                     if n == 8 and (old == input_word or new == input_word):
                         hits.append({"address": a, "size": n, "access": access,
                                      "before": old, "after": new})
-                if (hits and not args.markers_only) or pc in markers:
+                if capturing or (hits and not args.markers_only) or pc in markers:
                     candidates += bool(hits)
                     record = {"type": "step", "step": count, "pc": pc, "next_pc": after.rip,
                               "instruction": None if insn is None else f"{insn.mnemonic} {insn.op_str}".strip(),
@@ -177,14 +194,17 @@ def main():
                                           "before": old, "after": new}
                                          for (a, n, access, old), (_, _, _, new) in zip(reads, writes)],
                               "candidate_input_words": hits}
+                    if entry_memory is not None:
+                        record["entry_memory"] = entry_memory
                     out.write(json.dumps(record) + "\n")
-                if pc == 0x417CEA:
+                if pc == (0x415B22 if args.capture_handler else 0x417CEA):
                     break
             else:
-                raise RuntimeError(f"VM add not reached within {args.limit} steps")
+                raise RuntimeError(f"VM target not reached within {args.limit} steps")
             out.write(json.dumps({"type": "summary", "steps": count + 1,
                                   "input_word_access_steps": candidates,
-                                  "stopped_after_vm_add_store": pc == 0x417CEA}) + "\n")
+                                  "stopped_after_vm_add_store": pc == 0x417CEA,
+                                  "stop_pc": pc}) + "\n")
         print(f"steps={count + 1} input_word_access_steps={candidates} output={args.output}")
     finally:
         try:

@@ -1,0 +1,242 @@
+{
+  "schema_version": "transition-summary-validation-v0",
+  "lua_summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+  "native_summary_sha256": "748dc8c5797324cf2317975ec28822e3541e9d2bbffb3f0568bad65065c521ce",
+  "lua": [
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": 9,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "2fa830370676877f57219a1ffa2f2f3a5fd043a2968adfccba1825388f9eb3c2",
+      "predicted_signed_payload": 16,
+      "observed_program_output": 16,
+      "predicted_tag": 3,
+      "next_code_pointer": 422853968,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": 0,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "2497964aa907ccf74d00196fb5f91e90c39ac84f064fb7b346080c4d769ac1b6",
+      "predicted_signed_payload": 7,
+      "observed_program_output": 7,
+      "predicted_tag": 3,
+      "next_code_pointer": 13118800,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": 1,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "dad3b4b061d905d73de88d774b7889174fb1d4987e2eb7a51033c34c669af165",
+      "predicted_signed_payload": 8,
+      "observed_program_output": 8,
+      "predicted_tag": 3,
+      "next_code_pointer": 513051984,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": -1,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "f3d874cb16c12c840ba7ffd8721d8a56866f68121d04d16237bdff69fff9701f",
+      "predicted_signed_payload": 6,
+      "observed_program_output": 6,
+      "predicted_tag": 3,
+      "next_code_pointer": 939642192,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": 9223372036854775796,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "86a34a6c5cb817d59afd3d4dfea8194485f0ad1aab4654a0119533b2394f7b74",
+      "predicted_signed_payload": 9223372036854775803,
+      "observed_program_output": 9223372036854775803,
+      "predicted_tag": 3,
+      "next_code_pointer": 121896272,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": 9223372036854775800,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "b38bf6c3a40ca6a2bd338076bcfac78482d307c5288bb82630836727e2572677",
+      "predicted_signed_payload": 9223372036854775807,
+      "observed_program_output": 9223372036854775807,
+      "predicted_tag": 3,
+      "next_code_pointer": 712781136,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": 9223372036854775807,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "b2aad6d243b48f889454175e32a794948c744e36730b101642e25fb2220a5cb3",
+      "predicted_signed_payload": -9223372036854775802,
+      "observed_program_output": -9223372036854775802,
+      "predicted_tag": 3,
+      "next_code_pointer": 801459536,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk.luac",
+      "input": -9223372036854775808,
+      "instruction_word": "0x86000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "19c499a4c6693a0e1a73719e10ceb2be594d6b560c24eee6906eb9a6a3cd0a4f",
+      "predicted_signed_payload": -9223372036854775801,
+      "observed_program_output": -9223372036854775801,
+      "predicted_tag": 3,
+      "next_code_pointer": 453999952,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": 9,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "1d9cc2264fad4b254e17cb362c8cfbb3fc6b28e6057133dcf578dae8c369fe30",
+      "predicted_signed_payload": 20,
+      "observed_program_output": 20,
+      "predicted_tag": 3,
+      "next_code_pointer": 268860752,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": 0,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "8cf371bce20bf1600382de5e957671abb57581e0bb3e404a472e70723f78225e",
+      "predicted_signed_payload": 11,
+      "observed_program_output": 11,
+      "predicted_tag": 3,
+      "next_code_pointer": 392002896,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": 1,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "d742d32519c200b80e3883f9609cb65adb690cbe0e32c4f62d28b274bcaa09b3",
+      "predicted_signed_payload": 12,
+      "observed_program_output": 12,
+      "predicted_tag": 3,
+      "next_code_pointer": 886283600,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": -1,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "ae865ea122ed6d63ba2cc84470a942148026cb6d9d6adec181d190ca69ecf232",
+      "predicted_signed_payload": 10,
+      "observed_program_output": 10,
+      "predicted_tag": 3,
+      "next_code_pointer": 847531344,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": 9223372036854775796,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "627da9a1e0ebebf3ead5031b9edc15b2b8a6880d1374d689fad9b07c652ce4e0",
+      "predicted_signed_payload": 9223372036854775807,
+      "observed_program_output": 9223372036854775807,
+      "predicted_tag": 3,
+      "next_code_pointer": 727805264,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": 9223372036854775800,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "7ca49b72bfdf57fc8a151f7c8289feb38d073e2fc37c58b30146a3733ac94f6d",
+      "predicted_signed_payload": -9223372036854775805,
+      "observed_program_output": -9223372036854775805,
+      "predicted_tag": 3,
+      "next_code_pointer": 179379536,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": 9223372036854775807,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "f84da23064d2f909f0c7b7fd69bbae3045f539392b286feeed60ca9586b69ff0",
+      "predicted_signed_payload": -9223372036854775798,
+      "observed_program_output": -9223372036854775798,
+      "predicted_tag": 3,
+      "next_code_pointer": 1021148496,
+      "native_steps": 23
+    },
+    {
+      "bytecode": "lua_chunk_plus11.luac",
+      "input": -9223372036854775808,
+      "instruction_word": "0x8a000015",
+      "handler_entry": "0x4164b8",
+      "trace_sha256": "483d458121f18fbb8eadcc083eb43d3f101078d77171b79f4b17f2f4da79fe4d",
+      "predicted_signed_payload": -9223372036854775797,
+      "observed_program_output": -9223372036854775797,
+      "predicted_tag": 3,
+      "next_code_pointer": 420531536,
+      "native_steps": 23
+    }
+  ],
+  "native": [
+    {
+      "input": 9,
+      "trace_sha256": "9f16403c332c1f039808d0a9f944a9a2a0dbfedd9a91947a37fe8941ef55a222",
+      "predicted_return": 16,
+      "observed_program_output": 16
+    },
+    {
+      "input": 0,
+      "trace_sha256": "2cc5f84f9c118dbe55789a1f1fff0ea34c0fe0ad1870b00371cc786de3ef88ba",
+      "predicted_return": 7,
+      "observed_program_output": 7
+    },
+    {
+      "input": 1,
+      "trace_sha256": "0af6cfc1456c42acf401488daabba9a18e8d710d8787d6a2e656e725a86ed9e8",
+      "predicted_return": 8,
+      "observed_program_output": 8
+    },
+    {
+      "input": 18446744073709551608,
+      "trace_sha256": "9d4dc5a65a360f06b15e8160c8fc2f3cd72a9d17641ab9e4f41786493fd30652",
+      "predicted_return": 18446744073709551615,
+      "observed_program_output": 18446744073709551615
+    },
+    {
+      "input": 18446744073709551615,
+      "trace_sha256": "d55ffdf794b7f7e20cecd07d386aa183438d22d8070ffe27340c8004bdfd7149",
+      "predicted_return": 6,
+      "observed_program_output": 6
+    }
+  ],
+  "synthetic_out_of_path_tag": {
+    "original": 3,
+    "changed_to": 4,
+    "status": "unknown(outside conditional path)"
+  },
+  "counts": {
+    "lua": 16,
+    "native": 5,
+    "lua_nontraining": 15,
+    "native_nontraining": 4
+  }
+}

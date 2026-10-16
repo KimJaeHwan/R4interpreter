@@ -1,0 +1,516 @@
+{
+  "schema_version": "transition-summary-v0-candidate",
+  "semantic_model": {
+    "architecture": "x86-64",
+    "endian": "little",
+    "pointer_width": 64,
+    "value_domain": "bitvector and byte-addressed memory",
+    "lifter_version": "Ghidra 12.0.4 Bundle",
+    "bundle_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79"
+  },
+  "identity": {
+    "executable_code_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+    "code_epoch": "static fixture; runtime code mutation not modeled",
+    "entry_cutpoint": "0x4164b8",
+    "exit_cutpoint": "0x415b24",
+    "specialization_dependencies": [
+      "native ELF and Bundle",
+      "dispatch class W&127=21"
+    ]
+  },
+  "interface": {
+    "inputs": [
+      {
+        "name": "W",
+        "sort": "BV32",
+        "binding": {
+          "kind": "register_slice",
+          "name": "r12",
+          "low_bit": 0,
+          "width": 32
+        }
+      },
+      {
+        "name": "M0",
+        "sort": "Array(BV64,BV8)",
+        "binding": {
+          "kind": "entry_memory"
+        }
+      },
+      {
+        "name": "R_RAX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rax"
+        }
+      },
+      {
+        "name": "R_RCX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rcx"
+        }
+      },
+      {
+        "name": "R_RDX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rdx"
+        }
+      },
+      {
+        "name": "R_RBX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rbx"
+        }
+      },
+      {
+        "name": "R_RSP",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rsp"
+        }
+      },
+      {
+        "name": "R_RBP",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rbp"
+        }
+      },
+      {
+        "name": "R_RSI",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rsi"
+        }
+      },
+      {
+        "name": "R_RDI",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rdi"
+        }
+      },
+      {
+        "name": "R_R8",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r8"
+        }
+      },
+      {
+        "name": "R_R9",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r9"
+        }
+      },
+      {
+        "name": "R_R10",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r10"
+        }
+      },
+      {
+        "name": "R_R11",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r11"
+        }
+      },
+      {
+        "name": "R_R13",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r13"
+        }
+      },
+      {
+        "name": "R_R14",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r14"
+        }
+      },
+      {
+        "name": "R_R15",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r15"
+        }
+      },
+      {
+        "name": "F_0",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 0
+        }
+      },
+      {
+        "name": "F_2",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 2
+        }
+      },
+      {
+        "name": "F_6",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 6
+        }
+      },
+      {
+        "name": "F_7",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 7
+        }
+      },
+      {
+        "name": "F_11",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 11
+        }
+      }
+    ],
+    "entry_registers": [
+      "R_RAX:BV64",
+      "R_RCX:BV64",
+      "R_RDX:BV64",
+      "R_RBX:BV64",
+      "R_RSP:BV64",
+      "R_RBP:BV64",
+      "R_RSI:BV64",
+      "R_RDI:BV64",
+      "R_R8:BV64",
+      "R_R9:BV64",
+      "R_R10:BV64",
+      "R_R11:BV64",
+      "R_R13:BV64",
+      "R_R14:BV64",
+      "R_R15:BV64"
+    ],
+    "word_to_live_in": "R_R12 = ZeroExt32(W) from fetch P-code 0x41553a"
+  },
+  "case": {
+    "path_guard": [
+      "(= ((_ extract 6 0) W) #b0010101)",
+      "(let ((a!1 (select M0\n                   (bvadd #x0000000000000008\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX))))\n  (= a!1 #x03))",
+      "true",
+      "(= ((_ extract 31 0) R_RBP) #x00000000)"
+    ],
+    "branch_evidence": [
+      {
+        "pc": "0x4164ec",
+        "kind": "CBRANCH",
+        "target": "0x417ce4"
+      },
+      {
+        "pc": "0x417cf0",
+        "kind": "BRANCH",
+        "target": "0x415b20"
+      },
+      {
+        "pc": "0x415b22",
+        "kind": "CBRANCH",
+        "target": "0x415b24"
+      }
+    ],
+    "reads": [
+      {
+        "pc": "0x4164e5",
+        "ordinal": 1,
+        "width": 1,
+        "memory_version": 0,
+        "address": "(bvadd #x0000000000000008\n       (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n       R_RBX)"
+      },
+      {
+        "pc": "0x417ce7",
+        "ordinal": 0,
+        "width": 8,
+        "memory_version": 0,
+        "address": "(bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0) R_RBX)"
+      },
+      {
+        "pc": "0x417ce7",
+        "ordinal": 2,
+        "width": 8,
+        "memory_version": 0,
+        "address": "(bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0) R_RBX)"
+      },
+      {
+        "pc": "0x417ce7",
+        "ordinal": 4,
+        "width": 8,
+        "memory_version": 0,
+        "address": "(bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0) R_RBX)"
+      }
+    ],
+    "ordered_effects": [
+      {
+        "pc": "0x417cea",
+        "ordinal": 1,
+        "kind": "Write",
+        "width": 8,
+        "memory_version_before": 0,
+        "memory_version_after": 1,
+        "address": "(bvadd R_RBX (concat #x0000000000000 ((_ extract 14 7) W) #x0))",
+        "value": "(let ((a!1 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!3 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!4 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!5 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000002\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000001\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (concat a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n  (bvadd a!2 (concat a!3 a!4 a!5 a!6 a!7 a!8 a!9 a!10))))"
+      },
+      {
+        "pc": "0x417ced",
+        "ordinal": 2,
+        "kind": "Write",
+        "width": 1,
+        "memory_version_before": 1,
+        "memory_version_after": 2,
+        "address": "(bvadd #x0000000000000008\n       R_RBX\n       (concat #x0000000000000 ((_ extract 14 7) W) #x0))",
+        "value": "(select M0\n        (bvadd #x0000000000000008\n               (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n               R_RBX))"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "next_code_pointer",
+        "sort": "BV64",
+        "expression": "(bvadd #x0000000000000004 R_R11)",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r15"
+        }
+      },
+      {
+        "name": "R_RAX",
+        "sort": "BV64",
+        "expression": "(bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0) R_RBX)",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rax"
+        }
+      },
+      {
+        "name": "R_RCX",
+        "sort": "BV64",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd #x0000000000000008\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX))))\n  (concat #x00000000000000 a!1))",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rcx"
+        }
+      },
+      {
+        "name": "R_RDX",
+        "sort": "BV64",
+        "expression": "(bvadd R_RBX (concat #x0000000000000 ((_ extract 14 7) W) #x0))",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rdx"
+        }
+      },
+      {
+        "name": "R_RBX",
+        "sort": "BV64",
+        "expression": "R_RBX",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rbx"
+        }
+      },
+      {
+        "name": "R_RSP",
+        "sort": "BV64",
+        "expression": "R_RSP",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rsp"
+        }
+      },
+      {
+        "name": "R_RBP",
+        "sort": "BV64",
+        "expression": "R_RBP",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rbp"
+        }
+      },
+      {
+        "name": "R_RSI",
+        "sort": "BV64",
+        "expression": "R_RSI",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rsi"
+        }
+      },
+      {
+        "name": "R_RDI",
+        "sort": "BV64",
+        "expression": "R_RDI",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rdi"
+        }
+      },
+      {
+        "name": "R_R8",
+        "sort": "BV64",
+        "expression": "R_R8",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r8"
+        }
+      },
+      {
+        "name": "R_R9",
+        "sort": "BV64",
+        "expression": "R_R9",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r9"
+        }
+      },
+      {
+        "name": "R_R10",
+        "sort": "BV64",
+        "expression": "R_R10",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r10"
+        }
+      },
+      {
+        "name": "R_R11",
+        "sort": "BV64",
+        "expression": "R_R11",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r11"
+        }
+      },
+      {
+        "name": "R_R12",
+        "sort": "BV64",
+        "expression": "(let ((a!1 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!3 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!4 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!5 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000002\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000001\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (concat a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n  (bvadd a!2 (concat a!3 a!4 a!5 a!6 a!7 a!8 a!9 a!10))))",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r12"
+        }
+      },
+      {
+        "name": "R_R13",
+        "sort": "BV64",
+        "expression": "R_R13",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r13"
+        }
+      },
+      {
+        "name": "R_R14",
+        "sort": "BV64",
+        "expression": "R_R14",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r14"
+        }
+      },
+      {
+        "name": "R_R15",
+        "sort": "BV64",
+        "expression": "(bvadd #x0000000000000004 R_R11)",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r15"
+        }
+      },
+      {
+        "name": "F_0",
+        "sort": "BV8",
+        "expression": "#x00",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 0
+        }
+      },
+      {
+        "name": "F_2",
+        "sort": "BV8",
+        "expression": "(ite (= ((_ extract 0 0) R_RBP)\n        (bvadd ((_ extract 1 1) R_RBP)\n               ((_ extract 2 2) R_RBP)\n               ((_ extract 3 3) R_RBP)\n               ((_ extract 4 4) R_RBP)\n               ((_ extract 5 5) R_RBP)\n               ((_ extract 6 6) R_RBP)\n               ((_ extract 7 7) R_RBP)))\n     #x01\n     #x00)",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 2
+        }
+      },
+      {
+        "name": "F_6",
+        "sort": "BV8",
+        "expression": "(ite (= ((_ extract 31 0) R_RBP) #x00000000) #x01 #x00)",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 6
+        }
+      },
+      {
+        "name": "F_7",
+        "sort": "BV8",
+        "expression": "(ite (bvsle #x00000000 ((_ extract 31 0) R_RBP)) #x00 #x01)",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 7
+        }
+      },
+      {
+        "name": "F_11",
+        "sort": "BV8",
+        "expression": "#x00",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 11
+        }
+      }
+    ],
+    "exit_kind": "next_fetch",
+    "uncovered": "other CFG paths, unknown calls and unproved alias/frame conditions"
+  },
+  "evidence": {
+    "trace_sha256": "2fa830370676877f57219a1ffa2f2f3a5fd043a2968adfccba1825388f9eb3c2",
+    "handler_native_instructions": 23,
+    "pcode_operations_replayed": 265,
+    "concrete_register_and_memory_checks": "passed",
+    "validation_level": "candidate: one observed path, not a full handler proof"
+  }
+}

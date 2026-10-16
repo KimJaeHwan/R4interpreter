@@ -1,0 +1,58 @@
+{
+  "schema_version": "transition-summary-v0-candidate",
+  "semantic_model": {
+    "architecture": "x86-64",
+    "endian": "little",
+    "pointer_width": 64,
+    "value_domain": "bitvector and byte-addressed memory",
+    "lifter_version": "Ghidra 12.0.4 Bundle",
+    "bundle_sha256": "8500bbdb02e0b04924d2dbe020b26ac79c3dda1bd873c76fc37e1a41dcb0965b"
+  },
+  "identity": {
+    "executable_code_sha256": "12c42604d8361d51cd49dfe8fab0450c11b7ebd09b7d3d94c3469fa5858defa5",
+    "code_epoch": "static fixture; runtime code mutation not modeled",
+    "entry_cutpoint": "0x4011a0",
+    "exit_cutpoint": "0x4011a4",
+    "specialization_dependencies": [
+      "native ELF and Bundle"
+    ]
+  },
+  "interface": {
+    "inputs": [
+      {
+        "name": "R_RDI",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rdi"
+        }
+      }
+    ]
+  },
+  "case": {
+    "path_guard": [],
+    "branch_evidence": [],
+    "reads": [],
+    "ordered_effects": [],
+    "outputs": [
+      {
+        "name": "return_value",
+        "sort": "BV64",
+        "expression": "(bvadd #x0000000000000007 R_RDI)",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rax"
+        }
+      }
+    ],
+    "exit_kind": "native_function_body_before_return",
+    "uncovered": "function call and return edges"
+  },
+  "evidence": {
+    "trace_sha256": "c17221defe12905cce59ef4ca3c0746906178c66c8cef9c0cffd715627be3a93",
+    "handler_native_instructions": 1,
+    "pcode_operations_replayed": 2,
+    "concrete_register_and_memory_checks": "passed",
+    "validation_level": "candidate: one observed path, not a full function proof"
+  }
+}
