@@ -1,0 +1,20 @@
+{
+  "trace_sha256": "c17221defe12905cce59ef4ca3c0746906178c66c8cef9c0cffd715627be3a93",
+  "bundle_archive_sha256": "8500bbdb02e0b04924d2dbe020b26ac79c3dda1bd873c76fc37e1a41dcb0965b",
+  "instruction_steps": 2,
+  "unique_native_pcs": 2,
+  "matched_steps": {
+    "in_bundle": 2
+  },
+  "vm_function_steps": 0,
+  "conditional_branches": {},
+  "local_addition": {
+    "native_add_pc": "0x4011a0",
+    "pcode_opcode": "INT_ADD",
+    "pcode_ordinal": 0,
+    "rdi_before": 9,
+    "rax_after": 16,
+    "result": "observed 64-bit add7 function"
+  },
+  "scope": "one concrete execution; no symbolic Lua input expression or path guard claimed"
+}
