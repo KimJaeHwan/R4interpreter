@@ -23,6 +23,7 @@
 | [`tools/probe_static_slice.py`](tools/probe_static_slice.py), [`results/STATIC_SLICE_RESULT.md`](results/STATIC_SLICE_RESULT.md) | R4VM·Lua Bundle을 읽기 전용 `daasdmlkas` SSA로 정규화해 쓰기·분기 slice의 경로 혼합과 미해결 의존을 측정 |
 | [`tools/static_pcode_step.py`](tools/static_pcode_step.py), [`tools/evaluate_static_add.py`](tools/evaluate_static_add.py) | 보관 native path를 선택에 사용하지 않고 R4VM ADD 한 명령의 P-code 경로·조건·쓰기·다음 PC를 생성·비교 |
 | [`tools/probe_angr_add.py`](tools/probe_angr_add.py), [`results/ANGR_ADD_RESULT.md`](results/ANGR_ADD_RESULT.md) | angr의 기호 실행과 P-code ADD 전이의 경로·쓰기·다음 PC를 Z3로 비교 |
+| [`tools/angr_fallback_r4vm.py`](tools/angr_fallback_r4vm.py), [`results/ANGR_FALLBACK_RESULT.md`](results/ANGR_FALLBACK_RESULT.md) | P-code 요약이 `unknown`인 사례만 angr로 탐색해 미지원 helper 경로를 계산하고 분기 guard를 확인 |
 
 분석기 적용 입력은 **빌드된 ELF, 동결한 P-code 경로 요약, 바이트코드 파일, 입력값**이다. 소스, 매니페스트, expected JSON과 Python 오라클은 채점 쪽에 둔다. 실행 시 입력은 64비트 signed 정수이고 VM payload 연산은 64비트 래핑이다. `.r4vm`은 8바이트 헤더 뒤에 opcode·목적 슬롯·출처 슬롯·signed 8비트 즉시값을 1바이트씩 둔다. 숫자 opcode 의미는 분석기 사전 규칙으로 제공하지 않는다.
 
@@ -72,6 +73,8 @@ python3 -m venv .venv
 이후 [ADD 한 명령 P-code 경로 실험](results/STATIC_ADD_STEP_RESULT.md)에서는 ELF 재실행·native trace 경로 선택 없이 52개 native 명령/375개 P-code를 따라 ADD 전이를 만들었다. 보관된 경로의 조건·쓰기·종료 레지스터 식과 네 입력 조합에서 일치했고, `X + 7`/`X + 11`을 확인했다. 초기 cutpoint 상태는 과거 trace baseline을 재사용하므로 전체 분석의 trace 독립성은 아직 확보하지 않았다.
 
 [angr 비교 실험](results/ANGR_ADD_RESULT.md)에서는 두 ADD 바이트코드를 기호 실행해 같은 52개 명령 경로와 `X + 7`/`X + 11`을 확인했다. 순서 있는 VM 상태 쓰기 5개와 다음 PC는 P-code 식과 동치였다. VEX의 레지스터 `bt` 처리에서 임시 스택 쓰기 1개가 추가로 보여, IR 간 쓰기 이벤트의 의미를 확인해야 한다.
+
+[angr 보완 실험](results/ANGR_FALLBACK_RESULT.md)은 기존 분석기의 `unknown` 2개만 보완해 R4VM 채점을 **28 pass·2 accepted unknown → 30 pass**로 바꿨다. 보관된 Lua 9개를 그대로 합치면 **39 pass**다. VMT010 helper는 ELF 내부 명령을 따라 `X + 3`을 구했고, VMT007은 `X=0`/`X≠0` 두 경로를 확인했다. 초기 cutpoint 상태는 여전히 과거 추적 baseline이다.
 
 실제 C/Lua 실행기의 출력까지 다시 확인하려면 **Linux x86-64 또는 WSL2**에서 `python3 tools/run_fixtures.py`를 실행한다. 이는 실행 결과 정답 39/39를 확인하는 별도 단계다. Windows 네이티브/macOS에서는 ELF를 실행하는 이 단계가 지원되지 않는다.
 
