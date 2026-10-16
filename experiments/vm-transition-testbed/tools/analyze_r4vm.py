@@ -18,9 +18,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "interpreter-expres
 from apply_transition_summary import concrete, expression
 from pcode_transition_summary import FLAG_OFFSETS, REGISTER_OFFSETS
 
-from train_r4vm import BINARY, SUMMARIES
-
-
+ROOT = Path(__file__).resolve().parents[1]
+BINARY = ROOT / "build/r4vm"
+SUMMARIES = ROOT / "summaries/r4vm_paths.json"
 MASK = (1 << 64) - 1
 
 

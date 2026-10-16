@@ -15,6 +15,7 @@
 | [`tools/import_current_lua_results.py`](tools/import_current_lua_results.py) | 기존 Lua 요약의 검증 기록을 이 채점 형식으로 연결. 범용 분석기 실행은 아님 |
 | [`tools/capture_native_paths.py`](tools/capture_native_paths.py), [`tools/train_r4vm.py`](tools/train_r4vm.py) | ELF의 실행 경로를 Ghidra Low P-code로 재생해 조건부 전이 요약 11개를 동결 |
 | [`tools/analyze_r4vm.py`](tools/analyze_r4vm.py) | 동결한 요약을 새 바이트코드·입력에 적용. opcode 의미표, 매니페스트 정답, 런타임 실행을 사용하지 않음 |
+| [`tools/restore_frozen_binary.py`](tools/restore_frozen_binary.py) | Bundle에서 해시가 일치하는 ELF를 복원해 동일한 요약을 바로 적용 |
 | [`results/ANALYSIS_RESULT.md`](results/ANALYSIS_RESULT.md) | 실제 분석 결과와 남은 한계 |
 
 분석기 적용 입력은 **빌드된 ELF, 동결한 P-code 경로 요약, 바이트코드 파일, 입력값**이다. 소스, 매니페스트, expected JSON과 Python 오라클은 채점 쪽에 둔다. 실행 시 입력은 64비트 signed 정수이고 VM payload 연산은 64비트 래핑이다. `.r4vm`은 8바이트 헤더 뒤에 opcode·목적 슬롯·출처 슬롯·signed 8비트 즉시값을 1바이트씩 둔다. 숫자 opcode 의미는 분석기 사전 규칙으로 제공하지 않는다.
@@ -38,7 +39,27 @@
 
 현재 비교기는 **샘플별 결과와 효과**를 채점한다. guard의 전체 적용 범위, 보존 영역의 증명, 분석 비용은 아직 자동 채점하지 않는다. `expected_features`는 별도 판정 항목이며, 이 칸이 있다고 해서 해당 기능을 검증했다고 세지 않는다. 분석 결과의 `path_ids`로 실제 요약 재사용은 확인할 수 있다.
 
-## 실행
+## 원격 저장소를 받아 바로 채점
+
+Python 3.11 이상이면 동결한 요약을 **Ghidra·C 컴파일러·`daasdmlkas` 없이** 적용할 수 있다. Linux/macOS 터미널 또는 Windows PowerShell에서 저장소를 받아 아래 순서로 실행한다. Windows에서는 `python3` 대신 `py -3`, `.venv/bin/python` 대신 `.venv\Scripts\python.exe`를 사용한다.
+
+```bash
+git clone https://github.com/KimJaeHwan/R4interpreter.git
+cd R4interpreter/experiments/vm-transition-testbed
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-analysis.txt
+.venv/bin/python tools/restore_frozen_binary.py
+.venv/bin/python tools/run_r4vm_analysis.py
+.venv/bin/python tools/import_current_lua_results.py
+.venv/bin/python tools/combine_analysis.py reports/current-r4vm-analysis.json reports/current-lua-analysis.json --output reports/combined-analysis.json
+.venv/bin/python tools/compare_analysis.py reports/combined-analysis.json --output reports/combined-grade.json
+```
+
+마지막 줄의 정상 출력은 `pass: 37`, `accepted_unknown: 2`다. `VMT010`의 미모델링 helper 호출 2건이 `unknown`이며, Lua 9건은 기존 검증 기록을 합친 것이다. `build/r4vm`에 다른 컴파일러가 만든 ELF가 이미 있으면 복원기가 덮어쓰지 않는다. 요약과 일치하는 보관본으로 교체하려면 `.venv/bin/python tools/restore_frozen_binary.py --replace`를 사용한다. 분석 결과는 무시되는 `reports/`에 생성되므로 저장소 파일을 수정하지 않는다.
+
+실제 C/Lua 실행기의 출력까지 다시 확인하려면 **Linux x86-64 또는 WSL2**에서 `python3 tools/run_fixtures.py`를 실행한다. 이는 실행 결과 정답 39/39를 확인하는 별도 단계다. Windows 네이티브/macOS에서는 ELF를 실행하는 이 단계가 지원되지 않는다.
+
+## 테스트베드 생성과 실행
 
 Linux x86-64에서 Python 3과 C 컴파일러가 필요하다. R4interpreter 저장소 루트에서:
 
@@ -55,9 +76,9 @@ python3 tools/compare_analysis.py reports/current-lua-analysis.json --output rep
 
 새 분석기는 [`examples/analysis-results.example.json`](examples/analysis-results.example.json) 형태로 케이스별 `id`, `input`, `status`를 출력한다. `computed`이면 `result`를 문자열로 적고, 작은 VM 사례에는 `pc`와 `writes`도 넣는다. `unknown`은 `reason`이 필요하다. 예제 파일을 채점하면 `pass 1`, `accepted_unknown 1`, `not_run 37`이 나온다.
 
-## 새 분석 실험 실행
+## P-code 경로 요약을 다시 추출할 때
 
-Python 3.11 이상에서 [`requirements-analysis.txt`](requirements-analysis.txt)의 패키지가 필요하다. 기존 저장소의 `daasdmlkas` 체크아웃은 Bundle exporter를 읽기 전용으로 사용하며, 분석 코드와 결과는 이 저장소에만 둔다. 현재 ELF와 일치하는 Ghidra 12.0.4 Bundle을 [`artifacts/r4vm_bundle.tar.gz`](artifacts/r4vm_bundle.tar.gz)에 보관했다. 다른 컴파일러/빌드로 ELF가 달라지면 Bundle과 요약을 다시 생성해야 한다.
+이 단계는 Linux x86-64의 `ptrace`를 사용한다. Python 3.11 이상에서 [`requirements-analysis.txt`](requirements-analysis.txt)의 패키지가 필요하다. 기존 저장소의 `daasdmlkas` 체크아웃은 Bundle exporter를 읽기 전용으로 사용했으며, 분석 코드와 결과는 이 저장소에만 둔다. 현재 ELF와 일치하는 Ghidra 12.0.4 Bundle을 [`artifacts/r4vm_bundle.tar.gz`](artifacts/r4vm_bundle.tar.gz)에 보관했다. **동결 요약을 적용하는 데 재추출은 필요 없다.** 새 컴파일러/빌드의 ELF를 분석하려면 Bundle과 요약을 다시 생성해야 한다.
 
 ```bash
 cd experiments/vm-transition-testbed
