@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "method": "angr native VEX step versus Ghidra Bundle P-code step",
+  "entry_cutpoint": "0x401410",
+  "initial_state": "previously observed register/stack baseline; X and stack slot symbolic",
+  "native_execution_or_ptrace": false,
+  "claim": "ADD one-step path and outputs under this baseline, not all-handler coverage",
+  "cases": [
+    {
+      "program": "VMT001",
+      "input": 9,
+      "program_sha256": "3c47aebb1e9751260356cb7d3e7d895e359c13ed750c4b7f18c6cf71bd90f30b",
+      "native_instructions": 52,
+      "native_path_equal": true,
+      "completed_states": 1,
+      "max_live_states": 1,
+      "angr_path_constraints": 0,
+      "pcode_nontrivial_input_guards": 0,
+      "ordered_write_matches": [
+        {
+          "pc": "0x4015b0",
+          "address": "0x7ffc70914370",
+          "width": 8,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x4015b4",
+          "address": "0x7ffc70914378",
+          "width": 1,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x40149b",
+          "address": "0x7ffc709143b0",
+          "width": 1,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x4014a0",
+          "address": "0x7ffc709143b8",
+          "width": 8,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x4014a5",
+          "address": "0x7ffc709143c0",
+          "width": 1,
+          "equivalent_for_all_X": true
+        }
+      ],
+      "all_write_values_equivalent": true,
+      "raw_angr_writes": 6,
+      "pcode_writes": 5,
+      "unmatched_angr_writes": [
+        {
+          "pc": "0x401573",
+          "address": "0x7ffc70914250",
+          "width": 8
+        }
+      ],
+      "unmatched_writes_are_known_vex_bt_scratch": true,
+      "bt_ir_evidence": {
+        "native_instruction": "bt r12, rax",
+        "ghidra_pcode_store_count": 0,
+        "vex_store_count": 1,
+        "rsp_restored": true
+      },
+      "slot0_equivalent_for_all_X": true,
+      "slot0_formula_pcode": "X + 7",
+      "slot0_formula_reduction_proved": true,
+      "next_vm_pc_equivalent": true,
+      "next_vm_pc": 1,
+      "angr_version": "9.2.223"
+    },
+    {
+      "program": "VMT002",
+      "input": 9,
+      "program_sha256": "0fd18f1f7ce3a052fa0dbae8f00145a69c9823057ef6ada2ea465d4db6520052",
+      "native_instructions": 52,
+      "native_path_equal": true,
+      "completed_states": 1,
+      "max_live_states": 1,
+      "angr_path_constraints": 0,
+      "pcode_nontrivial_input_guards": 0,
+      "ordered_write_matches": [
+        {
+          "pc": "0x4015b0",
+          "address": "0x7ffc70914370",
+          "width": 8,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x4015b4",
+          "address": "0x7ffc70914378",
+          "width": 1,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x40149b",
+          "address": "0x7ffc709143b0",
+          "width": 1,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x4014a0",
+          "address": "0x7ffc709143b8",
+          "width": 8,
+          "equivalent_for_all_X": true
+        },
+        {
+          "pc": "0x4014a5",
+          "address": "0x7ffc709143c0",
+          "width": 1,
+          "equivalent_for_all_X": true
+        }
+      ],
+      "all_write_values_equivalent": true,
+      "raw_angr_writes": 6,
+      "pcode_writes": 5,
+      "unmatched_angr_writes": [
+        {
+          "pc": "0x401573",
+          "address": "0x7ffc70914250",
+          "width": 8
+        }
+      ],
+      "unmatched_writes_are_known_vex_bt_scratch": true,
+      "bt_ir_evidence": {
+        "native_instruction": "bt r12, rax",
+        "ghidra_pcode_store_count": 0,
+        "vex_store_count": 1,
+        "rsp_restored": true
+      },
+      "slot0_equivalent_for_all_X": true,
+      "slot0_formula_pcode": "X + 11",
+      "slot0_formula_reduction_proved": true,
+      "next_vm_pc_equivalent": true,
+      "next_vm_pc": 1,
+      "angr_version": "9.2.223"
+    }
+  ]
+}
