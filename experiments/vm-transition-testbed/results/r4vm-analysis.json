@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "analysis_kind": "frozen_native_pcode_paths",
+  "results": [
+    {
+      "id": "VMT001",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT001",
+      "input": "0",
+      "status": "computed",
+      "result": "7",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "7",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT001",
+      "input": "-1",
+      "status": "computed",
+      "result": "6",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "6",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT001",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775802",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775802",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT001",
+      "input": "-9223372036854775808",
+      "status": "computed",
+      "result": "-9223372036854775801",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775801",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT002",
+      "input": "9",
+      "status": "computed",
+      "result": "20",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "20",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT002",
+      "input": "0",
+      "status": "computed",
+      "result": "11",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "11",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT002",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775798",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775798",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT003",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "9",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "8f36aa467c2c3969",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT003",
+      "input": "0",
+      "status": "computed",
+      "result": "7",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "7",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "8f36aa467c2c3969",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT004",
+      "input": "9",
+      "status": "computed",
+      "result": "27",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "16",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "27",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT004",
+      "input": "0",
+      "status": "computed",
+      "result": "18",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "7",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "18",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT004",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775791",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-9223372036854775802",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "-9223372036854775791",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT005",
+      "input": "9",
+      "status": "computed",
+      "result": "2",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "dc1aa038513a1794",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT005",
+      "input": "0",
+      "status": "computed",
+      "result": "-7",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-7",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "dc1aa038513a1794",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT005",
+      "input": "-9223372036854775808",
+      "status": "computed",
+      "result": "9223372036854775801",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "9223372036854775801",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "dc1aa038513a1794",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT006",
+      "input": "9",
+      "status": "computed",
+      "result": "92",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "92",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "3fa87f51e18faf73",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT006",
+      "input": "0",
+      "status": "computed",
+      "result": "85",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "85",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "3fa87f51e18faf73",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT006",
+      "input": "-1",
+      "status": "computed",
+      "result": "-86",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-86",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "3fa87f51e18faf73",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT007",
+      "input": "0",
+      "status": "computed",
+      "result": "42",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "42",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "2240591ddb1cefa8",
+        "0e1a62150b99e68d",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT007",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "a869b36587846b01",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT007",
+      "input": "-1",
+      "status": "computed",
+      "result": "6",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "6",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "a869b36587846b01",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT008",
+      "input": "9",
+      "status": "computed",
+      "result": "27",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "16",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "27",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT008",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775791",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775802",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "-9223372036854775791",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT009",
+      "input": "9",
+      "status": "error",
+      "runtime_status": "type_error",
+      "path_ids": [
+        "3c49aaeff779cd84",
+        "8d523afa2a6558d1"
+      ]
+    },
+    {
+      "id": "VMT010",
+      "input": "9",
+      "status": "unknown",
+      "reason": "0 supported native paths match at VM PC 0",
+      "path_ids": []
+    },
+    {
+      "id": "VMT010",
+      "input": "0",
+      "status": "unknown",
+      "reason": "0 supported native paths match at VM PC 0",
+      "path_ids": []
+    },
+    {
+      "id": "VMT011",
+      "input": "9",
+      "status": "error",
+      "runtime_status": "bad_opcode",
+      "path_ids": [
+        "1f2ea59d284e6e29"
+      ]
+    },
+    {
+      "id": "VMT012",
+      "input": "9",
+      "status": "computed",
+      "result": "12",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "10",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "11",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "12",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "0e1a62150b99e68d",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "a869b36587846b01",
+        "c20c4af07e2fad3c"
+      ]
+    },
+    {
+      "id": "VMT012",
+      "input": "0",
+      "status": "computed",
+      "result": "3",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "0e1a62150b99e68d",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "a869b36587846b01",
+        "c20c4af07e2fad3c"
+      ]
+    }
+  ]
+}

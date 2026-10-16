@@ -24,6 +24,7 @@ REGISTER_OFFSETS = {
     152: "r11", 160: "r12", 168: "r13", 176: "r14", 184: "r15",
 }
 FLAG_OFFSETS = {512: 0, 514: 2, 518: 6, 519: 7, 523: 11}
+VECTOR_OFFSETS = {4608: "xmm0"}
 ENTRY_PC = 0x4164B8
 EXIT_PC = 0x415B22
 
@@ -91,6 +92,8 @@ class PathReplay:
         self.flags = {}
         self.flags_concrete = {}
         self.unique = {}
+        self.vectors = {offset: Dual(z3.BitVec(f"V_{name.upper()}", 128), 0)
+                        for offset, name in VECTOR_OFFSETS.items()}
         self.guards = []
         self.reads = []
         self.effects = []
@@ -121,6 +124,9 @@ class PathReplay:
         if kind == 2 and offset in FLAG_OFFSETS:
             assert size == 1
             return Dual(self.flags[offset], self.flags_concrete[offset])
+        if kind == 2 and offset in VECTOR_OFFSETS:
+            assert size == 16
+            return self.vectors[offset]
         if kind == 2:
             base = next((root for root in REGISTER_OFFSETS if root <= offset < root + 8), None)
             if base is None or offset + size > base + 8:
@@ -143,6 +149,10 @@ class PathReplay:
             self.flags[offset] = value.symbolic
             self.flags_concrete[offset] = value.concrete
             self.touched_flags.add(offset)
+            return
+        if offset in VECTOR_OFFSETS:
+            assert size == 16
+            self.vectors[offset] = value
             return
         base = next((root for root in REGISTER_OFFSETS if root <= offset < root + 8), None)
         if base is None or offset + size > base + 8:
@@ -209,8 +219,22 @@ class PathReplay:
 
     def evaluate(self, opcode, inputs, output):
         args = [self.read(n) for n in inputs]
+        a = args[0]
+        b = args[1] if len(args) > 1 else None
         if opcode == "COPY":
             return args[0]
+        if opcode == "SUBPIECE":
+            if inputs[1]["kind_code"] != 1:
+                raise ValueError("dynamic SUBPIECE offset is not modeled")
+            low = b.concrete * 8
+            if low + output["byte_size"] * 8 > a.bits:
+                raise ValueError("SUBPIECE outside input")
+            high = low + output["byte_size"] * 8 - 1
+            return Dual(z3.Extract(high, low, a.symbolic),
+                        (a.concrete >> low) & ((1 << (output["byte_size"] * 8)) - 1))
+        if opcode == "PIECE":
+            return Dual(z3.Concat(a.symbolic, b.symbolic),
+                        (a.concrete << b.bits) | b.concrete)
         if opcode == "LOAD":
             return self.load(args[1], output["byte_size"])
         if opcode == "STORE":
@@ -240,8 +264,6 @@ class PathReplay:
                                 "condition": args[0].symbolic == bv(target, args[0].bits)})
             self.successor = args[0].symbolic
             return None
-        a = args[0]
-        b = args[1] if len(args) > 1 else None
         bits = output["byte_size"] * 8
         mask = (1 << bits) - 1
         if opcode == "INT_ZEXT":
@@ -250,6 +272,15 @@ class PathReplay:
             return Dual(resize(a.symbolic, bits, signed=True), signed(a.concrete, a.bits) & mask)
         if opcode == "BOOL_NEGATE":
             return bool_dual(a.symbolic == bv(0, a.bits), a.concrete == 0)
+        if opcode in ("BOOL_AND", "BOOL_OR", "BOOL_XOR"):
+            left, right = a.symbolic != bv(0, a.bits), b.symbolic != bv(0, b.bits)
+            symbolic = {"BOOL_AND": lambda: z3.And(left, right),
+                        "BOOL_OR": lambda: z3.Or(left, right),
+                        "BOOL_XOR": lambda: z3.Xor(left, right)}[opcode]()
+            concrete = {"BOOL_AND": lambda: bool(a.concrete) and bool(b.concrete),
+                        "BOOL_OR": lambda: bool(a.concrete) or bool(b.concrete),
+                        "BOOL_XOR": lambda: bool(a.concrete) != bool(b.concrete)}[opcode]()
+            return bool_dual(symbolic, concrete)
         if opcode == "POPCOUNT":
             sym = bv(0, bits)
             for index in range(a.bits):

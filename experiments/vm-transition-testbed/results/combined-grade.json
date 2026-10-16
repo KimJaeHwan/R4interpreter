@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "total": 39,
+  "counts": {
+    "accepted_unknown": 2,
+    "pass": 37
+  },
+  "holdout_counts": {
+    "accepted_unknown": 2,
+    "pass": 34
+  },
+  "grades": [
+    {
+      "id": "VMT001",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT001",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT001",
+      "input": "-1",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT001",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT001",
+      "input": "-9223372036854775808",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT002",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT002",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT002",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT003",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT003",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT004",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT004",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT004",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT005",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT005",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT005",
+      "input": "-9223372036854775808",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT006",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT006",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT006",
+      "input": "-1",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT007",
+      "input": "0",
+      "partition": "seed",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT007",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT007",
+      "input": "-1",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT008",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT008",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT009",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "matching runtime error"
+    },
+    {
+      "id": "VMT010",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "accepted_unknown",
+      "reason": "0 supported native paths match at VM PC 0"
+    },
+    {
+      "id": "VMT010",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "accepted_unknown",
+      "reason": "0 supported native paths match at VM PC 0"
+    },
+    {
+      "id": "VMT011",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "matching runtime error"
+    },
+    {
+      "id": "VMT012",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT012",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT013",
+      "input": "9",
+      "partition": "seed",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT013",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT013",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT014",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT014",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT014",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT015",
+      "input": "9",
+      "partition": "seed",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT015",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    },
+    {
+      "id": "VMT015",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "reason": "expected output and required effects match"
+    }
+  ]
+}

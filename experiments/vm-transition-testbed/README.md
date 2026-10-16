@@ -11,10 +11,13 @@
 | [`tools/build_cases.py`](tools/build_cases.py) | 매니페스트 검증, `.r4vm` 생성, 독립 Python 실행 오라클로 세부 효과/PC 계산, C fixture 빌드 |
 | [`expected/cases.expected.json`](expected/cases.expected.json) | 생성된 채점 정답. 분석기 입력에서 제외 |
 | [`tools/run_fixtures.py`](tools/run_fixtures.py) | 실제 C ELF와 기존 Lua 실행기의 동작을 정답과 대조 |
-| [`tools/compare_analysis.py`](tools/compare_analysis.py) | 향후 분석기 결과를 `pass/fail/uncovered/accepted_unknown/not_run/partial`로 분류 |
+| [`tools/compare_analysis.py`](tools/compare_analysis.py) | 분석기 결과를 `pass/fail/uncovered/accepted_unknown/not_run/partial`로 분류 |
 | [`tools/import_current_lua_results.py`](tools/import_current_lua_results.py) | 기존 Lua 요약의 검증 기록을 이 채점 형식으로 연결. 범용 분석기 실행은 아님 |
+| [`tools/capture_native_paths.py`](tools/capture_native_paths.py), [`tools/train_r4vm.py`](tools/train_r4vm.py) | ELF의 실행 경로를 Ghidra Low P-code로 재생해 조건부 전이 요약 11개를 동결 |
+| [`tools/analyze_r4vm.py`](tools/analyze_r4vm.py) | 동결한 요약을 새 바이트코드·입력에 적용. opcode 의미표, 매니페스트 정답, 런타임 실행을 사용하지 않음 |
+| [`results/ANALYSIS_RESULT.md`](results/ANALYSIS_RESULT.md) | 실제 분석 결과와 남은 한계 |
 
-분석기의 입력은 **빌드된 ELF, 바이트코드 파일, 입력값**이다. 소스, 매니페스트, expected JSON과 Python 오라클은 채점 쪽에 둔다. 실행 시 입력은 64비트 signed 정수이고 VM payload 연산은 64비트 래핑이다. `.r4vm`은 8바이트 헤더 뒤에 opcode·목적 슬롯·출처 슬롯·signed 8비트 즉시값을 1바이트씩 둔다. 숫자 opcode 의미는 분석기 사전 규칙으로 제공하지 않는다.
+분석기 적용 입력은 **빌드된 ELF, 동결한 P-code 경로 요약, 바이트코드 파일, 입력값**이다. 소스, 매니페스트, expected JSON과 Python 오라클은 채점 쪽에 둔다. 실행 시 입력은 64비트 signed 정수이고 VM payload 연산은 64비트 래핑이다. `.r4vm`은 8바이트 헤더 뒤에 opcode·목적 슬롯·출처 슬롯·signed 8비트 즉시값을 1바이트씩 둔다. 숫자 opcode 의미는 분석기 사전 규칙으로 제공하지 않는다.
 
 ## 케이스
 
@@ -33,7 +36,7 @@
 
 `writes.slot`은 테스트베드가 정답을 읽기 쉽게 만든 **채점용 상태 투영**이다. 공통 분석기의 내부 요약은 계속 네이티브 주소·폭·값·순서를 보존해야 한다. 이후 주소를 슬롯에 대응시키는 평가 adapter를 추가할 수 있으며, 이 투영을 분석기의 Lua/VM 공통 필수 필드로 삼지 않는다.
 
-현재 비교기는 **샘플별 결과와 효과**를 채점한다. guard의 전체 적용 범위, 동일 handler 요약 ID의 재사용, 보존 영역의 증명, 분석 비용은 아직 자동 채점하지 않는다. `expected_features`는 다음 분석 단계의 판정 항목이며, 이 칸이 있다고 해서 해당 기능을 검증했다고 세지 않는다.
+현재 비교기는 **샘플별 결과와 효과**를 채점한다. guard의 전체 적용 범위, 보존 영역의 증명, 분석 비용은 아직 자동 채점하지 않는다. `expected_features`는 별도 판정 항목이며, 이 칸이 있다고 해서 해당 기능을 검증했다고 세지 않는다. 분석 결과의 `path_ids`로 실제 요약 재사용은 확인할 수 있다.
 
 ## 실행
 
@@ -48,10 +51,31 @@ python3 tools/import_current_lua_results.py
 python3 tools/compare_analysis.py reports/current-lua-analysis.json --output reports/current-lua-grade.json
 ```
 
-현재 생성한 사례는 **15개, 입력 39개**다. C fixture와 Python 오라클/사람이 적은 핵심 출력의 대조는 39/39 일치했다. 기존 Lua 경로 요약을 변환해 채점하면 Lua 출력 9/9가 통과하며 그중 **holdout 7건**이다. 작은 VM의 30개 입력은 아직 분석기가 실행되지 않아 `not_run`이다. 이것을 분석 성공으로 합산하지 않는다.
+현재 생성한 사례는 **15개, 입력 39개**다. C fixture와 Python 오라클/사람이 적은 핵심 출력의 대조는 39/39 일치했다. 작은 VM의 동결한 P-code 경로를 분석하면 **30개 중 28개 pass, 미모델링 호출 2개 accepted_unknown**이다. 기존 Lua 경로 요약은 별도로 9/9 pass였다. 둘을 합친 채점은 **37 pass, 2 accepted_unknown**이며, 훈련에 사용한 입력 3개를 제외한 holdout은 **34 pass, 2 accepted_unknown**이다. Lua 9건은 이번 새 분석기의 결과가 아니다.
 
 새 분석기는 [`examples/analysis-results.example.json`](examples/analysis-results.example.json) 형태로 케이스별 `id`, `input`, `status`를 출력한다. `computed`이면 `result`를 문자열로 적고, 작은 VM 사례에는 `pc`와 `writes`도 넣는다. `unknown`은 `reason`이 필요하다. 예제 파일을 채점하면 `pass 1`, `accepted_unknown 1`, `not_run 37`이 나온다.
 
+## 새 분석 실험 실행
+
+Python 3.11 이상에서 [`requirements-analysis.txt`](requirements-analysis.txt)의 패키지가 필요하다. 기존 저장소의 `daasdmlkas` 체크아웃은 Bundle exporter를 읽기 전용으로 사용하며, 분석 코드와 결과는 이 저장소에만 둔다. 현재 ELF와 일치하는 Ghidra 12.0.4 Bundle을 [`artifacts/r4vm_bundle.tar.gz`](artifacts/r4vm_bundle.tar.gz)에 보관했다. 다른 컴파일러/빌드로 ELF가 달라지면 Bundle과 요약을 다시 생성해야 한다.
+
+```bash
+cd experiments/vm-transition-testbed
+python3 tools/build_cases.py --check
+python3 tools/train_r4vm.py
+python3 tools/run_r4vm_analysis.py --output results/r4vm-analysis.json
+python3 tools/import_current_lua_results.py
+python3 tools/combine_analysis.py results/r4vm-analysis.json reports/current-lua-analysis.json
+python3 tools/compare_analysis.py results/combined-analysis.json --output results/combined-grade.json
+```
+
+훈련 단계에서 네이티브 cutpoint `0x401410`은 이 ELF에 대한 수동 힌트다. 학습 추적은 `VMT001/003/005/006/009/011/012`의 입력 `5`, `VMT007`의 입력 `5`와 `0`에서 얻는다. `5`는 평가 샘플에 없고 `VMT007, 0`은 `seed`로 표시했다. 각 경로의 모든 방문 네이티브 명령을 Low P-code로 재생하고 레지스터·메모리 관측과 대조한 뒤, 경로 조건·순서 있는 효과·종료 레지스터 식을 저장한다. 실제 분석기는 동결한 요약과 ELF·바이트코드·입력만 사용하며, 평가 입력마다 추적하거나 요약을 다시 뽑지 않는다. 벤치마크 실행기만 매니페스트에서 평가 입력 목록을 읽는다.
+
+분석기 출력 투영은 이 ELF의 루프 진입 상태와 `output` 함수의 호출 규약에 맞춘 adapter다. 여기에는 초기화된 VM 스택 스냅샷, 코드 버퍼 위치, `output` 인자와 write log 배치를 이용한다. 아직 루프 경계를 자동으로 발견하거나, 엔트리부터 출력까지의 전체 네이티브 경로를 증명하지 않았다.
+
 ## 다음 분석 단계
 
-이 테스트베드는 정답과 검증 입력을 준비한 상태다. 다음에는 `r4vm`의 Ghidra Low P-code Bundle을 만든 뒤, **명령 읽기·분배 경계를 찾는 코드와 경로 요약 생성기를 Lua 고정 주소 없이** 구현한다. VMT001–008에서 구조·연산·메모리 효과를 순서대로 채점하고, VMT009–012에서 섣부른 숫자 결과를 막는지 본다. 이후 같은 코어를 Lua VMT013–015에 적용한다. 컴파일 최적화 수준과 다른 인터프리터 언어는 분석 코어가 이 첫 행렬을 처리한 다음 추가한다.
+1. 고정 주소 cutpoint와 스택·출력 adapter를 P-code/SSA에서 추론하거나 근거 있는 사용자 힌트로 일반화한다.
+2. 호출 요약을 붙여 VMT010을 계산하되, 미모델링 호출을 계속 `unknown`으로 처리한다.
+3. guard 적용 범위, 별칭·frame 보존과 루프 종료를 정적으로 검증한다. 지금 37건의 일치는 지정한 샘플에 대한 차등 검증이다.
+4. 새 R4VM 코어와 기존 Lua 적용기를 같은 추출·합성 경로로 묶은 뒤 Python과 JavaScript로 확장한다.

@@ -99,7 +99,7 @@
         {"op": "halt", "src": 1}
       ],
       "samples": [
-        {"input": "0", "status": "ok", "result": "42"},
+        {"input": "0", "status": "ok", "result": "42", "partition": "seed"},
         {"input": "9", "status": "ok", "result": "16"},
         {"input": "-1", "status": "ok", "result": "6"}
       ]

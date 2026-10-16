@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "provenance": "R4VM frozen Low P-code paths plus previously validated Lua path summaries",
+  "results": [
+    {
+      "id": "VMT001",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT001",
+      "input": "0",
+      "status": "computed",
+      "result": "7",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "7",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT001",
+      "input": "-1",
+      "status": "computed",
+      "result": "6",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "6",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT001",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775802",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775802",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT001",
+      "input": "-9223372036854775808",
+      "status": "computed",
+      "result": "-9223372036854775801",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775801",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT002",
+      "input": "9",
+      "status": "computed",
+      "result": "20",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "20",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT002",
+      "input": "0",
+      "status": "computed",
+      "result": "11",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "11",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT002",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775798",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775798",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT003",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "9",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "8f36aa467c2c3969",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT003",
+      "input": "0",
+      "status": "computed",
+      "result": "7",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "7",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "8f36aa467c2c3969",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT004",
+      "input": "9",
+      "status": "computed",
+      "result": "27",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "16",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "27",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT004",
+      "input": "0",
+      "status": "computed",
+      "result": "18",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "7",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "18",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT004",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775791",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-9223372036854775802",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "-9223372036854775791",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT005",
+      "input": "9",
+      "status": "computed",
+      "result": "2",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "dc1aa038513a1794",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT005",
+      "input": "0",
+      "status": "computed",
+      "result": "-7",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-7",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "dc1aa038513a1794",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT005",
+      "input": "-9223372036854775808",
+      "status": "computed",
+      "result": "9223372036854775801",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "9223372036854775801",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "dc1aa038513a1794",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT006",
+      "input": "9",
+      "status": "computed",
+      "result": "92",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "92",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "3fa87f51e18faf73",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT006",
+      "input": "0",
+      "status": "computed",
+      "result": "85",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "85",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "3fa87f51e18faf73",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT006",
+      "input": "-1",
+      "status": "computed",
+      "result": "-86",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-86",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "3fa87f51e18faf73",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT007",
+      "input": "0",
+      "status": "computed",
+      "result": "42",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "42",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "2240591ddb1cefa8",
+        "0e1a62150b99e68d",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT007",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "a869b36587846b01",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT007",
+      "input": "-1",
+      "status": "computed",
+      "result": "6",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "6",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "a869b36587846b01",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT008",
+      "input": "9",
+      "status": "computed",
+      "result": "27",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "16",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "27",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT008",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775791",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775802",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "-9223372036854775791",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "347cd71f1ec34c41",
+        "347cd71f1ec34c41",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT009",
+      "input": "9",
+      "status": "error",
+      "runtime_status": "type_error",
+      "path_ids": [
+        "3c49aaeff779cd84",
+        "8d523afa2a6558d1"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT010",
+      "input": "9",
+      "status": "unknown",
+      "reason": "0 supported native paths match at VM PC 0",
+      "path_ids": [],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT010",
+      "input": "0",
+      "status": "unknown",
+      "reason": "0 supported native paths match at VM PC 0",
+      "path_ids": [],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT011",
+      "input": "9",
+      "status": "error",
+      "runtime_status": "bad_opcode",
+      "path_ids": [
+        "1f2ea59d284e6e29"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT012",
+      "input": "9",
+      "status": "computed",
+      "result": "12",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "10",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "11",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "12",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "0e1a62150b99e68d",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "a869b36587846b01",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT012",
+      "input": "0",
+      "status": "computed",
+      "result": "3",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        }
+      ],
+      "path_ids": [
+        "0e1a62150b99e68d",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "2240591ddb1cefa8",
+        "347cd71f1ec34c41",
+        "dc1aa038513a1794",
+        "a869b36587846b01",
+        "c20c4af07e2fad3c"
+      ],
+      "analysis_method": "r4vm_frozen_pcode_paths"
+    },
+    {
+      "id": "VMT013",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "trace_sha256": "2fa830370676877f57219a1ffa2f2f3a5fd043a2968adfccba1825388f9eb3c2"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT013",
+      "input": "0",
+      "status": "computed",
+      "result": "7",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "trace_sha256": "2497964aa907ccf74d00196fb5f91e90c39ac84f064fb7b346080c4d769ac1b6"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT013",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775802",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "trace_sha256": "b2aad6d243b48f889454175e32a794948c744e36730b101642e25fb2220a5cb3"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT014",
+      "input": "9",
+      "status": "computed",
+      "result": "20",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "trace_sha256": "1d9cc2264fad4b254e17cb362c8cfbb3fc6b28e6057133dcf578dae8c369fe30"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT014",
+      "input": "0",
+      "status": "computed",
+      "result": "11",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "trace_sha256": "8cf371bce20bf1600382de5e957671abb57581e0bb3e404a472e70723f78225e"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT014",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775798",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "trace_sha256": "f84da23064d2f909f0c7b7fd69bbae3045f539392b286feeed60ca9586b69ff0"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT015",
+      "input": "9",
+      "status": "computed",
+      "result": "27",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "bridge_sha256": "d8c5f24d86b282d8d2d1d5a2be4f43d552d78e1b28db203875d91fc61a9fead0",
+        "trace_sha256": "8e2e00778b9fb70ab19adf5b9c129d019d3a3c32a0c10d555ebdb3cf23335a06"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT015",
+      "input": "0",
+      "status": "computed",
+      "result": "18",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "bridge_sha256": "d8c5f24d86b282d8d2d1d5a2be4f43d552d78e1b28db203875d91fc61a9fead0",
+        "trace_sha256": "aa12674a06c945c2dbdcab918eeed93d4f18ea022c962af9b78d3667efe50604"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    },
+    {
+      "id": "VMT015",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775791",
+      "evidence": {
+        "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+        "bridge_sha256": "d8c5f24d86b282d8d2d1d5a2be4f43d552d78e1b28db203875d91fc61a9fead0",
+        "trace_sha256": "b4f8d729f88ce2ee5a51bfecba687fad8910f445bcc564bb7eab23e0d0c5c8b4"
+      },
+      "analysis_method": "prior_lua_path_summaries"
+    }
+  ]
+}

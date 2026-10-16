@@ -449,7 +449,7 @@
       "samples": [
         {
           "input": "0",
-          "partition": "holdout",
+          "partition": "seed",
           "expected": {
             "status": "ok",
             "result": "42",
