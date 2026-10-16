@@ -48,4 +48,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 입력 출처, 선택 경로 계산식, 별도 입력 판정은 완료했다. 다음에는 다른 바이트코드로 같은 방식의 재사용성을 확인한다. 연결하지 못한 호출·메모리·JOIN은 `unknown`으로 남긴다.
+[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 입력 출처, 선택 경로 계산식, 별도 입력 판정은 완료했다. Astra와 검토한 [VM 처리 구간 요약 설계](VM_HANDLER_SUMMARY_DESIGN.md)에 따라, 다음에는 수치 처리 구간의 상태 전이를 요약해 다른 바이트코드에 **재추출 없이** 적용할 수 있는지 확인한다. 연결하지 못한 호출·메모리·JOIN은 `unknown`으로 남긴다.
