@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "method": "admitted Ghidra Bundle -> daasdmlkas normalized SSA -> backward slice",
+  "trace_use": "archived R4VM paths choose comparison roots and measure overlap; Lua roots come from the archived ADD handler; no ELF execution",
+  "bundle_sha256": "b20d278b67a0feebc12a580b71c0689be37dc653e9d4b51ec01cd35a98c0d85c",
+  "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+  "graph": {
+    "nodes": 2396,
+    "edges": 5095,
+    "operations": 1115
+  },
+  "paths": [
+    {
+      "path_id": "347cd71f1ec34c41",
+      "kind": "next_fetch",
+      "source": [
+        "VMT001",
+        5
+      ],
+      "archived_path_operations": 375,
+      "roots": [
+        "op:1b1:40149b:4:STORE",
+        "op:1b1:4014a0:4:STORE",
+        "op:1b1:4014a5:4:STORE",
+        "op:1b1:4015b0:3:STORE",
+        "op:1b1:4015b4:4:STORE",
+        "op:1b1:4014ac:1:CBRANCH"
+      ],
+      "modes": {
+        "data_only": {
+          "slice_nodes": 388,
+          "slice_operations": 175,
+          "operations_on_archived_path": 79,
+          "operations_outside_archived_path": 96,
+          "unresolved_reads": 26,
+          "unresolved_writes_in_function": 10,
+          "complete": false,
+          "add_anchor_reached": true
+        },
+        "data_and_control": {
+          "slice_nodes": 662,
+          "slice_operations": 308,
+          "operations_on_archived_path": 140,
+          "operations_outside_archived_path": 168,
+          "unresolved_reads": 38,
+          "unresolved_writes_in_function": 10,
+          "complete": false,
+          "add_anchor_reached": true
+        }
+      }
+    },
+    {
+      "path_id": "a869b36587846b01",
+      "kind": "next_fetch",
+      "source": [
+        "VMT007",
+        5
+      ],
+      "archived_path_operations": 214,
+      "roots": [
+        "op:1b1:4014ac:1:CBRANCH"
+      ],
+      "modes": {
+        "data_only": {
+          "slice_nodes": 16,
+          "slice_operations": 6,
+          "operations_on_archived_path": 5,
+          "operations_outside_archived_path": 1,
+          "unresolved_reads": 1,
+          "unresolved_writes_in_function": 10,
+          "complete": false
+        },
+        "data_and_control": {
+          "slice_nodes": 662,
+          "slice_operations": 308,
+          "operations_on_archived_path": 88,
+          "operations_outside_archived_path": 220,
+          "unresolved_reads": 38,
+          "unresolved_writes_in_function": 10,
+          "complete": false
+        }
+      }
+    },
+    {
+      "path_id": "c20c4af07e2fad3c",
+      "kind": "output",
+      "source": [
+        "VMT001",
+        5
+      ],
+      "archived_path_operations": 172,
+      "roots": [
+        "op:1b1:40151b:0:COPY"
+      ],
+      "modes": {
+        "data_only": {
+          "slice_nodes": 2,
+          "slice_operations": 1,
+          "operations_on_archived_path": 1,
+          "operations_outside_archived_path": 0,
+          "unresolved_reads": 0,
+          "unresolved_writes_in_function": 10,
+          "complete": false
+        },
+        "data_and_control": {
+          "slice_nodes": 697,
+          "slice_operations": 325,
+          "operations_on_archived_path": 68,
+          "operations_outside_archived_path": 257,
+          "unresolved_reads": 40,
+          "unresolved_writes_in_function": 10,
+          "complete": false
+        }
+      }
+    }
+  ],
+  "lua": {
+    "bundle_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+    "function": "luaV_execute",
+    "instructions": 3670,
+    "graph": {
+      "nodes": 57139,
+      "edges": 388939,
+      "operations": 26892
+    },
+    "roots": [
+      {
+        "root": "op:1b1:417cea:1:STORE",
+        "modes": {
+          "data_only": {
+            "slice_nodes": 11753,
+            "slice_operations": 4910,
+            "add_anchor_reached": true,
+            "unresolved_reads": 1243,
+            "unresolved_writes_in_function": 201,
+            "complete": false
+          },
+          "data_and_control": {
+            "slice_nodes": 16756,
+            "slice_operations": 7322,
+            "add_anchor_reached": true,
+            "unresolved_reads": 1659,
+            "unresolved_writes_in_function": 201,
+            "complete": false
+          }
+        }
+      },
+      {
+        "root": "op:1b1:417ced:2:STORE",
+        "modes": {
+          "data_only": {
+            "slice_nodes": 11753,
+            "slice_operations": 4910,
+            "add_anchor_reached": true,
+            "unresolved_reads": 1243,
+            "unresolved_writes_in_function": 201,
+            "complete": false
+          },
+          "data_and_control": {
+            "slice_nodes": 16756,
+            "slice_operations": 7322,
+            "add_anchor_reached": true,
+            "unresolved_reads": 1659,
+            "unresolved_writes_in_function": 201,
+            "complete": false
+          }
+        }
+      },
+      {
+        "root": "op:1b1:415b22:1:CBRANCH",
+        "modes": {
+          "data_only": {
+            "slice_nodes": 11762,
+            "slice_operations": 4914,
+            "add_anchor_reached": true,
+            "unresolved_reads": 1244,
+            "unresolved_writes_in_function": 201,
+            "complete": false
+          },
+          "data_and_control": {
+            "slice_nodes": 16756,
+            "slice_operations": 7322,
+            "add_anchor_reached": true,
+            "unresolved_reads": 1659,
+            "unresolved_writes_in_function": 201,
+            "complete": false
+          }
+        }
+      }
+    ]
+  },
+  "conclusion": "Static dependencies are queryable, but these slices retain off-path operations and unresolved memory debts; no complete VM transition is proven."
+}

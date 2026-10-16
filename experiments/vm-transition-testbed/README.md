@@ -20,6 +20,7 @@
 | [`tools/restore_frozen_binary.py`](tools/restore_frozen_binary.py) | Bundle에서 해시가 일치하는 ELF를 복원해 동일한 요약을 바로 적용 |
 | [`results/ANALYSIS_RESULT.md`](results/ANALYSIS_RESULT.md) | 실제 분석 결과와 남은 한계 |
 | [`results/LOGIC_PROJECTION_RESULT.md`](results/LOGIC_PROJECTION_RESULT.md) | 원본 스크립트에 가까운 입력 수준 식으로 축약한 결과와 적용 범위 |
+| [`tools/probe_static_slice.py`](tools/probe_static_slice.py), [`results/STATIC_SLICE_RESULT.md`](results/STATIC_SLICE_RESULT.md) | R4VM·Lua Bundle을 읽기 전용 `daasdmlkas` SSA로 정규화해 쓰기·분기 slice의 경로 혼합과 미해결 의존을 측정 |
 
 분석기 적용 입력은 **빌드된 ELF, 동결한 P-code 경로 요약, 바이트코드 파일, 입력값**이다. 소스, 매니페스트, expected JSON과 Python 오라클은 채점 쪽에 둔다. 실행 시 입력은 64비트 signed 정수이고 VM payload 연산은 64비트 래핑이다. `.r4vm`은 8바이트 헤더 뒤에 opcode·목적 슬롯·출처 슬롯·signed 8비트 즉시값을 1바이트씩 둔다. 숫자 opcode 의미는 분석기 사전 규칙으로 제공하지 않는다.
 
@@ -63,6 +64,8 @@ python3 -m venv .venv
 기존 `compare_analysis.py`의 정상 출력은 `pass: 37`, `accepted_unknown: 2`다. `VMT010`의 미모델링 helper 호출 2건이 `unknown`이며, Lua 9건은 기존 검증 기록을 합친 것이다. `build/r4vm`에 다른 컴파일러가 만든 ELF가 이미 있으면 복원기가 덮어쓰지 않는다. 요약과 일치하는 보관본으로 교체하려면 `.venv/bin/python tools/restore_frozen_binary.py --replace`를 사용한다. 분석 결과는 무시되는 `reports/`에 생성되므로 저장소 파일을 수정하지 않는다.
 
 추가된 식 투영의 R4VM 채점 결과는 `pass: 28`, `accepted_unknown: 2`, `fail: 0`이다. Lua 보관 추적의 한 핸들러 `X+7`/`X+11`과 두 핸들러 연결 `X+18`도 같은 식 투영기를 사용한다. 축약 결과는 [별도 결과 문서](results/LOGIC_PROJECTION_RESULT.md)에 정리했다. Lua 함수의 최종 반환 경로까지 이번 투영으로 증명한 것은 아니다.
+
+추가 정적 SSA 실험은 [별도 결과 문서](results/STATIC_SLICE_RESULT.md)에 기록했다. R4VM의 실제 ADD 연산은 결과 쓰기의 역방향 slice에 들어왔지만, 함수 전체 slice에는 다른 경로의 연산과 미해결 메모리 의존이 남아 정적 전이식을 확정하지 못했다. Lua에서도 같은 현상이 더 크게 나타났다.
 
 실제 C/Lua 실행기의 출력까지 다시 확인하려면 **Linux x86-64 또는 WSL2**에서 `python3 tools/run_fixtures.py`를 실행한다. 이는 실행 결과 정답 39/39를 확인하는 별도 단계다. Windows 네이티브/macOS에서는 ELF를 실행하는 이 단계가 지원되지 않는다.
 
