@@ -20,6 +20,8 @@ experiment = Path(__file__).resolve().parent
 trace_path = Path(sys.argv[1]) if len(sys.argv) > 1 else experiment / "artifacts/lua_trace_x9.csv"
 bundle_path = experiment / "artifacts/lua_bundle.tar.gz"
 bytecode_path = experiment / "lua_chunk.luac"
+if len(sys.argv) > 3:
+    bytecode_path = Path(sys.argv[3])
 binary_path = experiment / "lua_interpreter_fixture"
 report_path = Path(sys.argv[2]) if len(sys.argv) > 2 else experiment / "bytecode_handler_map_x9.json"
 
@@ -73,6 +75,7 @@ for position, row in enumerate(rows[:-1]):
         "fetch_native_pc": f"{fetch_pc:#x}",
         "dispatch_native_pc": f"{dispatch_pc:#x}",
         "handler_entry_native_pc": dispatch["next_rip"],
+        "handler_entry_r11": int(rows[dispatch_position + 1]["r11"], 16),
         "handler_first_trace_step": dispatch_position + 1,
     })
 

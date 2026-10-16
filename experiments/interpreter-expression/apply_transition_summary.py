@@ -53,18 +53,28 @@ def concrete(solver, expr):
     return value.as_long() if z3.is_bv_value(value) else z3.is_true(value)
 
 
-def load_trace(path, entry_pc):
+def load_trace(path, entry_pc, exit_pc, occurrence=0):
     records = [json.loads(line) for line in path.read_text().splitlines()]
-    entry = next(row for row in records if row.get("pc") == entry_pc)
-    handler_rows = [row for row in records if row.get("type") == "step" and row["step"] >= entry["step"]]
+    entries = [row for row in records if row.get("type") == "step" and row["pc"] == entry_pc]
+    entry = entries[occurrence]
+    handler_rows = []
+    for row in records:
+        if row.get("type") != "step" or row["step"] < entry["step"]:
+            continue
+        handler_rows.append(row)
+        if row["next_pc"] == exit_pc:
+            break
     return entry, handler_rows
 
 
-def apply(summary, binary, trace):
+def apply(summary, binary, trace, occurrence=0, entry_override=None):
     if sha256(binary.read_bytes()).hexdigest() != summary["identity"]["executable_code_sha256"]:
         raise ValueError("summary executable hash does not match")
     entry_pc = int(summary["identity"]["entry_cutpoint"], 16)
-    entry, rows = load_trace(trace, entry_pc)
+    exit_pc = int(summary["identity"]["exit_cutpoint"], 16)
+    entry, rows = load_trace(trace, entry_pc, exit_pc, occurrence)
+    if entry_override is not None:
+        entry = entry_override
     decls = declarations(summary)
     solver = z3.Solver()
     for item in summary["interface"]["inputs"]:
@@ -155,9 +165,10 @@ def main():
     parser.add_argument("binary", type=Path)
     parser.add_argument("trace", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--occurrence", type=int, default=0)
     args = parser.parse_args()
     summary = json.loads(args.summary.read_text())
-    result = apply(summary, args.binary, args.trace)
+    result = apply(summary, args.binary, args.trace, args.occurrence)
     result["summary_sha256"] = sha256(args.summary.read_bytes()).hexdigest()
     result["trace_sha256"] = sha256(args.trace.read_bytes()).hexdigest()
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")

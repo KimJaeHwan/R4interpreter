@@ -97,6 +97,8 @@ def main():
                         help="record selected path sites only (useful for input zero)")
     parser.add_argument("--capture-handler", action="store_true",
                         help="record every step from 0x4164b8 through 0x415b22")
+    parser.add_argument("--handler-count", type=int, default=1,
+                        help="number of 0x4164b8 handler exits to capture, including intervening steps")
     parser.add_argument("--snapshot-bytes", type=int, default=256,
                         help="bytes to capture at handler entry from RBX")
     args = parser.parse_args()
@@ -133,6 +135,7 @@ def main():
         count = 0
         candidates = 0
         capturing = False
+        captured_handlers = 0
         markers = {0x401490, 0x40149B, 0x4014B3, 0x4014B6,
                    0x402A00, 0x402A04, 0x402A07, 0x403300,
                    0x411B50, 0x411B54, 0x416EA1, 0x416EA7,
@@ -197,14 +200,20 @@ def main():
                     if entry_memory is not None:
                         record["entry_memory"] = entry_memory
                     out.write(json.dumps(record) + "\n")
-                if pc == (0x415B22 if args.capture_handler else 0x417CEA):
+                if args.capture_handler:
+                    if capturing and pc == 0x415B22:
+                        captured_handlers += 1
+                        if captured_handlers >= args.handler_count:
+                            break
+                elif pc == 0x417CEA:
                     break
             else:
                 raise RuntimeError(f"VM target not reached within {args.limit} steps")
             out.write(json.dumps({"type": "summary", "steps": count + 1,
                                   "input_word_access_steps": candidates,
                                   "stopped_after_vm_add_store": pc == 0x417CEA,
-                                  "stop_pc": pc}) + "\n")
+                                  "stop_pc": pc,
+                                  "captured_handlers": captured_handlers}) + "\n")
         print(f"steps={count + 1} input_word_access_steps={candidates} output={args.output}")
     finally:
         try:

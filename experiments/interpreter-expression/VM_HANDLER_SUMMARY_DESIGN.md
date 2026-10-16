@@ -1,6 +1,6 @@
 # VM 처리 구간 요약 설계와 다음 실험
 
-상태: 설계와 판정 기준. [첫 관문 실행 결과](TRANSITION_SUMMARY_RESULT.md)에서 `x+7` 요약을 `x+11`에 재사용하고 같은 적용기를 네이티브 ELF에 적용했다. 이후 확장 관문은 아직 진행하지 않았다. 이 문서는 기존 [입력 출처와 한 경로의 계산식 실험](INPUT_PROVENANCE_RESULT.md)을 바탕으로 Astra와 검토한 **Lua 첫 적용 계획**이다. 핵심 스키마는 [언어 중립 공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md)에 정의한다. `daasdmlkas`는 읽기 전용으로 사용하고, 새 실험 코드와 결과는 이 저장소에 둔다.
+상태: 설계와 판정 기준. [첫 관문 실행 결과](TRANSITION_SUMMARY_RESULT.md)에서 `x+7` 요약을 `x+11`에 재사용하고 같은 적용기를 네이티브 ELF에 적용했다. [확장 관문 결과](TWO_HANDLER_COMPOSITION_RESULT.md)에서는 위치·슬롯이 바뀐 두 명령과 fetch/decode/dispatch 전이를 합성했다. 이 문서는 기존 [입력 출처와 한 경로의 계산식 실험](INPUT_PROVENANCE_RESULT.md)을 바탕으로 Astra와 검토한 **Lua 첫 적용 계획**이다. 핵심 스키마는 [언어 중립 공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md)에 정의한다. `daasdmlkas`는 읽기 전용으로 사용하고, 새 실험 코드와 결과는 이 저장소에 둔다.
 
 ## 왜 분석 단위를 바꾸는가
 

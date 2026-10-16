@@ -1,0 +1,511 @@
+{
+  "schema_version": "transition-summary-v0-candidate",
+  "semantic_model": {
+    "architecture": "x86-64",
+    "endian": "little",
+    "pointer_width": 64,
+    "value_domain": "bitvector and byte-addressed memory",
+    "lifter_version": "Ghidra 12.0.4 Bundle",
+    "bundle_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79"
+  },
+  "identity": {
+    "executable_code_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+    "code_epoch": "static fixture; runtime code mutation not modeled",
+    "entry_cutpoint": "0x4164b8",
+    "exit_cutpoint": "0x4164b8",
+    "specialization_dependencies": [
+      "numeric handler path",
+      "five-instruction next-fetch bridge",
+      "static ELF dispatch table"
+    ]
+  },
+  "interface": {
+    "inputs": [
+      {
+        "name": "W",
+        "sort": "BV32",
+        "binding": {
+          "kind": "register_slice",
+          "name": "r12",
+          "low_bit": 0,
+          "width": 32
+        }
+      },
+      {
+        "name": "M0",
+        "sort": "Array(BV64,BV8)",
+        "binding": {
+          "kind": "entry_memory"
+        }
+      },
+      {
+        "name": "R_RAX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rax"
+        }
+      },
+      {
+        "name": "R_RCX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rcx"
+        }
+      },
+      {
+        "name": "R_RDX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rdx"
+        }
+      },
+      {
+        "name": "R_RBX",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rbx"
+        }
+      },
+      {
+        "name": "R_RSP",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rsp"
+        }
+      },
+      {
+        "name": "R_RBP",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rbp"
+        }
+      },
+      {
+        "name": "R_RSI",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rsi"
+        }
+      },
+      {
+        "name": "R_RDI",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "rdi"
+        }
+      },
+      {
+        "name": "R_R8",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r8"
+        }
+      },
+      {
+        "name": "R_R9",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r9"
+        }
+      },
+      {
+        "name": "R_R10",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r10"
+        }
+      },
+      {
+        "name": "R_R11",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r11"
+        }
+      },
+      {
+        "name": "R_R13",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r13"
+        }
+      },
+      {
+        "name": "R_R14",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r14"
+        }
+      },
+      {
+        "name": "R_R15",
+        "sort": "BV64",
+        "binding": {
+          "kind": "register",
+          "name": "r15"
+        }
+      },
+      {
+        "name": "F_0",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 0
+        }
+      },
+      {
+        "name": "F_2",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 2
+        }
+      },
+      {
+        "name": "F_6",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 6
+        }
+      },
+      {
+        "name": "F_7",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 7
+        }
+      },
+      {
+        "name": "F_11",
+        "sort": "BV8",
+        "binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 11
+        }
+      }
+    ],
+    "external_memory_bindings": [
+      "bytecode image at runtime code base",
+      "ELF read-only dispatch table"
+    ]
+  },
+  "case": {
+    "path_guard": [
+      "(= ((_ extract 6 0) W) #b0010101)",
+      "(let ((a!1 (select M0\n                   (bvadd #x0000000000000008\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX))))\n  (= a!1 #x03))",
+      "true",
+      "(= ((_ extract 31 0) R_RBP) #x00000000)",
+      "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n(let ((a!22 (concat #b000000000000000000000000000000000000000000000000000000000\n                    ((_ extract 6 0)\n                      (select a!21 (bvadd #x0000000000000004 R_R11))))))\n(let ((a!23 (= (select a!21\n                       (bvadd #x0000000000422920\n                              (bvmul #x0000000000000008 a!22)))\n               #xb8))\n      (a!24 (= (select a!21\n                       (bvadd #x0000000000422921\n                              (bvmul #x0000000000000008 a!22)))\n               #x64))\n      (a!25 (= (select a!21\n                       (bvadd #x0000000000422922\n                              (bvmul #x0000000000000008 a!22)))\n               #x41))\n      (a!26 (= (select a!21\n                       (bvadd #x0000000000422923\n                              (bvmul #x0000000000000008 a!22)))\n               #x00))\n      (a!27 (= (select a!21\n                       (bvadd #x0000000000422924\n                              (bvmul #x0000000000000008 a!22)))\n               #x00))\n      (a!28 (= (select a!21\n                       (bvadd #x0000000000422925\n                              (bvmul #x0000000000000008 a!22)))\n               #x00))\n      (a!29 (= (select a!21\n                       (bvadd #x0000000000422926\n                              (bvmul #x0000000000000008 a!22)))\n               #x00))\n      (a!30 (= (select a!21\n                       (bvadd #x0000000000422927\n                              (bvmul #x0000000000000008 a!22)))\n               #x00)))\n  (and a!23 a!24 a!25 a!26 a!27 a!28 a!29 a!30))))))))))))))"
+    ],
+    "reads": [
+      {
+        "pc": "0x4164e5",
+        "ordinal": 1,
+        "width": 1,
+        "memory_version": 0,
+        "address": "(bvadd #x0000000000000008\n       (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n       R_RBX)"
+      },
+      {
+        "pc": "0x417ce7",
+        "ordinal": 0,
+        "width": 8,
+        "memory_version": 0,
+        "address": "(bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0) R_RBX)"
+      },
+      {
+        "pc": "0x417ce7",
+        "ordinal": 2,
+        "width": 8,
+        "memory_version": 0,
+        "address": "(bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0) R_RBX)"
+      },
+      {
+        "pc": "0x417ce7",
+        "ordinal": 4,
+        "width": 8,
+        "memory_version": 0,
+        "address": "(bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0) R_RBX)"
+      },
+      {
+        "pc": "0x415b24",
+        "ordinal": 0,
+        "address": "(bvadd #x0000000000000004 R_R11)",
+        "width": 4,
+        "memory_version": 2,
+        "value_expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n  (concat (select a!21 (bvadd #x0000000000000007 R_R11))\n          (select a!21 (bvadd #x0000000000000006 R_R11))\n          (select a!21 (bvadd #x0000000000000005 R_R11))\n          (select a!21 (bvadd #x0000000000000004 R_R11))))))))))))))"
+      },
+      {
+        "pc": "0x415b31",
+        "ordinal": 2,
+        "address": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n(let ((a!22 (concat #b000000000000000000000000000000000000000000000000000000000\n                    ((_ extract 6 0)\n                      (select a!21 (bvadd #x0000000000000004 R_R11))))))\n  (bvadd #x0000000000422920 (bvmul #x0000000000000008 a!22))))))))))))))",
+        "width": 8,
+        "memory_version": 2,
+        "value_expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n(let ((a!22 (concat #b000000000000000000000000000000000000000000000000000000000\n                    ((_ extract 6 0)\n                      (select a!21 (bvadd #x0000000000000004 R_R11))))))\n  (concat (select a!21\n                  (bvadd #x0000000000422927 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422926 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422925 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422924 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422923 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422922 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422921 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422920 (bvmul #x0000000000000008 a!22))))))))))))))))"
+      }
+    ],
+    "ordered_effects": [
+      {
+        "pc": "0x417cea",
+        "ordinal": 1,
+        "kind": "Write",
+        "width": 8,
+        "memory_version_before": 0,
+        "memory_version_after": 1,
+        "address": "(bvadd R_RBX (concat #x0000000000000 ((_ extract 14 7) W) #x0))",
+        "value": "(let ((a!1 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!3 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!4 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!5 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000002\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000001\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (concat a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   a!1\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n  (bvadd a!2 (concat a!3 a!4 a!5 a!6 a!7 a!8 a!9 a!10))))"
+      },
+      {
+        "pc": "0x417ced",
+        "ordinal": 2,
+        "kind": "Write",
+        "width": 1,
+        "memory_version_before": 1,
+        "memory_version_after": 2,
+        "address": "(bvadd #x0000000000000008\n       R_RBX\n       (concat #x0000000000000 ((_ extract 14 7) W) #x0))",
+        "value": "(select M0\n        (bvadd #x0000000000000008\n               (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n               R_RBX))"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "dispatch_target",
+        "sort": "BV64",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n(let ((a!22 (concat #b000000000000000000000000000000000000000000000000000000000\n                    ((_ extract 6 0)\n                      (select a!21 (bvadd #x0000000000000004 R_R11))))))\n  (concat (select a!21\n                  (bvadd #x0000000000422927 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422926 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422925 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422924 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422923 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422922 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422921 (bvmul #x0000000000000008 a!22)))\n          (select a!21\n                  (bvadd #x0000000000422920 (bvmul #x0000000000000008 a!22))))))))))))))))"
+      },
+      {
+        "name": "R_RAX",
+        "sort": "BV64",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n  (concat #b000000000000000000000000000000000000000000000000000000000\n          ((_ extract 6 0) (select a!21 (bvadd #x0000000000000004 R_R11)))))))))))))))",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rax"
+        }
+      },
+      {
+        "name": "R_RCX",
+        "sort": "BV64",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd #x0000000000000008\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX))))\n  (concat #x00000000000000 a!1))",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rcx"
+        }
+      },
+      {
+        "name": "R_RDX",
+        "sort": "BV64",
+        "expression": "(bvadd R_RBX (concat #x0000000000000 ((_ extract 14 7) W) #x0))",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rdx"
+        }
+      },
+      {
+        "name": "R_RBX",
+        "sort": "BV64",
+        "expression": "R_RBX",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rbx"
+        }
+      },
+      {
+        "name": "R_RSP",
+        "sort": "BV64",
+        "expression": "R_RSP",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rsp"
+        }
+      },
+      {
+        "name": "R_RBP",
+        "sort": "BV64",
+        "expression": "R_RBP",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rbp"
+        }
+      },
+      {
+        "name": "R_RSI",
+        "sort": "BV64",
+        "expression": "R_RSI",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rsi"
+        }
+      },
+      {
+        "name": "R_RDI",
+        "sort": "BV64",
+        "expression": "R_RDI",
+        "observed_binding": {
+          "kind": "register",
+          "name": "rdi"
+        }
+      },
+      {
+        "name": "R_R8",
+        "sort": "BV64",
+        "expression": "R_R8",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r8"
+        }
+      },
+      {
+        "name": "R_R9",
+        "sort": "BV64",
+        "expression": "R_R9",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r9"
+        }
+      },
+      {
+        "name": "R_R10",
+        "sort": "BV64",
+        "expression": "R_R10",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r10"
+        }
+      },
+      {
+        "name": "R_R11",
+        "sort": "BV64",
+        "expression": "(bvadd #x0000000000000008 R_R11)",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r11"
+        }
+      },
+      {
+        "name": "R_R12",
+        "sort": "BV64",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n  (concat #x00000000\n          (select a!21 (bvadd #x0000000000000007 R_R11))\n          (select a!21 (bvadd #x0000000000000006 R_R11))\n          (select a!21 (bvadd #x0000000000000005 R_R11))\n          (select a!21 (bvadd #x0000000000000004 R_R11))))))))))))))",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r12"
+        }
+      },
+      {
+        "name": "R_R13",
+        "sort": "BV64",
+        "expression": "R_R13",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r13"
+        }
+      },
+      {
+        "name": "R_R14",
+        "sort": "BV64",
+        "expression": "R_R14",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r14"
+        }
+      },
+      {
+        "name": "R_R15",
+        "sort": "BV64",
+        "expression": "(bvadd #x0000000000000004 R_R11)",
+        "observed_binding": {
+          "kind": "register",
+          "name": "r15"
+        }
+      },
+      {
+        "name": "F_0",
+        "sort": "BV8",
+        "expression": "#x00",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 0
+        }
+      },
+      {
+        "name": "F_2",
+        "sort": "BV8",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n(let ((a!22 (bvadd ((_ extract 1 1)\n                     (select a!21 (bvadd #x0000000000000004 R_R11)))\n                   ((_ extract 2 2)\n                     (select a!21 (bvadd #x0000000000000004 R_R11)))\n                   ((_ extract 3 3)\n                     (select a!21 (bvadd #x0000000000000004 R_R11)))\n                   ((_ extract 4 4)\n                     (select a!21 (bvadd #x0000000000000004 R_R11)))\n                   ((_ extract 5 5)\n                     (select a!21 (bvadd #x0000000000000004 R_R11)))\n                   ((_ extract 6 6)\n                     (select a!21 (bvadd #x0000000000000004 R_R11))))))\n(let ((a!23 (= ((_ extract 0 0) (select a!21 (bvadd #x0000000000000004 R_R11)))\n               a!22)))\n  (ite a!23 #x01 #x00))))))))))))))",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 2
+        }
+      },
+      {
+        "name": "F_6",
+        "sort": "BV8",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n(let ((a!22 (= ((_ extract 6 0) (select a!21 (bvadd #x0000000000000004 R_R11)))\n               #b0000000)))\n  (ite a!22 #x01 #x00)))))))))))))",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 6
+        }
+      },
+      {
+        "name": "F_7",
+        "sort": "BV8",
+        "expression": "(let ((a!1 (select M0\n                   (bvadd (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!3 ((_ extract 31 31)\n             (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W)))))\n      (a!5 (select M0\n                   (bvadd #x0000000000000007\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!6 (select M0\n                   (bvadd #x0000000000000006\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!7 (select M0\n                   (bvadd #x0000000000000005\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!8 (select M0\n                   (bvadd #x0000000000000004\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!9 (select M0\n                   (bvadd #x0000000000000003\n                          (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                          R_RBX)))\n      (a!10 (select M0\n                    (bvadd #x0000000000000002\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!11 (select M0\n                    (bvadd #x0000000000000001\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX)))\n      (a!20 (select M0\n                    (bvadd #x0000000000000008\n                           (concat #x0000000000000 ((_ extract 23 16) W) #x0)\n                           R_RBX))))\n(let ((a!2 (store M0\n                  (bvadd R_RBX\n                         (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                  (bvadd #x81 ((_ extract 31 24) W) a!1)))\n      (a!4 (concat a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   a!3\n                   (bvadd #xffffff81 (concat #x000000 ((_ extract 31 24) W))))))\n(let ((a!12 (bvadd a!4 (concat a!5 a!6 a!7 a!8 a!9 a!10 a!11 a!1))))\n(let ((a!13 (store a!2\n                   (bvadd #x0000000000000001\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 15 8) a!12))))\n(let ((a!14 (store a!13\n                   (bvadd #x0000000000000002\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 23 16) a!12))))\n(let ((a!15 (store a!14\n                   (bvadd #x0000000000000003\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 31 24) a!12))))\n(let ((a!16 (store a!15\n                   (bvadd #x0000000000000004\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 39 32) a!12))))\n(let ((a!17 (store a!16\n                   (bvadd #x0000000000000005\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 47 40) a!12))))\n(let ((a!18 (store a!17\n                   (bvadd #x0000000000000006\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 55 48) a!12))))\n(let ((a!19 (store a!18\n                   (bvadd #x0000000000000007\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   ((_ extract 63 56) a!12))))\n(let ((a!21 (store a!19\n                   (bvadd #x0000000000000008\n                          R_RBX\n                          (concat #x0000000000000 ((_ extract 14 7) W) #x0))\n                   a!20)))\n(let ((a!22 (concat #b0000000000000000000000000\n                    ((_ extract 6 0)\n                      (select a!21 (bvadd #x0000000000000004 R_R11))))))\n  (ite (bvsle #x00000000 a!22) #x00 #x01)))))))))))))",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 7
+        }
+      },
+      {
+        "name": "F_11",
+        "sort": "BV8",
+        "expression": "#x00",
+        "observed_binding": {
+          "kind": "register_bit",
+          "name": "eflags",
+          "bit": 11
+        }
+      }
+    ],
+    "exit_kind": "dispatch_to_next_handler",
+    "uncovered": "other handler and dispatch CFG paths; external memory binding proof"
+  },
+  "adapter_evidence": {
+    "bytecode_map_sha256": "baef0cc70e5cfea1f99aef7f8fa671eee9bb675b63632c2a95048e90139bb2dc",
+    "first_instruction_file_offset": 47,
+    "second_instruction_file_offset": 55,
+    "r11_points_four_bytes_after_first_instruction": true,
+    "bridge_native_pcs": [
+      "0x415b24",
+      "0x415b27",
+      "0x415b2b",
+      "0x415b2e",
+      "0x415b31"
+    ]
+  },
+  "evidence": {
+    "handler_summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+    "training_trace_sha256": "8e2e00778b9fb70ab19adf5b9c129d019d3a3c32a0c10d555ebdb3cf23335a06",
+    "bridge_pcode_operations_replayed": 21,
+    "validation_level": "candidate: observed bridge path, not all paths"
+  }
+}

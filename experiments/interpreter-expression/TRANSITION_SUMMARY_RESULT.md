@@ -1,6 +1,6 @@
 # 첫 공통 전이 요약 실험 결과
 
-상태: 첫 관문 통과, 확장 관문 미진행. [설계와 판정 기준](VM_HANDLER_SUMMARY_DESIGN.md)의 Lua 정수 fast 경로 한 개를 요약하고, 다른 바이트코드와 작은 네이티브 ELF에 같은 적용 코드를 사용했다. 이 저장소에만 코드와 증거를 저장했다. `daasdmlkas`는 수정하지 않았다.
+상태: 첫 관문 통과. 이후 명령 위치·슬롯 변경과 두 처리 구간 합성은 [확장 관문 결과](TWO_HANDLER_COMPOSITION_RESULT.md)에 기록했다. [설계와 판정 기준](VM_HANDLER_SUMMARY_DESIGN.md)의 Lua 정수 fast 경로 한 개를 요약하고, 다른 바이트코드와 작은 네이티브 ELF에 같은 적용 코드를 사용했다. 이 저장소에만 코드와 증거를 저장했다. `daasdmlkas`는 수정하지 않았다.
 
 ## 무엇을 요약했나
 
@@ -44,4 +44,4 @@ python trace_input_provenance.py ./lua_interpreter_fixture ./lua_chunk_plus11.lu
 
 이 요약은 관측한 **한 정수 fast 경로의 후보**다. 여러 입력에서 일치했지만 모든 워드·메모리·별칭 관계에 대한 정적 증명은 아니다. 다른 태그/느린 경로와 예외, 초기 메모리 snapshot 범위 밖 읽기, 쓰기 이후 새 메모리 읽기, 코드 자체 수정은 아직 처리하지 않는다. 선택한 일반 레지스터와 플래그를 출력하지만 모든 상태 영역의 frame 보존을 증명하지 않았다. 또한 요약의 진입은 handler이고 종료는 다음 fetch 직전이라, 바이트코드 두 개를 연속 합성하려면 그 사이의 fetch/decode/dispatch 전이와 입력 바인딩을 먼저 연결해야 한다.
 
-다음 실험은 명령 위치와 VM 슬롯이 달라지는 세 번째 바이트코드를 만들고 **같은 요약 파일을 그대로** 적용하는 것이다. 그 뒤 fetch/decode/dispatch 연결 전이를 요약해 두 명령을 실제로 합성한다. Python·JavaScript용 adapter는 이 첫 관문의 경계·메모리 계약이 확장된 뒤 차례로 다룬다.
+명령 위치와 VM 슬롯이 달라지는 세 번째 바이트코드의 적용과 fetch/decode/dispatch 연결 전이는 [별도 결과](TWO_HANDLER_COMPOSITION_RESULT.md)에 기록했다. Python·JavaScript용 adapter는 이 첫 관문의 경계·메모리 계약을 바탕으로 차례로 다룬다.

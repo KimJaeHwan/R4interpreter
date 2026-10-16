@@ -78,12 +78,13 @@ def load_path(trace_path):
 
 
 class PathReplay:
-    def __init__(self, entry, rows, instructions):
+    def __init__(self, entry, rows, instructions, register_symbols=None,
+                 flag_symbols=None, memory_symbol=None):
         self.rows = rows
         self.instructions = instructions
         self.word = z3.BitVec("W", 32)
         self.memory_initial = z3.Array("M0", z3.BitVecSort(64), z3.BitVecSort(8))
-        self.memory = self.memory_initial
+        self.memory = memory_symbol if memory_symbol is not None else self.memory_initial
         self.memory_concrete = {}
         self.regs = {}
         self.regs_concrete = {}
@@ -96,11 +97,13 @@ class PathReplay:
         self.operation_count = 0
         before = rows[0]["registers"]
         for offset, name in REGISTER_OFFSETS.items():
-            self.regs[offset] = (z3.ZeroExt(32, self.word) if name == "r12"
-                                 else z3.BitVec(f"R_{name.upper()}", 64))
+            self.regs[offset] = (register_symbols[offset] if register_symbols is not None else
+                                 z3.ZeroExt(32, self.word) if name == "r12" else
+                                 z3.BitVec(f"R_{name.upper()}", 64))
             self.regs_concrete[offset] = before[name]
         for offset, bit in FLAG_OFFSETS.items():
-            self.flags[offset] = z3.BitVec(f"F_{bit}", 8)
+            self.flags[offset] = (flag_symbols[offset] if flag_symbols is not None else
+                                  z3.BitVec(f"F_{bit}", 8))
             self.flags_concrete[offset] = (before["eflags"] >> bit) & 1
         self.entry_word_concrete = before["r12"] & 0xFFFFFFFF
         self.current_row = None
@@ -181,7 +184,7 @@ class PathReplay:
         self.reads.append({"pc": hex(self.current_pc), "ordinal": self.current_ordinal,
                            "address": address.symbolic, "width": size,
                            "memory_version": len(self.effects), "observed_address": concrete_address,
-                           "observed": value})
+                           "observed": value, "value_expression": symbolic})
         return Dual(symbolic, value)
 
     def store(self, address, value):
@@ -227,6 +230,15 @@ class PathReplay:
                 self.guards.append({"pc": hex(self.current_pc), "kind": "CBRANCH",
                                     "target": hex(self.current_row["next_pc"]),
                                     "condition": condition if taken else z3.Not(condition)})
+            return None
+        if opcode == "BRANCHIND":
+            target = args[0].concrete
+            if self.current_row["next_pc"] != target:
+                raise AssertionError(f"indirect branch disagrees at {self.current_pc:#x}")
+            self.guards.append({"pc": hex(self.current_pc), "kind": "BRANCHIND",
+                                "target": hex(target),
+                                "condition": args[0].symbolic == bv(target, args[0].bits)})
+            self.successor = args[0].symbolic
             return None
         a = args[0]
         b = args[1] if len(args) > 1 else None
@@ -391,7 +403,7 @@ def main():
                           [serialize_expr(g["condition"]) for g in replay.guards],
             "branch_evidence": [{k: v for k, v in g.items() if k != "condition"} for g in replay.guards],
             "reads": [{**{k: v for k, v in e.items()
-                          if k not in ("address", "observed", "observed_address")},
+                          if k not in ("address", "observed", "observed_address", "value_expression")},
                        "address": serialize_expr(e["address"])} for e in replay.reads],
             "ordered_effects": [{**{k: v for k, v in e.items()
                                     if k not in ("address", "value", "observed", "observed_address")},
