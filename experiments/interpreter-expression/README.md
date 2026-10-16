@@ -11,6 +11,7 @@
 | Lua 5.4.8 실행기 | 정적 슬라이스에는 미해결 의존 4개·6개; 관측 경로의 P-code 재생으로 `(X+7) mod 2^64` 도출 | 첫 VM 호출의 동적 경로, 별도 입력 6개와 경계값 확인 |
 | 공통 전이 요약 v0 | Lua 한 handler 경로의 P-code 265개를 식/효과로 저장; 동일 적용기로 작은 ELF도 처리 | Lua 바이트코드 2개 × 8 입력, 네이티브 ELF 5 입력 차등 확인 |
 | 두 handler 합성 | 기존 Lua 요약의 출력에서 5개 명령의 fetch/decode/dispatch를 거쳐 다음 handler 입력 계산 | `x+7; +11` 바이트코드 6 입력, 둘째 진입 snapshot 입력 없이 차등 확인 |
+| 공통 입력식 투영 | 기존 Lua 핸들러·연결 요약과 작은 VM 경로 요약에 같은 기호 투영기 적용 | Lua `X+7`, `X+11`, 두 핸들러 `X+18`; 작은 VM 30개 평가 중 28 pass·2 accepted_unknown |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -24,6 +25,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [두 handler 합성 결과](TWO_HANDLER_COMPOSITION_RESULT.md)에서는 명령 위치와 VM 슬롯이 다른 `x+7; +11` 바이트코드에 기존 요약을 적용하고, 그 사이 fetch/decode/dispatch를 P-code로 연결했다. 첫 처리 구간의 출력과 바이트코드·읽기 전용 점프 테이블에서 두 번째 진입 상태를 예측했다.
 
+[입력 수준 식 축약 결과](../vm-transition-testbed/results/LOGIC_PROJECTION_RESULT.md)에서는 두 엔진의 요약을 같은 `logic_projection.py`로 합성하고 SMT 동치 확인 후 긴 P-code 식을 간단한 `X` 식으로 줄였다. Lua의 축약 범위는 현재 마지막 숫자 핸들러까지이며 최종 반환 경로는 포함하지 않는다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -35,6 +38,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `trace_input_provenance.py`, `replay_input_path.py`, `guard_scope_probe.py`: 입력 메모리 출처 추적, 선택된 P-code 경로 재생, 별도 입력과 경로 비교. 결과와 재현법은 [입력 출처 결과](INPUT_PROVENANCE_RESULT.md)에 있다.
 - `pcode_transition_summary.py`, `build_native_transition_summary.py`, `apply_transition_summary.py`, `validate_transition_summaries.py`: P-code 경로 요약 생성, 공통 요약 적용 및 차등 검증. [요약 결과](TRANSITION_SUMMARY_RESULT.md)에 파일과 재현법을 기록했다.
 - `build_lua_dispatch_bridge.py`, `compose_lua_two_adds.py`, `validate_lua_composition.py`: 처리 구간 사이의 P-code 전이 생성과 두 정수 명령 합성. [합성 결과](TWO_HANDLER_COMPOSITION_RESULT.md)에 범위와 재현법을 기록했다.
+- `logic_projection.py`, `project_lua_handler_logic.py`, `project_lua_two_adds_logic.py`: 언어에 의존하지 않는 식·효과 투영기와 Lua 경계 adapter. [공통 축약 결과](../vm-transition-testbed/results/LOGIC_PROJECTION_RESULT.md)에 실험 결과를 기록했다.
 
 ## 재현
 

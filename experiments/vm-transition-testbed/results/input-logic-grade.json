@@ -1,0 +1,1073 @@
+{
+  "schema_version": 1,
+  "projection": "/workspace/R4interpreter/experiments/vm-transition-testbed/results/input-logic-projection.json",
+  "results": [
+    {
+      "id": "VMT001",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "16",
+            "tag": 3
+          }
+        ],
+        "result": "16"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "16",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "16",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "7",
+            "tag": 3
+          }
+        ],
+        "result": "7"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "7",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "7",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "-1",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "6",
+            "tag": 3
+          }
+        ],
+        "result": "6"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "6",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "6",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775802",
+            "tag": 3
+          }
+        ],
+        "result": "-9223372036854775802"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "-9223372036854775802",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775802",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "-9223372036854775808",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775801",
+            "tag": 3
+          }
+        ],
+        "result": "-9223372036854775801"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "-9223372036854775801",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775801",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT002",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "20",
+            "tag": 3
+          }
+        ],
+        "result": "20"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "20",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "20",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT002",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "11",
+            "tag": 3
+          }
+        ],
+        "result": "11"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "11",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "11",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT002",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775798",
+            "tag": 3
+          }
+        ],
+        "result": "-9223372036854775798"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "-9223372036854775798",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775798",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT003",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "9",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "16",
+            "tag": 3
+          }
+        ],
+        "result": "16"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "16",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "9",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "16",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT003",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "0",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "7",
+            "tag": 3
+          }
+        ],
+        "result": "7"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "7",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "0",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "7",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT004",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "16",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "27",
+            "tag": 3
+          }
+        ],
+        "result": "27"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "27",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "16",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "27",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT004",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "7",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "18",
+            "tag": 3
+          }
+        ],
+        "result": "18"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "18",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "7",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "18",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT004",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "-9223372036854775802",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "-9223372036854775791",
+            "tag": 3
+          }
+        ],
+        "result": "-9223372036854775791"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "-9223372036854775791",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "-9223372036854775802",
+            "tag": 3
+          },
+          {
+            "slot": 2,
+            "value": "-9223372036854775791",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT005",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "2",
+            "tag": 3
+          }
+        ],
+        "result": "2"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "2",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "2",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT005",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "-7",
+            "tag": 3
+          }
+        ],
+        "result": "-7"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "-7",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "-7",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT005",
+      "input": "-9223372036854775808",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "9223372036854775801",
+            "tag": 3
+          }
+        ],
+        "result": "9223372036854775801"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "9223372036854775801",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "9223372036854775801",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT006",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "92",
+            "tag": 3
+          }
+        ],
+        "result": "92"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "92",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "92",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT006",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "85",
+            "tag": 3
+          }
+        ],
+        "result": "85"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "85",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "85",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT006",
+      "input": "-1",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "-86",
+            "tag": 3
+          }
+        ],
+        "result": "-86"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "-86",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "-86",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT007",
+      "input": "0",
+      "partition": "seed",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 5,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "42",
+            "tag": 3
+          }
+        ],
+        "result": "42"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "42",
+        "pc": 5,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "42",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT007",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "16",
+            "tag": 3
+          }
+        ],
+        "result": "16"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "16",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "16",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT007",
+      "input": "-1",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "6",
+            "tag": 3
+          }
+        ],
+        "result": "6"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "6",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "6",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT008",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "16",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "27",
+            "tag": 3
+          }
+        ],
+        "result": "27"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "27",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "16",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "27",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT008",
+      "input": "9223372036854775807",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775802",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "-9223372036854775791",
+            "tag": 3
+          }
+        ],
+        "result": "-9223372036854775791"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "-9223372036854775791",
+        "pc": 3,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "-9223372036854775802",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "-9223372036854775791",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT009",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "type_error",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "9",
+            "tag": 2
+          }
+        ],
+        "result": null
+      },
+      "expected": {
+        "status": "type_error",
+        "result": null,
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 0,
+            "value": "9",
+            "tag": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT010",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "accepted_unknown",
+      "predicted": {
+        "status": "unknown",
+        "reason": "0 projected guards match"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "12",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "12",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT010",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "accepted_unknown",
+      "predicted": {
+        "status": "unknown",
+        "reason": "0 projected guards match"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "3",
+        "pc": 2,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "3",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT011",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "bad_opcode",
+        "pc": 1,
+        "writes": [],
+        "result": null
+      },
+      "expected": {
+        "status": "bad_opcode",
+        "result": null,
+        "pc": 1,
+        "writes": []
+      }
+    },
+    {
+      "id": "VMT012",
+      "input": "9",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 5,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "3",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "10",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "2",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "11",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "1",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "12",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "0",
+            "tag": 3
+          }
+        ],
+        "result": "12"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "12",
+        "pc": 5,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "3",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "10",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "2",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "11",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "1",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "12",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "0",
+            "tag": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "VMT012",
+      "input": "0",
+      "partition": "holdout",
+      "grade": "pass",
+      "predicted": {
+        "status": "ok",
+        "pc": 5,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "3",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "1",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "2",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "2",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "1",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "3",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "0",
+            "tag": 3
+          }
+        ],
+        "result": "3"
+      },
+      "expected": {
+        "status": "ok",
+        "result": "3",
+        "pc": 5,
+        "writes": [
+          {
+            "slot": 1,
+            "value": "3",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "1",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "2",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "2",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "1",
+            "tag": 3
+          },
+          {
+            "slot": 0,
+            "value": "3",
+            "tag": 3
+          },
+          {
+            "slot": 1,
+            "value": "0",
+            "tag": 3
+          }
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "pass": 28,
+    "accepted_unknown": 2,
+    "fail": 0
+  }
+}

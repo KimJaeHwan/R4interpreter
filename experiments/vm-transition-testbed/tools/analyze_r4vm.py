@@ -73,7 +73,7 @@ class TransitionPath:
         self.flags = {int(offset): expression(expr, "BV8", self.decls)
                       for offset, expr in record["flags"].items()}
 
-    def apply(self, registers, memory):
+    def apply(self, registers, memory, with_reads=False):
         solver = z3.Solver()
         for offset, name in REGISTER_OFFSETS.items():
             solver.add(self.decls[f"R_{name.upper()}"] == z3.BitVecVal(registers[name], 64))
@@ -82,9 +82,11 @@ class TransitionPath:
             solver.add(self.decls[f"F_{bit}"] ==
                        z3.BitVecVal((registers["eflags"] >> bit) & 1, 8))
         bound = set()
+        read_addresses = []
         try:
             for addr_expr, width in self.reads:
                 address = concrete(solver, addr_expr)
+                read_addresses.append((address, width))
                 for index in range(width):
                     byte_addr = address + index
                     if byte_addr in bound or byte_addr not in memory:
@@ -103,6 +105,8 @@ class TransitionPath:
                 value = concrete(solver, self.flags[offset])
                 next_registers["eflags"] = ((next_registers["eflags"] & ~(1 << bit)) |
                                             (value << bit))
+            if with_reads:
+                return next_registers, effects, read_addresses
             return next_registers, effects
         except (ValueError, KeyError, AssertionError, z3.Z3Exception):
             return None

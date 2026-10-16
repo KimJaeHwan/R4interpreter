@@ -1,0 +1,897 @@
+{
+  "schema_version": 1,
+  "kind": "input_logic_projection_experiment",
+  "common_projector": "experiments/interpreter-expression/logic_projection.py",
+  "witnesses": [
+    "0",
+    "9",
+    "-1"
+  ],
+  "r4vm_programs": {
+    "VMT001": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "3c47aebb1e9751260356cb7d3e7d895e359c13ed750c4b7f18c6cf71bd90f30b",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "347cd71f1ec34c41",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "2",
+          "vm_pc_smt": "#x0000000000000002",
+          "writes": [
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X + 7",
+              "value_smt": "(bvadd X #x0000000000000007)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X + 7",
+          "value_smt": "(bvadd X #x0000000000000007)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT002": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "0fd18f1f7ce3a052fa0dbae8f00145a69c9823057ef6ada2ea465d4db6520052",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "347cd71f1ec34c41",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "2",
+          "vm_pc_smt": "#x0000000000000002",
+          "writes": [
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X + 11",
+              "value_smt": "(bvadd X #x000000000000000b)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X + 11",
+          "value_smt": "(bvadd X #x000000000000000b)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT003": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "117b68fd2a677312f6c8830ae5875bdae616f4dde5868a620a0272c39e5aa901",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "8f36aa467c2c3969",
+            "347cd71f1ec34c41",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "3",
+          "vm_pc_smt": "#x0000000000000003",
+          "writes": [
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "X",
+              "value_smt": "(bvadd X #x0000000000000000)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "2",
+              "slot_smt": "#x02",
+              "value": "X + 7",
+              "value_smt": "(bvadd X #x0000000000000007)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X + 7",
+          "value_smt": "(bvadd X #x0000000000000007)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT004": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "682a28700adf304d8ccc62eb53fc3da3eb2cacdf2e2766ee251f11805629e2e5",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "347cd71f1ec34c41",
+            "347cd71f1ec34c41",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "3",
+          "vm_pc_smt": "#x0000000000000003",
+          "writes": [
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "X + 7",
+              "value_smt": "(bvadd X #x0000000000000007)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "2",
+              "slot_smt": "#x02",
+              "value": "X + 18",
+              "value_smt": "(bvadd X #x0000000000000012)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X + 18",
+          "value_smt": "(bvadd X #x0000000000000012)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT005": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "5a762ba58d902d57c6b4df7f412096b200d19658288f94437fc2ae32c856fba8",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "dc1aa038513a1794",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "2",
+          "vm_pc_smt": "#x0000000000000002",
+          "writes": [
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "X - 7",
+              "value_smt": "(bvadd X #xfffffffffffffff9)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X - 7",
+          "value_smt": "(bvadd X #xfffffffffffffff9)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT006": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "5c35b5f6b863d21dcd8fefa6e63e943d9c267e9ce5bc9125702badd526f0f4fb",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "3fa87f51e18faf73",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "2",
+          "vm_pc_smt": "#x0000000000000002",
+          "writes": [
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "X ^ 85",
+              "value_smt": "(bvxor X #x0000000000000055)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X ^ 85",
+          "value_smt": "(bvxor X #x0000000000000055)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT007": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "011d45a3d61e2ca8ff7bd3bdeb4366e95a3cdaf8ddc09fbedd42b4f877cdc489",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0"
+          ],
+          "path_ids": [
+            "2240591ddb1cefa8",
+            "0e1a62150b99e68d",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "(= X #x0000000000000000)",
+          "guard": "X == 0",
+          "guard_reduction_proved": true,
+          "vm_pc": "5",
+          "vm_pc_smt": "#x0000000000000005",
+          "writes": [
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "42",
+              "value_smt": "#x000000000000002a",
+              "value_reduction_proved": false,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "42",
+          "value_smt": "#x000000000000002a",
+          "value_reduction_proved": false
+        },
+        {
+          "status": "ok",
+          "witnesses": [
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "a869b36587846b01",
+            "347cd71f1ec34c41",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "(not (= X #x0000000000000000))",
+          "guard": "X != 0",
+          "guard_reduction_proved": true,
+          "vm_pc": "3",
+          "vm_pc_smt": "#x0000000000000003",
+          "writes": [
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "X + 7",
+              "value_smt": "(bvadd X #x0000000000000007)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X + 7",
+          "value_smt": "(bvadd X #x0000000000000007)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT008": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "b1276d01fa0254ad843a32311379c0d7aad35d4848d95fea51c625fe55d17d52",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "347cd71f1ec34c41",
+            "347cd71f1ec34c41",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "3",
+          "vm_pc_smt": "#x0000000000000003",
+          "writes": [
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X + 7",
+              "value_smt": "(bvadd X #x0000000000000007)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X + 18",
+              "value_smt": "(bvadd X #x0000000000000012)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X + 18",
+          "value_smt": "(bvadd X #x0000000000000012)",
+          "value_reduction_proved": true
+        }
+      ]
+    },
+    "VMT009": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "452385ed6de61ff815db08ba234235cfa54719cf3c413b0509e0fc0b94a20dce",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "type_error",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "3c49aaeff779cd84",
+            "8d523afa2a6558d1"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "2",
+          "vm_pc_smt": "#x0000000000000002",
+          "writes": [
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X",
+              "value_smt": "(bvadd X #x0000000000000000)",
+              "value_reduction_proved": true,
+              "tag": "2",
+              "tag_smt": "#x02"
+            }
+          ]
+        }
+      ]
+    },
+    "VMT010": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "9242ff342dd625de357bf8aeb660a464aed15f987b39a79756fa1bce36d2346d",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "unknown",
+          "witnesses": [
+            "0"
+          ],
+          "reason": "0 native paths at VM PC 0"
+        },
+        {
+          "status": "unknown",
+          "witnesses": [
+            "9"
+          ],
+          "reason": "0 native paths at VM PC 0"
+        },
+        {
+          "status": "unknown",
+          "witnesses": [
+            "-1"
+          ],
+          "reason": "0 native paths at VM PC 0"
+        }
+      ]
+    },
+    "VMT011": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "737d70edbe3f9d92f9f6fd65d6e463e555c130c9efd41d2cf983ac80508b717d",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "bad_opcode",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "1f2ea59d284e6e29"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "1",
+          "vm_pc_smt": "#x0000000000000001",
+          "writes": []
+        }
+      ]
+    },
+    "VMT012": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "source": "frozen native P-code path summaries",
+      "claim": "observed paths only; path guards and alias/frame completeness unproved",
+      "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+      "program_sha256": "632f006ee1e1986489d0206f8b58949993b14002c58b08e215addc1b74e40547",
+      "input_sort": "BV64",
+      "cases": [
+        {
+          "status": "ok",
+          "witnesses": [
+            "0",
+            "9",
+            "-1"
+          ],
+          "path_ids": [
+            "0e1a62150b99e68d",
+            "347cd71f1ec34c41",
+            "dc1aa038513a1794",
+            "2240591ddb1cefa8",
+            "347cd71f1ec34c41",
+            "dc1aa038513a1794",
+            "2240591ddb1cefa8",
+            "347cd71f1ec34c41",
+            "dc1aa038513a1794",
+            "a869b36587846b01",
+            "c20c4af07e2fad3c"
+          ],
+          "guard_smt": "true",
+          "guard": "true",
+          "guard_reduction_proved": false,
+          "vm_pc": "5",
+          "vm_pc_smt": "#x0000000000000005",
+          "writes": [
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "3",
+              "value_smt": "#x0000000000000003",
+              "value_reduction_proved": false,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X + 1",
+              "value_smt": "(bvadd X #x0000000000000001)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "2",
+              "value_smt": "#x0000000000000002",
+              "value_reduction_proved": false,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X + 2",
+              "value_smt": "(bvadd X #x0000000000000002)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "1",
+              "value_smt": "#x0000000000000001",
+              "value_reduction_proved": false,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "0",
+              "slot_smt": "#x00",
+              "value": "X + 3",
+              "value_smt": "(bvadd X #x0000000000000003)",
+              "value_reduction_proved": true,
+              "tag": "3",
+              "tag_smt": "#x03"
+            },
+            {
+              "slot": "1",
+              "slot_smt": "#x01",
+              "value": "0",
+              "value_smt": "#x0000000000000000",
+              "value_reduction_proved": false,
+              "tag": "3",
+              "tag_smt": "#x03"
+            }
+          ],
+          "value": "X + 3",
+          "value_smt": "(bvadd X #x0000000000000003)",
+          "value_reduction_proved": true
+        }
+      ]
+    }
+  },
+  "lua_handler_paths": {
+    "plus7": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "scope": "one observed Lua VM handler path, not a full script return",
+      "claim": "path guard and memory alias completeness unproved",
+      "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+      "trace_sha256": "2fa830370676877f57219a1ffa2f2f3a5fd043a2968adfccba1825388f9eb3c2",
+      "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+      "entry_cutpoint": "0x4164b8",
+      "exit_cutpoint": "0x415b24",
+      "input_binding": "entry R_RDX and 8-byte VM memory at entry R_RBX",
+      "word": "0x86000015",
+      "witness": "9",
+      "guard": "true",
+      "guard_smt": "true",
+      "guard_reduction_proved": false,
+      "payload_write_address": "0x19341930",
+      "value": "X + 7",
+      "value_smt": "(bvadd X #x0000000000000007)",
+      "value_reduction_proved": true,
+      "ordered_effects": 2
+    },
+    "plus11": {
+      "schema_version": 1,
+      "kind": "conditional_input_logic_projection",
+      "scope": "one observed Lua VM handler path, not a full script return",
+      "claim": "path guard and memory alias completeness unproved",
+      "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+      "trace_sha256": "1d9cc2264fad4b254e17cb362c8cfbb3fc6b28e6057133dcf578dae8c369fe30",
+      "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+      "entry_cutpoint": "0x4164b8",
+      "exit_cutpoint": "0x415b24",
+      "input_binding": "entry R_RDX and 8-byte VM memory at entry R_RBX",
+      "word": "0x8a000015",
+      "witness": "9",
+      "guard": "true",
+      "guard_smt": "true",
+      "guard_reduction_proved": false,
+      "payload_write_address": "0x10065930",
+      "value": "X + 11",
+      "value_smt": "(bvadd X #x000000000000000b)",
+      "value_reduction_proved": true,
+      "ordered_effects": 2
+    }
+  },
+  "lua_handler_reuse": {
+    "plus7": [
+      {
+        "trace": "lua_handler_plus7_max.jsonl",
+        "trace_sha256": "b2aad6d243b48f889454175e32a794948c744e36730b101642e25fb2220a5cb3",
+        "witness": "9223372036854775807",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus7_max_minus_11.jsonl",
+        "trace_sha256": "86a34a6c5cb817d59afd3d4dfea8194485f0ad1aab4654a0119533b2394f7b74",
+        "witness": "9223372036854775796",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus7_max_minus_7.jsonl",
+        "trace_sha256": "b38bf6c3a40ca6a2bd338076bcfac78482d307c5288bb82630836727e2572677",
+        "witness": "9223372036854775800",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus7_min.jsonl",
+        "trace_sha256": "19c499a4c6693a0e1a73719e10ceb2be594d6b560c24eee6906eb9a6a3cd0a4f",
+        "witness": "9223372036854775808",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus7_minus_one.jsonl",
+        "trace_sha256": "f3d874cb16c12c840ba7ffd8721d8a56866f68121d04d16237bdff69fff9701f",
+        "witness": "18446744073709551615",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus7_one.jsonl",
+        "trace_sha256": "dad3b4b061d905d73de88d774b7889174fb1d4987e2eb7a51033c34c669af165",
+        "witness": "1",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus7_x9.jsonl",
+        "trace_sha256": "2fa830370676877f57219a1ffa2f2f3a5fd043a2968adfccba1825388f9eb3c2",
+        "witness": "9",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus7_zero.jsonl",
+        "trace_sha256": "2497964aa907ccf74d00196fb5f91e90c39ac84f064fb7b346080c4d769ac1b6",
+        "witness": "0",
+        "word": "0x86000015",
+        "guard": "true",
+        "value": "X + 7",
+        "same_formula_as_seed": true
+      }
+    ],
+    "plus11": [
+      {
+        "trace": "lua_handler_plus11_max.jsonl",
+        "trace_sha256": "f84da23064d2f909f0c7b7fd69bbae3045f539392b286feeed60ca9586b69ff0",
+        "witness": "9223372036854775807",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus11_max_minus_11.jsonl",
+        "trace_sha256": "627da9a1e0ebebf3ead5031b9edc15b2b8a6880d1374d689fad9b07c652ce4e0",
+        "witness": "9223372036854775796",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus11_max_minus_7.jsonl",
+        "trace_sha256": "7ca49b72bfdf57fc8a151f7c8289feb38d073e2fc37c58b30146a3733ac94f6d",
+        "witness": "9223372036854775800",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus11_min.jsonl",
+        "trace_sha256": "483d458121f18fbb8eadcc083eb43d3f101078d77171b79f4b17f2f4da79fe4d",
+        "witness": "9223372036854775808",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus11_minus_one.jsonl",
+        "trace_sha256": "ae865ea122ed6d63ba2cc84470a942148026cb6d9d6adec181d190ca69ecf232",
+        "witness": "18446744073709551615",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus11_one.jsonl",
+        "trace_sha256": "d742d32519c200b80e3883f9609cb65adb690cbe0e32c4f62d28b274bcaa09b3",
+        "witness": "1",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus11_x9.jsonl",
+        "trace_sha256": "1d9cc2264fad4b254e17cb362c8cfbb3fc6b28e6057133dcf578dae8c369fe30",
+        "witness": "9",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      },
+      {
+        "trace": "lua_handler_plus11_zero.jsonl",
+        "trace_sha256": "8cf371bce20bf1600382de5e957671abb57581e0bb3e404a472e70723f78225e",
+        "witness": "0",
+        "word": "0x8a000015",
+        "guard": "true",
+        "value": "X + 11",
+        "same_formula_as_seed": true
+      }
+    ]
+  },
+  "lua_two_adds_path": {
+    "schema_version": 1,
+    "kind": "conditional_input_logic_projection",
+    "scope": "two Lua VM handlers and intervening native fetch/dispatch",
+    "claim": "conditional observed path; later Lua return path and full CFG unproved",
+    "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+    "handler_summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+    "bridge_summary_sha256": "d8c5f24d86b282d8d2d1d5a2be4f43d552d78e1b28db203875d91fc61a9fead0",
+    "bytecode_sha256": "6b20bd935801dd9cb0477517de10c1d7e6af3ae8f00c666c18f74365a6a45936",
+    "trace_sha256": "8e2e00778b9fb70ab19adf5b9c129d019d3a3c32a0c10d555ebdb3cf23335a06",
+    "witness": "9",
+    "first_word": "0x86000015",
+    "second_word": "0x8a000095",
+    "first_value": "X + 7",
+    "first_value_smt": "(bvadd X #x0000000000000007)",
+    "first_reduction_proved": true,
+    "value": "X + 18",
+    "value_smt": "(bvadd X #x0000000000000012)",
+    "value_reduction_proved": true,
+    "guard": "true",
+    "guard_smt": "true",
+    "guard_reduction_proved": false,
+    "code_read_address": "0x1d4aed50",
+    "table_read_address": "0x4229c8",
+    "dispatch_target": "0x4164b8",
+    "second_entry_word_matches_trace": true,
+    "second_entry_snapshot_used_as_input": false
+  },
+  "lua_two_adds_reuse": [
+    {
+      "trace": "lua_two_adds_max.jsonl",
+      "trace_sha256": "b4f8d729f88ce2ee5a51bfecba687fad8910f445bcc564bb7eab23e0d0c5c8b4",
+      "witness": "9223372036854775807",
+      "guard": "true",
+      "first_value": "X + 7",
+      "value": "X + 18",
+      "same_formula_as_seed": true
+    },
+    {
+      "trace": "lua_two_adds_min.jsonl",
+      "trace_sha256": "d4b41d2c398d8da029c12ee901d1b1782959079e629a447b72b36066e990dfe5",
+      "witness": "9223372036854775808",
+      "guard": "true",
+      "first_value": "X + 7",
+      "value": "X + 18",
+      "same_formula_as_seed": true
+    },
+    {
+      "trace": "lua_two_adds_minus_one.jsonl",
+      "trace_sha256": "9768bba61a9c274a373e90434e8b9ac50f7f4236bc078d302cb6614610b7b044",
+      "witness": "18446744073709551615",
+      "guard": "true",
+      "first_value": "X + 7",
+      "value": "X + 18",
+      "same_formula_as_seed": true
+    },
+    {
+      "trace": "lua_two_adds_one.jsonl",
+      "trace_sha256": "7231b106afa7e4a69ae72fb66c31d5b6a5e6d47354d8149be2c67b1c768fecdf",
+      "witness": "1",
+      "guard": "true",
+      "first_value": "X + 7",
+      "value": "X + 18",
+      "same_formula_as_seed": true
+    },
+    {
+      "trace": "lua_two_adds_x9.jsonl",
+      "trace_sha256": "8e2e00778b9fb70ab19adf5b9c129d019d3a3c32a0c10d555ebdb3cf23335a06",
+      "witness": "9",
+      "guard": "true",
+      "first_value": "X + 7",
+      "value": "X + 18",
+      "same_formula_as_seed": true
+    },
+    {
+      "trace": "lua_two_adds_zero.jsonl",
+      "trace_sha256": "aa12674a06c945c2dbdcab918eeed93d4f18ea022c962af9b78d3667efe50604",
+      "witness": "0",
+      "guard": "true",
+      "first_value": "X + 7",
+      "value": "X + 18",
+      "same_formula_as_seed": true
+    }
+  ],
+  "limits": [
+    "R4VM path coverage is sampled and guard/frame completeness unproved",
+    "Lua projections cover handler paths and one two-handler bridge, not a full script return",
+    "Lua and R4VM path extraction remain separate upstream stages"
+  ]
+}
