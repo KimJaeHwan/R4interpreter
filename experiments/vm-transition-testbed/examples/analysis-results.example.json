@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "results": [
+    {
+      "id": "VMT001",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 2,
+      "writes": [{"slot": 0, "value": "16", "tag": 3}]
+    },
+    {
+      "id": "VMT009",
+      "input": "9",
+      "status": "unknown",
+      "reason": "integer tag guard does not cover this path"
+    }
+  ]
+}

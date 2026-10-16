@@ -56,4 +56,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 입력 출처, 선택 경로 계산식, 별도 입력 판정과 [Lua 첫 적용 설계](VM_HANDLER_SUMMARY_DESIGN.md)의 첫·확장 관문을 완료했다. 다음은 실행기 입력 바인딩과 VM 반환 전이를 같은 형식으로 연결하고, 다른 산술 처리 구간에서도 공통 평가기를 검증하는 것이다. 연결하지 못한 호출·메모리·JOIN은 `unknown`으로 남긴다.
+[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 입력 출처, 선택 경로 계산식, 별도 입력 판정과 [Lua 첫 적용 설계](VM_HANDLER_SUMMARY_DESIGN.md)의 첫·확장 관문을 완료했다. 다음에는 [VM 전이 요약 테스트베드](../vm-transition-testbed/README.md)의 미실행 사례를 기준으로 경계 발견과 요약 생성 코드를 일반화한다. 실행기 입력 바인딩과 VM 반환 전이도 이 범위에서 검증한다. 연결하지 못한 호출·메모리·JOIN은 `unknown`으로 남긴다.

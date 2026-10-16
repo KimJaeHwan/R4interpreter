@@ -1,0 +1,911 @@
+{
+  "schema_version": 1,
+  "generated_from": "manifests/cases.json",
+  "cases": [
+    {
+      "id": "VMT001",
+      "name": "add_immediate_7",
+      "engine": "r4vm",
+      "category": "arithmetic",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "dispatch",
+        "integer_guard",
+        "add",
+        "write"
+      ],
+      "program": "generated/programs/VMT001.r4vm",
+      "program_sha256": "3c47aebb1e9751260356cb7d3e7d895e359c13ed750c4b7f18c6cf71bd90f30b",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "16",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "16",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "7",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "7",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "-1",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "6",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "6",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "9223372036854775807",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775802",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "-9223372036854775802",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "-9223372036854775808",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775801",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "-9223372036854775801",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT002",
+      "name": "same_dispatch_new_immediate",
+      "engine": "r4vm",
+      "category": "reuse",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "same_handler_reuse",
+        "symbolic_immediate"
+      ],
+      "program": "generated/programs/VMT002.r4vm",
+      "program_sha256": "0fd18f1f7ce3a052fa0dbae8f00145a69c9823057ef6ada2ea465d4db6520052",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "20",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "20",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "11",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "11",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "9223372036854775807",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775798",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "-9223372036854775798",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT003",
+      "name": "source_and_destination_slots",
+      "engine": "r4vm",
+      "category": "memory",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "register_binding",
+        "slot_relocation",
+        "read_after_write"
+      ],
+      "program": "generated/programs/VMT003.r4vm",
+      "program_sha256": "117b68fd2a677312f6c8830ae5875bdae616f4dde5868a620a0272c39e5aa901",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "16",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "16",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "7",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "7",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT004",
+      "name": "two_adds_composed",
+      "engine": "r4vm",
+      "category": "composition",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "fetch_bridge",
+        "ordered_effects",
+        "two_handler_composition"
+      ],
+      "program": "generated/programs/VMT004.r4vm",
+      "program_sha256": "682a28700adf304d8ccc62eb53fc3da3eb2cacdf2e2766ee251f11805629e2e5",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "27",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "16",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "27",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "18",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "7",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "18",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "9223372036854775807",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775791",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "-9223372036854775802",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "-9223372036854775791",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT005",
+      "name": "subtract_operand_order",
+      "engine": "r4vm",
+      "category": "arithmetic",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "subtract",
+        "operand_order",
+        "wraparound"
+      ],
+      "program": "generated/programs/VMT005.r4vm",
+      "program_sha256": "5a762ba58d902d57c6b4df7f412096b200d19658288f94437fc2ae32c856fba8",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "2",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "2",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-7",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "-7",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "-9223372036854775808",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "9223372036854775801",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9223372036854775801",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT006",
+      "name": "xor_is_not_add",
+      "engine": "r4vm",
+      "category": "arithmetic",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "xor",
+        "bitvector_width"
+      ],
+      "program": "generated/programs/VMT006.r4vm",
+      "program_sha256": "5c35b5f6b863d21dcd8fefa6e63e943d9c267e9ce5bc9125702badd526f0f4fb",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "92",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "92",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "85",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "85",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "-1",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-86",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "-86",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT007",
+      "name": "branch_both_directions",
+      "engine": "r4vm",
+      "category": "control_flow",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "branch_guard",
+        "two_successors",
+        "different_writes"
+      ],
+      "program": "generated/programs/VMT007.r4vm",
+      "program_sha256": "011d45a3d61e2ca8ff7bd3bdeb4366e95a3cdaf8ddc09fbedd42b4f877cdc489",
+      "samples": [
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "42",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "42",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "16",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "16",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "-1",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "6",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "6",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT008",
+      "name": "alias_and_ordered_writes",
+      "engine": "r4vm",
+      "category": "memory",
+      "analysis_policy": "compute",
+      "analysis_target": "transition",
+      "expected_features": [
+        "same_slot_alias",
+        "memory_version",
+        "ordered_effects"
+      ],
+      "program": "generated/programs/VMT008.r4vm",
+      "program_sha256": "b1276d01fa0254ad843a32311379c0d7aad35d4848d95fea51c625fe55d17d52",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "27",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "16",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "27",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "9223372036854775807",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775791",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "-9223372036854775802",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "-9223372036854775791",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT009",
+      "name": "wrong_tag_guard",
+      "engine": "r4vm",
+      "category": "negative",
+      "analysis_policy": "unknown_allowed",
+      "analysis_target": "transition",
+      "expected_features": [
+        "tag_guard",
+        "no_false_numeric_result"
+      ],
+      "program": "generated/programs/VMT009.r4vm",
+      "program_sha256": "452385ed6de61ff815db08ba234235cfa54719cf3c413b0509e0fc0b94a20dce",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "type_error",
+            "result": null,
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 0,
+                "value": "9",
+                "tag": 2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT010",
+      "name": "unmodeled_helper_call",
+      "engine": "r4vm",
+      "category": "negative",
+      "analysis_policy": "unknown_allowed",
+      "analysis_target": "transition",
+      "expected_features": [
+        "call_effect_or_unknown"
+      ],
+      "program": "generated/programs/VMT010.r4vm",
+      "program_sha256": "9242ff342dd625de357bf8aeb660a464aed15f987b39a79756fa1bce36d2346d",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "12",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "12",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "3",
+            "pc": 2,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "3",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT011",
+      "name": "invalid_dispatch",
+      "engine": "r4vm",
+      "category": "negative",
+      "analysis_policy": "unknown_allowed",
+      "analysis_target": "transition",
+      "expected_features": [
+        "unknown_dispatch",
+        "no_false_numeric_result"
+      ],
+      "program": "generated/programs/VMT011.r4vm",
+      "program_sha256": "737d70edbe3f9d92f9f6fd65d6e463e555c130c9efd41d2cf983ac80508b717d",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "bad_opcode",
+            "result": null,
+            "pc": 1,
+            "writes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT012",
+      "name": "bounded_runtime_loop",
+      "engine": "r4vm",
+      "category": "control_flow",
+      "analysis_policy": "unknown_allowed",
+      "analysis_target": "transition",
+      "expected_features": [
+        "loop",
+        "invariant_or_unknown"
+      ],
+      "program": "generated/programs/VMT012.r4vm",
+      "program_sha256": "632f006ee1e1986489d0206f8b58949993b14002c58b08e215addc1b74e40547",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "12",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "10",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "11",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "12",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              }
+            ]
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "3",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 0,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT013",
+      "name": "lua_add_7",
+      "engine": "lua_5_4_fixture",
+      "category": "real_vm",
+      "analysis_policy": "compute",
+      "analysis_target": "output",
+      "expected_features": [
+        "real_lua_dispatch",
+        "integer_add"
+      ],
+      "program": "../interpreter-expression/lua_chunk.luac",
+      "program_sha256": "d9278fb7e5457a2788926b3c3fd0a82bace02573bce3bc66a7910c76b750a9fb",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "seed",
+          "expected": {
+            "status": "ok",
+            "result": "16",
+            "pc": null,
+            "writes": null
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "7",
+            "pc": null,
+            "writes": null
+          }
+        },
+        {
+          "input": "9223372036854775807",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775802",
+            "pc": null,
+            "writes": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT014",
+      "name": "lua_add_11",
+      "engine": "lua_5_4_fixture",
+      "category": "real_vm",
+      "analysis_policy": "compute",
+      "analysis_target": "output",
+      "expected_features": [
+        "same_handler_reuse",
+        "real_lua_dispatch"
+      ],
+      "program": "../interpreter-expression/lua_chunk_plus11.luac",
+      "program_sha256": "9f49ce123aecb53c08d4aafcbaea75065d3360cef7ea27085d863fd3bc3b8957",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "20",
+            "pc": null,
+            "writes": null
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "11",
+            "pc": null,
+            "writes": null
+          }
+        },
+        {
+          "input": "9223372036854775807",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775798",
+            "pc": null,
+            "writes": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "VMT015",
+      "name": "lua_two_adds",
+      "engine": "lua_5_4_fixture",
+      "category": "real_vm",
+      "analysis_policy": "compute",
+      "analysis_target": "output",
+      "expected_features": [
+        "real_lua_dispatch",
+        "two_handler_composition"
+      ],
+      "program": "../interpreter-expression/lua_chunk_two_adds.luac",
+      "program_sha256": "6b20bd935801dd9cb0477517de10c1d7e6af3ae8f00c666c18f74365a6a45936",
+      "samples": [
+        {
+          "input": "9",
+          "partition": "seed",
+          "expected": {
+            "status": "ok",
+            "result": "27",
+            "pc": null,
+            "writes": null
+          }
+        },
+        {
+          "input": "0",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "18",
+            "pc": null,
+            "writes": null
+          }
+        },
+        {
+          "input": "9223372036854775807",
+          "partition": "holdout",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775791",
+            "pc": null,
+            "writes": null
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "engines": {
+    "r4vm": {
+      "source": "fixtures/r4vm.c",
+      "binary": "build/r4vm",
+      "program_directory": "generated/programs",
+      "compiler_flags": ["-std=c11", "-O2", "-fno-pie", "-no-pie", "-Wall", "-Wextra", "-Werror"]
+    },
+    "lua_5_4_fixture": {
+      "binary": "../interpreter-expression/lua_interpreter_fixture"
+    }
+  },
+  "cases": [
+    {
+      "id": "VMT001", "name": "add_immediate_7", "engine": "r4vm",
+      "category": "arithmetic", "analysis_policy": "compute",
+      "expected_features": ["dispatch", "integer_guard", "add", "write"],
+      "instructions": [{"op": "addi", "dst": 0, "src": 0, "imm": 7}, {"op": "halt", "src": 0}],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "16"},
+        {"input": "0", "status": "ok", "result": "7"},
+        {"input": "-1", "status": "ok", "result": "6"},
+        {"input": "9223372036854775807", "status": "ok", "result": "-9223372036854775802"},
+        {"input": "-9223372036854775808", "status": "ok", "result": "-9223372036854775801"}
+      ]
+    },
+    {
+      "id": "VMT002", "name": "same_dispatch_new_immediate", "engine": "r4vm",
+      "category": "reuse", "analysis_policy": "compute",
+      "expected_features": ["same_handler_reuse", "symbolic_immediate"],
+      "instructions": [{"op": "addi", "dst": 0, "src": 0, "imm": 11}, {"op": "halt", "src": 0}],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "20"},
+        {"input": "0", "status": "ok", "result": "11"},
+        {"input": "9223372036854775807", "status": "ok", "result": "-9223372036854775798"}
+      ]
+    },
+    {
+      "id": "VMT003", "name": "source_and_destination_slots", "engine": "r4vm",
+      "category": "memory", "analysis_policy": "compute",
+      "expected_features": ["register_binding", "slot_relocation", "read_after_write"],
+      "instructions": [
+        {"op": "move", "dst": 1, "src": 0},
+        {"op": "addi", "dst": 2, "src": 1, "imm": 7},
+        {"op": "halt", "src": 2}
+      ],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "16"},
+        {"input": "0", "status": "ok", "result": "7"}
+      ]
+    },
+    {
+      "id": "VMT004", "name": "two_adds_composed", "engine": "r4vm",
+      "category": "composition", "analysis_policy": "compute",
+      "expected_features": ["fetch_bridge", "ordered_effects", "two_handler_composition"],
+      "instructions": [
+        {"op": "addi", "dst": 1, "src": 0, "imm": 7},
+        {"op": "addi", "dst": 2, "src": 1, "imm": 11},
+        {"op": "halt", "src": 2}
+      ],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "27"},
+        {"input": "0", "status": "ok", "result": "18"},
+        {"input": "9223372036854775807", "status": "ok", "result": "-9223372036854775791"}
+      ]
+    },
+    {
+      "id": "VMT005", "name": "subtract_operand_order", "engine": "r4vm",
+      "category": "arithmetic", "analysis_policy": "compute",
+      "expected_features": ["subtract", "operand_order", "wraparound"],
+      "instructions": [{"op": "subi", "dst": 1, "src": 0, "imm": 7}, {"op": "halt", "src": 1}],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "2"},
+        {"input": "0", "status": "ok", "result": "-7"},
+        {"input": "-9223372036854775808", "status": "ok", "result": "9223372036854775801"}
+      ]
+    },
+    {
+      "id": "VMT006", "name": "xor_is_not_add", "engine": "r4vm",
+      "category": "arithmetic", "analysis_policy": "compute",
+      "expected_features": ["xor", "bitvector_width"],
+      "instructions": [{"op": "xori", "dst": 1, "src": 0, "imm": 85}, {"op": "halt", "src": 1}],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "92"},
+        {"input": "0", "status": "ok", "result": "85"},
+        {"input": "-1", "status": "ok", "result": "-86"}
+      ]
+    },
+    {
+      "id": "VMT007", "name": "branch_both_directions", "engine": "r4vm",
+      "category": "control_flow", "analysis_policy": "compute",
+      "expected_features": ["branch_guard", "two_successors", "different_writes"],
+      "instructions": [
+        {"op": "brz", "src": 0, "imm": 2},
+        {"op": "addi", "dst": 1, "src": 0, "imm": 7},
+        {"op": "halt", "src": 1},
+        {"op": "movi", "dst": 1, "imm": 42},
+        {"op": "halt", "src": 1}
+      ],
+      "samples": [
+        {"input": "0", "status": "ok", "result": "42"},
+        {"input": "9", "status": "ok", "result": "16"},
+        {"input": "-1", "status": "ok", "result": "6"}
+      ]
+    },
+    {
+      "id": "VMT008", "name": "alias_and_ordered_writes", "engine": "r4vm",
+      "category": "memory", "analysis_policy": "compute",
+      "expected_features": ["same_slot_alias", "memory_version", "ordered_effects"],
+      "instructions": [
+        {"op": "addi", "dst": 0, "src": 0, "imm": 7},
+        {"op": "addi", "dst": 0, "src": 0, "imm": 11},
+        {"op": "halt", "src": 0}
+      ],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "27"},
+        {"input": "9223372036854775807", "status": "ok", "result": "-9223372036854775791"}
+      ]
+    },
+    {
+      "id": "VMT009", "name": "wrong_tag_guard", "engine": "r4vm",
+      "category": "negative", "analysis_policy": "unknown_allowed",
+      "expected_features": ["tag_guard", "no_false_numeric_result"],
+      "instructions": [
+        {"op": "settag", "dst": 0, "imm": 2},
+        {"op": "addi", "dst": 1, "src": 0, "imm": 7},
+        {"op": "halt", "src": 1}
+      ],
+      "samples": [{"input": "9", "status": "type_error"}]
+    },
+    {
+      "id": "VMT010", "name": "unmodeled_helper_call", "engine": "r4vm",
+      "category": "negative", "analysis_policy": "unknown_allowed",
+      "expected_features": ["call_effect_or_unknown"],
+      "instructions": [
+        {"op": "opaque", "dst": 1, "src": 0, "imm": 3},
+        {"op": "halt", "src": 1}
+      ],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "12"},
+        {"input": "0", "status": "ok", "result": "3"}
+      ]
+    },
+    {
+      "id": "VMT011", "name": "invalid_dispatch", "engine": "r4vm",
+      "category": "negative", "analysis_policy": "unknown_allowed",
+      "expected_features": ["unknown_dispatch", "no_false_numeric_result"],
+      "instructions": [{"op": "invalid"}],
+      "samples": [{"input": "9", "status": "bad_opcode"}]
+    },
+    {
+      "id": "VMT012", "name": "bounded_runtime_loop", "engine": "r4vm",
+      "category": "control_flow", "analysis_policy": "unknown_allowed",
+      "expected_features": ["loop", "invariant_or_unknown"],
+      "instructions": [
+        {"op": "movi", "dst": 1, "imm": 3},
+        {"op": "addi", "dst": 0, "src": 0, "imm": 1},
+        {"op": "subi", "dst": 1, "src": 1, "imm": 1},
+        {"op": "brnz", "src": 1, "imm": -3},
+        {"op": "halt", "src": 0}
+      ],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "12"},
+        {"input": "0", "status": "ok", "result": "3"}
+      ]
+    },
+    {
+      "id": "VMT013", "name": "lua_add_7", "engine": "lua_5_4_fixture",
+      "category": "real_vm", "analysis_policy": "compute", "analysis_target": "output",
+      "program_file": "../interpreter-expression/lua_chunk.luac",
+      "expected_features": ["real_lua_dispatch", "integer_add"],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "16", "partition": "seed"},
+        {"input": "0", "status": "ok", "result": "7"},
+        {"input": "9223372036854775807", "status": "ok", "result": "-9223372036854775802"}
+      ]
+    },
+    {
+      "id": "VMT014", "name": "lua_add_11", "engine": "lua_5_4_fixture",
+      "category": "real_vm", "analysis_policy": "compute", "analysis_target": "output",
+      "program_file": "../interpreter-expression/lua_chunk_plus11.luac",
+      "expected_features": ["same_handler_reuse", "real_lua_dispatch"],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "20"},
+        {"input": "0", "status": "ok", "result": "11"},
+        {"input": "9223372036854775807", "status": "ok", "result": "-9223372036854775798"}
+      ]
+    },
+    {
+      "id": "VMT015", "name": "lua_two_adds", "engine": "lua_5_4_fixture",
+      "category": "real_vm", "analysis_policy": "compute", "analysis_target": "output",
+      "program_file": "../interpreter-expression/lua_chunk_two_adds.luac",
+      "expected_features": ["real_lua_dispatch", "two_handler_composition"],
+      "samples": [
+        {"input": "9", "status": "ok", "result": "27", "partition": "seed"},
+        {"input": "0", "status": "ok", "result": "18"},
+        {"input": "9223372036854775807", "status": "ok", "result": "-9223372036854775791"}
+      ]
+    }
+  ]
+}
