@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "method": "input-guided Bundle P-code emulation with symbolic guards/effects",
+  "path_selection_uses_native_trace": false,
+  "entry_baseline_from_previous_native_trace": true,
+  "claim": "one ADD step on selected inputs, not full path/alias/frame coverage",
+  "cases": [
+    {
+      "program": "VMT001",
+      "input": 5,
+      "program_sha256": "3c47aebb1e9751260356cb7d3e7d895e359c13ed750c4b7f18c6cf71bd90f30b",
+      "path_id": "347cd71f1ec34c41",
+      "native_instructions": 52,
+      "pcode_operations": 375,
+      "path_guards": 13,
+      "projected_nontrivial_guards": 0,
+      "ordered_writes": 5,
+      "slot0_formula": "X + 7",
+      "slot0_formula_smt": "(bvadd X #x0000000000000007)",
+      "formula_equivalence_proved": true,
+      "next_vm_pc": "1",
+      "archived_path_found": true,
+      "archived_fields_equal": {
+        "kind": true,
+        "native_path": true,
+        "pcode_operations": true,
+        "guards": true,
+        "reads": true,
+        "effects": true,
+        "registers": true,
+        "flags": true
+      }
+    },
+    {
+      "program": "VMT001",
+      "input": 9,
+      "program_sha256": "3c47aebb1e9751260356cb7d3e7d895e359c13ed750c4b7f18c6cf71bd90f30b",
+      "path_id": "347cd71f1ec34c41",
+      "native_instructions": 52,
+      "pcode_operations": 375,
+      "path_guards": 13,
+      "projected_nontrivial_guards": 0,
+      "ordered_writes": 5,
+      "slot0_formula": "X + 7",
+      "slot0_formula_smt": "(bvadd X #x0000000000000007)",
+      "formula_equivalence_proved": true,
+      "next_vm_pc": "1",
+      "archived_path_found": true,
+      "archived_fields_equal": {
+        "kind": true,
+        "native_path": true,
+        "pcode_operations": true,
+        "guards": true,
+        "reads": true,
+        "effects": true,
+        "registers": true,
+        "flags": true
+      }
+    },
+    {
+      "program": "VMT002",
+      "input": 9,
+      "program_sha256": "0fd18f1f7ce3a052fa0dbae8f00145a69c9823057ef6ada2ea465d4db6520052",
+      "path_id": "347cd71f1ec34c41",
+      "native_instructions": 52,
+      "pcode_operations": 375,
+      "path_guards": 13,
+      "projected_nontrivial_guards": 0,
+      "ordered_writes": 5,
+      "slot0_formula": "X + 11",
+      "slot0_formula_smt": "(bvadd X #x000000000000000b)",
+      "formula_equivalence_proved": true,
+      "next_vm_pc": "1",
+      "archived_path_found": true,
+      "archived_fields_equal": {
+        "kind": true,
+        "native_path": true,
+        "pcode_operations": true,
+        "guards": true,
+        "reads": true,
+        "effects": true,
+        "registers": true,
+        "flags": true
+      }
+    },
+    {
+      "program": "VMT002",
+      "input": 0,
+      "program_sha256": "0fd18f1f7ce3a052fa0dbae8f00145a69c9823057ef6ada2ea465d4db6520052",
+      "path_id": "347cd71f1ec34c41",
+      "native_instructions": 52,
+      "pcode_operations": 375,
+      "path_guards": 13,
+      "projected_nontrivial_guards": 0,
+      "ordered_writes": 5,
+      "slot0_formula": "X + 11",
+      "slot0_formula_smt": "(bvadd X #x000000000000000b)",
+      "formula_equivalence_proved": true,
+      "next_vm_pc": "1",
+      "archived_path_found": true,
+      "archived_fields_equal": {
+        "kind": true,
+        "native_path": true,
+        "pcode_operations": true,
+        "guards": true,
+        "reads": true,
+        "effects": true,
+        "registers": true,
+        "flags": true
+      }
+    }
+  ]
+}
