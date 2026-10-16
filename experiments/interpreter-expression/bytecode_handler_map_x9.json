@@ -1,0 +1,71 @@
+{
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "bytecode_sha256": "d9278fb7e5457a2788926b3c3fd0a82bace02573bce3bc66a7910c76b750a9fb",
+  "trace_sha256": "8fe66a448975ffa04d0cecabbd8083e004645f6bdba8c367da14fa54dc8ee37c",
+  "bundle_archive_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+  "bytecode_code_start_file_offset": 39,
+  "executed_bytecode_indices": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "not_fetched_between_observed_indices": [
+    3
+  ],
+  "events": [
+    {
+      "fetch_trace_step": 26,
+      "runtime_code_address": 732515664,
+      "raw_instruction_word": 81,
+      "numeric_opcode": 81,
+      "fetch_native_pc": "0x4154a5",
+      "dispatch_native_pc": "0x4154af",
+      "handler_entry_native_pc": "0x415bb0",
+      "bytecode_index": 0,
+      "file_byte_offset": 39,
+      "executed_native_steps_until_next_fetch_or_return": 62,
+      "contains_observed_addition_pc": false
+    },
+    {
+      "fetch_trace_step": 92,
+      "runtime_code_address": 732515668,
+      "raw_instruction_word": 11,
+      "numeric_opcode": 11,
+      "fetch_native_pc": "0x41553a",
+      "dispatch_native_pc": "0x415543",
+      "handler_entry_native_pc": "0x416ac8",
+      "bytecode_index": 1,
+      "file_byte_offset": 43,
+      "executed_native_steps_until_next_fetch_or_return": 53,
+      "contains_observed_addition_pc": false
+    },
+    {
+      "fetch_trace_step": 149,
+      "runtime_code_address": 732515672,
+      "raw_instruction_word": 2248146965,
+      "numeric_opcode": 21,
+      "fetch_native_pc": "0x41553a",
+      "dispatch_native_pc": "0x415543",
+      "handler_entry_native_pc": "0x4164b8",
+      "bytecode_index": 2,
+      "file_byte_offset": 47,
+      "executed_native_steps_until_next_fetch_or_return": 23,
+      "contains_observed_addition_pc": true
+    },
+    {
+      "fetch_trace_step": 176,
+      "runtime_code_address": 732515680,
+      "raw_instruction_word": 16908358,
+      "numeric_opcode": 70,
+      "fetch_native_pc": "0x415b24",
+      "dispatch_native_pc": "0x415b31",
+      "handler_entry_native_pc": "0x415820",
+      "bytecode_index": 4,
+      "file_byte_offset": 55,
+      "executed_native_steps_until_next_fetch_or_return": 81,
+      "contains_observed_addition_pc": false
+    }
+  ],
+  "conclusion": "observed bytecode words and numeric dispatch targets linked for one VM invocation; handler semantics and general input expression remain unproven"
+}

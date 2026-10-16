@@ -1,0 +1,26 @@
+{
+  "trace_sha256": "5bf9a86deb311b92ae8af2d27ee015eb7a738ba15642d4847816c124b5c4a99c",
+  "bundle_archive_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+  "instruction_steps": 262,
+  "unique_native_pcs": 256,
+  "matched_steps": {
+    "in_bundle": 262
+  },
+  "vm_function_steps": 165,
+  "conditional_branches": {
+    "fallthrough": 10,
+    "target": 9
+  },
+  "local_addition": {
+    "native_add_pc": "0x417ce7",
+    "pcode_opcode": "INT_ADD",
+    "pcode_ordinal": 5,
+    "loaded_memory_value": 0,
+    "r12_before": 7,
+    "r12_after": 7,
+    "store_pc": "0x417cea",
+    "stored_memory_value": 7,
+    "result": "observed local 64-bit addition; input provenance and guard not established"
+  },
+  "scope": "one concrete execution; no symbolic Lua input expression or path guard claimed"
+}
