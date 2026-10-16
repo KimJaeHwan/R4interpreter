@@ -1,0 +1,18 @@
+{
+  "function": "luaV_execute",
+  "instructions": 3670,
+  "pcode_operations": 26892,
+  "pcode_branch_ops": {
+    "CBRANCH": 385,
+    "BRANCHIND": 6,
+    "BRANCH": 200
+  },
+  "pcode_call_ops": {
+    "CALL": 66
+  },
+  "ssa_actions": 26764,
+  "ssa_definitions": 27714,
+  "ssa_joins": 1608,
+  "unresolved_read_nodes": 442,
+  "unresolved_write_nodes": 201
+}

@@ -1,0 +1,383 @@
+{
+ "generation": "/workspace/scratch/lua_bundle/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc03cfd4478d6ae8785",
+ "admission": "OK",
+ "admission_seconds": 0.05,
+ "program_scope": "ConstructedProgramScope",
+ "iterator_error_at": 61,
+ "iterator_error": "Traceback (most recent call last):\n  File \"/workspace/daasdmlkas/tools/bundle_export/bundle_stats.py\", line 112, in main\n    evidence = next(iterator)\n               ^^^^^^^^^^^^^^\n  File \"/workspace/daasdmlkas/src/tdo_v2/integration/observed_function_session.py\", line 302, in __next__\n    return self._session._decode_function(unit, captured)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/daasdmlkas/src/tdo_v2/integration/observed_function_session.py\", line 238, in _decode_function\n    raise ValueError(\"observed function scope could not be constructed\")\nValueError: observed function scope could not be constructed\n",
+ "functions": 61,
+ "normalized_ok": 60,
+ "unresolved_reasons": {
+  "disconnected_observed_cfg": 1
+ },
+ "normalize_seconds": 48.58,
+ "outcomes": [
+  {
+   "index": 0,
+   "entry": "1b1:401490",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 1,
+   "entry": "1b1:401e40",
+   "name": "lua_isinteger",
+   "result": "ok"
+  },
+  {
+   "index": 2,
+   "entry": "1b1:402320",
+   "name": "lua_tointegerx",
+   "result": "ok"
+  },
+  {
+   "index": 3,
+   "entry": "1b1:402a00",
+   "name": "lua_pushinteger",
+   "result": "ok"
+  },
+  {
+   "index": 4,
+   "entry": "1b1:403300",
+   "name": "lua_setglobal",
+   "result": "ok"
+  },
+  {
+   "index": 5,
+   "entry": "1b1:403920",
+   "name": "lua_pcallk",
+   "result": "ok"
+  },
+  {
+   "index": 6,
+   "entry": "1b1:4109f0",
+   "name": "lua_close",
+   "result": "ok"
+  },
+  {
+   "index": 7,
+   "entry": "1b1:41a560",
+   "name": "luaL_loadfilex",
+   "result": "ok"
+  },
+  {
+   "index": 8,
+   "entry": "1b1:41b6d0",
+   "name": "luaL_newstate",
+   "result": "ok"
+  },
+  {
+   "index": 9,
+   "entry": "1b1:4140c0",
+   "name": "luaV_tointeger",
+   "result": "ok"
+  },
+  {
+   "index": 10,
+   "entry": "1b1:401610",
+   "name": "auxsetstr",
+   "result": "ok"
+  },
+  {
+   "index": 11,
+   "entry": "1b1:4016d0",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 12,
+   "entry": "1b1:406e40",
+   "name": "luaD_call",
+   "result": "ok"
+  },
+  {
+   "index": 13,
+   "entry": "1b1:4072c0",
+   "name": "luaD_pcall",
+   "result": "ok"
+  },
+  {
+   "index": 14,
+   "entry": "1b1:410350",
+   "name": "close_state",
+   "result": "ok"
+  },
+  {
+   "index": 15,
+   "entry": "1b1:401850",
+   "name": "lua_gettop",
+   "result": "ok"
+  },
+  {
+   "index": 16,
+   "entry": "1b1:401870",
+   "name": "lua_settop",
+   "result": "ok"
+  },
+  {
+   "index": 17,
+   "entry": "1b1:401970",
+   "name": "lua_rotate",
+   "result": "ok"
+  },
+  {
+   "index": 18,
+   "entry": "1b1:4024a0",
+   "name": "lua_tolstring",
+   "result": "ok"
+  },
+  {
+   "index": 19,
+   "entry": "1b1:402a90",
+   "name": "lua_pushstring",
+   "result": "ok"
+  },
+  {
+   "index": 20,
+   "entry": "1b1:402b20",
+   "name": "lua_pushfstring",
+   "result": "ok"
+  },
+  {
+   "index": 21,
+   "entry": "1b1:403a40",
+   "name": "lua_load",
+   "result": "ok"
+  },
+  {
+   "index": 22,
+   "entry": "1b1:419470",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 23,
+   "entry": "1b1:419560",
+   "name": "skipcomment",
+   "result": "ok"
+  },
+  {
+   "index": 24,
+   "entry": "1b1:419790",
+   "name": "errfile.isra.0",
+   "result": "ok"
+  },
+  {
+   "index": 25,
+   "entry": "1b1:4017f0",
+   "name": "lua_atpanic",
+   "result": "ok"
+  },
+  {
+   "index": 26,
+   "entry": "1b1:404140",
+   "name": "lua_setwarnf",
+   "result": "ok"
+  },
+  {
+   "index": 27,
+   "entry": "1b1:4103e0",
+   "name": "lua_newstate",
+   "result": "ok"
+  },
+  {
+   "index": 28,
+   "entry": "1b1:4194e0",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 29,
+   "entry": "1b1:419540",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 30,
+   "entry": "1b1:419820",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 31,
+   "entry": "1b1:40b6b0",
+   "name": "luaO_str2num",
+   "result": "ok"
+  },
+  {
+   "index": 32,
+   "entry": "1b1:40a1d0",
+   "name": "luaC_barrierback_",
+   "result": "ok"
+  },
+  {
+   "index": 33,
+   "entry": "1b1:411160",
+   "name": "luaS_new",
+   "result": "ok"
+  },
+  {
+   "index": 34,
+   "entry": "1b1:411930",
+   "name": "luaH_getstr",
+   "result": "ok"
+  },
+  {
+   "index": 35,
+   "entry": "1b1:414650",
+   "name": "luaV_finishset",
+   "result": "unresolved",
+   "reason": "disconnected_observed_cfg"
+  },
+  {
+   "index": 36,
+   "entry": "1b1:406ef0",
+   "name": "luaD_callnoyield",
+   "result": "ok"
+  },
+  {
+   "index": 37,
+   "entry": "1b1:405f90",
+   "name": "luaD_growstack",
+   "result": "ok"
+  },
+  {
+   "index": 38,
+   "entry": "1b1:406a90",
+   "name": "luaD_precall",
+   "result": "ok"
+  },
+  {
+   "index": 39,
+   "entry": "1b1:410730",
+   "name": "luaE_checkcstack",
+   "result": "ok"
+  },
+  {
+   "index": 40,
+   "entry": "1b1:415440",
+   "name": "luaV_execute",
+   "result": "ok"
+  },
+  {
+   "index": 41,
+   "entry": "1b1:405b80",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 42,
+   "entry": "1b1:405d80",
+   "name": "luaD_rawrunprotected",
+   "result": "ok"
+  },
+  {
+   "index": 43,
+   "entry": "1b1:406100",
+   "name": "luaD_shrinkstack",
+   "result": "ok"
+  },
+  {
+   "index": 44,
+   "entry": "1b1:407250",
+   "name": "luaD_closeprotected",
+   "result": "ok"
+  },
+  {
+   "index": 45,
+   "entry": "1b1:40a550",
+   "name": "luaC_freeallobjects",
+   "result": "ok"
+  },
+  {
+   "index": 46,
+   "entry": "1b1:40ae50",
+   "name": "luaM_free_",
+   "result": "ok"
+  },
+  {
+   "index": 47,
+   "entry": "1b1:4102d0",
+   "name": "freestack.part.0",
+   "result": "ok"
+  },
+  {
+   "index": 48,
+   "entry": "1b1:407f60",
+   "name": "luaF_close",
+   "result": "ok"
+  },
+  {
+   "index": 49,
+   "entry": "1b1:401580",
+   "name": "index2value",
+   "result": "ok"
+  },
+  {
+   "index": 50,
+   "entry": "1b1:40a650",
+   "name": "luaC_step",
+   "result": "ok"
+  },
+  {
+   "index": 51,
+   "entry": "1b1:40ba60",
+   "name": "luaO_tostring",
+   "result": "ok"
+  },
+  {
+   "index": 52,
+   "entry": "1b1:40bad0",
+   "name": "luaO_pushvfstring",
+   "result": "ok"
+  },
+  {
+   "index": 53,
+   "entry": "1b1:4073c0",
+   "name": "luaD_protectedparser",
+   "result": "ok"
+  },
+  {
+   "index": 54,
+   "entry": "1b1:40a160",
+   "name": "luaC_barrier_",
+   "result": "ok"
+  },
+  {
+   "index": 55,
+   "entry": "1b1:4191e0",
+   "name": "luaZ_init",
+   "result": "ok"
+  },
+  {
+   "index": 56,
+   "entry": "1b1:410250",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 57,
+   "entry": "1b1:410c10",
+   "name": "luaS_hash",
+   "result": "ok"
+  },
+  {
+   "index": 58,
+   "entry": "1b1:401ce0",
+   "name": "lua_type",
+   "result": "ok"
+  },
+  {
+   "index": 59,
+   "entry": "1b1:419680",
+   "name": null,
+   "result": "ok"
+  },
+  {
+   "index": 60,
+   "entry": "1b1:40b210",
+   "name": "l_str2dloc",
+   "result": "ok"
+  }
+ ]
+}

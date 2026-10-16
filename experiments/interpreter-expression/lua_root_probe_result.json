@@ -1,0 +1,40 @@
+{
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "bytecode_sha256": "d9278fb7e5457a2788926b3c3fd0a82bace02573bce3bc66a7910c76b750a9fb",
+  "lua_source_revision": "v5.4.8 / 6e22fedb74cf0c9b6656e9fce8b7331db847c605",
+  "bundle_generation": "df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc03cfd4478d6ae8785",
+  "entry": "run_lua_chunk",
+  "instructions": 63,
+  "pcode_operations": 236,
+  "ssa_actions": 218,
+  "rax_write_slices": [
+    {
+      "action": "1b1:40151c:3:INT_ZEXT",
+      "nodes": 36,
+      "inputs": 1,
+      "debts": 4,
+      "kinds": {
+        "operation": 17,
+        "memory_definition": 12,
+        "constant": 2,
+        "observed_input": 1,
+        "memory_debt": 4
+      },
+      "call_operations": 0
+    },
+    {
+      "action": "1b1:40154c:2:COPY",
+      "nodes": 58,
+      "inputs": 1,
+      "debts": 6,
+      "kinds": {
+        "operation": 26,
+        "memory_definition": 21,
+        "constant": 4,
+        "observed_input": 1,
+        "memory_debt": 6
+      },
+      "call_operations": 0
+    }
+  ]
+}

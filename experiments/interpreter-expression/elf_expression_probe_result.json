@@ -1,0 +1,55 @@
+{
+  "binary": "/workspace/scratch/elf_expression_fixture",
+  "binary_sha256": "12c42604d8361d51cd49dfe8fab0450c11b7ebd09b7d3d94c3469fa5858defa5",
+  "bundle_generation": "e88ce248bbd68f05e27c712aeb371d775ff51b77880c6845e9739850dc3a48d4",
+  "ghidra_version": "12.0.4",
+  "compiler_flags": "gcc -O2 -fno-pie -no-pie",
+  "function": "add7",
+  "result_register": "RAX:8",
+  "input_register": "RDI:8",
+  "expression": "x + 7",
+  "expression_width_bits": 64,
+  "guard": "true",
+  "assumptions": [
+    "SysV AMD64 input in RDI and return in RAX",
+    "Ghidra Low P-code models the selected machine instructions"
+  ],
+  "scope": "JOIN-free straight-line selected function; native comparison on listed samples",
+  "smt_inequivalence_to_64bit_fixture_spec": "unsat",
+  "native_inputs_checked": 137,
+  "native_mismatches": [],
+  "mutated_plus_8_mismatches": 137,
+  "boundary_inputs": [
+    0,
+    1,
+    7,
+    8,
+    9223372036854775807,
+    9223372036854775808,
+    18446744073709551608,
+    18446744073709551609,
+    18446744073709551615
+  ],
+  "evidence": {
+    "sink_definition": 7,
+    "slice_nodes": 5,
+    "slice_inputs": 1,
+    "slice_debts": 0,
+    "operations": [
+      "1b1:4011a0:0:INT_ADD",
+      "1b1:4011a0:1:COPY"
+    ],
+    "ssa_reads": [
+      [
+        "1b1:4011a0:0:INT_ADD",
+        0,
+        5
+      ],
+      [
+        "1b1:4011a0:1:COPY",
+        0,
+        6
+      ]
+    ]
+  }
+}

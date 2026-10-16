@@ -1,0 +1,101 @@
+[
+  {
+    "name": "x_plus_7",
+    "expression": "x + 7",
+    "equivalence_to_fixture_spec": "unsat",
+    "oracle_inputs_checked": 256,
+    "oracle_mismatches": 0,
+    "mutated_expression_mismatches": 256,
+    "free_variables": [
+      "x"
+    ],
+    "guard": "true",
+    "scope": "finite-domain-checked (all 256 x values)",
+    "evidence": {
+      "sink_definition": 5,
+      "slice_nodes": 3,
+      "slice_inputs": 1,
+      "slice_debts": 0,
+      "operations": [
+        "1:1000:0:INT_ADD"
+      ],
+      "ssa_reads": [
+        [
+          "1:1000:0:INT_ADD",
+          0,
+          4
+        ]
+      ]
+    },
+    "missing_truncation_mismatches": 7
+  },
+  {
+    "name": "seven_minus_x",
+    "expression": "7 - x",
+    "equivalence_to_fixture_spec": "unsat",
+    "oracle_inputs_checked": 256,
+    "oracle_mismatches": 0,
+    "mutated_expression_mismatches": 254,
+    "free_variables": [
+      "x"
+    ],
+    "guard": "true",
+    "scope": "finite-domain-checked (all 256 x values)",
+    "evidence": {
+      "sink_definition": 5,
+      "slice_nodes": 3,
+      "slice_inputs": 1,
+      "slice_debts": 0,
+      "operations": [
+        "1:1000:0:INT_SUB"
+      ],
+      "ssa_reads": [
+        [
+          "1:1000:0:INT_SUB",
+          0,
+          4
+        ]
+      ]
+    }
+  },
+  {
+    "name": "two_operation_chain",
+    "expression": "x + 7 - 3",
+    "equivalence_to_fixture_spec": "unsat",
+    "oracle_inputs_checked": 256,
+    "oracle_mismatches": 0,
+    "mutated_expression_mismatches": 256,
+    "free_variables": [
+      "x"
+    ],
+    "guard": "true",
+    "scope": "finite-domain-checked (all 256 x values)",
+    "evidence": {
+      "sink_definition": 7,
+      "slice_nodes": 6,
+      "slice_inputs": 1,
+      "slice_debts": 0,
+      "operations": [
+        "1:1000:0:INT_ADD",
+        "1:1004:0:INT_SUB"
+      ],
+      "ssa_reads": [
+        [
+          "1:1000:0:INT_ADD",
+          0,
+          5
+        ],
+        [
+          "1:1004:0:INT_SUB",
+          0,
+          6
+        ]
+      ]
+    }
+  },
+  {
+    "name": "unsupported_xor",
+    "result": "unknown",
+    "reason": "unsupported P-code operation: INT_XOR"
+  }
+]
