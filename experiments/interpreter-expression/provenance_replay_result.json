@@ -1,0 +1,555 @@
+{
+  "bundle_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+  "results": [
+    {
+      "input": 0,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x33c6e910",
+          "value": 0
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x33c6e910",
+          "value": 0
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x33c6fa10",
+          "value": 0
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x33c6fa10",
+          "value": 0
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x33c6e930",
+          "value": 0
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x33c6e930",
+          "value": 0
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x33c6e930",
+          "value": 7
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 7,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "00ff07bc8eeb0d8950b621c37d408d045a574d9a667245a22df3cc0f302554e5",
+      "trace_steps_to_add_store": 53175
+    },
+    {
+      "input": 19088743,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x17420910",
+          "value": 19088743
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x17420910",
+          "value": 19088743
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x17421a10",
+          "value": 19088743
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x17421a10",
+          "value": 19088743
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x17420930",
+          "value": 19088743
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x17420930",
+          "value": 19088743
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x17420930",
+          "value": 19088750
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 19088750,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "a973865a378a05372fcedf657eb446f0eff8cb97de4cbf31a5099c35eb93f93c",
+      "trace_steps_to_add_store": 53243
+    },
+    {
+      "input": 9,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x330ca910",
+          "value": 9
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x330ca910",
+          "value": 9
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x330cba10",
+          "value": 9
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x330cba10",
+          "value": 9
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x330ca930",
+          "value": 9
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x330ca930",
+          "value": 9
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x330ca930",
+          "value": 16
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 16,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "6974f5cf89fe8b57c6014f94f522c28713e021d4ab5a00be1971d6c3acd35653",
+      "trace_steps_to_add_store": 53209
+    },
+    {
+      "input": 1,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x1c3ed910",
+          "value": 1
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x1c3ed910",
+          "value": 1
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x1c3eea10",
+          "value": 1
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x1c3eea10",
+          "value": 1
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x1c3ed930",
+          "value": 1
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x1c3ed930",
+          "value": 1
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x1c3ed930",
+          "value": 8
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 8,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "d2da9df501a9a4115d67bced6a88fa7507ac3a5eb66c07053455a458bf4f7426",
+      "trace_steps_to_add_store": 53185
+    },
+    {
+      "input": -1,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x232cc910",
+          "value": 18446744073709551615
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x232cc910",
+          "value": 18446744073709551615
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x232cda10",
+          "value": 18446744073709551615
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x232cda10",
+          "value": 18446744073709551615
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x232cc930",
+          "value": 18446744073709551615
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x232cc930",
+          "value": 18446744073709551615
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x232cc930",
+          "value": 6
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 6,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "62ce14385224dcb3067f816bb9509e5c85ff6bde62d4008ffe0e5c70d436a60d",
+      "trace_steps_to_add_store": 53199
+    },
+    {
+      "input": 9223372036854775800,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x21485910",
+          "value": 9223372036854775800
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x21485910",
+          "value": 9223372036854775800
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x21486a10",
+          "value": 9223372036854775800
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x21486a10",
+          "value": 9223372036854775800
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x21485930",
+          "value": 9223372036854775800
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x21485930",
+          "value": 9223372036854775800
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x21485930",
+          "value": 9223372036854775807
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 9223372036854775807,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "a9e79d6b5c318e31c70950b77f77b61cd110f2657fba9845fa70e3ab7f09ee6f",
+      "trace_steps_to_add_store": 53199
+    },
+    {
+      "input": 9223372036854775801,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x28aac910",
+          "value": 9223372036854775801
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x28aac910",
+          "value": 9223372036854775801
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x28aada10",
+          "value": 9223372036854775801
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x28aada10",
+          "value": 9223372036854775801
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x28aac930",
+          "value": 9223372036854775801
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x28aac930",
+          "value": 9223372036854775801
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x28aac930",
+          "value": 9223372036854775808
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 9223372036854775808,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "cc87409730649db9216faa0fb41153557b3fa2add9ad47ade07ccf0c1e945d96",
+      "trace_steps_to_add_store": 53146
+    },
+    {
+      "input": 9223372036854775807,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x269a8910",
+          "value": 9223372036854775807
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x269a8910",
+          "value": 9223372036854775807
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x269a9a10",
+          "value": 9223372036854775807
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x269a9a10",
+          "value": 9223372036854775807
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x269a8930",
+          "value": 9223372036854775807
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x269a8930",
+          "value": 9223372036854775807
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x269a8930",
+          "value": 9223372036854775814
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 9223372036854775814,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "2c6e8f87b8702ae61f25a8cf0199f62e5488f48ac443775c10f85c27b8b65ef2",
+      "trace_steps_to_add_store": 53203
+    },
+    {
+      "input": -9223372036854775808,
+      "formula": "(X + 7) mod 2^64",
+      "pcode_path_operation_count": 21,
+      "pcode_slice_smt_inequivalence": "unsat",
+      "source_to_vm_memory_edges": [
+        {
+          "pc": "0x402a04",
+          "kind": "STORE",
+          "address": "0x9563910",
+          "value": 9223372036854775808
+        },
+        {
+          "pc": "0x411b50",
+          "kind": "LOAD",
+          "address": "0x9563910",
+          "value": 9223372036854775808
+        },
+        {
+          "pc": "0x411b54",
+          "kind": "STORE",
+          "address": "0x9564a10",
+          "value": 9223372036854775808
+        },
+        {
+          "pc": "0x416ea1",
+          "kind": "LOAD",
+          "address": "0x9564a10",
+          "value": 9223372036854775808
+        },
+        {
+          "pc": "0x416ea7",
+          "kind": "STORE",
+          "address": "0x9563930",
+          "value": 9223372036854775808
+        },
+        {
+          "pc": "0x417ce7",
+          "kind": "LOAD",
+          "address": "0x9563930",
+          "value": 9223372036854775808
+        },
+        {
+          "pc": "0x417cea",
+          "kind": "STORE",
+          "address": "0x9563930",
+          "value": 9223372036854775815
+        }
+      ],
+      "bytecode_immediate_derived_by_pcode": 7,
+      "observed_result_word": 9223372036854775815,
+      "observed_local_guard": {
+        "tag_byte": 3,
+        "compare_pc": "0x4164e9",
+        "pcode_cbranch_pc": "0x4164ec",
+        "taken_target": "0x417ce4"
+      },
+      "unresolved": "other paths, alias changes, non-selected operations, calls and error handling",
+      "trace_sha256": "27218ab900366680b9c1b2f25ff2835a28d46e225f4ff8c2e406d979e6e75b13",
+      "trace_steps_to_add_store": 53193
+    }
+  ],
+  "scope": "selected observed input path; SMT proves only the replayed slice algebra"
+}

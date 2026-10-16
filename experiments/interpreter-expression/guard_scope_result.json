@@ -1,0 +1,105 @@
+{
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "bytecode_sha256": "d9278fb7e5457a2788926b3c3fd0a82bace02573bce3bc66a7910c76b750a9fb",
+  "candidate_formula": "signed64((X + 7) mod 2^64)",
+  "observed_guard": "this ELF and bytecode, integer input accepted by strtoll, same first VM PC/successor sequence",
+  "cases": [
+    {
+      "input": 0,
+      "held_out": false,
+      "trace_sha256": "5bf9a86deb311b92ae8af2d27ee015eb7a738ba15642d4847816c124b5c4a99c",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": 0,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": 7,
+      "program_output": 7,
+      "expression_expected": 7
+    },
+    {
+      "input": 9,
+      "held_out": false,
+      "trace_sha256": "8fe66a448975ffa04d0cecabbd8083e004645f6bdba8c367da14fa54dc8ee37c",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": 9,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": 16,
+      "program_output": 16,
+      "expression_expected": 16
+    },
+    {
+      "input": 1,
+      "held_out": true,
+      "trace_sha256": "91c2670382575a123533567f95cb23c017140c53189b3033a76913f85411d6c8",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": 1,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": 8,
+      "program_output": 8,
+      "expression_expected": 8
+    },
+    {
+      "input": -1,
+      "held_out": true,
+      "trace_sha256": "b066f9972e01cead163ca63a310b5e04585ed2bf2c2f1348346bb2e167fd78ca",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": -1,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": 6,
+      "program_output": 6,
+      "expression_expected": 6
+    },
+    {
+      "input": 9223372036854775800,
+      "held_out": true,
+      "trace_sha256": "345766780b5acfc8d8bbbff95c39ef0ff36fc93705ef07dab8617d5c46960d09",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": 9223372036854775800,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": 9223372036854775807,
+      "program_output": 9223372036854775807,
+      "expression_expected": 9223372036854775807
+    },
+    {
+      "input": 9223372036854775801,
+      "held_out": true,
+      "trace_sha256": "bf8992b60aa0ed0ce2607de7c49d5ea29cdc5b8945186cc08630d796c0277305",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": 9223372036854775801,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": -9223372036854775808,
+      "program_output": -9223372036854775808,
+      "expression_expected": -9223372036854775808
+    },
+    {
+      "input": 9223372036854775807,
+      "held_out": true,
+      "trace_sha256": "4b4d8ab7db60e01d3eef163ef9dfc22afd02a5f8eea44c9b771c5d5d18e7046a",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": 9223372036854775807,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": -9223372036854775802,
+      "program_output": -9223372036854775802,
+      "expression_expected": -9223372036854775802
+    },
+    {
+      "input": -9223372036854775808,
+      "held_out": true,
+      "trace_sha256": "d75b320e1da74c479eaaf2c377c75607142c982ad8a961db70fbe95b9c08b109",
+      "vm_steps": 262,
+      "same_pc_and_successor_sequence_as_x0": true,
+      "vm_operand_signed": -9223372036854775808,
+      "vm_immediate": 7,
+      "vm_stored_result_signed": -9223372036854775801,
+      "program_output": -9223372036854775801,
+      "expression_expected": -9223372036854775801
+    }
+  ],
+  "scope": "finite validation only; unobserved inputs and paths are unknown"
+}
