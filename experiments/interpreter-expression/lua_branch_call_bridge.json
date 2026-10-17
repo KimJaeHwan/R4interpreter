@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "kind": "conditional_native_cutpoint_to_callee_input",
+  "entry_native_pc": "0x417e50",
+  "callee_native_pc": "0x4164b8",
+  "interface": "Y is the 8-byte value at entry RDX; A is the separate 8-byte call argument read at 0x416ea1 on x9. Other entry registers, flags, and first-read memory bytes are fixed per concrete path",
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "bytecode_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+  "bundle_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+  "paths": [
+    {
+      "label": "x0",
+      "witness_cutpoint_payload": "0",
+      "witness_argument_source": null,
+      "witness_callee_input": "5",
+      "native_instructions": 194,
+      "pcode_operations": 1432,
+      "pcode_reads": 46,
+      "pcode_writes": 25,
+      "initial_memory_bytes": 117,
+      "guard": "Y == 0",
+      "guard_equivalence_solver_result": "unsat",
+      "callee_input": "5",
+      "callee_input_equivalence_solver_result": "unsat",
+      "guard_smt": "(= Y #x0000000000000000)",
+      "callee_input_smt": "#x0000000000000005",
+      "trace_sha256": "f9a07fb9ae13f7257ff31097c168c1b48bb69137c005af5f6efd99df2ed99fd8"
+    },
+    {
+      "label": "x9",
+      "witness_cutpoint_payload": "9",
+      "witness_argument_source": "9",
+      "witness_callee_input": "9",
+      "native_instructions": 238,
+      "pcode_operations": 1748,
+      "pcode_reads": 65,
+      "pcode_writes": 28,
+      "initial_memory_bytes": 205,
+      "guard": "Y != 0",
+      "guard_equivalence_solver_result": "unsat",
+      "callee_input": "A",
+      "callee_input_equivalence_solver_result": "unsat",
+      "guard_smt": "(not (= Y #x0000000000000000))",
+      "callee_input_smt": "A",
+      "trace_sha256": "36dc2c81e4a1898d1d784279acbe6e7958f58eeba84871204d1e98f045f649c0"
+    }
+  ],
+  "external_input_binding_proved": false,
+  "full_script_output_proved": false
+}

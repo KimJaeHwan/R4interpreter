@@ -28,7 +28,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [입력 수준 식 축약 결과](../vm-transition-testbed/results/LOGIC_PROJECTION_RESULT.md)에서는 두 엔진의 요약을 같은 `logic_projection.py`로 합성하고 SMT 동치 확인 후 긴 P-code 식을 간단한 `X` 식으로 줄였다. Lua의 축약 범위는 현재 마지막 숫자 핸들러까지이며 최종 반환 경로는 포함하지 않는다.
 
-[Lua 분기·함수 호출 실험](LUA_BRANCH_CALL_RESULT.md)은 호출 전후 두 바이트코드 코드 영역을 실제 추적으로 연결하고, 피호출자 산술 핸들러의 값을 검증했다. 스크립트 전체의 두 경로는 공통 형식에 후보로 기록했으며 guard 완전성은 증명되지 않았다.
+[Lua 분기·함수 호출 실험](LUA_BRANCH_CALL_RESULT.md)은 호출 전후 두 바이트코드 코드 영역을 실제 추적으로 연결했다. 네이티브 P-code 재생으로 로컬 VM 입력 `X_local`의 분기 조건과 호출 인수(`0 → 5`, 그 외 `→ X_local`)를 증명했고, 피호출자 산술 핸들러의 `callee_input + 5`도 검증했다. CLI 입력과 로컬 입력, 호출 결과와 스크립트 반환값의 연결은 다음 실험 대상이다.
 
 ## 파일
 

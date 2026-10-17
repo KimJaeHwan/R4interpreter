@@ -97,6 +97,7 @@ class PathReplay:
         self.guards = []
         self.reads = []
         self.effects = []
+        self.effect_steps = []
         self.operation_count = 0
         before = rows[0]["registers"]
         for offset, name in REGISTER_OFFSETS.items():
@@ -127,6 +128,8 @@ class PathReplay:
         if kind == 2 and offset in VECTOR_OFFSETS:
             assert size == 16
             return self.vectors[offset]
+        if kind == 2 and offset == 648 and size == 8:
+            return self.ip
         if kind == 2:
             base = next((root for root in REGISTER_OFFSETS if root <= offset < root + 8), None)
             if base is None or offset + size > base + 8:
@@ -145,6 +148,9 @@ class PathReplay:
             self.unique[(offset, size)] = value
             return
         assert kind == 2
+        if offset == 648 and size == 8:
+            self.ip = value
+            return
         if offset in FLAG_OFFSETS:
             self.flags[offset] = value.symbolic
             self.flags_concrete[offset] = value.concrete
@@ -156,7 +162,7 @@ class PathReplay:
             return
         base = next((root for root in REGISTER_OFFSETS if root <= offset < root + 8), None)
         if base is None or offset + size > base + 8:
-            raise ValueError(f"unmapped register write {offset:#x}/{size}")
+            raise ValueError(f"unmapped register write {offset:#x}/{size} at {self.current_pc:#x}")
         shift = (offset - base) * 8
         if shift == 0 and bits == 64:
             self.regs[base] = value.symbolic
@@ -179,9 +185,13 @@ class PathReplay:
     def load(self, address, size):
         concrete_address = address.concrete & MASK64
         observed = self.observed_memory(concrete_address, size)
-        value = observed["before"]
-        if value is None:
+        before = observed["before"]
+        if before is None:
             raise AssertionError("unreadable memory operand")
+        value = sum((self.memory_concrete[(concrete_address + i) & MASK64]
+                     if (concrete_address + i) & MASK64 in self.written_this_step
+                     else (before >> (8 * i)) & 255) << (8 * i)
+                    for i in range(size))
         bytes_symbolic = [z3.Select(self.memory, address.symbolic + bv(i, 64))
                           for i in range(size)]
         symbolic = bytes_symbolic[0] if size == 1 else z3.Concat(*reversed(bytes_symbolic))
@@ -189,7 +199,8 @@ class PathReplay:
             byte_address = (concrete_address + i) & MASK64
             byte = (value >> (8 * i)) & 255
             if byte_address in self.memory_concrete and self.memory_concrete[byte_address] != byte:
-                raise AssertionError(f"memory version disagreement at {self.current_pc:#x}")
+                raise AssertionError(f"memory version disagreement at {self.current_pc:#x}: "
+                                     f"{byte_address:#x} modeled={self.memory_concrete[byte_address]:#x} observed={byte:#x}")
             self.memory_concrete[byte_address] = byte
         self.reads.append({"pc": hex(self.current_pc), "ordinal": self.current_ordinal,
                            "address": address.symbolic, "width": size,
@@ -209,6 +220,7 @@ class PathReplay:
             byte_value = z3.Extract(8 * i + 7, 8 * i, value.symbolic)
             self.memory = z3.Store(self.memory, byte_addr, byte_value)
             self.memory_concrete[(concrete_address + i) & MASK64] = (value.concrete >> (8 * i)) & 255
+            self.written_this_step.add((concrete_address + i) & MASK64)
         self.effects.append({"pc": hex(self.current_pc), "ordinal": self.current_ordinal,
                              "kind": "Write", "address": address.symbolic,
                              "width": size, "value": value.symbolic,
@@ -216,6 +228,7 @@ class PathReplay:
                              "memory_version_before": len(self.effects),
                              "memory_version_after": len(self.effects) + 1,
                              "observed": value.concrete})
+        self.effect_steps.append(self.current_row.get("step"))
 
     def evaluate(self, opcode, inputs, output):
         args = [self.read(n) for n in inputs]
@@ -254,6 +267,14 @@ class PathReplay:
                 self.guards.append({"pc": hex(self.current_pc), "kind": "CBRANCH",
                                     "target": hex(self.current_row["next_pc"]),
                                     "condition": condition if taken else z3.Not(condition)})
+            return None
+        if opcode in ("CALL", "RETURN"):
+            target = args[0].concrete
+            if self.current_row["next_pc"] != target:
+                raise AssertionError(f"{opcode} target disagrees at {self.current_pc:#x}")
+            self.guards.append({"pc": hex(self.current_pc), "kind": opcode,
+                                "target": hex(target),
+                                "condition": args[0].symbolic == bv(target, args[0].bits)})
             return None
         if opcode == "BRANCHIND":
             target = args[0].concrete
@@ -300,11 +321,16 @@ class PathReplay:
                    "INT_OR": lambda: a.concrete | b.concrete,
                    "INT_XOR": lambda: a.concrete ^ b.concrete}[opcode]()
             return Dual(resize(sym, bits), con & mask)
-        if opcode in ("INT_RIGHT", "INT_LEFT"):
+        if opcode in ("INT_RIGHT", "INT_LEFT", "INT_SRIGHT"):
             shift = resize(b.symbolic, a.bits)
-            sym = z3.LShR(a.symbolic, shift) if opcode == "INT_RIGHT" else a.symbolic << shift
-            con = ((a.concrete >> b.concrete) if opcode == "INT_RIGHT"
-                   else (a.concrete << b.concrete)) if b.concrete < a.bits else 0
+            sym = (z3.LShR(a.symbolic, shift) if opcode == "INT_RIGHT" else
+                   a.symbolic << shift if opcode == "INT_LEFT" else
+                   a.symbolic >> shift)
+            con = (a.concrete >> b.concrete if opcode == "INT_RIGHT" else
+                   a.concrete << b.concrete if opcode == "INT_LEFT" else
+                   signed(a.concrete, a.bits) >> b.concrete)
+            if b.concrete >= a.bits and opcode != "INT_SRIGHT":
+                con = 0
             return Dual(resize(sym, bits), con & mask)
         if opcode in ("INT_EQUAL", "INT_NOTEQUAL", "INT_LESS", "INT_SLESS"):
             sym = {"INT_EQUAL": lambda: a.symbolic == b.symbolic,
@@ -340,20 +366,24 @@ class PathReplay:
             if pc not in self.instructions:
                 raise AssertionError(f"missing Bundle instruction {pc:#x}")
             self.current_row, self.current_pc = row, pc
+            self.ip = Dual(bv(pc, 64), pc)
             self.unique = {}
             self.touched_regs, self.touched_flags = set(), set()
+            self.written_this_step = set()
+            read_start, effect_start = len(self.reads), len(self.effects)
             for ordinal, operation in enumerate(self.instructions[pc]["operations"]):
                 self.current_ordinal = ordinal
                 result = self.evaluate(operation["opcode"], operation["inputs"], operation["output"])
                 if operation["output_present"]:
                     self.write(operation["output"], result)
                 self.operation_count += 1
-            observed_accesses = {(m["address"], m["size"], m["access"] & 3)
-                                 for m in row["memory"]}
+            observed_accesses = {(m["address"], m["size"], access)
+                                 for m in row["memory"] for access in (1, 2)
+                                 if m["access"] & access}
             modeled_accesses = ({(m["observed_address"], m["width"], 1)
-                                 for m in self.reads if m["pc"] == hex(pc)} |
+                                 for m in self.reads[read_start:]} |
                                 {(m["observed_address"], m["width"], 2)
-                                 for m in self.effects if m["pc"] == hex(pc)})
+                                 for m in self.effects[effect_start:]})
             # A physical operand may be loaded more than once in P-code for flags.
             if observed_accesses != modeled_accesses:
                 raise AssertionError(f"unmodeled memory operand at {pc:#x}")

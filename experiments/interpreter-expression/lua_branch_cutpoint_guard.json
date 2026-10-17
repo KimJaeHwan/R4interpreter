@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "kind": "conditional_native_cutpoint_guard_proof",
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "bytecode_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+  "bundle_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+  "entry_native_pc": "0x417e50",
+  "interface": "Y:BV64 is the 8-byte value at entry RDX; entry registers, flags and the fetched word are fixed to each captured path's state",
+  "paths": [
+    {
+      "guard": "Y == 0",
+      "guard_proven": true,
+      "witness_input": "0",
+      "native_exit": "0x415d51",
+      "selected_native_instructions": 9,
+      "pcode_operations_replayed": 84,
+      "pcode_payload_reads": 1,
+      "pcode_writes": 0,
+      "branch_evidence": [
+        {
+          "pc": "0x417e5b",
+          "kind": "BRANCH",
+          "target": "0x415f25"
+        },
+        {
+          "pc": "0x415f30",
+          "kind": "CBRANCH",
+          "target": "0x415d51"
+        }
+      ],
+      "guard_smt": "(= Y #x0000000000000000)",
+      "candidate_smt_inequivalence": "unsat",
+      "trace_sha256": "a4cba238eedb86478ca4701cdb83d838d65c166e058e6f903bb7f5ef11a44128"
+    },
+    {
+      "guard": "Y != 0",
+      "guard_proven": true,
+      "witness_input": "9",
+      "native_exit": "0x415f36",
+      "selected_native_instructions": 9,
+      "pcode_operations_replayed": 84,
+      "pcode_payload_reads": 1,
+      "pcode_writes": 0,
+      "branch_evidence": [
+        {
+          "pc": "0x417e5b",
+          "kind": "BRANCH",
+          "target": "0x415f25"
+        },
+        {
+          "pc": "0x415f30",
+          "kind": "CBRANCH",
+          "target": "0x415f36"
+        }
+      ],
+      "guard_smt": "(not (= Y #x0000000000000000))",
+      "candidate_smt_inequivalence": "unsat",
+      "trace_sha256": "08dea0cd9c0a3bf0cb88a2e5d63b0ceb99fff5e024b7377bd0aafa1d546848f2"
+    }
+  ],
+  "local_coverage_proved": true,
+  "local_disjointness_proved": true,
+  "external_input_binding_proved": false,
+  "full_script_output_proved": false,
+  "limits": "Conditional on reaching native PC 0x417e50 with the recorded non-input state and [RDX]=Y. Earlier path admission, CLI X to Y, VM call argument and return are outside this proof."
+}

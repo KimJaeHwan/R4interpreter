@@ -98,6 +98,25 @@
       "handler_trace_sha256": "11ccec1b7d005161e335a1b5300efcde15938513395b14277dd5bb94b733f353"
     }
   ],
+  "local_vm_boundary": {
+    "input": "X_local:BV64",
+    "entry_native_pc": "0x416ea1",
+    "evidence_sha256": "9bd23566abec35f2ebe28624392eedd8757ebdb02008933c594ab99db52068aa",
+    "paths": [
+      {
+        "guard": "X_local == 0",
+        "guard_proven": true,
+        "callee_input": "5",
+        "callee_input_proven": true
+      },
+      {
+        "guard": "X_local != 0",
+        "guard_proven": true,
+        "callee_input": "X_local",
+        "callee_input_proven": true
+      }
+    ]
+  },
   "paths": [
     {
       "guard": "X == 0",
@@ -126,5 +145,5 @@
       ]
     }
   ],
-  "limits": "The full input-to-callee binding, branch guards, and return composition are not proved for all X. The handler P-code value reduction is proved only under its captured path assumptions."
+  "limits": "The local VM source-to-callee relation and arithmetic handler reduction are conditional on their captured entry states. CLI X to X_local and final return composition are not proved for all X."
 }

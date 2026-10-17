@@ -1,7 +1,7 @@
 """Assemble a guarded Lua branch/call observation from native and P-code evidence.
 
-The Lua source is not read here. Full-script guards remain candidates; only
-the called arithmetic handler's local value reduction has a P-code proof.
+The Lua source is not read here. Full-script guards remain candidates; local
+branch, call-argument and arithmetic reductions have separate P-code proofs.
 """
 from __future__ import annotations
 
@@ -67,12 +67,30 @@ def main():
     if zero["callee_entry_value"] != "5" or any(
             row["callee_entry_value"] != row["input"] for row in nonzero):
         raise ValueError("observed argument binding changed")
+    local_path = ROOT / "lua_branch_local_input.json"
+    local = json.loads(local_path.read_text())
+    if local["binary_sha256"] != sha256(binary.read_bytes()).hexdigest() or \
+            local["bytecode_sha256"] != sha256(bytecode.read_bytes()).hexdigest():
+        raise ValueError("local VM boundary proof targets another fixture")
+    if [(path["guard"], path["callee_input"]) for path in local["paths"]] != [
+            ("X_local == 0", "5"), ("X_local != 0", "X_local")]:
+        raise ValueError("local VM branch/call relation changed")
+    if any(path["guard_equivalence"] != "unsat" or
+           path["branch_operand_equivalence"] != "unsat" or
+           path["callee_input_equivalence"] != "unsat" for path in local["paths"]):
+        raise ValueError("local VM boundary proof missing")
     report = {"schema_version": 1, "format": "guarded_input_relation",
               "engine": "lua_5_4_fixture", "source": "branch_and_called_lua_function",
               "scope": "observed_full_script_paths", "input": "X:BV64",
               "binary_sha256": sha256(binary.read_bytes()).hexdigest(),
               "program_sha256": sha256(bytecode.read_bytes()).hexdigest(),
               "observed_samples": len(records), "records": records,
+              "local_vm_boundary": {
+                  "input": "X_local:BV64", "entry_native_pc": local["entry_native_pc"],
+                  "evidence_sha256": sha256(local_path.read_bytes()).hexdigest(),
+                  "paths": [{"guard": path["guard"], "guard_proven": True,
+                             "callee_input": path["callee_input"], "callee_input_proven": True}
+                            for path in local["paths"]]},
               "paths": [
                   {"guard": "X == 0", "guard_proven": False,
                    "status": "observed_return", "value": "10", "value_proven": False,
@@ -82,9 +100,10 @@ def main():
                    "status": "observed_return", "value": "X + 5", "value_proven": False,
                    "handler_value": "callee_input + 5", "handler_value_proven": True,
                    "observed_inputs": [row["input"] for row in nonzero]}],
-              "limits": "The full input-to-callee binding, branch guards, and return composition are not proved for all X. The handler P-code value reduction is proved only under its captured path assumptions."}
+              "limits": "The local VM source-to-callee relation and arithmetic handler reduction are conditional on their captured entry states. CLI X to X_local and final return composition are not proved for all X."}
     (ROOT / "lua_branch_call_relation.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({"samples": len(records), "observed_paths": 2,
+                      "local_vm_boundary_proved": True,
                       "callee_value_proved": True, "full_script_guard_proved": False}))
 
 

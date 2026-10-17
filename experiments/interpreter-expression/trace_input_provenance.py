@@ -7,6 +7,7 @@ filtering useful; a candidate is not, by itself, a taint proof.
 from __future__ import annotations
 
 import argparse
+from collections import deque
 import ctypes
 import errno
 import json
@@ -68,7 +69,7 @@ def reg_value(insn, reg_id, regs):
 
 
 def memory_operands(insn, regs):
-    if insn.mnemonic == "lea":
+    if insn.mnemonic == "lea" or insn.mnemonic.startswith("nop"):
         return []
     result = []
     for operand in insn.operands:
@@ -83,6 +84,12 @@ def memory_operands(insn, regs):
             continue
         address = (base + index * mem.scale + mem.disp) & MASK
         result.append((address, operand.size, operand.access))
+    # x86 CALL/RET touch the stack even though Capstone exposes no explicit
+    # memory operand for their direct forms. Ghidra P-code models these bytes.
+    if insn.mnemonic.startswith(("call", "push")):
+        result.append(((regs.rsp - 8) & MASK, 8, CS_AC_WRITE))
+    elif insn.mnemonic.startswith(("ret", "pop")):
+        result.append((regs.rsp, 8, CS_AC_READ))
     return result
 
 
@@ -97,6 +104,8 @@ def main():
                         help="record selected path sites only (useful for input zero)")
     parser.add_argument("--capture-handler", action="store_true",
                         help="record every step from 0x4164b8 through 0x415b22")
+    parser.add_argument("--capture-bridge", action="store_true",
+                        help="record every step from 0x417e50 through callee entry 0x4164b8")
     parser.add_argument("--handler-count", type=int, default=1,
                         help="number of 0x4164b8 handler exits to capture, including intervening steps")
     parser.add_argument("--snapshot-bytes", type=int, default=256,
@@ -135,6 +144,7 @@ def main():
         count = 0
         candidates = 0
         capturing = False
+        bridge_prefix = deque(maxlen=32)
         captured_handlers = 0
         markers = {0x401490, 0x40149B, 0x4014B3, 0x4014B6,
                    0x402A00, 0x402A04, 0x402A07, 0x403300,
@@ -150,6 +160,10 @@ def main():
                 pc = before.rip
                 if args.capture_handler and pc == 0x4164B8:
                     capturing = True
+                if args.capture_bridge and pc == 0x417E50:
+                    capturing = True
+                    for buffered in bridge_prefix:
+                        out.write(json.dumps(buffered) + "\n")
                 if pc not in instruction_cache:
                     if text_start <= pc < text_start + len(text_bytes):
                         code = text_bytes[pc - text_start: pc - text_start + 15]
@@ -165,7 +179,7 @@ def main():
                 accesses = [] if insn is None else memory_operands(insn, before)
                 reads = [(a, n, access, peek(child, a, n)) for a, n, access in accesses]
                 entry_memory = None
-                if args.capture_handler and pc == 0x4164B8:
+                if (args.capture_handler or args.capture_bridge) and pc == 0x4164B8:
                     snapshot = bytearray()
                     for offset in range(0, args.snapshot_bytes, 8):
                         size = min(8, args.snapshot_bytes - offset)
@@ -185,7 +199,7 @@ def main():
                     if n == 8 and (old == input_word or new == input_word):
                         hits.append({"address": a, "size": n, "access": access,
                                      "before": old, "after": new})
-                if capturing or (hits and not args.markers_only) or pc in markers:
+                if capturing or (hits and not args.markers_only) or pc in markers or args.capture_bridge:
                     candidates += bool(hits)
                     record = {"type": "step", "step": count, "pc": pc, "next_pc": after.rip,
                               "instruction": None if insn is None else f"{insn.mnemonic} {insn.op_str}".strip(),
@@ -199,7 +213,12 @@ def main():
                               "candidate_input_words": hits}
                     if entry_memory is not None:
                         record["entry_memory"] = entry_memory
-                    out.write(json.dumps(record) + "\n")
+                    if args.capture_bridge and not capturing:
+                        bridge_prefix.append(record)
+                    else:
+                        out.write(json.dumps(record) + "\n")
+                if args.capture_bridge and pc == 0x4164B8:
+                    break
                 if args.capture_handler:
                     if capturing and pc == 0x415B22:
                         captured_handlers += 1
