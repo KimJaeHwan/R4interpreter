@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "languages": [
+    "Lua",
+    "Python",
+    "JavaScript"
+  ],
+  "common_evaluator_reused_for_lua": {
+    "status": "proved_under_preconditions",
+    "predicted_output": 14
+  },
+  "pcode_dispatch": "cross_dispatch_pcode.json",
+  "candidate_validation_counts": {
+    "python": 8,
+    "javascript": 6
+  },
+  "native_branch_witnesses": [
+    0,
+    9
+  ],
+  "native_add_call_witness": 9,
+  "object_effects_unknown": {
+    "python": {
+      "result": 6,
+      "effects": 2
+    },
+    "javascript": {
+      "result": "6",
+      "effects": 1
+    }
+  },
+  "object_queries": {
+    "python": {
+      "status": "unknown",
+      "reason": "non-integer input or object effects"
+    },
+    "javascript": {
+      "status": "unknown",
+      "reason": "non-integer input or object effects"
+    }
+  },
+  "number_precision_outside_admitted_domain": {
+    "python": {
+      "result": 9007199254740998,
+      "effects": 0
+    },
+    "javascript": {
+      "result": "9007199254740996",
+      "effects": 0
+    }
+  },
+  "precision_queries": {
+    "python": {
+      "status": "differentially_validated",
+      "predicted_output": 9007199254740998
+    },
+    "javascript": {
+      "status": "unknown",
+      "reason": "outside admitted exact-integer domain"
+    }
+  },
+  "claims": {
+    "bytecode_to_native_dispatch": "observed on two branch paths per engine",
+    "input_to_output_expression": "I/O hypothesis; differential validation only",
+    "all_paths_or_native_value_proof": false
+  }
+}

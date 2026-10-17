@@ -1,0 +1,409 @@
+{
+  "schema_version": "portable-guarded-expression-v1",
+  "semantic_model": {
+    "value_sort": "Z",
+    "arithmetic": "unbounded integer",
+    "memory": "ordered byte memory; opaque object effects remain unknown"
+  },
+  "identity": {
+    "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+    "program_sha256": "a945c86afb5f9b8b4cc2d1da016e56d2b318c2d4fb07c3921877f7b6dc8ac5fe",
+    "bytecode_sha256": {
+      "branchCall": "53b50a126596ec4f241d44001a011acb4339cc6683f39d7c83bbc0a399bc8431",
+      "addFive": "c484e2a0d1070b0d64df8791eeec4b396c0da9d0c28618fa7afdfcfff75eeca1"
+    },
+    "code_epoch": "CPython 3.13 cold code"
+  },
+  "interface": {
+    "input": {
+      "name": "X",
+      "sort": "Z",
+      "binding": "decimal CLI text converted by runtime"
+    },
+    "output": {
+      "name": "result",
+      "sort": "Z",
+      "binding": "fixture JSON output"
+    }
+  },
+  "cases": [
+    {
+      "guard": {
+        "op": "eq",
+        "left": "X",
+        "right": {
+          "const": "0",
+          "sort": "Z"
+        }
+      },
+      "result": {
+        "const": "10",
+        "sort": "Z"
+      },
+      "validation_level": "differentially_validated"
+    },
+    {
+      "guard": {
+        "op": "ne",
+        "left": "X",
+        "right": {
+          "const": "0",
+          "sort": "Z"
+        }
+      },
+      "result": {
+        "op": "add",
+        "sort": "Z",
+        "args": [
+          "X",
+          {
+            "const": "5",
+            "sort": "Z"
+          }
+        ]
+      },
+      "validation_level": "differentially_validated"
+    }
+  ],
+  "admitted_input_witnesses": [
+    "0",
+    "1",
+    "9",
+    "-1",
+    "42",
+    "9007199254740986",
+    "9007199254740993",
+    "1180591620717411303424"
+  ],
+  "input_integer_bounds": null,
+  "preconditions": [
+    "fixed executable and program/bytecode identity",
+    "only listed integer witnesses have been admitted",
+    "runtime object and exceptional effects outside candidate"
+  ],
+  "uncovered": [
+    "other input values and VM states",
+    "objects and implicit coercion",
+    "exceptions",
+    "full native value/dataflow",
+    "path completeness"
+  ],
+  "termination_claim": "partial",
+  "evidence": {
+    "python_0": {
+      "raw_trace": "artifacts/cross_python_0_native.json.gz",
+      "raw_trace_sha256": "d4835717bafc9500250680e9037a5437ceb062555ca3f011946147539fc4c5b6",
+      "native_hits_all_code": 167,
+      "breakpoint_count": 170,
+      "opcode_trace": "artifacts/cross_python_0_opcodes.json"
+    },
+    "python_9": {
+      "raw_trace": "artifacts/cross_python_9_native.json.gz",
+      "raw_trace_sha256": "1a5ebb96b8de5921eda98e025d18719fd7202c9653f6063a0c3d9d8469b08d1b",
+      "native_hits_all_code": 167,
+      "breakpoint_count": 170,
+      "opcode_trace": "artifacts/cross_python_9_opcodes.json"
+    }
+  },
+  "native_paths": {
+    "python_0": {
+      "branchCall": {
+        "native_dispatch_sequence": [
+          {
+            "offset": 0,
+            "opcode_byte": 149,
+            "opname": "RESUME",
+            "native_dispatch_pc": "0x5612a8",
+            "native_handler_pc": "0x565038"
+          },
+          {
+            "offset": 2,
+            "opcode_byte": 85,
+            "opname": "LOAD_FAST",
+            "native_dispatch_pc": "0x565077",
+            "native_handler_pc": "0x5612b0"
+          },
+          {
+            "offset": 4,
+            "opcode_byte": 83,
+            "opname": "LOAD_CONST",
+            "native_dispatch_pc": "0x56920f",
+            "native_handler_pc": "0x5612f0"
+          },
+          {
+            "offset": 6,
+            "opcode_byte": 58,
+            "opname": "COMPARE_OP",
+            "native_dispatch_pc": "0x56132d",
+            "native_handler_pc": "0x563018"
+          },
+          {
+            "offset": 10,
+            "opcode_byte": 97,
+            "opname": "POP_JUMP_IF_FALSE",
+            "native_dispatch_pc": "0x563112",
+            "native_handler_pc": "0x56138b"
+          },
+          {
+            "offset": 14,
+            "opcode_byte": 91,
+            "opname": "LOAD_GLOBAL",
+            "native_dispatch_pc": "0x5613d5",
+            "native_handler_pc": "0x564f61"
+          },
+          {
+            "offset": 24,
+            "opcode_byte": 83,
+            "opname": "LOAD_CONST",
+            "native_dispatch_pc": "0x565031",
+            "native_handler_pc": "0x5612f0"
+          },
+          {
+            "offset": 26,
+            "opcode_byte": 53,
+            "opname": "CALL",
+            "native_dispatch_pc": "0x56132d",
+            "native_handler_pc": "0x5636f9"
+          }
+        ],
+        "runtime_opcode_offsets": [
+          2,
+          4,
+          6,
+          10,
+          14,
+          24,
+          26,
+          34
+        ],
+        "runtime_offsets_without_native_dispatch_hit": [
+          34
+        ]
+      },
+      "addFive": {
+        "native_dispatch_sequence": [
+          {
+            "offset": 0,
+            "opcode_byte": 149,
+            "opname": "RESUME",
+            "native_dispatch_pc": "0x5612a8",
+            "native_handler_pc": "0x565038"
+          },
+          {
+            "offset": 2,
+            "opcode_byte": 85,
+            "opname": "LOAD_FAST",
+            "native_dispatch_pc": "0x565077",
+            "native_handler_pc": "0x5612b0"
+          },
+          {
+            "offset": 4,
+            "opcode_byte": 83,
+            "opname": "LOAD_CONST",
+            "native_dispatch_pc": "0x56920f",
+            "native_handler_pc": "0x5612f0"
+          },
+          {
+            "offset": 6,
+            "opcode_byte": 45,
+            "opname": "BINARY_OP",
+            "native_dispatch_pc": "0x56132d",
+            "native_handler_pc": "0x56227c"
+          },
+          {
+            "offset": 10,
+            "opcode_byte": 36,
+            "opname": "RETURN_VALUE",
+            "native_dispatch_pc": "0x56232a",
+            "native_handler_pc": "0x56173b"
+          }
+        ],
+        "runtime_opcode_offsets": [
+          2,
+          4,
+          6,
+          10
+        ],
+        "runtime_offsets_without_native_dispatch_hit": []
+      }
+    },
+    "python_9": {
+      "branchCall": {
+        "native_dispatch_sequence": [
+          {
+            "offset": 0,
+            "opcode_byte": 149,
+            "opname": "RESUME",
+            "native_dispatch_pc": "0x5612a8",
+            "native_handler_pc": "0x565038"
+          },
+          {
+            "offset": 2,
+            "opcode_byte": 85,
+            "opname": "LOAD_FAST",
+            "native_dispatch_pc": "0x565077",
+            "native_handler_pc": "0x5612b0"
+          },
+          {
+            "offset": 4,
+            "opcode_byte": 83,
+            "opname": "LOAD_CONST",
+            "native_dispatch_pc": "0x56920f",
+            "native_handler_pc": "0x5612f0"
+          },
+          {
+            "offset": 6,
+            "opcode_byte": 58,
+            "opname": "COMPARE_OP",
+            "native_dispatch_pc": "0x56132d",
+            "native_handler_pc": "0x563018"
+          },
+          {
+            "offset": 10,
+            "opcode_byte": 97,
+            "opname": "POP_JUMP_IF_FALSE",
+            "native_dispatch_pc": "0x563112",
+            "native_handler_pc": "0x56138b"
+          },
+          {
+            "offset": 36,
+            "opcode_byte": 91,
+            "opname": "LOAD_GLOBAL",
+            "native_dispatch_pc": "0x5613d5",
+            "native_handler_pc": "0x564f61"
+          },
+          {
+            "offset": 46,
+            "opcode_byte": 85,
+            "opname": "LOAD_FAST",
+            "native_dispatch_pc": "0x565031",
+            "native_handler_pc": "0x5612b0"
+          },
+          {
+            "offset": 48,
+            "opcode_byte": 53,
+            "opname": "CALL",
+            "native_dispatch_pc": "0x56920f",
+            "native_handler_pc": "0x5636f9"
+          }
+        ],
+        "runtime_opcode_offsets": [
+          2,
+          4,
+          6,
+          10,
+          36,
+          46,
+          48,
+          56
+        ],
+        "runtime_offsets_without_native_dispatch_hit": [
+          56
+        ]
+      },
+      "addFive": {
+        "native_dispatch_sequence": [
+          {
+            "offset": 0,
+            "opcode_byte": 149,
+            "opname": "RESUME",
+            "native_dispatch_pc": "0x5612a8",
+            "native_handler_pc": "0x565038"
+          },
+          {
+            "offset": 2,
+            "opcode_byte": 85,
+            "opname": "LOAD_FAST",
+            "native_dispatch_pc": "0x565077",
+            "native_handler_pc": "0x5612b0"
+          },
+          {
+            "offset": 4,
+            "opcode_byte": 83,
+            "opname": "LOAD_CONST",
+            "native_dispatch_pc": "0x56920f",
+            "native_handler_pc": "0x5612f0"
+          },
+          {
+            "offset": 6,
+            "opcode_byte": 45,
+            "opname": "BINARY_OP",
+            "native_dispatch_pc": "0x56132d",
+            "native_handler_pc": "0x56227c"
+          },
+          {
+            "offset": 10,
+            "opcode_byte": 36,
+            "opname": "RETURN_VALUE",
+            "native_dispatch_pc": "0x56232a",
+            "native_handler_pc": "0x56173b"
+          }
+        ],
+        "runtime_opcode_offsets": [
+          2,
+          4,
+          6,
+          10
+        ],
+        "runtime_offsets_without_native_dispatch_hit": []
+      }
+    }
+  },
+  "verification": {
+    "training_inputs": [
+      0,
+      1,
+      9
+    ],
+    "checks": [
+      {
+        "input": "0",
+        "observed": 10,
+        "predicted": 10
+      },
+      {
+        "input": "1",
+        "observed": 6,
+        "predicted": 6
+      },
+      {
+        "input": "9",
+        "observed": 14,
+        "predicted": 14
+      },
+      {
+        "input": "-1",
+        "observed": 4,
+        "predicted": 4
+      },
+      {
+        "input": "42",
+        "observed": 47,
+        "predicted": 47
+      },
+      {
+        "input": "9007199254740986",
+        "observed": 9007199254740991,
+        "predicted": 9007199254740991
+      },
+      {
+        "input": "9007199254740993",
+        "observed": 9007199254740998,
+        "predicted": 9007199254740998
+      },
+      {
+        "input": "1180591620717411303424",
+        "observed": 1180591620717411303429,
+        "predicted": 1180591620717411303429
+      }
+    ],
+    "new_input_query": {
+      "status": "unknown",
+      "reason": "entry state and path not admitted"
+    },
+    "code_mismatch_query": {
+      "status": "unknown",
+      "reason": "code identity mismatch"
+    }
+  }
+}

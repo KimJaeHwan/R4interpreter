@@ -1,0 +1,295 @@
+{
+  "schema_version": "portable-guarded-expression-v1",
+  "semantic_model": {
+    "value_sort": "F64",
+    "arithmetic": "IEEE-754 binary64 Number",
+    "memory": "ordered byte memory; opaque object effects remain unknown"
+  },
+  "identity": {
+    "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+    "program_sha256": "dfac4de7ea4bfd5e836139f0bad376fcac718f7117bf83d5304175fc2082295a",
+    "bytecode_sha256": {
+      "branchCall": "3d16e2a4c50038a017f0152e7107493aadf8fce52a3667c98bfe9dcbf4f5921e",
+      "addFive": "a953ebad3989d0965da42a10f28802a3bc679f01509c89d57aae2780ffed4476"
+    },
+    "code_epoch": "Node 24.19.0 --jitless Ignition"
+  },
+  "interface": {
+    "input": {
+      "name": "X",
+      "sort": "F64",
+      "binding": "decimal CLI text converted by runtime"
+    },
+    "output": {
+      "name": "result",
+      "sort": "F64",
+      "binding": "fixture JSON output"
+    }
+  },
+  "cases": [
+    {
+      "guard": {
+        "op": "eq",
+        "left": "X",
+        "right": {
+          "const": "0",
+          "sort": "F64"
+        }
+      },
+      "result": {
+        "const": "10",
+        "sort": "F64"
+      },
+      "validation_level": "differentially_validated"
+    },
+    {
+      "guard": {
+        "op": "ne",
+        "left": "X",
+        "right": {
+          "const": "0",
+          "sort": "F64"
+        }
+      },
+      "result": {
+        "op": "add",
+        "sort": "F64",
+        "args": [
+          "X",
+          {
+            "const": "5",
+            "sort": "F64"
+          }
+        ]
+      },
+      "validation_level": "differentially_validated"
+    }
+  ],
+  "admitted_input_witnesses": [
+    "0",
+    "1",
+    "9",
+    "-1",
+    "42",
+    "9007199254740986"
+  ],
+  "input_integer_bounds": [
+    -9007199254740986,
+    9007199254740986
+  ],
+  "preconditions": [
+    "fixed executable and program/bytecode identity",
+    "only listed integer witnesses have been admitted",
+    "runtime object and exceptional effects outside candidate"
+  ],
+  "uncovered": [
+    "other input values and VM states",
+    "objects and implicit coercion",
+    "exceptions",
+    "full native value/dataflow",
+    "path completeness",
+    "JIT/deopt and non-safe Number values"
+  ],
+  "termination_claim": "partial",
+  "evidence": {
+    "js_branch_0": {
+      "raw_trace": "artifacts/cross_js_branch_0_native.json.gz",
+      "raw_trace_sha256": "0c64afcdd6cc27760f2f61aa1cc40a7df73ab307a366e1763038280f56fc4135",
+      "native_hits_all_code": 11274,
+      "breakpoint_count": 194,
+      "bytecode_output": "artifacts/cross_js_branch_0_bytecode.txt"
+    },
+    "js_branch_9": {
+      "raw_trace": "artifacts/cross_js_branch_9_native.json.gz",
+      "raw_trace_sha256": "693c06321a23e845e4176255bd0fefe149f6737fdefc40136e5356d9d71fcf33",
+      "native_hits_all_code": 11273,
+      "breakpoint_count": 194,
+      "bytecode_output": "artifacts/cross_js_branch_9_bytecode.txt"
+    },
+    "js_add_9": {
+      "raw_trace": "artifacts/cross_js_add_9_native.json.gz",
+      "raw_trace_sha256": "69b38ff39b548f640bd7afa0ff0fc848fdc7377ec4e75dcdcd53415feee486e4",
+      "native_hits_all_code": 11273,
+      "breakpoint_count": 194,
+      "bytecode_output": "artifacts/cross_js_add_9_bytecode.txt"
+    }
+  },
+  "native_paths": {
+    "js_branch_0": {
+      "native_handler_entry_sequence": [
+        {
+          "offset": 0,
+          "opcode_byte": 12,
+          "opname": "LdaZero",
+          "native_handler_pc": "0x1ba8d40"
+        },
+        {
+          "offset": 1,
+          "opcode_byte": 116,
+          "opname": "TestEqualStrict",
+          "native_handler_pc": "0x1bbff80"
+        },
+        {
+          "offset": 4,
+          "opcode_byte": 163,
+          "opname": "JumpIfFalse",
+          "native_handler_pc": "0x1bc6700"
+        },
+        {
+          "offset": 6,
+          "opcode_byte": 25,
+          "opname": "LdaImmutableCurrentContextSlot",
+          "native_handler_pc": "0x1ba9780"
+        },
+        {
+          "offset": 9,
+          "opcode_byte": 13,
+          "opname": "LdaSmi",
+          "native_handler_pc": "0x1ba8dc0"
+        },
+        {
+          "offset": 12,
+          "opcode_byte": 105,
+          "opname": "f9",
+          "native_handler_pc": "0x1bbd740"
+        },
+        {
+          "offset": 16,
+          "opcode_byte": 179,
+          "opname": "Return",
+          "native_handler_pc": "0x1bc6f40"
+        }
+      ],
+      "native_entry_dispatch_count": 2,
+      "static_offsets_without_handler_entry": [
+        8,
+        11,
+        17,
+        19,
+        20,
+        24
+      ]
+    },
+    "js_branch_9": {
+      "native_handler_entry_sequence": [
+        {
+          "offset": 0,
+          "opcode_byte": 12,
+          "opname": "LdaZero",
+          "native_handler_pc": "0x1ba8d40"
+        },
+        {
+          "offset": 1,
+          "opcode_byte": 116,
+          "opname": "TestEqualStrict",
+          "native_handler_pc": "0x1bbff80"
+        },
+        {
+          "offset": 4,
+          "opcode_byte": 163,
+          "opname": "JumpIfFalse",
+          "native_handler_pc": "0x1bc6700"
+        },
+        {
+          "offset": 17,
+          "opcode_byte": 25,
+          "opname": "LdaImmutableCurrentContextSlot",
+          "native_handler_pc": "0x1ba9780"
+        },
+        {
+          "offset": 20,
+          "opcode_byte": 105,
+          "opname": "f9",
+          "native_handler_pc": "0x1bbd740"
+        },
+        {
+          "offset": 24,
+          "opcode_byte": 179,
+          "opname": "Return",
+          "native_handler_pc": "0x1bc6f40"
+        }
+      ],
+      "native_entry_dispatch_count": 2,
+      "static_offsets_without_handler_entry": [
+        6,
+        8,
+        9,
+        11,
+        12,
+        16,
+        19
+      ]
+    },
+    "js_add_9": {
+      "native_handler_entry_sequence": [
+        {
+          "offset": 0,
+          "opcode_byte": 11,
+          "opname": "Ldar",
+          "native_handler_pc": "0x1ba8d00"
+        },
+        {
+          "offset": 2,
+          "opcode_byte": 75,
+          "opname": "AddSmi",
+          "native_handler_pc": "0x1bb7780"
+        },
+        {
+          "offset": 5,
+          "opcode_byte": 179,
+          "opname": "Return",
+          "native_handler_pc": "0x1bc6f40"
+        }
+      ],
+      "native_entry_dispatch_count": 1,
+      "static_offsets_without_handler_entry": []
+    }
+  },
+  "verification": {
+    "training_inputs": [
+      0,
+      1,
+      9
+    ],
+    "checks": [
+      {
+        "input": "0",
+        "observed": 10,
+        "predicted": 10
+      },
+      {
+        "input": "1",
+        "observed": 6,
+        "predicted": 6
+      },
+      {
+        "input": "9",
+        "observed": 14,
+        "predicted": 14
+      },
+      {
+        "input": "-1",
+        "observed": 4,
+        "predicted": 4
+      },
+      {
+        "input": "42",
+        "observed": 47,
+        "predicted": 47
+      },
+      {
+        "input": "9007199254740986",
+        "observed": 9007199254740991,
+        "predicted": 9007199254740991
+      }
+    ],
+    "new_input_query": {
+      "status": "unknown",
+      "reason": "entry state and path not admitted"
+    },
+    "code_mismatch_query": {
+      "status": "unknown",
+      "reason": "code identity mismatch"
+    }
+  }
+}

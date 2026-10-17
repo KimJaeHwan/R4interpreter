@@ -2,6 +2,8 @@
 
 상태: 설계 초안. 목적은 원본 스크립트나 미리 작성한 opcode 의미표 없이, 네이티브 바이너리의 P-code에서 얻은 **한 실행 경계 사이의 상태 변화**를 같은 형식으로 표현하는 것이다. [Lua 처리 구간 실험](VM_HANDLER_SUMMARY_DESIGN.md)은 이 형식의 첫 사용 사례다. [Lua 이식 준비 결과](lua_pre_python_js_port.json)는 이 전이들에서 guard와 최종 계산식만 뽑은 언어 중립 **투영**이다. 투영에는 전체 메모리 효과가 없으므로 원본 전이 요약을 대체하지 않는다. 아래 형식 자체가 어떤 VM에서든 자동 추출에 성공한다는 뜻은 아니다.
 
+[Python·JavaScript 첫 교차 실험](PYTHON_JS_FIRST_RESULT.md)은 이 투영에 `Z`와 `F64` 값 sort를 추가한 `portable-guarded-expression-v1` 후보를 만들었다. Lua `BV64`와 같은 case 적용기를 사용하지만 새 두 엔진의 **값 식은 아직 I/O 차등 검증 등급**이다. 두 엔진의 네이티브 fetch/dispatch는 P-code로 확인했으며, 전체 상태 전이의 효과·메모리·호출 합성까지 성공했다고 해석하지 않는다.
+
 ## 공통으로 표현할 것
 
 모든 대상을 `상태 S에서 진입 경계 E를 지나, 조건 C 아래 상태 S'와 종료 경계 E'가 되는 전이`로 본다. 이 전이의 단위는 Lua opcode, Python opcode, JS bytecode 또는 VMP 가상 명령일 수 있지만 **핵심 형식에는 그 언어의 필드 이름을 넣지 않는다.** 경계는 간접 분배, 호출, 기본 블록 집합, JIT 진입점 등 대상에서 증명 가능한 지점으로 잡는다.

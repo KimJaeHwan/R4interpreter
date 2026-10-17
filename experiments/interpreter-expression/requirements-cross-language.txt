@@ -1,0 +1,2 @@
+-r ../vm-transition-testbed/requirements-analysis.txt
+pypcode==3.2.1

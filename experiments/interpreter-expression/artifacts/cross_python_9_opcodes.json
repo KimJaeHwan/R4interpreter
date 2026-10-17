@@ -1,0 +1,196 @@
+{
+  "instructions": {
+    "branchCall": [
+      {
+        "offset": 0,
+        "opname": "RESUME",
+        "opcode_byte": 149,
+        "argrepr": ""
+      },
+      {
+        "offset": 2,
+        "opname": "LOAD_FAST",
+        "opcode_byte": 85,
+        "argrepr": "value"
+      },
+      {
+        "offset": 4,
+        "opname": "LOAD_CONST",
+        "opcode_byte": 83,
+        "argrepr": "0"
+      },
+      {
+        "offset": 6,
+        "opname": "COMPARE_OP",
+        "opcode_byte": 58,
+        "argrepr": "bool(==)"
+      },
+      {
+        "offset": 10,
+        "opname": "POP_JUMP_IF_FALSE",
+        "opcode_byte": 97,
+        "argrepr": "to L1"
+      },
+      {
+        "offset": 14,
+        "opname": "LOAD_GLOBAL",
+        "opcode_byte": 91,
+        "argrepr": "addFive + NULL"
+      },
+      {
+        "offset": 24,
+        "opname": "LOAD_CONST",
+        "opcode_byte": 83,
+        "argrepr": "5"
+      },
+      {
+        "offset": 26,
+        "opname": "CALL",
+        "opcode_byte": 53,
+        "argrepr": ""
+      },
+      {
+        "offset": 34,
+        "opname": "RETURN_VALUE",
+        "opcode_byte": 36,
+        "argrepr": ""
+      },
+      {
+        "offset": 36,
+        "opname": "LOAD_GLOBAL",
+        "opcode_byte": 91,
+        "argrepr": "addFive + NULL"
+      },
+      {
+        "offset": 46,
+        "opname": "LOAD_FAST",
+        "opcode_byte": 85,
+        "argrepr": "value"
+      },
+      {
+        "offset": 48,
+        "opname": "CALL",
+        "opcode_byte": 53,
+        "argrepr": ""
+      },
+      {
+        "offset": 56,
+        "opname": "RETURN_VALUE",
+        "opcode_byte": 36,
+        "argrepr": ""
+      }
+    ],
+    "addFive": [
+      {
+        "offset": 0,
+        "opname": "RESUME",
+        "opcode_byte": 149,
+        "argrepr": ""
+      },
+      {
+        "offset": 2,
+        "opname": "LOAD_FAST",
+        "opcode_byte": 85,
+        "argrepr": "value"
+      },
+      {
+        "offset": 4,
+        "opname": "LOAD_CONST",
+        "opcode_byte": 83,
+        "argrepr": "5"
+      },
+      {
+        "offset": 6,
+        "opname": "BINARY_OP",
+        "opcode_byte": 45,
+        "argrepr": "+"
+      },
+      {
+        "offset": 10,
+        "opname": "RETURN_VALUE",
+        "opcode_byte": 36,
+        "argrepr": ""
+      }
+    ]
+  },
+  "events": [
+    {
+      "function": "branchCall",
+      "event": "call"
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 2
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 4
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 6
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 10
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 36
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 46
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 48
+    },
+    {
+      "function": "addFive",
+      "event": "call"
+    },
+    {
+      "function": "addFive",
+      "event": "opcode",
+      "offset": 2
+    },
+    {
+      "function": "addFive",
+      "event": "opcode",
+      "offset": 4
+    },
+    {
+      "function": "addFive",
+      "event": "opcode",
+      "offset": 6
+    },
+    {
+      "function": "addFive",
+      "event": "opcode",
+      "offset": 10
+    },
+    {
+      "function": "addFive",
+      "event": "return",
+      "offset": 10
+    },
+    {
+      "function": "branchCall",
+      "event": "opcode",
+      "offset": 56
+    },
+    {
+      "function": "branchCall",
+      "event": "return",
+      "offset": 56
+    }
+  ]
+}
