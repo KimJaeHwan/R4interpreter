@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "samples": 12,
+  "passed": 12,
+  "rows": [
+    {
+      "id": "CFT001",
+      "input": "0",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT001",
+      "input": "9",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT001",
+      "input": "-1",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT001",
+      "input": "9223372036854775807",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT002",
+      "input": "0",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT002",
+      "input": "9",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT002",
+      "input": "-1",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT003",
+      "input": "0",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT003",
+      "input": "9",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT003",
+      "input": "-1",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT004",
+      "input": "9",
+      "grade": "pass"
+    },
+    {
+      "id": "CFT005",
+      "input": "9",
+      "grade": "pass"
+    }
+  ]
+}

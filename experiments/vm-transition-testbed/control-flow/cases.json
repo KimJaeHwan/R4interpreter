@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "CFT001", "name": "branch_and_nested_calls",
+      "instructions": [
+        {"op": "brz", "src": 0, "imm": 4},
+        {"op": "move", "dst": 1, "src": 0},
+        {"op": "call", "imm": 8},
+        {"op": "jump", "imm": 7},
+        {"op": "invalid"},
+        {"op": "movi", "dst": 1, "imm": 5},
+        {"op": "call", "imm": 8},
+        {"op": "halt", "src": 2},
+        {"op": "addi", "dst": 1, "src": 1, "imm": 2},
+        {"op": "call", "imm": 11},
+        {"op": "ret"},
+        {"op": "addi", "dst": 2, "src": 1, "imm": 3},
+        {"op": "ret"}
+      ],
+      "samples": ["0", "9", "-1", "9223372036854775807"]
+    },
+    {
+      "id": "CFT002", "name": "same_callee_twice",
+      "instructions": [
+        {"op": "move", "dst": 1, "src": 0},
+        {"op": "call", "imm": 5},
+        {"op": "move", "dst": 1, "src": 2},
+        {"op": "call", "imm": 5},
+        {"op": "halt", "src": 2},
+        {"op": "addi", "dst": 2, "src": 1, "imm": 7},
+        {"op": "ret"}
+      ],
+      "samples": ["0", "9", "-1"]
+    },
+    {
+      "id": "CFT003", "name": "loop_over_call",
+      "instructions": [
+        {"op": "move", "dst": 2, "src": 0},
+        {"op": "movi", "dst": 1, "imm": 3},
+        {"op": "call", "imm": 7},
+        {"op": "subi", "dst": 1, "src": 1, "imm": 1},
+        {"op": "brnz", "src": 1, "imm": -3},
+        {"op": "halt", "src": 2},
+        {"op": "invalid"},
+        {"op": "addi", "dst": 2, "src": 2, "imm": 7},
+        {"op": "ret"}
+      ],
+      "samples": ["0", "9", "-1"]
+    },
+    {
+      "id": "CFT004", "name": "return_without_call",
+      "instructions": [{"op": "ret"}], "samples": ["9"]
+    },
+    {
+      "id": "CFT005", "name": "call_stack_limit",
+      "instructions": [{"op": "call", "imm": 0}], "samples": ["9"]
+    }
+  ]
+}

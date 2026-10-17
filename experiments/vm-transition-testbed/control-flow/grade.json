@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "counts": {
+    "pass": 12
+  },
+  "rows": [
+    {
+      "id": "CFT001",
+      "input": "0",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT001",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT001",
+      "input": "-1",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT001",
+      "input": "9223372036854775807",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT002",
+      "input": "0",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT002",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT002",
+      "input": "-1",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT003",
+      "input": "0",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT003",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT003",
+      "input": "-1",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT004",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "CFT005",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    }
+  ]
+}

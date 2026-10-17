@@ -56,12 +56,16 @@ def elf_memory(binary: Path):
 
 
 class StaticStep(PathReplay):
-    def __init__(self, registers, memory, instructions):
+    def __init__(self, registers, memory, instructions,
+                 loop_pc=LOOP_PC, output_pc=OUTPUT_PC, opaque_pc=OPAQUE_PC):
         super().__init__({}, [{"registers": registers}], instructions)
         self.memory_concrete = memory
         self.native_path = []
         self.exit_kind = None
         self.exit_pc = None
+        self.loop_pc = loop_pc
+        self.output_pc = output_pc
+        self.opaque_pc = opaque_pc
 
     def load(self, address, size):
         location = address.concrete & MASK64
@@ -97,9 +101,9 @@ class StaticStep(PathReplay):
                              "observed": value.concrete})
 
     def run_step(self, budget=200):
-        pc = LOOP_PC
+        pc = self.loop_pc
         for _ in range(budget):
-            if pc == LOOP_PC and self.native_path:
+            if pc == self.loop_pc and self.native_path:
                 self.exit_kind, self.exit_pc = "next_fetch", pc
                 return
             instruction = self.instructions.get(pc)
@@ -107,10 +111,10 @@ class StaticStep(PathReplay):
                 raise ValueError(f"no Bundle instruction at {pc:#x}")
             if instruction["flow_type"]["is_call"]:
                 targets = [target["byte_offset"] for target in instruction["flow_targets"]]
-                if targets == [OUTPUT_PC]:
+                if targets == [self.output_pc]:
                     self.exit_kind, self.exit_pc = "output", pc
                     return
-                if targets == [OPAQUE_PC]:
+                if targets == [self.opaque_pc]:
                     raise ValueError("opaque call needs a call summary")
                 raise ValueError(f"unmodeled call at {pc:#x}: {targets}")
             self.native_path.append(pc)

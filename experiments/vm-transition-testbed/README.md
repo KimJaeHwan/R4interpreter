@@ -25,6 +25,7 @@
 | [`tools/probe_angr_add.py`](tools/probe_angr_add.py), [`results/ANGR_ADD_RESULT.md`](results/ANGR_ADD_RESULT.md) | angr의 기호 실행과 P-code ADD 전이의 경로·쓰기·다음 PC를 Z3로 비교 |
 | [`tools/angr_fallback_r4vm.py`](tools/angr_fallback_r4vm.py), [`results/ANGR_FALLBACK_RESULT.md`](results/ANGR_FALLBACK_RESULT.md) | P-code 요약이 `unknown`인 사례만 angr로 탐색해 미지원 helper 경로를 계산하고 분기 guard를 확인 |
 | [`tools/angr_from_execute_abi.py`](tools/angr_from_execute_abi.py), [`results/ANGR_EXECUTE_ABI_RESULT.md`](results/ANGR_EXECUTE_ABI_RESULT.md) | 과거 추적 스냅샷 없이 ELF의 `execute` 호출 상태부터 탐색하고 R4VM 30개 입력을 채점 |
+| [`control-flow/RESULT.md`](control-flow/RESULT.md) | 별도 VM ELF에 분기·CALL/RET·루프·오류 경로를 넣고 angr와 P-code 전이 합성을 검증 |
 
 분석기 적용 입력은 **빌드된 ELF, 동결한 P-code 경로 요약, 바이트코드 파일, 입력값**이다. 소스, 매니페스트, expected JSON과 Python 오라클은 채점 쪽에 둔다. 실행 시 입력은 64비트 signed 정수이고 VM payload 연산은 64비트 래핑이다. `.r4vm`은 8바이트 헤더 뒤에 opcode·목적 슬롯·출처 슬롯·signed 8비트 즉시값을 1바이트씩 둔다. 숫자 opcode 의미는 분석기 사전 규칙으로 제공하지 않는다.
 
@@ -78,6 +79,8 @@ python3 -m venv .venv
 [angr 보완 실험](results/ANGR_FALLBACK_RESULT.md)은 기존 분석기의 `unknown` 2개만 보완해 R4VM 채점을 **28 pass·2 accepted unknown → 30 pass**로 바꿨다. 보관된 Lua 9개를 그대로 합치면 **39 pass**다. VMT010 helper는 ELF 내부 명령을 따라 `X + 3`을 구했고, VMT007은 `X=0`/`X≠0` 두 경로를 확인했다. 초기 cutpoint 상태는 여전히 과거 추적 baseline이다.
 
 [호출 경계부터 시작하는 angr 실험](results/ANGR_EXECUTE_ABI_RESULT.md)은 이전 추적의 초기 레지스터·스택 스냅샷을 제거했다. ELF의 `execute` ABI에서 시작해 첫 fetch의 VM 상태를 확인하고 전체 R4VM 30개 입력을 다시 분석했다. **30 pass, 0 fail**이며 정상 결과 28개와 오류 2개의 PC·쓰기 목록까지 독립 정답과 일치한다. 함수·fetch·출력 경계와 출력 배치에는 여전히 이 ELF 전용 수동 힌트가 필요하다.
+
+[CALL/RET 실험](control-flow/RESULT.md)은 보관된 ELF를 바꾸지 않고 별도 VM에서 분기 뒤 중첩 호출, 같은 함수 재호출, 호출을 포함한 루프와 스택 오류를 측정했다. 5개 프로그램·12개 입력의 C 실행, angr 분석, P-code 경로 합성 결과가 각각 **12/12** 일치했다. 최종 식은 `X=0 → 10`, `X≠0 → X+5`, `X+14`, `X+21`이다. 전체 함수 `daasdmlkas` slice에는 여전히 경로 밖 연산과 미해결 메모리 의존이 남는다. 기존 Lua 핸들러 요약은 동일한 guarded relation 형식에만 옮겼으며 Lua CALL/RET를 새로 분석한 결과는 아니다.
 
 실제 C/Lua 실행기의 출력까지 다시 확인하려면 **Linux x86-64 또는 WSL2**에서 `python3 tools/run_fixtures.py`를 실행한다. 이는 실행 결과 정답 39/39를 확인하는 별도 단계다. Windows 네이티브/macOS에서는 ELF를 실행하는 이 단계가 지원되지 않는다.
 

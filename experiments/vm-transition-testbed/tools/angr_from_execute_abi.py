@@ -49,30 +49,40 @@ def initial_state(project, program, entry):
     return state, x
 
 
-def check_first_fetch(state, x, count):
+def check_first_fetch(state, x, count, slot_offset):
     """Check the fixture ABI's initialized loop state before exploring it."""
     expected = (("r10", count), ("r11", CODE_ADDRESS), ("rcx", 0))
     if any(not state.solver.is_true(getattr(state.regs, name) == value)
            for name, value in expected):
         raise ValueError("execute prologue did not establish the expected fetch state")
-    slot_zero = state.memory.load(state.regs.rsp, 8,
+    slot_zero = state.memory.load(state.regs.rsp + slot_offset, 8,
                                   endness=state.arch.memory_endness)
     if not state.solver.is_true(slot_zero == x):
         raise ValueError("execute prologue did not initialize VM slot zero from X")
 
 
-def explore(project, program, entry, output):
+def explore(project, program, entry, output, fetch_pc=FETCH_PC,
+            slot_offset=0, max_native_steps=MAX_NATIVE_STEPS,
+            first_fetch_states=None):
     state, x = initial_state(project, program, entry)
     active = [(state, ())]
     completed = []
     first_fetch_depth = None
     max_live = 1
-    for depth in range(MAX_NATIVE_STEPS):
+    for depth in range(max_native_steps):
         next_active = []
         for state, path in active:
-            if state.addr == FETCH_PC and first_fetch_depth is None:
-                check_first_fetch(state, x, program[5])
-                first_fetch_depth = depth
+            if state.addr == fetch_pc:
+                if first_fetch_depth is None:
+                    check_first_fetch(state, x, program[5], slot_offset)
+                    first_fetch_depth = depth
+                    if first_fetch_states is not None:
+                        first_fetch_states.append(state.copy())
+                if not state.solver.unique(state.regs.rcx):
+                    raise ValueError("symbolic VM PC at fetch")
+                state.globals["vm_fetch_trace"] = (
+                    state.globals.get("vm_fetch_trace", ()) +
+                    (state.solver.eval(state.regs.rcx),))
             if state.addr == output:
                 completed.append((state, path))
                 continue
@@ -135,9 +145,11 @@ def predict(project, completed, x, input_value):
     args = {name: eval_unique(state, getattr(state.regs, name), x, input_value)
             for name in ("rdi", "rsi", "rdx", "rcx", "r8", "r9")}
     status = image_string(project, args["rdi"])
+    helper = project.loader.main_object.get_symbol("opaque_add")
     evidence = {"native_instructions": len(path),
                 "path_constraints": len(state.solver.constraints),
-                "visited_helper": symbol_address(project, "opaque_add") in path}
+                "vm_fetch_trace": list(state.globals.get("vm_fetch_trace", ())),
+                "visited_helper": helper is not None and helper.rebased_addr in path}
     if args["r9"] > 64:
         raise ValueError("unsupported output ABI state")
     writes = []
@@ -161,45 +173,58 @@ def predict(project, completed, x, input_value):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--control-flow", action="store_true",
+                        help="analyze the separate CALL/RET fixture")
     parser.add_argument("--output", type=Path,
                         default=ROOT / "reports/angr-from-execute-abi.json")
     args = parser.parse_args()
     logging.getLogger("angr").setLevel(logging.CRITICAL)
-    project = angr.Project(str(BINARY), auto_load_libs=False)
+    if args.control_flow:
+        binary = ROOT / "build/r4vm_control"
+        manifest = ROOT / "control-flow/cases.json"
+        programs = ROOT / "control-flow/programs"
+        fetch_pc, slot_offset, max_steps = 0x40141D, 0x10, 2500
+    else:
+        binary, manifest, programs = BINARY, MANIFEST, PROGRAMS
+        fetch_pc, slot_offset, max_steps = FETCH_PC, 0, MAX_NATIVE_STEPS
+    project = angr.Project(str(binary), auto_load_libs=False)
     entry = symbol_address(project, "execute")
     output = symbol_address(project, "output")
-    cases = json.loads(MANIFEST.read_text())["cases"]
+    cases = json.loads(manifest.read_text())["cases"]
     results = []
     experiments = []
     for case in cases:
-        if case["engine"] != "r4vm":
+        if not args.control_flow and case["engine"] != "r4vm":
             continue
         name = case["id"]
-        program = (PROGRAMS / f"{name}.r4vm").read_bytes()
+        program = (programs / f"{name}.r4vm").read_bytes()
+        samples = (case["samples"] if args.control_flow
+                   else [sample["input"] for sample in case["samples"]])
         try:
-            completed, x, stats = explore(project, program, entry, output)
+            completed, x, stats = explore(project, program, entry, output,
+                                         fetch_pc, slot_offset, max_steps)
             experiments.append({"id": name, "program_sha256": sha256(program).hexdigest(),
                                 **stats})
-            for sample in case["samples"]:
-                value = int(sample["input"])
+            for sample in samples:
+                value = int(sample)
                 try:
                     prediction = predict(project, completed, x, value)
                 except ValueError as error:
                     prediction = {"status": "unknown", "reason": str(error)}
-                results.append({"id": name, "input": sample["input"], **prediction})
+                results.append({"id": name, "input": sample, **prediction})
         except (ValueError, KeyError, angr.errors.AngrError) as error:
             experiments.append({"id": name, "reason": str(error)})
-            results.extend({"id": name, "input": sample["input"],
+            results.extend({"id": name, "input": sample,
                             "status": "unknown", "reason": str(error)}
-                           for sample in case["samples"])
+                           for sample in samples)
     report = {"schema_version": 1,
               "analysis_kind": "bounded_angr_from_execute_call_abi",
               "initial_state": "execute call ABI; no recorded register or stack snapshot",
-              "hints": {"execute": hex(entry), "first_fetch": hex(FETCH_PC),
+              "hints": {"execute": hex(entry), "first_fetch": hex(fetch_pc),
                         "output": hex(output), "code_address": hex(CODE_ADDRESS)},
-              "binary_sha256": sha256(BINARY.read_bytes()).hexdigest(),
+              "binary_sha256": sha256(binary.read_bytes()).hexdigest(),
               "native_execution_or_ptrace": False,
-              "limits": {"max_native_steps": MAX_NATIVE_STEPS,
+              "limits": {"max_native_steps": max_steps,
                          "max_live_states": MAX_LIVE_STATES,
                          "max_total_states": MAX_TOTAL_STATES},
               "experiments": experiments, "results": results}

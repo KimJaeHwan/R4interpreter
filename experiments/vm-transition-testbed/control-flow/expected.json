@@ -1,0 +1,543 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "CFT001",
+      "program_sha256": "f07a69dc316743fadabf4fcb465178dc501780492a8c90c4766e217873857bc3",
+      "samples": [
+        {
+          "input": "0",
+          "expected": {
+            "status": "ok",
+            "result": "10",
+            "pc": 8,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "5",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "7",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "10",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            10,
+            7
+          ]
+        },
+        {
+          "input": "9",
+          "expected": {
+            "status": "ok",
+            "result": "14",
+            "pc": 8,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "11",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "14",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            8,
+            9,
+            11,
+            12,
+            10,
+            3,
+            7
+          ]
+        },
+        {
+          "input": "-1",
+          "expected": {
+            "status": "ok",
+            "result": "4",
+            "pc": 8,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "4",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            8,
+            9,
+            11,
+            12,
+            10,
+            3,
+            7
+          ]
+        },
+        {
+          "input": "9223372036854775807",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775804",
+            "pc": 8,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9223372036854775807",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "-9223372036854775807",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "-9223372036854775804",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            8,
+            9,
+            11,
+            12,
+            10,
+            3,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CFT002",
+      "program_sha256": "8d7ef436de691ee9e94345d8600a1e834859966bb9e6cc79cb192cc18dd93c07",
+      "samples": [
+        {
+          "input": "0",
+          "expected": {
+            "status": "ok",
+            "result": "14",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "7",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "7",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "14",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            5,
+            6,
+            2,
+            3,
+            5,
+            6,
+            4
+          ]
+        },
+        {
+          "input": "9",
+          "expected": {
+            "status": "ok",
+            "result": "23",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "16",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "16",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "23",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            5,
+            6,
+            2,
+            3,
+            5,
+            6,
+            4
+          ]
+        },
+        {
+          "input": "-1",
+          "expected": {
+            "status": "ok",
+            "result": "13",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "6",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "6",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "13",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            5,
+            6,
+            2,
+            3,
+            5,
+            6,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CFT003",
+      "program_sha256": "5d515b3a2dadb5925fce84fba73022ea71748fd78c53111da7e6a610db6b8f5e",
+      "samples": [
+        {
+          "input": "0",
+          "expected": {
+            "status": "ok",
+            "result": "21",
+            "pc": 6,
+            "writes": [
+              {
+                "slot": 2,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "7",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "14",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "21",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "input": "9",
+          "expected": {
+            "status": "ok",
+            "result": "30",
+            "pc": 6,
+            "writes": [
+              {
+                "slot": 2,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "16",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "23",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "30",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "input": "-1",
+          "expected": {
+            "status": "ok",
+            "result": "20",
+            "pc": 6,
+            "writes": [
+              {
+                "slot": 2,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "6",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "13",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "20",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CFT004",
+      "program_sha256": "5ba7184f665de6f73afeeee5b9fafa23caf9fe8a612ef78e9c8864f16b10e783",
+      "samples": [
+        {
+          "input": "9",
+          "expected": {
+            "status": "call_underflow",
+            "result": null,
+            "pc": 1,
+            "writes": []
+          },
+          "fetch_trace": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CFT005",
+      "program_sha256": "e89e00621bb91b5c4ef62985dffe2dd0a81840b1d63cc9204e7a1ede77d6af7b",
+      "samples": [
+        {
+          "input": "9",
+          "expected": {
+            "status": "call_overflow",
+            "result": null,
+            "pc": 1,
+            "writes": []
+          },
+          "fetch_trace": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

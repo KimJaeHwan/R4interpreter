@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "format": "guarded_input_relation",
+  "r4vm_pcode_projection_sha256": "9588547b49a211b0412012fbc7fe3fc4630b81eebecb845b196d95a8a7963122",
+  "archived_lua_projection_sha256": "7a4af0eeeadfabac3dada25c472eac437e8c470c4e8ebce932b0afadb8820aee",
+  "entries": [
+    {
+      "engine": "r4vm_control",
+      "source": "CFT001",
+      "scope": "program_output",
+      "input": "X:BV64",
+      "program_sha256": "f07a69dc316743fadabf4fcb465178dc501780492a8c90c4766e217873857bc3",
+      "paths": [
+        {
+          "guard": "X == 0",
+          "guard_proven": true,
+          "status": "ok",
+          "value": "10",
+          "output_pc": 8,
+          "vm_fetch_trace": [
+            0,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            10,
+            7
+          ]
+        },
+        {
+          "guard": "X != 0",
+          "guard_proven": true,
+          "status": "ok",
+          "value": "X + 5",
+          "output_pc": 8,
+          "vm_fetch_trace": [
+            0,
+            1,
+            2,
+            8,
+            9,
+            11,
+            12,
+            10,
+            3,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "r4vm_control",
+      "source": "CFT002",
+      "scope": "program_output",
+      "input": "X:BV64",
+      "program_sha256": "8d7ef436de691ee9e94345d8600a1e834859966bb9e6cc79cb192cc18dd93c07",
+      "paths": [
+        {
+          "guard": "true",
+          "guard_proven": true,
+          "status": "ok",
+          "value": "X + 14",
+          "output_pc": 5,
+          "vm_fetch_trace": [
+            0,
+            1,
+            5,
+            6,
+            2,
+            3,
+            5,
+            6,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "r4vm_control",
+      "source": "CFT003",
+      "scope": "program_output",
+      "input": "X:BV64",
+      "program_sha256": "5d515b3a2dadb5925fce84fba73022ea71748fd78c53111da7e6a610db6b8f5e",
+      "paths": [
+        {
+          "guard": "true",
+          "guard_proven": true,
+          "status": "ok",
+          "value": "X + 21",
+          "output_pc": 6,
+          "vm_fetch_trace": [
+            0,
+            1,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            2,
+            7,
+            8,
+            3,
+            4,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "r4vm_control",
+      "source": "CFT004",
+      "scope": "program_output",
+      "input": "X:BV64",
+      "program_sha256": "5ba7184f665de6f73afeeee5b9fafa23caf9fe8a612ef78e9c8864f16b10e783",
+      "paths": [
+        {
+          "guard": "true",
+          "guard_proven": true,
+          "status": "call_underflow",
+          "value": null,
+          "output_pc": 1,
+          "vm_fetch_trace": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "r4vm_control",
+      "source": "CFT005",
+      "scope": "program_output",
+      "input": "X:BV64",
+      "program_sha256": "e89e00621bb91b5c4ef62985dffe2dd0a81840b1d63cc9204e7a1ede77d6af7b",
+      "paths": [
+        {
+          "guard": "true",
+          "guard_proven": true,
+          "status": "call_overflow",
+          "value": null,
+          "output_pc": 1,
+          "vm_fetch_trace": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "lua_5_4_fixture",
+      "source": "plus7",
+      "scope": "handler_transition",
+      "input": "X:BV64",
+      "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+      "paths": [
+        {
+          "guard": "true",
+          "guard_proven": false,
+          "guard_smt": "true",
+          "status": "value_written",
+          "value": "X + 7",
+          "ordered_effect_count": 2
+        }
+      ]
+    },
+    {
+      "engine": "lua_5_4_fixture",
+      "source": "plus11",
+      "scope": "handler_transition",
+      "input": "X:BV64",
+      "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+      "paths": [
+        {
+          "guard": "true",
+          "guard_proven": false,
+          "guard_smt": "true",
+          "status": "value_written",
+          "value": "X + 11",
+          "ordered_effect_count": 2
+        }
+      ]
+    },
+    {
+      "engine": "lua_5_4_fixture",
+      "source": "two_adds",
+      "scope": "two_handler_bridge",
+      "input": "X:BV64",
+      "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+      "paths": [
+        {
+          "guard": "true",
+          "guard_proven": false,
+          "guard_smt": "true",
+          "status": "value_written",
+          "value": "X + 18"
+        }
+      ]
+    }
+  ],
+  "limit": "Lua relations are archived handler/bridge projections; their guards were not proved complete, and no new Lua function-call or full-script path was analyzed"
+}

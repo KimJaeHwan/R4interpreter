@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "method": "whole-function daasdmlkas normalized SSA/backward slice",
+  "bundle_sha256": "08b7c600214d3b5185f6a79e1cdbef3633575fb0e13d6c0ae811c337e5987e4d",
+  "graph": {
+    "nodes": 2849,
+    "edges": 5857,
+    "unresolved_writes": 11
+  },
+  "cases": [
+    {
+      "id": "CFT001",
+      "paths": [
+        {
+          "formula": "10",
+          "roots": [
+            "op:1b1:4016bf:4:STORE"
+          ],
+          "selected_path_operations": 761,
+          "repeated_vm_pcs": 0,
+          "modes": {
+            "data_only": {
+              "slice_operations": 200,
+              "operations_on_selected_path": 107,
+              "operations_outside_selected_path": 93,
+              "unresolved_reads": 29,
+              "complete": false
+            },
+            "data_and_control": {
+              "slice_operations": 362,
+              "operations_on_selected_path": 236,
+              "operations_outside_selected_path": 126,
+              "unresolved_reads": 44,
+              "complete": false
+            }
+          }
+        },
+        {
+          "formula": "X + 5",
+          "roots": [
+            "op:1b1:4016bf:4:STORE"
+          ],
+          "selected_path_operations": 801,
+          "repeated_vm_pcs": 0,
+          "modes": {
+            "data_only": {
+              "slice_operations": 200,
+              "operations_on_selected_path": 109,
+              "operations_outside_selected_path": 91,
+              "unresolved_reads": 29,
+              "complete": false
+            },
+            "data_and_control": {
+              "slice_operations": 362,
+              "operations_on_selected_path": 243,
+              "operations_outside_selected_path": 119,
+              "unresolved_reads": 44,
+              "complete": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "CFT002",
+      "paths": [
+        {
+          "formula": "X + 14",
+          "roots": [
+            "op:1b1:4016bf:4:STORE"
+          ],
+          "selected_path_operations": 657,
+          "repeated_vm_pcs": 2,
+          "modes": {
+            "data_only": {
+              "slice_operations": 200,
+              "operations_on_selected_path": 107,
+              "operations_outside_selected_path": 93,
+              "unresolved_reads": 29,
+              "complete": false
+            },
+            "data_and_control": {
+              "slice_operations": 362,
+              "operations_on_selected_path": 204,
+              "operations_outside_selected_path": 158,
+              "unresolved_reads": 44,
+              "complete": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "CFT003",
+      "paths": [
+        {
+          "formula": "X + 21",
+          "roots": [
+            "op:1b1:4016bf:4:STORE"
+          ],
+          "selected_path_operations": 884,
+          "repeated_vm_pcs": 10,
+          "modes": {
+            "data_only": {
+              "slice_operations": 200,
+              "operations_on_selected_path": 127,
+              "operations_outside_selected_path": 73,
+              "unresolved_reads": 29,
+              "complete": false
+            },
+            "data_and_control": {
+              "slice_operations": 362,
+              "operations_on_selected_path": 266,
+              "operations_outside_selected_path": 96,
+              "unresolved_reads": 44,
+              "complete": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "CFT004",
+      "paths": [
+        {
+          "formula": null,
+          "roots": [],
+          "selected_path_operations": 127,
+          "repeated_vm_pcs": 0,
+          "modes": {
+            "data_only": {
+              "slice_operations": 0,
+              "operations_on_selected_path": 0,
+              "operations_outside_selected_path": 0,
+              "unresolved_reads": 0,
+              "complete": false
+            },
+            "data_and_control": {
+              "slice_operations": 0,
+              "operations_on_selected_path": 0,
+              "operations_outside_selected_path": 0,
+              "unresolved_reads": 0,
+              "complete": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "CFT005",
+      "paths": [
+        {
+          "formula": null,
+          "roots": [],
+          "selected_path_operations": 146,
+          "repeated_vm_pcs": 4,
+          "modes": {
+            "data_only": {
+              "slice_operations": 0,
+              "operations_on_selected_path": 0,
+              "operations_outside_selected_path": 0,
+              "unresolved_reads": 0,
+              "complete": false
+            },
+            "data_and_control": {
+              "slice_operations": 0,
+              "operations_on_selected_path": 0,
+              "operations_outside_selected_path": 0,
+              "unresolved_reads": 0,
+              "complete": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limit": "whole-function slice mixes paths and repeated VM iterations; it is diagnostic, not a path-specific output proof"
+}
