@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "lifter": "Ghidra SLEIGH x86:LE:64:default / pypcode",
+  "shared_statement": "X=0 -> 10; 5<=X<=251 -> X+5",
+  "status": "conditional native-path proof through caller dispatch",
+  "scope": "fixed CPython/Node ELFs, fixture bytecode, initial VM state, Python cached nonnegative PyLong or V8 Smi, observed path bridges",
+  "cases": [
+    {
+      "engine": "python",
+      "witness": 0,
+      "native_steps": 964,
+      "output": 10,
+      "branch_bytecode_offset": 14,
+      "call_argument": 5,
+      "proof_domain": "X = 0",
+      "cache_sha256": "0848e8ec3eac0aa064b111fbe4d5b096e1ae2a4cc286f797d51b239bbb0d9a6e",
+      "hardware_watches": {
+        "child_parameter": {
+          "watched_steps": 92,
+          "address": "0x7fef25c94240",
+          "read_pc": "0x5612bf"
+        },
+        "input_pyint_digit": {
+          "watched_steps": 870,
+          "address": "0xa42ac8",
+          "read_pc": null
+        },
+        "input_pyint_tag": {
+          "watched_steps": 870,
+          "address": "0xa42ac0",
+          "read_pc": null
+        },
+        "parent_call_argument": {
+          "watched_steps": 161,
+          "address": "0x7fef25c941f0",
+          "read_pc": "0x56036c"
+        },
+        "parent_local": {
+          "watched_steps": 870,
+          "address": "0x7fef25c941d8",
+          "read_pc": null
+        }
+      },
+      "hardware_read_events": [
+        {
+          "step": 536,
+          "pc": "0x56036c",
+          "label": "parent_call_argument"
+        },
+        {
+          "step": 630,
+          "pc": "0x5612bf",
+          "label": "child_parameter"
+        }
+      ],
+      "gap_noninterference": null,
+      "segments": {
+        "branch": {
+          "native_steps": 210,
+          "pcode_operations": 959,
+          "guard_count": 128
+        },
+        "parent_argument": {
+          "native_steps": 18,
+          "pcode_operations": 63,
+          "guard_count": 10
+        },
+        "call_bridge": {
+          "native_steps": 2,
+          "pcode_operations": 4,
+          "guard_count": 2
+        },
+        "child_operands": {
+          "native_steps": 34,
+          "pcode_operations": 120,
+          "guard_count": 18
+        },
+        "addition": {
+          "native_steps": 116,
+          "pcode_operations": 626,
+          "guard_count": 61
+        },
+        "child_return_bridge": {
+          "native_steps": 94,
+          "pcode_operations": 410,
+          "guard_count": 70
+        },
+        "outer_return_bridge": {
+          "native_steps": 94,
+          "pcode_operations": 410,
+          "guard_count": 70
+        }
+      },
+      "result": "conditional end-to-end proof through caller dispatch",
+      "trace_sha256": "ae45346a368c4e0ba44da5ffb1e9d8a2a861a8154c7dcf36d95f0f941c3ba36d"
+    },
+    {
+      "engine": "javascript",
+      "witness": 0,
+      "native_steps": 26255,
+      "output": 10,
+      "branch_bytecode_offset": 6,
+      "return_bytecode_offset": 16,
+      "call_argument": 5,
+      "proof_domain": "X = 0",
+      "hardware_watches": {
+        "child_parameter": {
+          "watched_steps": 26032,
+          "address": "0x7ffef52ba138",
+          "read_pc": "0x1ba8d09"
+        },
+        "parent_parameter": {
+          "watched_steps": 26205,
+          "address": "0x7ffef52ba198",
+          "read_pc": null
+        }
+      },
+      "hardware_read_events": [
+        {
+          "step": 11,
+          "pc": "0x1bbff8d",
+          "label": "parent_parameter"
+        },
+        {
+          "step": 26125,
+          "pc": "0x1ba8d09",
+          "label": "child_parameter"
+        }
+      ],
+      "gap_noninterference": null,
+      "segments": {
+        "branch": {
+          "native_steps": 36,
+          "pcode_operations": 142,
+          "guard_count": 25
+        },
+        "call_argument": {
+          "native_steps": 93,
+          "pcode_operations": 431,
+          "guard_count": 64
+        },
+        "child_load": {
+          "native_steps": 8,
+          "pcode_operations": 24,
+          "guard_count": 5
+        },
+        "addition": {
+          "native_steps": 23,
+          "pcode_operations": 122,
+          "guard_count": 13
+        },
+        "child_return_bridge": {
+          "native_steps": 51,
+          "pcode_operations": 222,
+          "guard_count": 39
+        },
+        "outer_return_bridge": {
+          "native_steps": 50,
+          "pcode_operations": 218,
+          "guard_count": 37
+        }
+      },
+      "result": "conditional end-to-end proof through caller dispatch",
+      "trace_sha256": "78a158407787e3e9351153545bd67d823547a2536db757a04a6c5ee5c03e82ee"
+    },
+    {
+      "engine": "python",
+      "witness": 9,
+      "native_steps": 987,
+      "output": 14,
+      "branch_bytecode_offset": 36,
+      "call_argument": "X",
+      "proof_domain": "5 <= X <= 251",
+      "cache_sha256": "0848e8ec3eac0aa064b111fbe4d5b096e1ae2a4cc286f797d51b239bbb0d9a6e",
+      "hardware_watches": {
+        "child_parameter": {
+          "watched_steps": 92,
+          "address": "0x7f982e09d240",
+          "read_pc": "0x5612bf"
+        },
+        "input_pyint_digit": {
+          "watched_steps": 893,
+          "address": "0xa42be8",
+          "read_pc": null
+        },
+        "input_pyint_tag": {
+          "watched_steps": 893,
+          "address": "0xa42be0",
+          "read_pc": null
+        },
+        "parent_call_argument": {
+          "watched_steps": 161,
+          "address": "0x7f982e09d1f0",
+          "read_pc": "0x56036c"
+        },
+        "parent_local": {
+          "watched_steps": 893,
+          "address": "0x7f982e09d1d8",
+          "read_pc": null
+        }
+      },
+      "hardware_read_events": [
+        {
+          "step": 134,
+          "pc": "0x5a8256",
+          "label": "input_pyint_tag"
+        },
+        {
+          "step": 149,
+          "pc": "0x5a8289",
+          "label": "input_pyint_digit"
+        },
+        {
+          "step": 559,
+          "pc": "0x56036c",
+          "label": "parent_call_argument"
+        },
+        {
+          "step": 653,
+          "pc": "0x5612bf",
+          "label": "child_parameter"
+        },
+        {
+          "step": 744,
+          "pc": "0x5e973f",
+          "label": "input_pyint_tag"
+        },
+        {
+          "step": 755,
+          "pc": "0x5e9769",
+          "label": "input_pyint_digit"
+        }
+      ],
+      "gap_noninterference": {
+        "register": "rsi",
+        "kill_pc": "0x564fd5",
+        "instructions_without_read": 32
+      },
+      "segments": {
+        "branch": {
+          "native_steps": 235,
+          "pcode_operations": 1094,
+          "guard_count": 135
+        },
+        "parent_argument": {
+          "native_steps": 16,
+          "pcode_operations": 57,
+          "guard_count": 8
+        },
+        "call_bridge": {
+          "native_steps": 2,
+          "pcode_operations": 4,
+          "guard_count": 2
+        },
+        "child_operands": {
+          "native_steps": 34,
+          "pcode_operations": 120,
+          "guard_count": 18
+        },
+        "addition": {
+          "native_steps": 116,
+          "pcode_operations": 626,
+          "guard_count": 61
+        },
+        "child_return_bridge": {
+          "native_steps": 94,
+          "pcode_operations": 410,
+          "guard_count": 70
+        },
+        "outer_return_bridge": {
+          "native_steps": 94,
+          "pcode_operations": 410,
+          "guard_count": 70
+        }
+      },
+      "result": "conditional end-to-end proof through caller dispatch",
+      "trace_sha256": "fc619f25c7557424cdfe37e220863ad3c970db7ac621bb04a13e3a1bffcd8970"
+    },
+    {
+      "engine": "javascript",
+      "witness": 9,
+      "native_steps": 25104,
+      "output": 14,
+      "branch_bytecode_offset": 17,
+      "return_bytecode_offset": 24,
+      "call_argument": "X",
+      "proof_domain": "5 <= X <= 251",
+      "hardware_watches": {
+        "child_parameter": {
+          "watched_steps": 24892,
+          "address": "0x7ffceb226738",
+          "read_pc": "0x1ba8d09"
+        },
+        "parent_parameter": {
+          "watched_steps": 25054,
+          "address": "0x7ffceb226798",
+          "read_pc": null
+        }
+      },
+      "hardware_read_events": [
+        {
+          "step": 11,
+          "pc": "0x1bbff8d",
+          "label": "parent_parameter"
+        },
+        {
+          "step": 74,
+          "pc": "0x1bbdb12",
+          "label": "parent_parameter"
+        },
+        {
+          "step": 24974,
+          "pc": "0x1ba8d09",
+          "label": "child_parameter"
+        }
+      ],
+      "gap_noninterference": {
+        "register": "rbx",
+        "kill_pc": "0x19ff01a",
+        "instructions_without_read": 19
+      },
+      "segments": {
+        "branch": {
+          "native_steps": 39,
+          "pcode_operations": 165,
+          "guard_count": 27
+        },
+        "call_argument": {
+          "native_steps": 82,
+          "pcode_operations": 363,
+          "guard_count": 59
+        },
+        "child_load": {
+          "native_steps": 8,
+          "pcode_operations": 24,
+          "guard_count": 5
+        },
+        "addition": {
+          "native_steps": 23,
+          "pcode_operations": 122,
+          "guard_count": 13
+        },
+        "child_return_bridge": {
+          "native_steps": 51,
+          "pcode_operations": 222,
+          "guard_count": 39
+        },
+        "outer_return_bridge": {
+          "native_steps": 50,
+          "pcode_operations": 218,
+          "guard_count": 37
+        }
+      },
+      "result": "conditional end-to-end proof through caller dispatch",
+      "trace_sha256": "6b5342d767002a310cd440ab28548e66759bee1fa7c176c0ec67cdb3cc6e2008"
+    }
+  ]
+}

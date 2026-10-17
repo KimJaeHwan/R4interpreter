@@ -269,9 +269,19 @@ class PathReplay:
                 self.guards.append({"pc": hex(self.current_pc), "kind": "BRANCH",
                                     "target": hex(target), "condition": z3.BoolVal(True)})
             else:
-                taken = self.current_row["next_pc"] == target
+                operations = self.instructions[self.current_pc]["operations"]
+                # CMOV-style SLEIGH P-code may branch to the next native PC
+                # from the middle of one instruction, skipping its final COPY.
+                internal_skip = (self.current_row.get("bytes") is not None and
+                                 self.current_ordinal + 1 < len(operations) and
+                                 target == self.current_pc +
+                                 len(self.current_row["bytes"]) // 2)
+                taken = (args[1].concrete != 0 if internal_skip else
+                         self.current_row["next_pc"] == target)
                 if taken != (args[1].concrete != 0):
                     raise AssertionError(f"branch disagrees at {self.current_pc:#x}")
+                if internal_skip and taken:
+                    self.skip_remaining = True
                 condition = args[1].symbolic != bv(0, args[1].bits)
                 self.guards.append({"pc": hex(self.current_pc), "kind": "CBRANCH",
                                     "target": hex(self.current_row["next_pc"]),
@@ -377,11 +387,15 @@ class PathReplay:
             self.current_row, self.current_pc = row, pc
             self.ip = Dual(bv(pc, 64), pc)
             self.unique = {}
+            self.skip_remaining = False
             self.touched_regs, self.touched_flags = set(), set()
             self.written_this_step = set()
             read_start, effect_start = len(self.reads), len(self.effects)
             for ordinal, operation in enumerate(self.instructions[pc]["operations"]):
+                if self.skip_remaining:
+                    break
                 self.current_ordinal = ordinal
+                self.current_opcode = operation["opcode"]
                 result = self.evaluate(operation["opcode"], operation["inputs"], operation["output"])
                 if operation["output_present"]:
                     self.write(operation["output"], result)

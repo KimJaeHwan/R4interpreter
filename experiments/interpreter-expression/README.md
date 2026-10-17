@@ -31,7 +31,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [Lua 분기·함수 호출 실험](LUA_BRANCH_CALL_RESULT.md)은 호출 전후 두 바이트코드 코드 영역을 실제 추적으로 연결했다. 네이티브 P-code 재생으로 VM 입력의 분기·호출·덧셈 결과와 Lua 반환 경로를 연결했다. [Python·JavaScript 적용 직전 정리](LUA_PRE_PYTHON_JS_READINESS.md)는 여섯 입력의 조건부 증명, 다른 세 Lua 바이트코드의 22개 차등 검증, 새 경로의 `unknown` 판정을 구분한다.
 
-[Python·JavaScript 첫 교차 결과](PYTHON_JS_FIRST_RESULT.md)는 CPython 3.13.5와 Node 24.19.0 Ignition의 실제 bytecode→native dispatch 대응, 공통 값 sort 형식, 14개 출력 검증을 기록한다. Lua의 입력→출력 P-code 증명과 달리 새 두 언어의 계산식은 아직 표본 기반 후보로 표시한다.
+[Python·JavaScript 첫 교차 결과](PYTHON_JS_FIRST_RESULT.md)는 CPython 3.13.5와 Node 24.19.0 Ignition의 실제 bytecode→native dispatch 대응, 공통 값 sort 형식, 14개 출력 검증을 기록한다. 후속 [전체 함수 경로 결과](PYTHON_JS_FULL_FLOW_RESULT.md)는 제한된 VM 입력 상태에서 분기·호출·덧셈·반환을 P-code와 하드웨어 감시점으로 연결한다. 기존 portable 적용기의 새 CLI 입력은 계속 `unknown`으로 둔다.
 
 ## 파일
 
@@ -47,6 +47,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `logic_projection.py`, `project_lua_handler_logic.py`, `project_lua_two_adds_logic.py`: 언어에 의존하지 않는 식·효과 투영기와 Lua 경계 adapter. [공통 축약 결과](../vm-transition-testbed/results/LOGIC_PROJECTION_RESULT.md)에 실험 결과를 기록했다.
 - `prove_lua_full_flow.py`, `export_lua_portability_gate.py`: Lua 분기 경로의 입력·VM·반환 연결과 다른 바이트코드의 검증 등급을 공통 형식으로 내보낸다. [Lua 단계 정리](LUA_PRE_PYTHON_JS_READINESS.md)에 범위와 재현법이 있다.
 - `python_branch_fixture.py`, `js_branch_fixture.js`, `trace_cross_native.py`, `cross_dispatch_pcode.py`, `collect_cross_language.py`, `portable_guard_eval.py`: 두 새 인터프리터의 경계 추적·P-code·공통 후보 적용기. [교차 결과](PYTHON_JS_FIRST_RESULT.md)에 재현법과 한계를 기록했다.
+- `trace_cross_full_flow.py`, `prove_cross_full_flow.py`: Python·JavaScript의 함수 입력부터 호출자 복귀까지의 조건부 P-code 연결과 하드웨어 인수 감시. [전체 함수 경로 결과](PYTHON_JS_FULL_FLOW_RESULT.md)에 적용 범위를 기록했다.
 
 ## 재현
 
