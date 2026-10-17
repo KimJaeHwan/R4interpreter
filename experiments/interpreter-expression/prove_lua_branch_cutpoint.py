@@ -95,7 +95,7 @@ def prove_one(csv_path, expected_exit, bundle_instructions, y):
                           for offset, name in REGISTER_OFFSETS.items()},
         flag_symbols={offset: z3.BitVecVal((entry["eflags"] >> bit) & 1, 8)
                       for offset, bit in FLAG_OFFSETS.items()},
-        memory_symbol=memory)
+        memory_symbol=memory, address_guards=True)
     replay.run()
     if rows[-1]["next_pc"] != expected_exit:
         raise ValueError("native branch exit changed")

@@ -40,10 +40,10 @@ def load_path(path):
     return rows, records[end]
 
 
-def load_instructions(wanted):
+def load_instructions(wanted, bundle=BUNDLE):
     wanted = set(wanted)
     found = {}
-    with tarfile.open(BUNDLE, "r:gz") as archive:
+    with tarfile.open(bundle, "r:gz") as archive:
         for member in archive:
             if "/function-" not in member.name or not member.name.endswith(".json"):
                 continue
@@ -135,7 +135,7 @@ def prove_one(label, expected, y, argument):
                           for offset, name in REGISTER_OFFSETS.items()},
         flag_symbols={offset: z3.BitVecVal((registers["eflags"] >> bit) & 1, 8)
                       for offset, bit in FLAG_OFFSETS.items()},
-        memory_symbol=memory)
+        memory_symbol=memory, address_guards=True)
     replay.run()
     callee_base = callee["entry_memory"]["base"]
     callee_observed = int.from_bytes(bytes.fromhex(callee["entry_memory"]["bytes_hex"])[:8], "little")

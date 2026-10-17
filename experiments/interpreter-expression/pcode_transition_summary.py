@@ -80,12 +80,13 @@ def load_path(trace_path):
 
 class PathReplay:
     def __init__(self, entry, rows, instructions, register_symbols=None,
-                 flag_symbols=None, memory_symbol=None):
+                 flag_symbols=None, memory_symbol=None, address_guards=False):
         self.rows = rows
         self.instructions = instructions
         self.word = z3.BitVec("W", 32)
         self.memory_initial = z3.Array("M0", z3.BitVecSort(64), z3.BitVecSort(8))
         self.memory = memory_symbol if memory_symbol is not None else self.memory_initial
+        self.address_guards = address_guards
         self.memory_concrete = {}
         self.regs = {}
         self.regs_concrete = {}
@@ -184,6 +185,10 @@ class PathReplay:
 
     def load(self, address, size):
         concrete_address = address.concrete & MASK64
+        if self.address_guards:
+            self.guards.append({"pc": hex(self.current_pc), "kind": "READ_ADDRESS",
+                                "target": hex(concrete_address),
+                                "condition": address.symbolic == bv(concrete_address, 64)})
         observed = self.observed_memory(concrete_address, size)
         before = observed["before"]
         if before is None:
@@ -211,6 +216,10 @@ class PathReplay:
     def store(self, address, value):
         size = value.bits // 8
         concrete_address = address.concrete & MASK64
+        if self.address_guards:
+            self.guards.append({"pc": hex(self.current_pc), "kind": "WRITE_ADDRESS",
+                                "target": hex(concrete_address),
+                                "condition": address.symbolic == bv(concrete_address, 64)})
         observed = self.observed_memory(concrete_address, size)
         if observed["after"] != value.concrete:
             raise AssertionError(f"store disagrees at {self.current_pc:#x}")

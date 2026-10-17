@@ -101,7 +101,7 @@
   "local_vm_boundary": {
     "input": "X_local:BV64",
     "entry_native_pc": "0x416ea1",
-    "evidence_sha256": "9bd23566abec35f2ebe28624392eedd8757ebdb02008933c594ab99db52068aa",
+    "evidence_sha256": "c3b1b073015110403c6c878aa735661b7e76dc71fe2fb37dcf6dd6211601cde3",
     "paths": [
       {
         "guard": "X_local == 0",
@@ -115,6 +115,37 @@
         "callee_input": "X_local",
         "callee_input_proven": true
       }
+    ]
+  },
+  "conditional_native_result": {
+    "scope": "recorded native paths with fixed non-input entry state",
+    "input": "X:BV64 at run_lua_chunk RSI after successful parsing",
+    "output": "printf second argument as BV64",
+    "cases": [
+      {
+        "guard": "X == 0",
+        "value": "10"
+      },
+      {
+        "guard": "X != 0",
+        "value": "(X + 5) mod 2^64"
+      }
+    ],
+    "proof_status": "proved_under_preconditions",
+    "evidence_sha256": "3046094d57f9f30057ca91120cb3251b73a6c58ac76340cb0c7d865daed9090f",
+    "witness_inputs": [
+      "0",
+      "9",
+      "1",
+      "-1",
+      "9223372036854775807",
+      "-9223372036854775808"
+    ],
+    "assumptions": [
+      "x86-64 SysV ABI preserves RBP across luaL_newstate",
+      "strtoll successfully parsed a signed 64-bit integer",
+      "long interval slot preservation is checked by hardware write watchpoints for the six witnesses, but is not universally proved for unobserved paths",
+      "other non-input registers, flags and first-read memory are fixed to each path witness"
     ]
   },
   "paths": [
@@ -145,5 +176,5 @@
       ]
     }
   ],
-  "limits": "The local VM source-to-callee relation and arithmetic handler reduction are conditional on their captured entry states. CLI X to X_local and final return composition are not proved for all X."
+  "limits": "The native input-to-printf relation is proved for recorded paths under fixed non-input states, SysV ABI and bounded memory-write audit assumptions. Complete path admission, unmodeled writes, exceptional exits and other bytecode remain unknown."
 }

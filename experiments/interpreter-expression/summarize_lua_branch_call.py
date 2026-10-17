@@ -1,7 +1,7 @@
 """Assemble a guarded Lua branch/call observation from native and P-code evidence.
 
-The Lua source is not read here. Full-script guards remain candidates; local
-branch, call-argument and arithmetic reductions have separate P-code proofs.
+The Lua source is not read here. Full-script guards remain conditional; a
+single-trace P-code proof now links each recorded native input to printf.
 """
 from __future__ import annotations
 
@@ -79,6 +79,20 @@ def main():
            path["branch_operand_equivalence"] != "unsat" or
            path["callee_input_equivalence"] != "unsat" for path in local["paths"]):
         raise ValueError("local VM boundary proof missing")
+    full_path = ROOT / "lua_branch_full_flow.json"
+    full = json.loads(full_path.read_text())
+    if full["binary_sha256"] != sha256(binary.read_bytes()).hexdigest() or \
+            full["bytecode_sha256"] != sha256(bytecode.read_bytes()).hexdigest() or \
+            not full["conditional_native_result_proved_under_assumptions"]:
+        raise ValueError("conditional native result proof missing or stale")
+    if {path["path"] for path in full["paths"]} != {"x0", "x9", "one", "minus1", "max", "min"}:
+        raise ValueError("native result proof lacks required branch and boundary witnesses")
+    for path in full["paths"]:
+        if path["vm_path"]["guard_equivalence"] != "unsat" or \
+                path["vm_path"]["payload_equivalence"] != "unsat" or \
+                path["vm_path"]["observed_address_guard_equivalence"] != "unsat" or \
+                not path["return_suffix"]["native_stack_to_printf_argument_pcode_proved"]:
+            raise ValueError("native end-to-end case is not proved under its assumptions")
     report = {"schema_version": 1, "format": "guarded_input_relation",
               "engine": "lua_5_4_fixture", "source": "branch_and_called_lua_function",
               "scope": "observed_full_script_paths", "input": "X:BV64",
@@ -91,6 +105,16 @@ def main():
                   "paths": [{"guard": path["guard"], "guard_proven": True,
                              "callee_input": path["callee_input"], "callee_input_proven": True}
                             for path in local["paths"]]},
+              "conditional_native_result": {
+                  "scope": "recorded native paths with fixed non-input entry state",
+                  "input": "X:BV64 at run_lua_chunk RSI after successful parsing",
+                  "output": "printf second argument as BV64",
+                  "cases": [{"guard": "X == 0", "value": "10"},
+                            {"guard": "X != 0", "value": "(X + 5) mod 2^64"}],
+                  "proof_status": "proved_under_preconditions",
+                  "evidence_sha256": sha256(full_path.read_bytes()).hexdigest(),
+                  "witness_inputs": [path["witness_input"] for path in full["paths"]],
+                  "assumptions": full["assumptions"]},
               "paths": [
                   {"guard": "X == 0", "guard_proven": False,
                    "status": "observed_return", "value": "10", "value_proven": False,
@@ -100,11 +124,12 @@ def main():
                    "status": "observed_return", "value": "X + 5", "value_proven": False,
                    "handler_value": "callee_input + 5", "handler_value_proven": True,
                    "observed_inputs": [row["input"] for row in nonzero]}],
-              "limits": "The local VM source-to-callee relation and arithmetic handler reduction are conditional on their captured entry states. CLI X to X_local and final return composition are not proved for all X."}
+              "limits": "The native input-to-printf relation is proved for recorded paths under fixed non-input states, SysV ABI and bounded memory-write audit assumptions. Complete path admission, unmodeled writes, exceptional exits and other bytecode remain unknown."}
     (ROOT / "lua_branch_call_relation.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({"samples": len(records), "observed_paths": 2,
                       "local_vm_boundary_proved": True,
-                      "callee_value_proved": True, "full_script_guard_proved": False}))
+                      "conditional_native_result_proved": True,
+                      "callee_value_proved": True, "unconditional_full_script_proved": False}))
 
 
 if __name__ == "__main__":

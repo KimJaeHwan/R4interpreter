@@ -28,7 +28,7 @@ Astra 검토에 따라 시작점을 24개 명령 앞의 첫 `0x416ea1` 읽기로
 | `X_local` | `X_local = 0` | `5` | `callee_input + 5` |
 | `X_local` | `X_local ≠ 0` | `X_local` | `callee_input + 5` |
 
-이 결과는 각 관측 경로의 **입력값 이외 네이티브 레지스터·플래그·첫 메모리 읽기를 고정한 조건부 증명**이다. `X_local`과 CLI 입력 `X`의 연결, 호출 후 스크립트 반환값까지의 전이, 그리고 다른 VM 상태에서도 같은 경로로 진입하는 조건은 남아 있다. 따라서 전체 스크립트의 증명 플래그는 여전히 `false`다. 기존 `daasdmlkas` 파일은 수정하지 않았다.
+이 로컬 경계 결과에서 출발해 [입력부터 반환까지의 통합 결과](LUA_PRE_PYTHON_JS_READINESS.md)를 추가했다. 한 실행의 연속된 P-code 경로로 `X_local`부터 VM 결과까지 연결하고, 입력 복사와 반환 슬롯은 네이티브 쓰기 감사·하드웨어 감시로 확인했다. 여섯 입력에서 `X=0 → 10`, `X≠0 → (X+5) mod 2^64`가 **명시한 전제 아래** 성립한다. 다른 VM 진입 상태의 경로 완전성은 증명되지 않아 전체 스크립트의 무조건적 증명 플래그는 여전히 `false`다. 기존 `daasdmlkas` 파일은 수정하지 않았다.
 
 ## 재현
 
@@ -41,7 +41,9 @@ experiments/vm-transition-testbed/.venv/bin/python experiments/interpreter-expre
 experiments/vm-transition-testbed/.venv/bin/python experiments/interpreter-expression/prove_lua_branch_cutpoint.py
 experiments/vm-transition-testbed/.venv/bin/python experiments/interpreter-expression/project_lua_call_bridge.py
 experiments/vm-transition-testbed/.venv/bin/python experiments/interpreter-expression/project_lua_local_input.py
+experiments/vm-transition-testbed/.venv/bin/python experiments/interpreter-expression/prove_lua_full_flow.py
 python3 experiments/interpreter-expression/summarize_lua_branch_call.py
+python3 experiments/interpreter-expression/export_lua_portability_gate.py
 ```
 
 새 원시 추적을 수집할 때는 기존 `ptrace_instruction_trace.c`를 빌드한 뒤 ELF의 `luaV_execute` 진입 `0x415440`을 지정한다. 핸들러 메모리 효과 기록은 `trace_input_provenance.py --capture-handler --markers-only`를 사용한다. 이번 호출 연결 추적은 다음 명령으로 각각 수집한다. 저장된 추적을 사용할 때 재수집은 필요 없다.
@@ -51,8 +53,4 @@ experiments/vm-transition-testbed/.venv/bin/python experiments/interpreter-expre
 experiments/vm-transition-testbed/.venv/bin/python experiments/interpreter-expression/trace_input_provenance.py ./experiments/interpreter-expression/lua_interpreter_fixture ./experiments/interpreter-expression/lua_branch_call.luac 9 experiments/interpreter-expression/artifacts/lua_branch_bridge_x9.jsonl --limit 100000 --capture-bridge --markers-only
 ```
 
-## 다음 실험
-
-1. CLI 정수 파싱부터 `0x416ea1` 첫 읽기까지 메모리 출처를 추적해 `X_local = X`를 증명한다. 여러 쓰기와 부분 쓰기는 메모리 버전으로 검증하고, 경로가 갈라지면 조건부 요약을 분리한다.
-2. 호출 결과 슬롯에서 Lua 반환 및 네이티브 출력까지 이어지는 suffix를 재생해 `callee_input + 5`가 실제 반환값으로 선택되는 조건을 증명한다.
-3. `0`, `9` 외 경계값과 복수 바이트코드에 대해 같은 요약 입력·출력 형식을 적용하고, 새로운 경로는 미확인 상태로 남기는지 확인한다.
+이 예제를 넘어서는 적용 범위와 남은 정적 증명 의무는 [Lua 단계 정리](LUA_PRE_PYTHON_JS_READINESS.md)에 기록했다.

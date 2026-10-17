@@ -1,0 +1,157 @@
+{
+  "schema_version": "portable-guarded-expression-v0",
+  "semantic_model": {
+    "integer_sort": "BV64",
+    "overflow": "modulo 2^64",
+    "output_interpretation": "signed64",
+    "memory": "byte-addressed; ordered writes",
+    "instruction_semantics": "Ghidra Low P-code"
+  },
+  "identity": {
+    "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+    "program_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+    "code_epoch": "saved static ELF and bytecode fixture"
+  },
+  "interface": {
+    "input": {
+      "name": "X",
+      "sort": "BV64",
+      "binding": "native function argument after successful integer parsing"
+    },
+    "output": {
+      "name": "result",
+      "sort": "BV64",
+      "binding": "second argument to output call"
+    }
+  },
+  "cases": [
+    {
+      "guard": {
+        "op": "eq",
+        "left": "X",
+        "right": {
+          "bv64": "0"
+        }
+      },
+      "result": {
+        "bv64": "10"
+      },
+      "validation_level": "proved_under_preconditions"
+    },
+    {
+      "guard": {
+        "op": "ne",
+        "left": "X",
+        "right": {
+          "bv64": "0"
+        }
+      },
+      "result": {
+        "op": "bvadd",
+        "bits": 64,
+        "args": [
+          "X",
+          {
+            "bv64": "5"
+          }
+        ]
+      },
+      "validation_level": "proved_under_preconditions"
+    }
+  ],
+  "admitted_input_witnesses": [
+    "0",
+    "9",
+    "1",
+    "-1",
+    "9223372036854775807",
+    "-9223372036854775808"
+  ],
+  "preconditions": [
+    "x86-64 SysV ABI preserves RBP across luaL_newstate",
+    "strtoll successfully parsed a signed 64-bit integer",
+    "long interval slot preservation is checked by hardware write watchpoints for the six witnesses, but is not universally proved for unobserved paths",
+    "other non-input registers, flags and first-read memory are fixed to each path witness"
+  ],
+  "evidence": {
+    "full_flow_sha256": "3046094d57f9f30057ca91120cb3251b73a6c58ac76340cb0c7d865daed9090f",
+    "native_path_count": 6
+  },
+  "uncovered": [
+    "other VM entry states or paths",
+    "other code identity",
+    "invalid or overflowing text input",
+    "exceptional exits",
+    "writes not covered by the recorded native memory audit"
+  ],
+  "termination_claim": "partial",
+  "verification": {
+    "conditional_branch_checks": [
+      {
+        "input": "0",
+        "predicted": 10,
+        "observed": 10,
+        "grade": "proved_under_preconditions"
+      },
+      {
+        "input": "9",
+        "predicted": 14,
+        "observed": 14,
+        "grade": "proved_under_preconditions"
+      },
+      {
+        "input": "1",
+        "predicted": 6,
+        "observed": 6,
+        "grade": "proved_under_preconditions"
+      },
+      {
+        "input": "-1",
+        "predicted": 4,
+        "observed": 4,
+        "grade": "proved_under_preconditions"
+      },
+      {
+        "input": "9223372036854775807",
+        "predicted": -9223372036854775804,
+        "observed": -9223372036854775804,
+        "grade": "proved_under_preconditions"
+      },
+      {
+        "input": "-9223372036854775808",
+        "predicted": -9223372036854775803,
+        "observed": -9223372036854775803,
+        "grade": "proved_under_preconditions"
+      }
+    ],
+    "other_lua_programs": [
+      {
+        "program_sha256": "d9278fb7e5457a2788926b3c3fd0a82bace02573bce3bc66a7910c76b750a9fb",
+        "validation_level": "differentially_validated",
+        "sample_count": 8,
+        "evidence_sha256": "c058154386aed94c214a1966a2bb92c35718fe319fb43deea43648496751341c"
+      },
+      {
+        "program_sha256": "9f49ce123aecb53c08d4aafcbaea75065d3360cef7ea27085d863fd3bc3b8957",
+        "validation_level": "differentially_validated",
+        "sample_count": 8,
+        "evidence_sha256": "c058154386aed94c214a1966a2bb92c35718fe319fb43deea43648496751341c"
+      },
+      {
+        "program_sha256": "6b20bd935801dd9cb0477517de10c1d7e6af3ae8f00c666c18f74365a6a45936",
+        "validation_level": "differentially_validated",
+        "sample_count": 6,
+        "evidence_sha256": "9bbb6a6657389f0119e9aab809e0683aa06ef49c8087ae62537352b0183d0c39"
+      }
+    ],
+    "unknown_input_query": {
+      "status": "unknown",
+      "reason": "VM entry state and path not admitted"
+    },
+    "unknown_program_query": {
+      "status": "unknown",
+      "reason": "code identity mismatch"
+    },
+    "executed_fixture_cases": 28
+  }
+}

@@ -89,10 +89,11 @@ def prove_path(label, expected, x):
                           for offset, name in REGISTER_OFFSETS.items()},
         flag_symbols={offset: z3.BitVecVal((entry["eflags"] >> bit) & 1, 8)
                       for offset, bit in FLAG_OFFSETS.items()},
-        memory_symbol=memory)
+        memory_symbol=memory, address_guards=True)
     replay.run()
     guard = z3.simplify(z3.And(*(item["condition"] for item in replay.guards)))
-    candidate_guard = x == 0 if label == "x0" else x != 0
+    is_zero = label == "x0"
+    candidate_guard = x == 0 if is_zero else x != 0
     prove_unsat(z3.Xor(guard, candidate_guard))
     solver = z3.Solver()
     solver.add(guard)
@@ -105,7 +106,7 @@ def prove_path(label, expected, x):
     if len(branch_reads) != 1:
         raise ValueError("expected one branch operand read")
     prove_unsat(guard, branch_reads[0]["value_expression"] != x)
-    if label == "x9":
+    if not is_zero:
         if len(source_reads) != 2 or source_reads[1]["observed_address"] != source:
             raise ValueError("call argument does not reread the same source address")
         second_source_step = next(row["step"] for row in rows[1:] if row["pc"] == SOURCE_PC)
@@ -124,7 +125,7 @@ def prove_path(label, expected, x):
     result = z3.simplify(output_word(replay.memory, callee_base))
     if {str(var) for var in get_vars(guard) + get_vars(result)} - {"X_local"}:
         raise ValueError("unexpected symbolic live-in")
-    candidate_result = z3.BitVecVal(5, 64) if label == "x0" else x
+    candidate_result = z3.BitVecVal(5, 64) if is_zero else x
     prove_unsat(guard, result != candidate_result)
     if z3.simplify(z3.substitute(result, (x, z3.BitVecVal(witness, 64)))).as_long() != observed:
         raise ValueError("callee entry value disagrees with witness")
@@ -133,25 +134,33 @@ def prove_path(label, expected, x):
             "native_instructions": len(rows), "pcode_operations": replay.operation_count,
             "pcode_reads": len(replay.reads), "pcode_writes": len(replay.effects),
             "initial_memory_bytes": initial_bytes,
-            "guard": "X_local == 0" if label == "x0" else "X_local != 0",
-            "branch_operand": "X_local", "callee_input": "5" if label == "x0" else "X_local",
+            "guard": "X_local == 0" if is_zero else "X_local != 0",
+            "branch_operand": "X_local", "callee_input": "5" if is_zero else "X_local",
             "guard_equivalence": "unsat", "branch_operand_equivalence": "unsat",
             "callee_input_equivalence": "unsat",
-            "source_reread_equivalence": "unsat" if label == "x9" else None,
-            "source_intervening_write_alias": "unsat" if label == "x9" else None,
+            "source_reread_equivalence": "unsat" if not is_zero else None,
+            "source_intervening_write_alias": "unsat" if not is_zero else None,
             "trace_sha256": sha256(trace.read_bytes()).hexdigest()}
 
 
 def main():
     x = z3.BitVec("X_local", 64)
     paths = [prove_path("x0", 5, x), prove_path("x9", 9, x)]
+    additional = []
+    for label, witness in (("one", 1), ("minus1", (1 << 64) - 1),
+                           ("max", (1 << 63) - 1), ("min", 1 << 63)):
+        try:
+            additional.append({"status": "proved", **prove_path(label, witness, x)})
+        except (AssertionError, KeyError, ValueError) as error:
+            additional.append({"path": label, "status": "unknown", "reason": str(error)})
     report = {"schema_version": 1, "kind": "conditional_local_source_to_callee_input",
               "entry_native_pc": hex(SOURCE_PC), "callee_native_pc": hex(END),
               "interface": "X_local is the 8-byte value read at entry [R8]; other entry registers, flags and first-read memory bytes are fixed per path witness",
               "binary_sha256": sha256(BINARY.read_bytes()).hexdigest(),
               "bytecode_sha256": sha256(BYTECODE.read_bytes()).hexdigest(),
               "bundle_sha256": sha256(BUNDLE.read_bytes()).hexdigest(),
-              "paths": paths, "pathwise_guard_equivalence_proved": True,
+              "paths": paths, "additional_witness_paths": additional,
+              "pathwise_guard_equivalence_proved": True,
               "external_input_binding_proved": False, "full_script_output_proved": False}
     (ROOT / "lua_branch_local_input.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({"paths": [(path["guard"], path["callee_input"])

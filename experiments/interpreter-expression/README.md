@@ -12,7 +12,7 @@
 | 공통 전이 요약 v0 | Lua 한 handler 경로의 P-code 265개를 식/효과로 저장; 동일 적용기로 작은 ELF도 처리 | Lua 바이트코드 2개 × 8 입력, 네이티브 ELF 5 입력 차등 확인 |
 | 두 handler 합성 | 기존 Lua 요약의 출력에서 5개 명령의 fetch/decode/dispatch를 거쳐 다음 handler 입력 계산 | `x+7; +11` 바이트코드 6 입력, 둘째 진입 snapshot 입력 없이 차등 확인 |
 | 공통 입력식 투영 | 기존 Lua 핸들러·연결 요약과 작은 VM 경로 요약에 같은 기호 투영기 적용 | Lua `X+7`, `X+11`, 두 핸들러 `X+18`; 작은 VM 30개 평가 중 28 pass·2 accepted_unknown |
-| Lua 분기·함수 호출 | 호출자·피호출자 두 바이트코드 영역을 네이티브 분배에 대응시키고 피호출자 핸들러의 `Y+5`를 P-code로 축약 | 2개 관측 경로·4개 입력. 전체 스크립트 guard·출력식은 아직 미증명 |
+| Lua 분기·함수 호출 | VM 입력부터 `printf` 인수까지 `X=0 → 10`, 그 외 `→ X+5`를 조건부 P-code 경로로 증명 | 2개 분기·6개 입력. ABI·진입 상태·경로 전제가 필요하며 전체 경로 완전성은 미증명 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -28,20 +28,21 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [입력 수준 식 축약 결과](../vm-transition-testbed/results/LOGIC_PROJECTION_RESULT.md)에서는 두 엔진의 요약을 같은 `logic_projection.py`로 합성하고 SMT 동치 확인 후 긴 P-code 식을 간단한 `X` 식으로 줄였다. Lua의 축약 범위는 현재 마지막 숫자 핸들러까지이며 최종 반환 경로는 포함하지 않는다.
 
-[Lua 분기·함수 호출 실험](LUA_BRANCH_CALL_RESULT.md)은 호출 전후 두 바이트코드 코드 영역을 실제 추적으로 연결했다. 네이티브 P-code 재생으로 로컬 VM 입력 `X_local`의 분기 조건과 호출 인수(`0 → 5`, 그 외 `→ X_local`)를 증명했고, 피호출자 산술 핸들러의 `callee_input + 5`도 검증했다. CLI 입력과 로컬 입력, 호출 결과와 스크립트 반환값의 연결은 다음 실험 대상이다.
+[Lua 분기·함수 호출 실험](LUA_BRANCH_CALL_RESULT.md)은 호출 전후 두 바이트코드 코드 영역을 실제 추적으로 연결했다. 네이티브 P-code 재생으로 VM 입력의 분기·호출·덧셈 결과와 Lua 반환 경로를 연결했다. [Python·JavaScript 적용 직전 정리](LUA_PRE_PYTHON_JS_READINESS.md)는 여섯 입력의 조건부 증명, 다른 세 Lua 바이트코드의 22개 차등 검증, 새 경로의 `unknown` 판정을 구분한다.
 
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
 - `elf_expression_fixture.c`, `lua_interpreter_fixture.c`: 네이티브 입력 프로그램. 같은 이름의 확장자 없는 파일은 당시 빌드한 ELF이다.
 - `lua_chunk_source.lua`: 평가용 원본. 분석 입력은 디버그 정보를 제거한 `lua_chunk.luac`이다. `lua_compile_chunk.c`는 바이트코드 생성 도구다.
-- `artifacts/elf_bundle.tar.gz`, `artifacts/lua_bundle.tar.gz`: admission 가능한 Ghidra 12.0.4 Bundle. [SHA-256 목록](artifacts/SHA256SUMS)에 아카이브 해시를 기록했다. JSON 결과의 `/workspace/scratch` 경로는 원래 실험 당시 경로다.
+- `artifacts/elf_bundle.tar.gz`, `artifacts/lua_bundle.tar.gz`, `artifacts/lua_main_bundle.tar.gz`: admission 가능한 Ghidra 12.0.4 Bundle. 마지막 Bundle은 `main`의 반환 출력 연결을 포함한다. [SHA-256 목록](artifacts/SHA256SUMS)에 아카이브 해시를 기록했다. JSON 결과의 `/workspace/scratch` 경로는 원래 실험 당시 경로다.
 - `ptrace_instruction_trace.c`, `trace_bundle_compare.py`: 첫 명령 단위 추적 및 Bundle 대조 도구. 원시 CSV와 요약 JSON은 [첫 추적 기록](FIRST_TRACE_RESULT.md)에 연결했다.
 - `bytecode_handler_map.py`: 바이트코드 명령 읽기와 VM 간접 분기를 원시 추적·Bundle에 대조한다. 결과와 적용 범위는 [바이트코드 대응 기록](BYTECODE_HANDLER_RESULT.md)에 있다.
 - `trace_input_provenance.py`, `replay_input_path.py`, `guard_scope_probe.py`: 입력 메모리 출처 추적, 선택된 P-code 경로 재생, 별도 입력과 경로 비교. 결과와 재현법은 [입력 출처 결과](INPUT_PROVENANCE_RESULT.md)에 있다.
 - `pcode_transition_summary.py`, `build_native_transition_summary.py`, `apply_transition_summary.py`, `validate_transition_summaries.py`: P-code 경로 요약 생성, 공통 요약 적용 및 차등 검증. [요약 결과](TRANSITION_SUMMARY_RESULT.md)에 파일과 재현법을 기록했다.
 - `build_lua_dispatch_bridge.py`, `compose_lua_two_adds.py`, `validate_lua_composition.py`: 처리 구간 사이의 P-code 전이 생성과 두 정수 명령 합성. [합성 결과](TWO_HANDLER_COMPOSITION_RESULT.md)에 범위와 재현법을 기록했다.
 - `logic_projection.py`, `project_lua_handler_logic.py`, `project_lua_two_adds_logic.py`: 언어에 의존하지 않는 식·효과 투영기와 Lua 경계 adapter. [공통 축약 결과](../vm-transition-testbed/results/LOGIC_PROJECTION_RESULT.md)에 실험 결과를 기록했다.
+- `prove_lua_full_flow.py`, `export_lua_portability_gate.py`: Lua 분기 경로의 입력·VM·반환 연결과 다른 바이트코드의 검증 등급을 공통 형식으로 내보낸다. [Lua 단계 정리](LUA_PRE_PYTHON_JS_READINESS.md)에 범위와 재현법이 있다.
 
 ## 재현
 
@@ -63,4 +64,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 입력 출처, 선택 경로 계산식, 별도 입력 판정과 [Lua 첫 적용 설계](VM_HANDLER_SUMMARY_DESIGN.md)의 첫·확장 관문을 완료했다. 다음에는 [VM 전이 요약 테스트베드](../vm-transition-testbed/README.md)의 미실행 사례를 기준으로 경계 발견과 요약 생성 코드를 일반화한다. 실행기 입력 바인딩과 VM 반환 전이도 이 범위에서 검증한다. 연결하지 못한 호출·메모리·JOIN은 `unknown`으로 남긴다.
+[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 Lua 입력 출처, 분기·함수 호출, 반환 경로를 조건부로 연결했다. 다음 언어에 적용할 때는 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md)의 경계 adapter를 먼저 만들고, 설명하지 못한 호출·메모리·JOIN·동적 코드를 `unknown`으로 남긴다.
