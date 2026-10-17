@@ -1,0 +1,777 @@
+{
+  "schema_version": 1,
+  "analysis_kind": "bounded_angr_from_execute_call_abi",
+  "initial_state": "execute call ABI; no recorded register or stack snapshot",
+  "hints": {
+    "execute": "0x4013c0",
+    "first_fetch": "0x401410",
+    "output": "0x401310",
+    "code_address": "0x50000000"
+  },
+  "binary_sha256": "de3a9064af955bd59b342b9fff0273efded539bb22e68e460c27328df7b09f0a",
+  "native_execution_or_ptrace": false,
+  "limits": {
+    "max_native_steps": 1200,
+    "max_live_states": 64,
+    "max_total_states": 128
+  },
+  "experiments": [
+    {
+      "id": "VMT001",
+      "program_sha256": "3c47aebb1e9751260356cb7d3e7d895e359c13ed750c4b7f18c6cf71bd90f30b",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 292
+    },
+    {
+      "id": "VMT002",
+      "program_sha256": "0fd18f1f7ce3a052fa0dbae8f00145a69c9823057ef6ada2ea465d4db6520052",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 292
+    },
+    {
+      "id": "VMT003",
+      "program_sha256": "117b68fd2a677312f6c8830ae5875bdae616f4dde5868a620a0272c39e5aa901",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 331
+    },
+    {
+      "id": "VMT004",
+      "program_sha256": "682a28700adf304d8ccc62eb53fc3da3eb2cacdf2e2766ee251f11805629e2e5",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 344
+    },
+    {
+      "id": "VMT005",
+      "program_sha256": "5a762ba58d902d57c6b4df7f412096b200d19658288f94437fc2ae32c856fba8",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 295
+    },
+    {
+      "id": "VMT006",
+      "program_sha256": "5c35b5f6b863d21dcd8fefa6e63e943d9c267e9ce5bc9125702badd526f0f4fb",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 296
+    },
+    {
+      "id": "VMT007",
+      "program_sha256": "011d45a3d61e2ca8ff7bd3bdeb4366e95a3cdaf8ddc09fbedd42b4f877cdc489",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 2,
+      "max_live_states": 2,
+      "max_depth": 324
+    },
+    {
+      "id": "VMT008",
+      "program_sha256": "b1276d01fa0254ad843a32311379c0d7aad35d4848d95fea51c625fe55d17d52",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 344
+    },
+    {
+      "id": "VMT009",
+      "program_sha256": "452385ed6de61ff815db08ba234235cfa54719cf3c413b0509e0fc0b94a20dce",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 277
+    },
+    {
+      "id": "VMT010",
+      "program_sha256": "9242ff342dd625de357bf8aeb660a464aed15f987b39a79756fa1bce36d2346d",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 295
+    },
+    {
+      "id": "VMT011",
+      "program_sha256": "737d70edbe3f9d92f9f6fd65d6e463e555c130c9efd41d2cf983ac80508b717d",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 237
+    },
+    {
+      "id": "VMT012",
+      "program_sha256": "632f006ee1e1986489d0206f8b58949993b14002c58b08e215addc1b74e40547",
+      "first_fetch_native_instructions": 212,
+      "completed_paths": 1,
+      "max_live_states": 1,
+      "max_depth": 697
+    }
+  ],
+  "results": [
+    {
+      "id": "VMT001",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "0",
+      "status": "computed",
+      "result": "7",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "7",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "-1",
+      "status": "computed",
+      "result": "6",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "6",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775802",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775802",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT001",
+      "input": "-9223372036854775808",
+      "status": "computed",
+      "result": "-9223372036854775801",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775801",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT002",
+      "input": "9",
+      "status": "computed",
+      "result": "20",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "20",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT002",
+      "input": "0",
+      "status": "computed",
+      "result": "11",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "11",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT002",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775798",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775798",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 292,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT003",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "9",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 331,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT003",
+      "input": "0",
+      "status": "computed",
+      "result": "7",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "7",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 331,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT004",
+      "input": "9",
+      "status": "computed",
+      "result": "27",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "16",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "27",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 344,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT004",
+      "input": "0",
+      "status": "computed",
+      "result": "18",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "7",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "18",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 344,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT004",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775791",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-9223372036854775802",
+          "tag": 3
+        },
+        {
+          "slot": 2,
+          "value": "-9223372036854775791",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 344,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT005",
+      "input": "9",
+      "status": "computed",
+      "result": "2",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 295,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT005",
+      "input": "0",
+      "status": "computed",
+      "result": "-7",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-7",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 295,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT005",
+      "input": "-9223372036854775808",
+      "status": "computed",
+      "result": "9223372036854775801",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "9223372036854775801",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 295,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT006",
+      "input": "9",
+      "status": "computed",
+      "result": "92",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "92",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 296,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT006",
+      "input": "0",
+      "status": "computed",
+      "result": "85",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "85",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 296,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT006",
+      "input": "-1",
+      "status": "computed",
+      "result": "-86",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "-86",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 296,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT007",
+      "input": "0",
+      "status": "computed",
+      "result": "42",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "42",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 310,
+        "path_constraints": 1,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT007",
+      "input": "9",
+      "status": "computed",
+      "result": "16",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "16",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 324,
+        "path_constraints": 1,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT007",
+      "input": "-1",
+      "status": "computed",
+      "result": "6",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "6",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 324,
+        "path_constraints": 1,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT008",
+      "input": "9",
+      "status": "computed",
+      "result": "27",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "16",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "27",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 344,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT008",
+      "input": "9223372036854775807",
+      "status": "computed",
+      "result": "-9223372036854775791",
+      "pc": 3,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "-9223372036854775802",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "-9223372036854775791",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 344,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT009",
+      "input": "9",
+      "status": "error",
+      "runtime_status": "type_error",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 0,
+          "value": "9",
+          "tag": 2
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 277,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT010",
+      "input": "9",
+      "status": "computed",
+      "result": "12",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "12",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 295,
+        "path_constraints": 0,
+        "visited_helper": true
+      }
+    },
+    {
+      "id": "VMT010",
+      "input": "0",
+      "status": "computed",
+      "result": "3",
+      "pc": 2,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "3",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 295,
+        "path_constraints": 0,
+        "visited_helper": true
+      }
+    },
+    {
+      "id": "VMT011",
+      "input": "9",
+      "status": "error",
+      "runtime_status": "bad_opcode",
+      "pc": 1,
+      "writes": [],
+      "angr_evidence": {
+        "native_instructions": 237,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT012",
+      "input": "9",
+      "status": "computed",
+      "result": "12",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "10",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "11",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "12",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 697,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    },
+    {
+      "id": "VMT012",
+      "input": "0",
+      "status": "computed",
+      "result": "3",
+      "pc": 5,
+      "writes": [
+        {
+          "slot": 1,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "2",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "tag": 3
+        },
+        {
+          "slot": 0,
+          "value": "3",
+          "tag": 3
+        },
+        {
+          "slot": 1,
+          "value": "0",
+          "tag": 3
+        }
+      ],
+      "angr_evidence": {
+        "native_instructions": 697,
+        "path_constraints": 0,
+        "visited_helper": false
+      }
+    }
+  ]
+}
