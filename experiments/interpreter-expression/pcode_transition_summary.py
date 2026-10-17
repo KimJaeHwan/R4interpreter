@@ -277,7 +277,7 @@ class PathReplay:
                                     "target": hex(self.current_row["next_pc"]),
                                     "condition": condition if taken else z3.Not(condition)})
             return None
-        if opcode in ("CALL", "RETURN"):
+        if opcode in ("CALL", "CALLIND", "RETURN"):
             target = args[0].concrete
             if self.current_row["next_pc"] != target:
                 raise AssertionError(f"{opcode} target disagrees at {self.current_pc:#x}")

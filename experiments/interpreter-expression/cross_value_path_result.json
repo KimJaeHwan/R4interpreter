@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "engine": "python",
+      "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+      "trace_sha256": "81d69fb09a40b047180a16bdf8ffaa30cc180673b1e8ce22d5193cdd5d9bdf42",
+      "entry_pc": "0x56227c",
+      "exit_pc": "0x56173b",
+      "exit_reason": "next bytecode handler",
+      "witness_input": 9,
+      "witness_output": 14,
+      "native_steps": 116,
+      "pcode_operations": 626,
+      "initial_memory_bytes": 109,
+      "guard_count": 61,
+      "expression_site": "0x5e9780",
+      "expression": "RCX_before_cache = zero_extend32(X) + 5",
+      "conditional_equality_check": "unsat",
+      "second_guard_witness_x10": "sat",
+      "python_cache_pointer_check": "unsat",
+      "python_cache_sha256": "0848e8ec3eac0aa064b111fbe4d5b096e1ae2a4cc286f797d51b239bbb0d9a6e",
+      "python_cache_verified_output_range": "10..256",
+      "python_input_bound": "5 <= X <= 251",
+      "proof_scope": "recorded native path, stable first-read memory, and SLEIGH x86-64 P-code"
+    },
+    {
+      "engine": "javascript",
+      "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+      "trace_sha256": "9d9bb1a09f2f8fa337ee96f82cc024d17b6b5705ec19cb39a9306c0fce5374b6",
+      "entry_pc": "0x1bb7780",
+      "exit_pc": "0x1bc6f40",
+      "exit_reason": "left handler range",
+      "witness_input": 9,
+      "witness_output": 14,
+      "native_steps": 23,
+      "pcode_operations": 122,
+      "initial_memory_bytes": 43,
+      "guard_count": 13,
+      "expression_site": "0x1bb77f1",
+      "expression": "signed32(RAX_out >> 32) = signed32(X + 5)",
+      "conditional_equality_check": "unsat",
+      "second_guard_witness_x10": "sat",
+      "python_cache_pointer_check": null,
+      "python_cache_sha256": null,
+      "python_cache_verified_output_range": null,
+      "python_input_bound": null,
+      "proof_scope": "recorded native path, stable first-read memory, and SLEIGH x86-64 P-code"
+    }
+  ]
+}

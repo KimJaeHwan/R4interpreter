@@ -1,5 +1,7 @@
 # Python·JavaScript 첫 교차 실험
 
+후속 실험에서 두 엔진의 실제 덧셈 핸들러를 P-code로 재생해 조건부 값 식을 확인했다. 범위와 한계는 [네이티브 값 계산 경로 결과](PYTHON_JS_VALUE_PATH_RESULT.md)에 정리했다. 이 문서의 전체 프로그램 요약은 여전히 표본 기반 후보이다.
+
 ## 결론과 증거 수준
 
 같은 분기·호출·반환 프로그램을 CPython 3.13.5와 Node 24.19.0의 `--jitless` Ignition에서 실행했다. Python은 해시 기반 `.pyc`를 실행했고, JavaScript는 V8이 출력한 바이트코드의 명령 바이트·주소를 기록했다. 평가용 [Python 소스](python_branch_fixture.py)와 [JavaScript 소스](js_branch_fixture.js)는 정답 대조용이다. 관측 코드와 공통 적용기는 이 소스를 opcode 의미표로 읽지 않는다.
@@ -27,7 +29,7 @@ JavaScript의 [9 경로 바이트코드](artifacts/cross_js_branch_9_bytecode.tx
 
 공유된 부분은 **P-code로 표현 가능한 네이티브 fetch/dispatch 구조**, 값 sort를 표시한 guard/결과식 포맷, 동일한 case 적용·미확인 판정 규칙이다. 언어별 adapter는 Python의 code object/frame 및 JS BytecodeArray/handler table 주소를 찾는다. 원본 스크립트를 복구하거나 opcode 의미표를 공통 적용기에 넣지 않았다.
 
-아직 계산 후보 자체는 입력과 출력 표본에서 맞춘 것이다. Lua 때와 같은 증명 등급을 얻으려면 Python의 정수 객체 연산과 반환, JS의 Smi/Number 핸들러와 호출/반환에서 **VM 입력 값 → 계산 → 출력 값**을 메모리·태그·예외 효과와 함께 P-code로 연결해야 한다. 현재 두 요약은 그 구간을 증명한 것처럼 표시하지 않는다. 다음 실험은 우선 Python의 작은 정수 경로와 JS `AddSmi` 경로 각각 한 개를 추적해 `x+5`의 native 값 식을 도출하고, 타입 분기·overflow를 별도 case 또는 `unknown`으로 남기는 것이다.
+이 첫 실험에서 계산 후보 자체는 입력과 출력 표본에서 맞춘 것이다. 후속 [값 경로 실험](PYTHON_JS_VALUE_PATH_RESULT.md)은 Python의 작은 정수 경로와 JS `AddSmi` 경로에서 각각 조건부 `x+5` 식을 도출했다. 전체 프로그램의 **VM 입력 값 → 분기·호출 → 계산 → 출력 값** 연결은 아직 필요하다. 현재 두 portable 요약은 그 전체 구간을 증명한 것처럼 표시하지 않는다. Python의 다른 정수/객체 경로, JS의 HeapNumber/객체 변환/오버플로 경로도 별도 case 또는 `unknown`으로 남는다.
 
 ## 재현
 
