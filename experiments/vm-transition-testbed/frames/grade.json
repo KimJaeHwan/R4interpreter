@@ -1,0 +1,70 @@
+{
+  "rows": [
+    {
+      "id": "FMT001",
+      "input": "0",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT001",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT001",
+      "input": "-1",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT001",
+      "input": "9223372036854775807",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT002",
+      "input": "0",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT002",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT002",
+      "input": "-1",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT003",
+      "input": "0",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT003",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT003",
+      "input": "-1",
+      "grade": "pass",
+      "reason": ""
+    },
+    {
+      "id": "FMT004",
+      "input": "9",
+      "grade": "pass",
+      "reason": ""
+    }
+  ]
+}

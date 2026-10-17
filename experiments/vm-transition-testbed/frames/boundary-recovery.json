@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "kind": "stripped_boundary_recovery",
+  "known_adapter": "execute(code,count,X), output(status,has_result,value,pc,writes,count); framed R4VM bytecode",
+  "discovery": "CFG repeated local callee; bytecode-memory reads at each word start",
+  "fetch_limit": "An out-of-bounds PC performs no bytecode read; its attempted value is checked from the output ABI, not counted as an observed fetch.",
+  "builds": [
+    {
+      "compiler_optimization": "O2",
+      "binary_sha256": "02ebc000c750dc66a746e1aab4e3e7768b2c15ae0aac0762d3f9ff55795afe86",
+      "symbols_removed": true,
+      "recovered_execute": "0x4013a0",
+      "recovered_output": "0x4012f0",
+      "local_calls_to_output": 8,
+      "cases": [
+        {
+          "id": "FMT001",
+          "seconds": 1.799,
+          "computed": 4,
+          "samples": 4,
+          "first_fetch_native_pcs": [
+            "0x40140c"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 364,
+          "completed_paths": 2,
+          "max_live_states": 2,
+          "max_depth": 861
+        },
+        {
+          "id": "FMT002",
+          "seconds": 0.95,
+          "computed": 3,
+          "samples": 3,
+          "first_fetch_native_pcs": [
+            "0x40140c"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 364,
+          "completed_paths": 1,
+          "max_live_states": 1,
+          "max_depth": 690
+        },
+        {
+          "id": "FMT003",
+          "seconds": 1.418,
+          "computed": 3,
+          "samples": 3,
+          "first_fetch_native_pcs": [
+            "0x40140c"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 364,
+          "completed_paths": 1,
+          "max_live_states": 1,
+          "max_depth": 1094
+        },
+        {
+          "id": "FMT004",
+          "seconds": 0.859,
+          "computed": 1,
+          "samples": 1,
+          "first_fetch_native_pcs": [
+            "0x40140c"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 364,
+          "completed_paths": 1,
+          "max_live_states": 1,
+          "max_depth": 523
+        }
+      ]
+    },
+    {
+      "compiler_optimization": "O1",
+      "binary_sha256": "77ecec8d0b080301c030ad07986b53d75cc97663107121dc14a48fee13c87c3c",
+      "symbols_removed": true,
+      "recovered_execute": "0x40126e",
+      "recovered_output": "0x4011b6",
+      "local_calls_to_output": 11,
+      "cases": [
+        {
+          "id": "FMT001",
+          "seconds": 1.994,
+          "computed": 4,
+          "samples": 4,
+          "first_fetch_native_pcs": [
+            "0x401665"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 363,
+          "completed_paths": 2,
+          "max_live_states": 2,
+          "max_depth": 961
+        },
+        {
+          "id": "FMT002",
+          "seconds": 1.011,
+          "computed": 3,
+          "samples": 3,
+          "first_fetch_native_pcs": [
+            "0x401665"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 363,
+          "completed_paths": 1,
+          "max_live_states": 1,
+          "max_depth": 755
+        },
+        {
+          "id": "FMT003",
+          "seconds": 1.653,
+          "computed": 3,
+          "samples": 3,
+          "first_fetch_native_pcs": [
+            "0x401665"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 363,
+          "completed_paths": 1,
+          "max_live_states": 1,
+          "max_depth": 1269
+        },
+        {
+          "id": "FMT004",
+          "seconds": 0.799,
+          "computed": 1,
+          "samples": 1,
+          "first_fetch_native_pcs": [
+            "0x401665"
+          ],
+          "guard_coverage_proved": true,
+          "first_fetch_native_instructions": 363,
+          "completed_paths": 1,
+          "max_live_states": 1,
+          "max_depth": 555
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "FMT001",
+      "program_sha256": "af285c786b159189d8ebaae8aae64a3c2a19b68a203cd7c97f49551365bcda6e",
+      "samples": [
+        {
+          "input": "0",
+          "expected": {
+            "status": "ok",
+            "result": "10",
+            "pc": 10,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "5",
+                "tag": 3
+              },
+              {
+                "slot": 3,
+                "value": "10",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "7",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "10",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "10",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "10",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            6,
+            7,
+            8,
+            10,
+            11,
+            14,
+            15,
+            12,
+            9
+          ]
+        },
+        {
+          "input": "9",
+          "expected": {
+            "status": "ok",
+            "result": "14",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 3,
+                "value": "10",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "11",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "14",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "14",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "14",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            3,
+            10,
+            11,
+            14,
+            15,
+            12,
+            4
+          ]
+        },
+        {
+          "input": "-1",
+          "expected": {
+            "status": "ok",
+            "result": "4",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 3,
+                "value": "10",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "4",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "4",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "4",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            3,
+            10,
+            11,
+            14,
+            15,
+            12,
+            4
+          ]
+        },
+        {
+          "input": "9223372036854775807",
+          "expected": {
+            "status": "ok",
+            "result": "-9223372036854775804",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9223372036854775807",
+                "tag": 3
+              },
+              {
+                "slot": 3,
+                "value": "10",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "-9223372036854775807",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "-9223372036854775804",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "-9223372036854775804",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "-9223372036854775804",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            3,
+            10,
+            11,
+            14,
+            15,
+            12,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FMT002",
+      "program_sha256": "5ff3a25847abf35251b2b285aba0a3936c51cde77b61afd61defb74173dd419e",
+      "samples": [
+        {
+          "input": "0",
+          "expected": {
+            "status": "ok",
+            "result": "78",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 2,
+                "value": "77",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "99",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "78",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            5,
+            6,
+            3,
+            4
+          ]
+        },
+        {
+          "input": "9",
+          "expected": {
+            "status": "ok",
+            "result": "78",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 2,
+                "value": "77",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "99",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "78",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            5,
+            6,
+            3,
+            4
+          ]
+        },
+        {
+          "input": "-1",
+          "expected": {
+            "status": "ok",
+            "result": "78",
+            "pc": 5,
+            "writes": [
+              {
+                "slot": 2,
+                "value": "77",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "99",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "78",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            5,
+            6,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FMT003",
+      "program_sha256": "335f7946e38e575622017a2b946ed3bafddbf1cc52fa9627e5f007599c98f15f",
+      "samples": [
+        {
+          "input": "0",
+          "expected": {
+            "status": "ok",
+            "result": "21",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "7",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "14",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "21",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "21",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            6,
+            7,
+            8,
+            6,
+            7,
+            8,
+            9,
+            2
+          ]
+        },
+        {
+          "input": "9",
+          "expected": {
+            "status": "ok",
+            "result": "30",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "16",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "23",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "30",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "30",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            6,
+            7,
+            8,
+            6,
+            7,
+            8,
+            9,
+            2
+          ]
+        },
+        {
+          "input": "-1",
+          "expected": {
+            "status": "ok",
+            "result": "20",
+            "pc": 3,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "-1",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "3",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "6",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "2",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "13",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "1",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "20",
+                "tag": 3
+              },
+              {
+                "slot": 2,
+                "value": "0",
+                "tag": 3
+              },
+              {
+                "slot": 1,
+                "value": "20",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            6,
+            7,
+            8,
+            6,
+            7,
+            8,
+            9,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FMT004",
+      "program_sha256": "336b288bc092c90d4e1df0ddde3afb131545a92c249590b41161e892e9c280da",
+      "samples": [
+        {
+          "input": "9",
+          "expected": {
+            "status": "pc_out_of_bounds",
+            "result": null,
+            "pc": 50,
+            "writes": [
+              {
+                "slot": 1,
+                "value": "9",
+                "tag": 3
+              },
+              {
+                "slot": 3,
+                "value": "50",
+                "tag": 3
+              }
+            ]
+          },
+          "fetch_trace": [
+            0,
+            1,
+            2,
+            50
+          ]
+        }
+      ]
+    }
+  ]
+}

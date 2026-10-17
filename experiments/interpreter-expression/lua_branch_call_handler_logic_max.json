@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "kind": "conditional_input_logic_projection",
+  "scope": "one observed Lua VM handler path, not a full script return",
+  "claim": "path guard and memory alias completeness unproved",
+  "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+  "trace_sha256": "11ccec1b7d005161e335a1b5300efcde15938513395b14277dd5bb94b733f353",
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "entry_cutpoint": "0x4164b8",
+  "exit_cutpoint": "0x415b24",
+  "input_binding": "8-byte VM memory at entry R_RBX",
+  "word": "0x84000095",
+  "witness": "9223372036854775807",
+  "guard": "true",
+  "guard_smt": "true",
+  "guard_reduction_proved": false,
+  "payload_write_address": "0x2b4b9930",
+  "value": "X + 5",
+  "value_smt": "(bvadd X #x0000000000000005)",
+  "value_reduction_proved": true,
+  "ordered_effects": 2
+}

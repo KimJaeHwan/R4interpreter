@@ -1,0 +1,140 @@
+{
+  "status": "differentially_validated",
+  "reads": [
+    {
+      "pc": "0x4164e5",
+      "address": 89000232,
+      "width": 1,
+      "value": 3
+    },
+    {
+      "pc": "0x417ce7",
+      "address": 89000224,
+      "width": 8,
+      "value": 5
+    },
+    {
+      "pc": "0x417ce7",
+      "address": 89000224,
+      "width": 8,
+      "value": 5
+    },
+    {
+      "pc": "0x417ce7",
+      "address": 89000224,
+      "width": 8,
+      "value": 5
+    }
+  ],
+  "predicted_effects": [
+    {
+      "kind": "Write",
+      "pc": "0x417cea",
+      "ordinal": 1,
+      "address": 89000240,
+      "width": 8,
+      "value": 10
+    },
+    {
+      "kind": "Write",
+      "pc": "0x417ced",
+      "ordinal": 2,
+      "address": 89000248,
+      "width": 1,
+      "value": 3
+    }
+  ],
+  "outputs": [
+    {
+      "name": "next_code_pointer",
+      "value": 89009784
+    },
+    {
+      "name": "R_RAX",
+      "value": 89000224
+    },
+    {
+      "name": "R_RCX",
+      "value": 3
+    },
+    {
+      "name": "R_RDX",
+      "value": 89000240
+    },
+    {
+      "name": "R_RBX",
+      "value": 89000224
+    },
+    {
+      "name": "R_RSP",
+      "value": 140734482188192
+    },
+    {
+      "name": "R_RBP",
+      "value": 0
+    },
+    {
+      "name": "R_RSI",
+      "value": 89000240
+    },
+    {
+      "name": "R_RDI",
+      "value": 3
+    },
+    {
+      "name": "R_R8",
+      "value": 32
+    },
+    {
+      "name": "R_R9",
+      "value": 140552117504800
+    },
+    {
+      "name": "R_R10",
+      "value": 80
+    },
+    {
+      "name": "R_R11",
+      "value": 89009780
+    },
+    {
+      "name": "R_R12",
+      "value": 10
+    },
+    {
+      "name": "R_R13",
+      "value": 88998568
+    },
+    {
+      "name": "R_R14",
+      "value": 89005168
+    },
+    {
+      "name": "R_R15",
+      "value": 89009784
+    },
+    {
+      "name": "F_0",
+      "value": 0
+    },
+    {
+      "name": "F_2",
+      "value": 1
+    },
+    {
+      "name": "F_6",
+      "value": 1
+    },
+    {
+      "name": "F_7",
+      "value": 0
+    },
+    {
+      "name": "F_11",
+      "value": 0
+    }
+  ],
+  "native_steps_within_summary": 23,
+  "summary_sha256": "1bface8fe627afd4efe98f5ad7a304e17502282ce1263eb8ad862743d26bb1cb",
+  "trace_sha256": "5d54c05ea1fb4405bcb681187ce1b49be4518398fa8e65776634df33897b9cb0"
+}

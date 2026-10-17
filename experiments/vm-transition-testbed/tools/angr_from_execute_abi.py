@@ -63,8 +63,23 @@ def check_first_fetch(state, x, count, slot_offset):
 
 def explore(project, program, entry, output, fetch_pc=FETCH_PC,
             slot_offset=0, max_native_steps=MAX_NATIVE_STEPS,
-            first_fetch_states=None):
+            first_fetch_states=None, first_fetch_check=check_first_fetch,
+            vm_pc_register="rcx", max_live_states=MAX_LIVE_STATES,
+            max_total_states=MAX_TOTAL_STATES, observe_fetch_memory=False):
     state, x = initial_state(project, program, entry)
+    if observe_fetch_memory:
+        def observe_read(current):
+            address = current.inspect.attrs.mem_read_address
+            if current.solver.symbolic(address):
+                return
+            address = current.solver.eval(address)
+            offset = address - CODE_ADDRESS - 8
+            if 0 <= offset < len(program) - 8 and offset % 4 == 0:
+                current.globals["vm_fetch_trace"] = (
+                    current.globals.get("vm_fetch_trace", ()) + (offset // 4,))
+                current.globals["fetch_native_pcs"] = (
+                    current.globals.get("fetch_native_pcs", ()) + (current.addr,))
+        state.inspect.b("mem_read", when=angr.BP_BEFORE, action=observe_read)
     active = [(state, ())]
     completed = []
     first_fetch_depth = None
@@ -72,17 +87,18 @@ def explore(project, program, entry, output, fetch_pc=FETCH_PC,
     for depth in range(max_native_steps):
         next_active = []
         for state, path in active:
-            if state.addr == fetch_pc:
+            if not observe_fetch_memory and state.addr == fetch_pc:
                 if first_fetch_depth is None:
-                    check_first_fetch(state, x, program[5], slot_offset)
+                    first_fetch_check(state, x, program[5], slot_offset)
                     first_fetch_depth = depth
                     if first_fetch_states is not None:
                         first_fetch_states.append(state.copy())
-                if not state.solver.unique(state.regs.rcx):
+                pc = getattr(state.regs, vm_pc_register)
+                if not state.solver.unique(pc):
                     raise ValueError("symbolic VM PC at fetch")
                 state.globals["vm_fetch_trace"] = (
                     state.globals.get("vm_fetch_trace", ()) +
-                    (state.solver.eval(state.regs.rcx),))
+                    (state.solver.eval(pc),))
             if state.addr == output:
                 completed.append((state, path))
                 continue
@@ -93,9 +109,12 @@ def explore(project, program, entry, output, fetch_pc=FETCH_PC,
                 raise ValueError(f"no feasible successor at {state.addr:#x}")
             next_active.extend((item, path + (state.addr,))
                                for item in successors.successors)
+            if observe_fetch_memory and first_fetch_depth is None and any(
+                    item.globals.get("vm_fetch_trace") for item in successors.successors):
+                first_fetch_depth = depth
         active = next_active
         max_live = max(max_live, len(active))
-        if len(active) > MAX_LIVE_STATES or len(active) + len(completed) > MAX_TOTAL_STATES:
+        if len(active) > max_live_states or len(active) + len(completed) > max_total_states:
             raise ValueError("symbolic state budget exceeded")
         if not active:
             break

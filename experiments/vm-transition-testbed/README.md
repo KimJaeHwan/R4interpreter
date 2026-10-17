@@ -80,7 +80,9 @@ python3 -m venv .venv
 
 [호출 경계부터 시작하는 angr 실험](results/ANGR_EXECUTE_ABI_RESULT.md)은 이전 추적의 초기 레지스터·스택 스냅샷을 제거했다. ELF의 `execute` ABI에서 시작해 첫 fetch의 VM 상태를 확인하고 전체 R4VM 30개 입력을 다시 분석했다. **30 pass, 0 fail**이며 정상 결과 28개와 오류 2개의 PC·쓰기 목록까지 독립 정답과 일치한다. 함수·fetch·출력 경계와 출력 배치에는 여전히 이 ELF 전용 수동 힌트가 필요하다.
 
-[CALL/RET 실험](control-flow/RESULT.md)은 보관된 ELF를 바꾸지 않고 별도 VM에서 분기 뒤 중첩 호출, 같은 함수 재호출, 호출을 포함한 루프와 스택 오류를 측정했다. 5개 프로그램·12개 입력의 C 실행, angr 분석, P-code 경로 합성 결과가 각각 **12/12** 일치했다. 최종 식은 `X=0 → 10`, `X≠0 → X+5`, `X+14`, `X+21`이다. 전체 함수 `daasdmlkas` slice에는 여전히 경로 밖 연산과 미해결 메모리 의존이 남는다. 기존 Lua 핸들러 요약은 동일한 guarded relation 형식에만 옮겼으며 Lua CALL/RET를 새로 분석한 결과는 아니다.
+[CALL/RET 실험](control-flow/RESULT.md)은 보관된 ELF를 바꾸지 않고 별도 VM에서 분기 뒤 중첩 호출, 같은 함수 재호출, 호출을 포함한 루프와 스택 오류를 측정했다. 5개 프로그램·12개 입력의 C 실행, angr 분석, P-code 경로 합성 결과가 각각 **12/12** 일치했다. 최종 식은 `X=0 → 10`, `X≠0 → X+5`, `X+14`, `X+21`이다. 전체 함수 `daasdmlkas` slice에는 여전히 경로 밖 연산과 미해결 메모리 의존이 남는다. 당시에는 기존 Lua 핸들러 요약만 동일한 guarded relation 형식에 옮겼다.
+
+[지역 프레임·간접 호출·심볼 제거·규모 실험](frames/RESULT.md)은 별도 ELF에서 4개 프로그램·11개 입력을 분석했다. O2/O1 심볼 제거 ELF에서 함수·fetch 경계를 찾아 각각 11/11 결과를 맞혔다. 규모 사례는 64개 경로까지 증명했으며 7비트 분기는 상태 한도에서 `unknown`으로 끝났다. 실제 [Lua 분기·함수 호출 실험](../interpreter-expression/LUA_BRANCH_CALL_RESULT.md)의 전체 스크립트 guard는 아직 미증명이다.
 
 실제 C/Lua 실행기의 출력까지 다시 확인하려면 **Linux x86-64 또는 WSL2**에서 `python3 tools/run_fixtures.py`를 실행한다. 이는 실행 결과 정답 39/39를 확인하는 별도 단계다. Windows 네이티브/macOS에서는 ELF를 실행하는 이 단계가 지원되지 않는다.
 

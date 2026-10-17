@@ -37,12 +37,12 @@ def project(summary_file, trace_file, binary_file):
     captured = bytes.fromhex(snapshot["bytes_hex"])
     if base != before["rbx"] or len(captured) < 16:
         raise ProjectionUnknown("Lua input binding is outside the captured VM stack")
-    witness = before["rdx"]
-    if int.from_bytes(captured[:8], "little") != witness:
-        raise ProjectionUnknown("Lua input binding disagrees with entry register")
+    witness = int.from_bytes(captured[:8], "little")
+    register_binding = before["rdx"] == witness
     input_symbol = z3.BitVec("X", 64)
     registers = {name: bit(before[name], 64) for name in REGISTER_OFFSETS.values()}
-    registers["rdx"] = input_symbol
+    if register_binding:
+        registers["rdx"] = input_symbol
     flags = {bit_index: bit((before["eflags"] >> bit_index) & 1, 8)
              for bit_index in FLAG_OFFSETS.values()}
     memory = {base + offset: bit(value, 8) for offset, value in enumerate(captured)}
@@ -80,7 +80,8 @@ def project(summary_file, trace_file, binary_file):
             "trace_sha256": sha256(trace_file.read_bytes()).hexdigest(),
             "binary_sha256": summary["identity"]["executable_code_sha256"],
             "entry_cutpoint": hex(entry_pc), "exit_cutpoint": hex(exit_pc),
-            "input_binding": "entry R_RDX and 8-byte VM memory at entry R_RBX",
+            "input_binding": ("entry R_RDX and 8-byte VM memory at entry R_RBX"
+                              if register_binding else "8-byte VM memory at entry R_RBX"),
             "word": hex(before["r12"] & 0xFFFFFFFF),
             "witness": str(witness), "guard": compact_guard(condition, input_symbol),
             "guard_smt": condition.sexpr(), "guard_reduction_proved": guard_proved,

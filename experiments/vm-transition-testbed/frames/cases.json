@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "FMT001", "name": "branch_indirect_nested_call",
+      "instructions": [
+        {"op":"brz","src":0,"imm":5},
+        {"op":"move","dst":1,"src":0},
+        {"op":"movi","dst":3,"imm":10},
+        {"op":"icall","dst":1,"src":3},
+        {"op":"halt","src":1},
+        {"op":"invalid"},
+        {"op":"movi","dst":1,"imm":5},
+        {"op":"movi","dst":3,"imm":10},
+        {"op":"icall","dst":1,"src":3},
+        {"op":"halt","src":1},
+        {"op":"addi","dst":1,"src":0,"imm":2},
+        {"op":"call","dst":1,"imm":14},
+        {"op":"ret","src":1},
+        {"op":"invalid"},
+        {"op":"addi","dst":2,"src":0,"imm":3},
+        {"op":"ret","src":2}
+      ],
+      "samples":["0","9","-1","9223372036854775807"]
+    },
+    {
+      "id":"FMT002", "name":"local_slot_isolation",
+      "instructions":[
+        {"op":"movi","dst":2,"imm":77},
+        {"op":"move","dst":1,"src":0},
+        {"op":"call","dst":1,"imm":5},
+        {"op":"addi","dst":2,"src":2,"imm":1},
+        {"op":"halt","src":2},
+        {"op":"movi","dst":2,"imm":99},
+        {"op":"ret","src":0}
+      ],
+      "samples":["0","9","-1"]
+    },
+    {
+      "id":"FMT003", "name":"loop_within_called_frame",
+      "instructions":[
+        {"op":"move","dst":1,"src":0},
+        {"op":"call","dst":1,"imm":4},
+        {"op":"halt","src":1},
+        {"op":"invalid"},
+        {"op":"move","dst":1,"src":0},
+        {"op":"movi","dst":2,"imm":3},
+        {"op":"addi","dst":1,"src":1,"imm":7},
+        {"op":"subi","dst":2,"src":2,"imm":1},
+        {"op":"brnz","src":2,"imm":-3},
+        {"op":"ret","src":1}
+      ],
+      "samples":["0","9","-1"]
+    },
+    {
+      "id":"FMT004", "name":"indirect_target_out_of_bounds",
+      "instructions":[
+        {"op":"move","dst":1,"src":0},
+        {"op":"movi","dst":3,"imm":50},
+        {"op":"icall","dst":1,"src":3}
+      ],
+      "samples":["9"]
+    }
+  ]
+}

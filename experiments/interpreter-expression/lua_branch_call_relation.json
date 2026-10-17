@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "format": "guarded_input_relation",
+  "engine": "lua_5_4_fixture",
+  "source": "branch_and_called_lua_function",
+  "scope": "observed_full_script_paths",
+  "input": "X:BV64",
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "program_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+  "observed_samples": 4,
+  "records": [
+    {
+      "input": "0",
+      "caller_bytecode_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "callee_bytecode_indices": [
+        0,
+        2
+      ],
+      "callee_entry_value": "5",
+      "callee_payload": "10",
+      "script_return": "10",
+      "native_vm_instructions": 673,
+      "map_sha256": "80a7d261744cf735b99eef2737ad76175efb9b79a99a3b405fa2d10479035289",
+      "handler_trace_sha256": "5d54c05ea1fb4405bcb681187ce1b49be4518398fa8e65776634df33897b9cb0"
+    },
+    {
+      "input": "9",
+      "caller_bytecode_indices": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11
+      ],
+      "callee_bytecode_indices": [
+        0,
+        2
+      ],
+      "callee_entry_value": "9",
+      "callee_payload": "14",
+      "script_return": "14",
+      "native_vm_instructions": 717,
+      "map_sha256": "996a51adf647ab2cb50b7eca8075673954daa837d5d86c7e9c72ce222ac24e77",
+      "handler_trace_sha256": "52522c099d61722e06bdadc8c4d194adffd5499469b5c85706d3c7070d980040"
+    },
+    {
+      "input": "-1",
+      "caller_bytecode_indices": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11
+      ],
+      "callee_bytecode_indices": [
+        0,
+        2
+      ],
+      "callee_entry_value": "-1",
+      "callee_payload": "4",
+      "script_return": "4",
+      "native_vm_instructions": 717,
+      "map_sha256": "48118fa6e90f797ba59d3a7fcc2dcdf8ddab56c8cbb7188742c33e9f42a940f5",
+      "handler_trace_sha256": "a13a660dbcd9cd727b123129a8f90bf0885c397c136d88c98c33b456957b7d80"
+    },
+    {
+      "input": "9223372036854775807",
+      "caller_bytecode_indices": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11
+      ],
+      "callee_bytecode_indices": [
+        0,
+        2
+      ],
+      "callee_entry_value": "9223372036854775807",
+      "callee_payload": "-9223372036854775804",
+      "script_return": "-9223372036854775804",
+      "native_vm_instructions": 717,
+      "map_sha256": "f0fdbf98d6555952248274ae9400c3dc1965bb6113409f47c6959aa14905ef83",
+      "handler_trace_sha256": "11ccec1b7d005161e335a1b5300efcde15938513395b14277dd5bb94b733f353"
+    }
+  ],
+  "paths": [
+    {
+      "guard": "X == 0",
+      "guard_proven": false,
+      "status": "observed_return",
+      "value": "10",
+      "value_proven": false,
+      "handler_value": "callee_input + 5",
+      "handler_value_proven": true,
+      "observed_inputs": [
+        "0"
+      ]
+    },
+    {
+      "guard": "X != 0",
+      "guard_proven": false,
+      "status": "observed_return",
+      "value": "X + 5",
+      "value_proven": false,
+      "handler_value": "callee_input + 5",
+      "handler_value_proven": true,
+      "observed_inputs": [
+        "9",
+        "-1",
+        "9223372036854775807"
+      ]
+    }
+  ],
+  "limits": "The full input-to-callee binding, branch guards, and return composition are not proved for all X. The handler P-code value reduction is proved only under its captured path assumptions."
+}

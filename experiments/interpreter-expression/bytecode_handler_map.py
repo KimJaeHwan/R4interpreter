@@ -88,32 +88,46 @@ all_vm_indirect_dispatches = [int(row["rip"], 16) for row in rows
 if sorted(all_vm_indirect_dispatches) != sorted(int(event["dispatch_native_pc"], 16)
                                                 for event in events):
     raise AssertionError("an executed VM indirect dispatch has no bytecode fetch mapping")
-runtime_base = events[0]["runtime_code_address"]
 bytecode = bytecode_path.read_bytes()
-first_three_words = b"".join(struct.pack("<I", row["raw_instruction_word"]) for row in events[:3])
-file_start = bytecode.find(first_three_words)
-if file_start < 0 or bytecode.count(first_three_words) != 1:
-    raise AssertionError("fetched words do not uniquely identify the bytecode file sequence")
+regions = []
+for event in events:
+    address = event["runtime_code_address"]
+    if not regions or abs(address - regions[-1][-1]["runtime_code_address"]) > 128:
+        regions.append([])
+    regions[-1].append(event)
+
+for region_number, region in enumerate(regions):
+    runtime_base = min(event["runtime_code_address"] for event in region)
+    first_word = struct.pack("<I", region[0]["raw_instruction_word"])
+    candidates = [offset for offset in range(len(bytecode) - 3)
+                  if bytecode[offset:offset + 4] == first_word]
+    bases = []
+    for candidate in candidates:
+        base = candidate - (region[0]["runtime_code_address"] - runtime_base)
+        if all(0 <= (offset := base + event["runtime_code_address"] - runtime_base)
+               <= len(bytecode) - 4 and
+               bytecode[offset:offset + 4] == struct.pack("<I", event["raw_instruction_word"])
+               for event in region):
+            bases.append(base)
+    if len(bases) != 1:
+        raise AssertionError(f"region {region_number}: expected one bytecode file mapping, got {bases}")
+    for event in region:
+        delta = event["runtime_code_address"] - runtime_base
+        if delta % 4:
+            raise AssertionError("runtime bytecode positions are not aligned")
+        event["vm_code_region"] = region_number
+        event["bytecode_index"] = delta // 4
+        event["file_byte_offset"] = bases[0] + delta
 
 for index, event in enumerate(events):
-    delta = event["runtime_code_address"] - runtime_base
-    if delta < 0 or delta % 4:
-        raise AssertionError("runtime bytecode positions are not aligned")
-    bytecode_index = delta // 4
-    file_offset = file_start + delta
-    if file_offset + 4 > len(bytecode):
-        raise AssertionError("runtime bytecode position is outside the file")
-    if struct.unpack_from("<I", bytecode, file_offset)[0] != event["raw_instruction_word"]:
-        raise AssertionError("runtime instruction word disagrees with the .luac file")
     end = events[index + 1]["fetch_trace_step"] if index + 1 < len(events) else len(rows)
     executed_pcs = [int(row["rip"], 16) for row in rows[event["handler_first_trace_step"]:end]]
-    event["bytecode_index"] = bytecode_index
-    event["file_byte_offset"] = file_offset
     event["executed_native_steps_until_next_fetch_or_return"] = len(executed_pcs)
     event["contains_observed_addition_pc"] = 0x417CE7 in executed_pcs
     del event["handler_first_trace_step"]
 
 observed_indices = [event["bytecode_index"] for event in events]
+file_start = regions[0][0]["file_byte_offset"]
 report = {
     "binary_sha256": sha256(binary_path.read_bytes()).hexdigest(),
     "bytecode_sha256": sha256(bytecode).hexdigest(),
@@ -121,8 +135,10 @@ report = {
     "bundle_archive_sha256": sha256(bundle_path.read_bytes()).hexdigest(),
     "bytecode_code_start_file_offset": file_start,
     "executed_bytecode_indices": observed_indices,
-    "not_fetched_between_observed_indices": [index for index in range(min(observed_indices), max(observed_indices) + 1)
-                                             if index not in observed_indices],
+    "not_fetched_between_observed_indices": [index for index in range(min(row["bytecode_index"] for row in regions[0]),
+                                                                    max(row["bytecode_index"] for row in regions[0]) + 1)
+                                             if index not in {row["bytecode_index"] for row in regions[0]}],
+    "vm_code_regions": len(regions),
     "events": events,
     "conclusion": "observed bytecode words and numeric dispatch targets linked for one VM invocation; handler semantics and general input expression remain unproven",
 }

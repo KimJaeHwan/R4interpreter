@@ -12,6 +12,7 @@
 | 공통 전이 요약 v0 | Lua 한 handler 경로의 P-code 265개를 식/효과로 저장; 동일 적용기로 작은 ELF도 처리 | Lua 바이트코드 2개 × 8 입력, 네이티브 ELF 5 입력 차등 확인 |
 | 두 handler 합성 | 기존 Lua 요약의 출력에서 5개 명령의 fetch/decode/dispatch를 거쳐 다음 handler 입력 계산 | `x+7; +11` 바이트코드 6 입력, 둘째 진입 snapshot 입력 없이 차등 확인 |
 | 공통 입력식 투영 | 기존 Lua 핸들러·연결 요약과 작은 VM 경로 요약에 같은 기호 투영기 적용 | Lua `X+7`, `X+11`, 두 핸들러 `X+18`; 작은 VM 30개 평가 중 28 pass·2 accepted_unknown |
+| Lua 분기·함수 호출 | 호출자·피호출자 두 바이트코드 영역을 네이티브 분배에 대응시키고 피호출자 핸들러의 `Y+5`를 P-code로 축약 | 2개 관측 경로·4개 입력. 전체 스크립트 guard·출력식은 아직 미증명 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -26,6 +27,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 [두 handler 합성 결과](TWO_HANDLER_COMPOSITION_RESULT.md)에서는 명령 위치와 VM 슬롯이 다른 `x+7; +11` 바이트코드에 기존 요약을 적용하고, 그 사이 fetch/decode/dispatch를 P-code로 연결했다. 첫 처리 구간의 출력과 바이트코드·읽기 전용 점프 테이블에서 두 번째 진입 상태를 예측했다.
 
 [입력 수준 식 축약 결과](../vm-transition-testbed/results/LOGIC_PROJECTION_RESULT.md)에서는 두 엔진의 요약을 같은 `logic_projection.py`로 합성하고 SMT 동치 확인 후 긴 P-code 식을 간단한 `X` 식으로 줄였다. Lua의 축약 범위는 현재 마지막 숫자 핸들러까지이며 최종 반환 경로는 포함하지 않는다.
+
+[Lua 분기·함수 호출 실험](LUA_BRANCH_CALL_RESULT.md)은 호출 전후 두 바이트코드 코드 영역을 실제 추적으로 연결하고, 피호출자 산술 핸들러의 값을 검증했다. 스크립트 전체의 두 경로는 공통 형식에 후보로 기록했으며 guard 완전성은 증명되지 않았다.
 
 ## 파일
 
