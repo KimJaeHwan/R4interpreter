@@ -394,11 +394,13 @@ def main():
     js_path = ROOT / "js_addsmi_full_handler_summary.json"
     allocated_path = ROOT / "python_allocated_result_summary.json"
     string_path = ROOT / "js_string_add_full_handler_summary.json"
+    length_path = ROOT / "js_string_length_paths_summary.json"
     lua_source = json.loads(lua_path.read_text())
     python_source = json.loads(python_path.read_text())
     js_source = json.loads(js_path.read_text())
     allocated_source = json.loads(allocated_path.read_text())
     string_source = json.loads(string_path.read_text())
+    length_source = json.loads(length_path.read_text())
     lua_reference = load_trace(ARTIFACTS / "lua_handler_plus7_x9.jsonl",
                                0x4164B8, 0x415B24)[1]
     common = {"schema_version": "common-observed-transition-v1",
@@ -417,7 +419,10 @@ def main():
                                     sha256(allocated_path.read_bytes()).hexdigest())] +
                   [normalize_native(string_source, "javascript", item,
                                     sha256(string_path.read_bytes()).hexdigest())
-                   for item in string_source["cases"]]),
+                   for item in string_source["cases"]] +
+                  [normalize_native(length_source, "javascript", item,
+                                    sha256(length_path.read_bytes()).hexdigest())
+                   for item in length_source["cases"]]),
         "uncovered": "all unlisted or failing guards/paths are unknown"}
     OUTPUT.write_text(json.dumps(common, indent=2) + "\n")
     loaded = json.loads(OUTPUT.read_text())
@@ -445,6 +450,10 @@ def main():
         filename = f"js_string_full_{value}.json.gz"
         meta, body, _ = gzip_records(ARTIFACTS / filename)
         targets.append(("javascript", node_binary, body["rows"], meta, filename, None))
+    for value in (0, 8, 10, 99, 252, 999, 1001, 1009, 10000):
+        filename = f"js_string_full_{value}.json.gz"
+        meta, body, _ = gzip_records(ARTIFACTS / filename)
+        targets.append(("javascript", node_binary, body["rows"], meta, filename, None))
     filename = "js_summary_reuse_37.json.gz"
     two_adds = gzip_records(ARTIFACTS / filename)
     for section in two_adds[1:3]:
@@ -462,7 +471,7 @@ def main():
         chosen = success[0] if success else {"status": "unknown(no applicable case)",
                                              "candidate_results": applications}
         expected_application = filename not in (
-            "js_handler_holdout_252.json.gz", "js_string_full_251.json.gz")
+            "js_handler_holdout_252.json.gz", "js_string_full_10000.json.gz")
         if (chosen["status"] == "differentially_validated") != expected_application:
             raise ValueError(f"unexpected common applicability: {filename}: {chosen}")
         results.append({"trace": filename, "engine": engine,
@@ -522,6 +531,18 @@ def main():
     next(item for item in bad_immediate_rows[0]["memory"]
          if item["access"] & 1 and item["address"] == immediate_address
          and item["size"] == 1)["before"] = 6
+    three_meta, three_body, _ = gzip_records(ARTIFACTS / "js_string_full_252.json.gz")
+    bad_three_rows = deepcopy(three_body["rows"])
+    three_source_char = bad_three_rows[0]["registers"]["rax"] - 1 + 16
+    next(item for row in bad_three_rows for item in row["memory"]
+         if item["access"] & 1 and item["address"] == three_source_char
+         and item["size"] == 1)["before"] = ord("9")
+    four_meta, four_body, _ = gzip_records(ARTIFACTS / "js_string_full_1001.json.gz")
+    bad_four_rows = deepcopy(four_body["rows"])
+    four_result_char = bad_four_rows[-1]["registers_after"]["rax"] - 1 + 16 + 3
+    next(item for row in bad_four_rows for item in row["memory"]
+         if item["access"] & 2 and item["address"] == four_result_char
+         and item["size"] == 1)["after"] ^= 1
     probes = {
         "wrong_common_schema": apply_case(bad_schema, loaded["cases"][2],
                                           node_binary, js_rows),
@@ -554,7 +575,13 @@ def main():
                                                   alloc_meta),
         "wrong_string_immediate": apply_case(loaded, loaded["cases"][5],
                                                node_binary, bad_immediate_rows,
-                                               string_meta)}
+                                               string_meta),
+        "wrong_three_digit_source": apply_case(loaded, loaded["cases"][7],
+                                                 node_binary, bad_three_rows,
+                                                 three_meta),
+        "wrong_four_digit_output": apply_case(loaded, loaded["cases"][8],
+                                                node_binary, bad_four_rows,
+                                                four_meta)}
     negative_probes = {name: item["status"] for name, item in probes.items()}
     if any(not status.startswith("unknown(") for status in negative_probes.values()):
         raise ValueError("common applier accepted an invalid case")

@@ -1,6 +1,6 @@
 {
-  "summary_sha256": "3345a4ddcd380e751854ebf8c7cd1f5dd3eb636528a9fde84468c9607f7a9df2",
-  "cases_in_summary": 6,
+  "summary_sha256": "4efef1e57b41668b5600e1a2f3373baa3792e8083852bb1453aac4976ebd1608",
+  "cases_in_summary": 9,
   "targets": [
     {
       "trace": "lua_handler_plus11_x9.jsonl",
@@ -120,6 +120,15 @@
           },
           {
             "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(path identity)"
           }
         ]
       }
@@ -198,8 +207,170 @@
       "bytecode_offset": null,
       "trace_sha256": "9d1ee7fa06aaf3694768fdda9dc32a2d0b7c2f1c5be6d664c7c70854cc8f127d",
       "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 232,
+        "outputs_checked": 21,
+        "reads_checked": 49,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 31,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_0.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "e2033e15491a8b704d7d14f77f3a2bd34eb680b28102375bba84b27d9c611882",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 219,
+        "outputs_checked": 21,
+        "reads_checked": 47,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 29,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_8.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "0b264a9e8fd6f71790f60c44ba108c9caa5a0925c1f7471060c792acafb03ab9",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 219,
+        "outputs_checked": 21,
+        "reads_checked": 47,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 29,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_10.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "8d64b3b0df25d5b6bbc7a55c1efa6124c51095948c637a8aadc1e55948bad5b4",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 230,
+        "outputs_checked": 21,
+        "reads_checked": 48,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 30,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_99.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "7c8a38f1bcb00f5e689f5e934e1d3a74872b8c57012947353c41c4afb2afc98c",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 230,
+        "outputs_checked": 21,
+        "reads_checked": 48,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 30,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_252.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "1f8a6dfe22e1f94034f81f01271f1e15d68fa5f8eacb5eec668fee8b4c63738f",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 232,
+        "outputs_checked": 21,
+        "reads_checked": 49,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 31,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_999.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "22392035e8348d375777e9f0a7e8dd000d2a5fcb316f807a3c31b6168598a007",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 232,
+        "outputs_checked": 21,
+        "reads_checked": 49,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 31,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_1001.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "af59904b3f9f35b1472e4afcefc4d51f95e6747dcdd8edabbd88929c71a1de13",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 237,
+        "outputs_checked": 21,
+        "reads_checked": 50,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 32,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_1009.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "c3cb3b010b9743b527fb7a86c268b947b2ea0f4dd7c483ce783ade2713670536",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 237,
+        "outputs_checked": 21,
+        "reads_checked": 50,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 32,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_10000.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "fd940f8daf11a731cf5d0166c32ac66c2aadb31c9c78a9d38a269e5e034c5410",
+      "application": {
         "status": "unknown(no applicable case)",
         "candidate_results": [
+          {
+            "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(path identity)"
+          },
           {
             "status": "unknown(path identity)"
           },
@@ -260,12 +431,14 @@
     "wrong_js_successor": "unknown(path identity)",
     "wrong_allocated_digit": "unknown(allocated PyLong layout)",
     "wrong_python_segment_base": "unknown(outside case guard)",
-    "wrong_string_immediate": "unknown(AddSmi immediate)"
+    "wrong_string_immediate": "unknown(AddSmi immediate)",
+    "wrong_three_digit_source": "unknown(string object/input mismatch)",
+    "wrong_four_digit_output": "unknown(ordered effects mismatch)"
   },
   "metrics": {
     "engines": 3,
-    "targets": 14,
-    "applied_correct": 12,
+    "targets": 23,
+    "applied_correct": 21,
     "unknown": 2,
     "target_pcode_steps_replayed": 0
   },

@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "symbolic_pair_block": {
+    "pc_sequence": [
+      "0x1ab4140",
+      "0x1ab4145",
+      "0x1ab4149",
+      "0x1ab414f"
+    ],
+    "native_steps": 4,
+    "pcode_operations": 20,
+    "input_symbols": [
+      "SRC",
+      "DST",
+      "OFFSET",
+      "PAIR_M0"
+    ],
+    "alias_condition": "DST + OFFSET != SRC + OFFSET + 1 (mod 2^64)",
+    "overlap_counterexample": "sat",
+    "reads": [
+      {
+        "position": 0,
+        "address_inequality": "unsat"
+      },
+      {
+        "position": 1,
+        "address_inequality": "unsat"
+      }
+    ],
+    "writes": [
+      {
+        "position": 0,
+        "address_inequality": "unsat",
+        "byte_inequality": "unsat"
+      },
+      {
+        "position": 1,
+        "address_inequality": "unsat",
+        "byte_inequality": "unsat"
+      }
+    ],
+    "unwritten_memory_inequality": "unsat",
+    "base_register_change": "unsat"
+  },
+  "sources": [
+    {
+      "trace": "js_string_full_9.json.gz",
+      "trace_sha256": "9a6e1af9944e22875f1b0537eef5fd9f33c01e3f1a2085a37c0b00c73bbeae1a",
+      "input": 9,
+      "digits": 1,
+      "native_steps": 219,
+      "copy_pairs": [
+        {
+          "position": 0,
+          "read_step": 183,
+          "write_step": 184,
+          "read_pc": "0x1ab4162",
+          "write_pc": "0x1ab4167",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        }
+      ],
+      "suffix": {
+        "step": 196,
+        "pc": "0x1ab41f1",
+        "byte_inequality": "unsat",
+        "address_inequality": "unsat",
+        "guard_exclusion": "unsat"
+      },
+      "symbolic_pair_block_occurrences": [],
+      "repeated_two_character_copy_block": false
+    },
+    {
+      "trace": "js_string_full_probe_37.json.gz",
+      "trace_sha256": "90284c69449d2199b2cb301245a301183d71994d99cd578ccc08727974ab66d6",
+      "input": 37,
+      "digits": 2,
+      "native_steps": 230,
+      "copy_pairs": [
+        {
+          "position": 0,
+          "read_step": 187,
+          "write_step": 188,
+          "read_pc": "0x1ab4140",
+          "write_pc": "0x1ab4145",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 1,
+          "read_step": 189,
+          "write_step": 190,
+          "read_pc": "0x1ab4149",
+          "write_pc": "0x1ab414f",
+          "pcode_operations": 11,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        }
+      ],
+      "suffix": {
+        "step": 207,
+        "pc": "0x1ab41f1",
+        "byte_inequality": "unsat",
+        "address_inequality": "unsat",
+        "guard_exclusion": "unsat"
+      },
+      "symbolic_pair_block_occurrences": [
+        {
+          "first_character": 0,
+          "step_indices": [
+            187,
+            191
+          ]
+        }
+      ],
+      "repeated_two_character_copy_block": false
+    },
+    {
+      "trace": "js_string_full_251.json.gz",
+      "trace_sha256": "9d1ee7fa06aaf3694768fdda9dc32a2d0b7c2f1c5be6d664c7c70854cc8f127d",
+      "input": 251,
+      "digits": 3,
+      "native_steps": 232,
+      "copy_pairs": [
+        {
+          "position": 0,
+          "read_step": 187,
+          "write_step": 188,
+          "read_pc": "0x1ab4140",
+          "write_pc": "0x1ab4145",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 1,
+          "read_step": 189,
+          "write_step": 190,
+          "read_pc": "0x1ab4149",
+          "write_pc": "0x1ab414f",
+          "pcode_operations": 11,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 2,
+          "read_step": 196,
+          "write_step": 197,
+          "read_pc": "0x1ab4162",
+          "write_pc": "0x1ab4167",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        }
+      ],
+      "suffix": {
+        "step": 209,
+        "pc": "0x1ab41f1",
+        "byte_inequality": "unsat",
+        "address_inequality": "unsat",
+        "guard_exclusion": "unsat"
+      },
+      "symbolic_pair_block_occurrences": [
+        {
+          "first_character": 0,
+          "step_indices": [
+            187,
+            191
+          ]
+        }
+      ],
+      "repeated_two_character_copy_block": false
+    },
+    {
+      "trace": "js_string_full_1000.json.gz",
+      "trace_sha256": "f5691bf2347e81d58ee162e32dcefdb8cb30f6c95ddf87f6fab88e12ea6630b4",
+      "input": 1000,
+      "digits": 4,
+      "native_steps": 237,
+      "copy_pairs": [
+        {
+          "position": 0,
+          "read_step": 187,
+          "write_step": 188,
+          "read_pc": "0x1ab4140",
+          "write_pc": "0x1ab4145",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 1,
+          "read_step": 189,
+          "write_step": 190,
+          "read_pc": "0x1ab4149",
+          "write_pc": "0x1ab414f",
+          "pcode_operations": 11,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 2,
+          "read_step": 194,
+          "write_step": 195,
+          "read_pc": "0x1ab4140",
+          "write_pc": "0x1ab4145",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 3,
+          "read_step": 196,
+          "write_step": 197,
+          "read_pc": "0x1ab4149",
+          "write_pc": "0x1ab414f",
+          "pcode_operations": 11,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        }
+      ],
+      "suffix": {
+        "step": 214,
+        "pc": "0x1ab41f1",
+        "byte_inequality": "unsat",
+        "address_inequality": "unsat",
+        "guard_exclusion": "unsat"
+      },
+      "symbolic_pair_block_occurrences": [
+        {
+          "first_character": 0,
+          "step_indices": [
+            187,
+            191
+          ]
+        },
+        {
+          "first_character": 2,
+          "step_indices": [
+            194,
+            198
+          ]
+        }
+      ],
+      "repeated_two_character_copy_block": true
+    },
+    {
+      "trace": "js_string_full_10000.json.gz",
+      "trace_sha256": "fd940f8daf11a731cf5d0166c32ac66c2aadb31c9c78a9d38a269e5e034c5410",
+      "input": 10000,
+      "digits": 5,
+      "native_steps": 239,
+      "copy_pairs": [
+        {
+          "position": 0,
+          "read_step": 187,
+          "write_step": 188,
+          "read_pc": "0x1ab4140",
+          "write_pc": "0x1ab4145",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 1,
+          "read_step": 189,
+          "write_step": 190,
+          "read_pc": "0x1ab4149",
+          "write_pc": "0x1ab414f",
+          "pcode_operations": 11,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 2,
+          "read_step": 194,
+          "write_step": 195,
+          "read_pc": "0x1ab4140",
+          "write_pc": "0x1ab4145",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 3,
+          "read_step": 196,
+          "write_step": 197,
+          "read_pc": "0x1ab4149",
+          "write_pc": "0x1ab414f",
+          "pcode_operations": 11,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        },
+        {
+          "position": 4,
+          "read_step": 203,
+          "write_step": 204,
+          "read_pc": "0x1ab4162",
+          "write_pc": "0x1ab4167",
+          "pcode_operations": 9,
+          "byte_inequality": "unsat",
+          "address_inequality": "unsat",
+          "guard_exclusion": "unsat"
+        }
+      ],
+      "suffix": {
+        "step": 216,
+        "pc": "0x1ab41f1",
+        "byte_inequality": "unsat",
+        "address_inequality": "unsat",
+        "guard_exclusion": "unsat"
+      },
+      "symbolic_pair_block_occurrences": [
+        {
+          "first_character": 0,
+          "step_indices": [
+            187,
+            191
+          ]
+        },
+        {
+          "first_character": 2,
+          "step_indices": [
+            194,
+            198
+          ]
+        }
+      ],
+      "repeated_two_character_copy_block": true
+    }
+  ],
+  "target_value_checks": [
+    {
+      "input": 0,
+      "digits": 1,
+      "output": "05",
+      "trace": "js_string_full_0.json.gz",
+      "trace_sha256": "e2033e15491a8b704d7d14f77f3a2bd34eb680b28102375bba84b27d9c611882",
+      "native_steps": 219
+    },
+    {
+      "input": 8,
+      "digits": 1,
+      "output": "85",
+      "trace": "js_string_full_8.json.gz",
+      "trace_sha256": "0b264a9e8fd6f71790f60c44ba108c9caa5a0925c1f7471060c792acafb03ab9",
+      "native_steps": 219
+    },
+    {
+      "input": 9,
+      "digits": 1,
+      "output": "95",
+      "trace": "js_string_full_9.json.gz",
+      "trace_sha256": "9a6e1af9944e22875f1b0537eef5fd9f33c01e3f1a2085a37c0b00c73bbeae1a",
+      "native_steps": 219
+    },
+    {
+      "input": 10,
+      "digits": 2,
+      "output": "105",
+      "trace": "js_string_full_10.json.gz",
+      "trace_sha256": "8d64b3b0df25d5b6bbc7a55c1efa6124c51095948c637a8aadc1e55948bad5b4",
+      "native_steps": 230
+    },
+    {
+      "input": 37,
+      "digits": 2,
+      "output": "375",
+      "trace": "js_string_full_probe_37.json.gz",
+      "trace_sha256": "90284c69449d2199b2cb301245a301183d71994d99cd578ccc08727974ab66d6",
+      "native_steps": 230
+    },
+    {
+      "input": 38,
+      "digits": 2,
+      "output": "385",
+      "trace": "js_string_full_38.json.gz",
+      "trace_sha256": "633f5a7f7c96f0d0b40c08f60594a82c7276d3d2c3a7c9f87696a86de504de48",
+      "native_steps": 230
+    },
+    {
+      "input": 99,
+      "digits": 2,
+      "output": "995",
+      "trace": "js_string_full_99.json.gz",
+      "trace_sha256": "7c8a38f1bcb00f5e689f5e934e1d3a74872b8c57012947353c41c4afb2afc98c",
+      "native_steps": 230
+    },
+    {
+      "input": 251,
+      "digits": 3,
+      "output": "2515",
+      "trace": "js_string_full_251.json.gz",
+      "trace_sha256": "9d1ee7fa06aaf3694768fdda9dc32a2d0b7c2f1c5be6d664c7c70854cc8f127d",
+      "native_steps": 232
+    },
+    {
+      "input": 252,
+      "digits": 3,
+      "output": "2525",
+      "trace": "js_string_full_252.json.gz",
+      "trace_sha256": "1f8a6dfe22e1f94034f81f01271f1e15d68fa5f8eacb5eec668fee8b4c63738f",
+      "native_steps": 232
+    },
+    {
+      "input": 999,
+      "digits": 3,
+      "output": "9995",
+      "trace": "js_string_full_999.json.gz",
+      "trace_sha256": "22392035e8348d375777e9f0a7e8dd000d2a5fcb316f807a3c31b6168598a007",
+      "native_steps": 232
+    },
+    {
+      "input": 1000,
+      "digits": 4,
+      "output": "10005",
+      "trace": "js_string_full_1000.json.gz",
+      "trace_sha256": "f5691bf2347e81d58ee162e32dcefdb8cb30f6c95ddf87f6fab88e12ea6630b4",
+      "native_steps": 237
+    },
+    {
+      "input": 1001,
+      "digits": 4,
+      "output": "10015",
+      "trace": "js_string_full_1001.json.gz",
+      "trace_sha256": "af59904b3f9f35b1472e4afcefc4d51f95e6747dcdd8edabbd88929c71a1de13",
+      "native_steps": 237
+    },
+    {
+      "input": 1009,
+      "digits": 4,
+      "output": "10095",
+      "trace": "js_string_full_1009.json.gz",
+      "trace_sha256": "c3cb3b010b9743b527fb7a86c268b947b2ea0f4dd7c483ce783ade2713670536",
+      "native_steps": 237
+    },
+    {
+      "input": 10000,
+      "digits": 5,
+      "output": "100005",
+      "trace": "js_string_full_10000.json.gz",
+      "trace_sha256": "fd940f8daf11a731cf5d0166c32ac66c2aadb31c9c78a9d38a269e5e034c5410",
+      "native_steps": 239
+    }
+  ],
+  "metrics": {
+    "source_path_lengths": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "local_copy_proofs": 15,
+    "matching_pair_block_occurrences": 6,
+    "suffix_proofs": 5,
+    "observed_value_checks": 14
+  },
+  "limits": [
+    "complete native state/effect summaries cover only lengths one to four",
+    "five-digit full native transition remains unknown",
+    "copy proofs fix non-character cutpoint state and addresses",
+    "local copy proof covers observed one- to five-digit ASCII decimal string paths and Smi 5",
+    "no proof of arbitrary string length, aliasing, allocation or path reachability"
+  ]
+}

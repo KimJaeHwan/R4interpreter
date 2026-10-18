@@ -27,6 +27,10 @@ PYTHON_SOURCE = ARTIFACTS / "python_holdout_252.json.gz"
 JS_SOURCE = ARTIFACTS / "js_string_full_probe_37.json.gz"
 PYTHON_SUMMARY = ROOT / "python_allocated_result_summary.json"
 JS_SUMMARY = ROOT / "js_string_add_full_handler_summary.json"
+JS_LENGTH_SUMMARY = ROOT / "js_string_length_paths_summary.json"
+JS_LENGTH_SOURCES = {1: ARTIFACTS / "js_string_full_9.json.gz",
+                     3: ARTIFACTS / "js_string_full_251.json.gz",
+                     4: ARTIFACTS / "js_string_full_1000.json.gz"}
 
 
 def records(path):
@@ -173,8 +177,35 @@ def main():
                    "different string lengths and exception paths remain unknown"]}
     PYTHON_SUMMARY.write_text(json.dumps(python_summary, indent=2) + "\n")
     JS_SUMMARY.write_text(json.dumps(js_summary, indent=2) + "\n")
+    length_cases = []
+    length_sources = {}
+    for digits, path in JS_LENGTH_SOURCES.items():
+        meta, body, result = records(path)
+        rows = body["rows"]
+        value = meta["input"]
+        if (meta["binary_sha256"] != js_hash or
+                meta["fixture_sha256"] != js_pre["fixture_sha256"] or
+                meta["input_type"] != "string" or not meta["full_handler"] or
+                len(str(value)) != digits or result["output"] != str(value) + "5" or
+                rows[-1]["next_pc"] != 0x1BC6F40):
+            raise ValueError(f"JavaScript {digits}-digit source evidence changed")
+        pre = {**js_pre, "input_decimal_digits": digits}
+        length_cases.append(make_case(rows, node, f"{digits}_digit_string_concat",
+                                      pre))
+        length_sources[str(digits)] = {"trace_sha256": sha256(path.read_bytes()).hexdigest(),
+                                      "source_input": value}
+    length_summary = {"schema_version": "native-handler-transition-v1",
+        "engine": "javascript", "binary_sha256": js_hash,
+        "scope": "observed one-, three-, and four-digit string + Smi 5 paths to Return handler",
+        "cases": length_cases, "source_traces": length_sources,
+        "limits": ["each input length has one observed native path shape",
+                   "two-digit path is in js_string_add_full_handler_summary.json",
+                   "unobserved lengths, exceptions and other runtime versions remain unknown"]}
+    JS_LENGTH_SUMMARY.write_text(json.dumps(length_summary, indent=2) + "\n")
     print(json.dumps({"python": python_summary["case"]["evidence"],
-                      "javascript": js_summary["cases"][0]["evidence"]}))
+                      "javascript": js_summary["cases"][0]["evidence"],
+                      "javascript_lengths": {str(d): c["evidence"] for d, c in
+                                             zip(JS_LENGTH_SOURCES, length_cases)}}))
 
 
 if __name__ == "__main__":
