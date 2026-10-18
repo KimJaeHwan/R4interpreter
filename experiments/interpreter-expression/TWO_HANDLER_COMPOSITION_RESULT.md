@@ -1,5 +1,7 @@
 # Lua 덧셈 두 번의 상태 전이 합성
 
+> 후속 [공통 구간 합성 실험](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)은 이 다섯 명령의 분배 구간을 별도 SMT 전이로 저장해 JavaScript 루프와 같은 적용 코어에서 재사용했다. 적용 시 P-code를 다시 재생하지 않는다.
+
 상태: [확장 관문](VM_HANDLER_SUMMARY_DESIGN.md) 통과. 기존 [단일 처리 구간 요약](TRANSITION_SUMMARY_RESULT.md)을 수정하지 않고 명령 위치·슬롯이 다른 바이트코드에 재사용한 뒤, 첫 처리 구간의 출력과 fetch/decode/dispatch를 연결해 두 번째 처리 구간의 입력을 계산했다. 코드와 원시 증거는 R4interpreter에만 저장했다.
 
 ## 새 바이트코드와 처리 구간

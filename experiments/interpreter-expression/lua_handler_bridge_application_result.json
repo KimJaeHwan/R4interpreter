@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "summary_sha256": "b5744e6bfd179b37313f47cd0f186143c1db0a12bf51a49085f43c5b247e4d0b",
+  "cases": [
+    {
+      "input": 9,
+      "status": "differentially_validated",
+      "first_payload": 16,
+      "second_payload": 27,
+      "program_output": 27,
+      "first_destination": 491440432,
+      "second_destination": 491440448,
+      "initial_read_bytes": 21,
+      "native_steps": 51,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "second_entry_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "bridge",
+          "native_steps": 5,
+          "reads_checked": 2,
+          "ordered_writes_checked": 0,
+          "outputs_checked": 21
+        },
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "lua_two_adds_x9.jsonl",
+      "trace_sha256": "8e2e00778b9fb70ab19adf5b9c129d019d3a3c32a0c10d555ebdb3cf23335a06"
+    },
+    {
+      "input": 0,
+      "status": "differentially_validated",
+      "first_payload": 7,
+      "second_payload": 18,
+      "program_output": 18,
+      "first_destination": 827152688,
+      "second_destination": 827152704,
+      "initial_read_bytes": 21,
+      "native_steps": 51,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "second_entry_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "bridge",
+          "native_steps": 5,
+          "reads_checked": 2,
+          "ordered_writes_checked": 0,
+          "outputs_checked": 21
+        },
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "lua_two_adds_zero.jsonl",
+      "trace_sha256": "aa12674a06c945c2dbdcab918eeed93d4f18ea022c962af9b78d3667efe50604"
+    },
+    {
+      "input": 1,
+      "status": "differentially_validated",
+      "first_payload": 8,
+      "second_payload": 19,
+      "program_output": 19,
+      "first_destination": 539879728,
+      "second_destination": 539879744,
+      "initial_read_bytes": 21,
+      "native_steps": 51,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "second_entry_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "bridge",
+          "native_steps": 5,
+          "reads_checked": 2,
+          "ordered_writes_checked": 0,
+          "outputs_checked": 21
+        },
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "lua_two_adds_one.jsonl",
+      "trace_sha256": "7231b106afa7e4a69ae72fb66c31d5b6a5e6d47354d8149be2c67b1c768fecdf"
+    },
+    {
+      "input": -1,
+      "status": "differentially_validated",
+      "first_payload": 6,
+      "second_payload": 17,
+      "program_output": 17,
+      "first_destination": 867993904,
+      "second_destination": 867993920,
+      "initial_read_bytes": 21,
+      "native_steps": 51,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "second_entry_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "bridge",
+          "native_steps": 5,
+          "reads_checked": 2,
+          "ordered_writes_checked": 0,
+          "outputs_checked": 21
+        },
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "lua_two_adds_minus_one.jsonl",
+      "trace_sha256": "9768bba61a9c274a373e90434e8b9ac50f7f4236bc078d302cb6614610b7b044"
+    },
+    {
+      "input": 9223372036854775807,
+      "status": "differentially_validated",
+      "first_payload": -9223372036854775802,
+      "second_payload": -9223372036854775791,
+      "program_output": -9223372036854775791,
+      "first_destination": 228026672,
+      "second_destination": 228026688,
+      "initial_read_bytes": 21,
+      "native_steps": 51,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "second_entry_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "bridge",
+          "native_steps": 5,
+          "reads_checked": 2,
+          "ordered_writes_checked": 0,
+          "outputs_checked": 21
+        },
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "lua_two_adds_max.jsonl",
+      "trace_sha256": "b4f8d729f88ce2ee5a51bfecba687fad8910f445bcc564bb7eab23e0d0c5c8b4"
+    },
+    {
+      "input": -9223372036854775808,
+      "status": "differentially_validated",
+      "first_payload": -9223372036854775801,
+      "second_payload": -9223372036854775790,
+      "program_output": -9223372036854775790,
+      "first_destination": 806136112,
+      "second_destination": 806136128,
+      "initial_read_bytes": 21,
+      "native_steps": 51,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "second_entry_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "bridge",
+          "native_steps": 5,
+          "reads_checked": 2,
+          "ordered_writes_checked": 0,
+          "outputs_checked": 21
+        },
+        {
+          "label": "handler",
+          "native_steps": 23,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "lua_two_adds_min.jsonl",
+      "trace_sha256": "d4b41d2c398d8da029c12ee901d1b1782959079e629a447b72b36066e990dfe5"
+    }
+  ],
+  "negative_probes": {
+    "wrong_native_write": "unknown(handler ordered effects)",
+    "wrong_bridge_path": "unknown(bridge path shape)",
+    "wrong_second_entry_snapshot": "unknown(handler entry state)"
+  },
+  "metrics": {
+    "targets": 6,
+    "full_native_transitions_matched": 6,
+    "target_pcode_operations_replayed": 0,
+    "source_pcode_operations_replayed_at_application": 0
+  },
+  "limits": [
+    "target native path and first-read memory supplied by trace",
+    "first handler input state supplied by trace",
+    "fixed numeric path and bytecode image; alternative paths unknown"
+  ]
+}

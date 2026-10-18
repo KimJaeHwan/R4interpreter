@@ -19,6 +19,7 @@
 | Python 할당·JavaScript 문자열 경로 | 두 새 전체 네이티브 경로를 공통 형식에 추가하고 내부 값 구간을 SMT로 투영 | 합계 14개 대상 중 12개 일치·2개 `unknown`; Python `X+5` 객체 digit과 JS `"두 자리 숫자" + 5`의 출력 문자 확인. BigInt 오류는 미해결 |
 | JavaScript 문자열 길이별 경로 | 한·세·네 자리의 전체 전이를 추가하고, 한 자리부터 다섯 자리까지 공통 문자 복사를 P-code로 확인 | 합계 23개 대상 중 21개 일치·2개 `unknown`; 문자 복사 15곳·끝 문자 5곳과 기호 주소를 가진 두 문자 복사 블록을 증명. 다섯 자리 전체 전이는 `unknown` |
 | JavaScript 문자열 복사 루프 합성 | 세·네 자리의 공통 앞·뒤 구간과 두 문자 반복 구간을 기호 전이로 저장해 조합 | 길이 2~11의 10건에서 전체 네이티브 전이 일치; 12~16의 5건은 다른 경로라 `unknown`. 저장된 요약 적용 시 P-code 재생 0회 |
+| JavaScript·Lua 공통 구간 합성 | 문자열 루프 평가 코어를 분리하고 Lua 숫자 핸들러→fetch/decode/dispatch→핸들러에도 적용 | JavaScript 10건 일치·5건 `unknown` 유지; Lua 6개 입력에서 각 51개 명령의 상태·읽기·쓰기가 일치. 적용 시 P-code 재생 0회 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -46,6 +47,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [문자열 루프 합성 결과](JS_STRING_LOOP_COMPOSITION_RESULT.md)는 후속 실험이다. 다섯 자리의 전체 전이까지 포함해 길이 2~11에서 10건을 확인했다. 재사용 가능한 다섯 구간의 SMT 식을 저장했고, 대상 추적에 적용할 때 소스·대상 P-code를 다시 재생하지 않았다. 12자리 이상의 다른 경로는 `unknown`이다.
 
+[공통 구간 합성 결과](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)는 같은 guard·상태·읽기·쓰기·후속 주소 적용기를 Lua의 숫자 핸들러와 분배 구간에도 사용했다. 첫 핸들러의 계산된 출력을 두 번째 진입까지 전달하고 6개 입력의 51개 명령 전이를 확인했다. 경계와 바이트코드 바인딩은 아직 대상별 어댑터가 제공한다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -66,6 +69,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `build_expanded_native_paths.py`, `project_expanded_values.py`: Python 할당·JavaScript 문자열의 전체 경로 요약과 내부 결과값 증명. [후속 결과](EXPANDED_PATH_VALUE_PROJECTION_RESULT.md)에 범위를 기록했다.
 - `prove_js_string_copy_family.py`: JavaScript 문자열 길이 1~5에서 반복되는 바이트 복사 규칙과 최종 출력 바이트를 확인한다. [길이별 결과](JS_STRING_LENGTH_FAMILY_RESULT.md)에 전체 전이와 값 투영의 범위를 나눠 기록했다.
 - `compose_js_string_loop.py`, `freeze_js_string_loop.py`, `apply_js_string_loop_summary.py`: 두 문자 루프의 guard·효과 증명, 다섯 구간 전이 요약 생성, 저장된 요약의 대상 추적 적용. [루프 합성 결과](JS_STRING_LOOP_COMPOSITION_RESULT.md)에 증거와 한계를 기록했다.
+- `composed_native_transition.py`, `freeze_lua_handler_bridge_segments.py`, `apply_lua_handler_bridge_summary.py`: JavaScript·Lua가 공유하는 구간 평가 코어와 Lua 핸들러·분배 구간의 동결·합성. [공통 구간 결과](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)에 재현법을 기록했다.
 
 ## 재현
 
@@ -87,4 +91,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[문자열 루프 합성 결과](JS_STRING_LOOP_COMPOSITION_RESULT.md)의 다음 연구 순서는 12자리 이상에서 바뀌는 앞 경로의 요약, BigInt 오류의 실제 Throw 경계 확보, 경계·live-in/out 자동화, alias·생존성에 근거한 안전한 상태 축약과 핸들러 합성, 호출·할당·예외를 표현하는 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md) 확장이다.
+[공통 구간 결과](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)의 다음 연구 순서는 Python 객체 할당 또는 예외의 효과 표현, 12자리 이상에서 바뀌는 JavaScript 앞 경로, BigInt 오류의 실제 Throw 경계 확보, 경계·live-in/out 자동화, alias·생존성에 근거한 안전한 상태 축약과 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md) 확장이다.

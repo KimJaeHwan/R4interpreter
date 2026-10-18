@@ -2,6 +2,8 @@
 
 상태: 설계 초안과 제한된 교차 엔진 구현. 목적은 원본 스크립트나 미리 작성한 opcode 의미표 없이, 네이티브 바이너리의 P-code에서 얻은 **한 실행 경계 사이의 상태 변화**를 같은 형식으로 표현하는 것이다. [Lua 처리 구간 실험](VM_HANDLER_SUMMARY_DESIGN.md)은 첫 사용 사례다. [세 엔진 관측 전이 결과](THREE_ENGINE_NATIVE_TRANSITION_RESULT.md)는 Lua·Python·JavaScript의 4개 사례를 `common-observed-transition-v1`로 저장하고 같은 식·효과 적용기를 사용했다. 9개 대상 중 8개 관측 구간이 차등 일치했고 1개는 `unknown`이었다. 이것은 아래의 더 넓은 설계 전체나 모든 VM 경로의 자동 추출을 구현했다는 뜻은 아니다.
 
+후속 [공통 구간 합성 실험](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)은 JavaScript의 반복 문자열 복사와 Lua의 숫자 핸들러·fetch/decode/dispatch 연결을 같은 SMT 구간 평가 코어로 적용했다. 구간 내 식·상태·효과 계산은 공유하지만 경계 선택, 구간 순서, 바이트코드 바인딩은 여전히 대상별로 제공한다.
+
 [Python·JavaScript 첫 교차 실험](PYTHON_JS_FIRST_RESULT.md)은 초기 값 투영에 `Z`와 `F64` sort를 추가했다. 후속 [전체 관측 핸들러 실험](THREE_ENGINE_NATIVE_TRANSITION_RESULT.md)은 고정된 숫자 경로에서 출력 레지스터·읽기·순서 있는 쓰기·다음 핸들러까지 확장했다. 다른 타입, 예외, 전체 호출 합성은 아직 이 요약 범위 밖이다.
 
 ## 공통으로 표현할 것

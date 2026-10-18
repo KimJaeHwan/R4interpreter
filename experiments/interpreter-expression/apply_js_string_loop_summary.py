@@ -9,9 +9,9 @@ import shutil
 
 import z3
 
-from apply_transition_summary import declarations, expression
 from build_expanded_native_paths import records
 from common_observed_transition import javascript_string_preconditions
+from composed_native_transition import apply_segment, evaluate, parse_segments
 from compose_js_string_loop import TARGET_VALUES
 from freeze_js_string_loop import OUTPUT as SUMMARY
 from pcode_transition_summary import FLAG_OFFSETS, REGISTER_OFFSETS
@@ -21,110 +21,6 @@ from prove_lua_full_flow import initial_memory
 
 
 RESULT = ROOT / "js_string_frozen_loop_application_result.json"
-
-
-def number(term):
-    value = z3.simplify(term)
-    if not z3.is_bv_value(value):
-        raise ValueError("frozen expression depends on an unbound input")
-    return value.as_long()
-
-
-def path_shape(rows):
-    data = [[hex(row["pc"]), row["bytes"], hex(row["next_pc"])] for row in rows]
-    return sha256(json.dumps(data, separators=(",", ":")).encode()).hexdigest()
-
-
-def parse_segments(summary):
-    decls = declarations(summary)
-    parsed = {}
-    for segment in summary["segments"]:
-        parsed[segment["label"]] = {
-            "guard": expression(segment["guard"], "Bool", decls),
-            "outputs": [(item["name"], expression(item["expression"],
-                                                    item["sort"], decls))
-                        for item in segment["outputs"]],
-            "reads": [(item, expression(item["address"], "BV64", decls),
-                       expression(item["value"], f"BV{item['width'] * 8}", decls))
-                      for item in segment["reads"]],
-            "effects": [(item, expression(item["address"], "BV64", decls),
-                         expression(item["value"], f"BV{item['width'] * 8}", decls))
-                        for item in segment["effects"]],
-            "successor": expression(segment["successor"], "BV64", decls),
-            "identity": segment["identity"],
-            "evidence": segment["evidence"]}
-    if set(parsed) != {"prefix", "pair_continue", "pair_exit",
-                       "odd_tail_and_return", "even_return"}:
-        raise ValueError("frozen loop segment roles changed")
-    return decls, parsed
-
-
-def evaluate(ast, bindings):
-    return number(z3.substitute(ast, *bindings))
-
-
-def apply_segment(label, segment, rows, decls, state, flags, memory):
-    identity = segment["identity"]
-    if (not rows or len(rows) != identity["native_steps"] or
-            hex(rows[0]["pc"]) != identity["entry_pc"] or
-            hex(rows[-1]["next_pc"]) != identity["next_pc"] or
-            path_shape(rows) != identity["path_shape_sha256"]):
-        return None, f"unknown({label} path shape)"
-    bindings = [(decls[f"R_{name.upper()}"], z3.BitVecVal(state[name], 64))
-                for name in REGISTER_OFFSETS.values()]
-    bindings += [(decls[f"F_{bit}"], z3.BitVecVal(flags[bit], 8))
-                 for bit in FLAG_OFFSETS.values()]
-    bindings.append((decls["M0"], memory))
-    if not z3.is_true(z3.simplify(z3.substitute(segment["guard"], *bindings))):
-        return None, f"unknown({label} guard)"
-    reads = []
-    for item, address_ast, value_ast in segment["reads"]:
-        address, value = evaluate(address_ast, bindings), evaluate(value_ast, bindings)
-        key = (item["pc"], address, item["width"])
-        if key not in [(r["pc"], r["address"], r["width"]) for r in reads]:
-            reads.append({"pc": item["pc"], "address": address,
-                          "width": item["width"], "value": value})
-    actual_reads = [{"pc": hex(row["pc"]), "address": access["address"],
-                     "width": access["size"], "value": access["before"]}
-                    for row in rows for access in row["memory"] if access["access"] & 1]
-    if reads != actual_reads:
-        return None, f"unknown({label} read footprint/value)"
-    effects = []
-    for item, address_ast, value_ast in segment["effects"]:
-        if item["kind"] != "Write":
-            return None, f"unknown({label} effect kind)"
-        effects.append({"pc": item["pc"], "address": evaluate(address_ast, bindings),
-                        "width": item["width"], "value": evaluate(value_ast, bindings)})
-    actual_effects = [{"pc": hex(row["pc"]), "address": access["address"],
-                       "width": access["size"], "value": access["after"]}
-                      for row in rows for access in row["memory"] if access["access"] & 2]
-    if effects != actual_effects:
-        return None, f"unknown({label} ordered effects)"
-    outputs = {name: evaluate(ast, bindings) for name, ast in segment["outputs"]}
-    expected_names = ({f"R_{name.upper()}" for name in REGISTER_OFFSETS.values()} |
-                      {f"F_{bit}" for bit in FLAG_OFFSETS.values()})
-    if set(outputs) != expected_names:
-        return None, f"unknown({label} incomplete state)"
-    next_state = {name: outputs[f"R_{name.upper()}"]
-                  for name in REGISTER_OFFSETS.values()}
-    next_flags = {bit: outputs[f"F_{bit}"] for bit in FLAG_OFFSETS.values()}
-    observed = rows[-1]["registers_after"]
-    if (any(next_state[name] != observed[name] for name in next_state) or
-            any(next_flags[bit] != ((observed["eflags"] >> bit) & 1)
-                for bit in next_flags)):
-        return None, f"unknown({label} state)"
-    if evaluate(segment["successor"], bindings) != rows[-1]["next_pc"]:
-        return None, f"unknown({label} successor)"
-    next_memory = memory
-    for item in effects:
-        for index in range(item["width"]):
-            next_memory = z3.Store(next_memory,
-                z3.BitVecVal((item["address"] + index) & ((1 << 64) - 1), 64),
-                z3.BitVecVal((item["value"] >> (8 * index)) & 255, 8))
-    return (next_state, next_flags, next_memory,
-            {"label": label, "native_steps": len(rows),
-             "reads_checked": len(reads), "ordered_writes_checked": len(effects),
-             "outputs_checked": len(outputs)}), None
 
 
 def apply(summary, decls, parsed, value, meta, rows, observed_result, binary_hash):
@@ -154,13 +50,14 @@ def apply(summary, decls, parsed, value, meta, rows, observed_result, binary_has
         segment = parsed[label]
         width = segment["identity"]["native_steps"]
         applied, reason = apply_segment(label, segment, rows[cursor:cursor + width],
-                                        decls, state, flags, memory)
+                                        summary, decls, state, flags, memory)
         if reason:
             return {"input": value, "status": reason,
                     "completed_stages": stages}
         state, flags, memory, evidence = applied
         cursor += width
-        stages.append(evidence)
+        stages.append({key: value for key, value in evidence.items()
+                       if key != "predicted_effects"})
         if label == "prefix":
             source = first["rax"] - 1 + 16
             destination = state["r14"] + 15
@@ -186,7 +83,8 @@ def apply(summary, decls, parsed, value, meta, rows, observed_result, binary_has
 
 def main():
     summary = json.loads(SUMMARY.read_text())
-    decls, parsed = parse_segments(summary)
+    decls, parsed = parse_segments(summary, {"prefix", "pair_continue",
+        "pair_exit", "odd_tail_and_return", "even_return"})
     node = Path(shutil.which("node"))
     binary_hash = sha256(node.read_bytes()).hexdigest()
     targets = []
