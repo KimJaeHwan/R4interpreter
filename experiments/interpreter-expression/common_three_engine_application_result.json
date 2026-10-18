@@ -1,6 +1,6 @@
 {
-  "summary_sha256": "dd38955fc2cc6d10be5bfc7010796b108cd6ac07f97b1405d76fbe66ea1ab898",
-  "cases_in_summary": 4,
+  "summary_sha256": "3345a4ddcd380e751854ebf8c7cd1f5dd3eb636528a9fde84468c9607f7a9df2",
+  "cases_in_summary": 6,
   "targets": [
     {
       "trace": "lua_handler_plus11_x9.jsonl",
@@ -117,6 +117,97 @@
           },
           {
             "status": "unknown(outside case guard)"
+          },
+          {
+            "status": "unknown(path identity)"
+          }
+        ]
+      }
+    },
+    {
+      "trace": "python_holdout_253.json.gz",
+      "engine": "python",
+      "bytecode_offset": null,
+      "trace_sha256": "e5d3780ea18388d066c89b05717cf22b337d10c52c5333467e60495ed38f91b6",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "python",
+        "native_steps": 146,
+        "outputs_checked": 21,
+        "reads_checked": 42,
+        "derived_outputs_checked": 0,
+        "ordered_writes_checked": 18,
+        "next_pc": "0x56173b",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "python_holdout_254.json.gz",
+      "engine": "python",
+      "bytecode_offset": null,
+      "trace_sha256": "5d9ad21eec08e9cd6f8886258a4553b0871fb830dccc4e65cfc73292201c81cc",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "python",
+        "native_steps": 146,
+        "outputs_checked": 21,
+        "reads_checked": 42,
+        "derived_outputs_checked": 0,
+        "ordered_writes_checked": 18,
+        "next_pc": "0x56173b",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "python_holdout_256.json.gz",
+      "engine": "python",
+      "bytecode_offset": null,
+      "trace_sha256": "4a07b66ab9303049f4266077a8193f65afc3c9a6d9db326c8676162400392f75",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "python",
+        "native_steps": 146,
+        "outputs_checked": 21,
+        "reads_checked": 42,
+        "derived_outputs_checked": 0,
+        "ordered_writes_checked": 18,
+        "next_pc": "0x56173b",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_38.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "633f5a7f7c96f0d0b40c08f60594a82c7276d3d2c3a7c9f87696a86de504de48",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 230,
+        "outputs_checked": 21,
+        "reads_checked": 48,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 30,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_string_full_251.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "9d1ee7fa06aaf3694768fdda9dc32a2d0b7c2f1c5be6d664c7c70854cc8f127d",
+      "application": {
+        "status": "unknown(no applicable case)",
+        "candidate_results": [
+          {
+            "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(path identity)"
           }
         ]
       }
@@ -166,13 +257,16 @@
     "corrupted_lua_snapshot": "unknown(outside case guard)",
     "wrong_python_operand": "unknown(operand or result slot mismatch)",
     "changed_js_write": "unknown(ordered effects mismatch)",
-    "wrong_js_successor": "unknown(path identity)"
+    "wrong_js_successor": "unknown(path identity)",
+    "wrong_allocated_digit": "unknown(allocated PyLong layout)",
+    "wrong_python_segment_base": "unknown(outside case guard)",
+    "wrong_string_immediate": "unknown(AddSmi immediate)"
   },
   "metrics": {
     "engines": 3,
-    "targets": 9,
-    "applied_correct": 8,
-    "unknown": 1,
+    "targets": 14,
+    "applied_correct": 12,
+    "unknown": 2,
     "target_pcode_steps_replayed": 0
   },
   "limits": [

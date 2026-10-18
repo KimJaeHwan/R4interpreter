@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "source_sha256": {
+    "python_trace": "f106e4f1ae78163eef4d2bf914989ac0be405fa13e27c24005c12bbc8b138cd0",
+    "javascript_trace": "90284c69449d2199b2cb301245a301183d71994d99cd578ccc08727974ab66d6"
+  },
+  "binary_sha256": {
+    "python": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+    "javascript": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12"
+  },
+  "observed_trace_sha256": {
+    "python_holdout_252.json.gz": "f106e4f1ae78163eef4d2bf914989ac0be405fa13e27c24005c12bbc8b138cd0",
+    "python_holdout_253.json.gz": "e5d3780ea18388d066c89b05717cf22b337d10c52c5333467e60495ed38f91b6",
+    "python_holdout_254.json.gz": "5d9ad21eec08e9cd6f8886258a4553b0871fb830dccc4e65cfc73292201c81cc",
+    "python_holdout_256.json.gz": "4a07b66ab9303049f4266077a8193f65afc3c9a6d9db326c8676162400392f75",
+    "js_string_full_probe_37.json.gz": "90284c69449d2199b2cb301245a301183d71994d99cd578ccc08727974ab66d6",
+    "js_string_full_38.json.gz": "633f5a7f7c96f0d0b40c08f60594a82c7276d3d2c3a7c9f87696a86de504de48"
+  },
+  "python": {
+    "native_transition_steps": 146,
+    "native_transition_writes": 18,
+    "value_expression": "X + 5",
+    "domain": "cached input digit X in [252,256], fixed source cutpoint live-ins and observed paths",
+    "arithmetic": {
+      "step_indices": [
+        73,
+        79
+      ],
+      "pcode_operations": 44,
+      "guards": 0,
+      "inequality_check": "unsat",
+      "guard_exclusion_check": "unsat"
+    },
+    "value_transport": {
+      "step_indices": [
+        79,
+        101
+      ],
+      "pcode_operations": 100,
+      "guards": 21,
+      "inequality_check": "unsat",
+      "guard_exclusion_check": "unsat"
+    },
+    "digit_store": {
+      "step_indices": [
+        101,
+        116
+      ],
+      "pc": "0x5e9853",
+      "pcode_operations": 64,
+      "guards": 10,
+      "inequality_check": "unsat",
+      "guard_exclusion_check": "unsat"
+    },
+    "observed_value_checks": [
+      {
+        "input": 252,
+        "output": 257,
+        "final_digit_bytes": 257
+      },
+      {
+        "input": 253,
+        "output": 258,
+        "final_digit_bytes": 258
+      },
+      {
+        "input": 254,
+        "output": 259,
+        "final_digit_bytes": 259
+      },
+      {
+        "input": 256,
+        "output": 261,
+        "final_digit_bytes": 261
+      }
+    ]
+  },
+  "javascript": {
+    "native_transition_steps": 230,
+    "native_transition_writes": 30,
+    "value_expression": "two ASCII input digits followed by '5'",
+    "domain": "fixed source cutpoint live-ins, observed two-digit string path",
+    "character_copies": [
+      {
+        "source_read_address": "0x130fb5fcdbc8",
+        "write_pc": "0x1ab4145",
+        "source_byte": "CHAR_187",
+        "inequality_check": "unsat",
+        "guard_exclusion_check": "unsat",
+        "native_steps": 2,
+        "pcode_operations": 9
+      },
+      {
+        "source_read_address": "0x130fb5fcdbc9",
+        "write_pc": "0x1ab414f",
+        "source_byte": "CHAR_189",
+        "inequality_check": "unsat",
+        "guard_exclusion_check": "unsat",
+        "native_steps": 2,
+        "pcode_operations": 11
+      }
+    ],
+    "suffix": {
+      "step_indices": [
+        204,
+        208
+      ],
+      "pc": "0x1ab41f1",
+      "pcode_operations": 21,
+      "inequality_check": "unsat",
+      "guard_exclusion_check": "unsat"
+    },
+    "observed_value_checks": [
+      {
+        "input": 37,
+        "output": "375",
+        "written_ascii": "375"
+      },
+      {
+        "input": 38,
+        "output": "385",
+        "written_ascii": "385"
+      }
+    ]
+  },
+  "limits": [
+    "each proof begins at an internal observed native cutpoint",
+    "cutpoint reachability and arbitrary memory aliases are not proved here",
+    "the full native transition retains other register and memory effects",
+    "unobserved handler paths remain unknown"
+  ]
+}

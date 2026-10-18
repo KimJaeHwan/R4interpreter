@@ -36,7 +36,7 @@ def main():
     parser.add_argument("input", type=int)
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
-    if not 5 <= args.input <= 252:
+    if not 5 <= args.input <= 256:
         raise ValueError("native holdout tracer covers cached inputs and one allocation boundary")
     marker = args.output.with_suffix(".marker.json")
     stdout = args.output.with_suffix(".stdout.txt")

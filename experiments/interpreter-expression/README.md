@@ -16,6 +16,7 @@
 | Python 3.13·JavaScript Ignition 첫 교차 실험 | 양쪽의 bytecode fetch→native handler 분배를 실제 주소로 연결하고 같은 guard/식 적용기에 연결 | 각 2개 native 분기 경로, 14개 출력 차등 검증. 이 초기 결과의 값 식은 표본 기반 후보이며 아래 후속 실험에서 범위를 좁혀 증명 |
 | Python·JavaScript 값 요약 재사용 | JavaScript `AddSmi` 앞부분의 조건부 상태 요약과 Python cached PyLong 숫자 요약을 다른 입력에 적용 | 새 프로그램에서 엔진당 3건: 2건 정확 적용·1건 `unknown`·불일치 0건. 전체 핸들러 효과는 미완성 |
 | 세 엔진의 관측 구간 전체 전이 | Lua·Python·JavaScript의 고정 경로를 같은 식·효과 형식으로 저장하고 공통 적용기로 평가 | 9개 대상 중 8개 일치·1개 `unknown`; 대상 P-code 재생 0회. Python 쓰기 12개와 JS 두 `AddSmi` 경로의 쓰기·후속 핸들러 포함 |
+| Python 할당·JavaScript 문자열 경로 | 두 새 전체 네이티브 경로를 공통 형식에 추가하고 내부 값 구간을 SMT로 투영 | 합계 14개 대상 중 12개 일치·2개 `unknown`; Python `X+5` 객체 digit과 JS `"두 자리 숫자" + 5`의 출력 문자 확인. BigInt 오류는 미해결 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -37,6 +38,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [값 요약 재사용 실험](SUMMARY_REUSE_EXPERIMENT.md)은 호출 결과에서 역방향 의존성을 찾고, 관측된 JavaScript 핸들러 경계를 선택한 뒤, Python·JavaScript 값 요약을 다른 실행에 적용한 이전 단계다. 후속 [세 엔진 관측 전이 결과](THREE_ENGINE_NATIVE_TRANSITION_RESULT.md)는 Python의 12개 네이티브 쓰기와 JavaScript 핸들러의 다음 분배까지 포함하고, Lua·Python·JavaScript에 같은 평가 코어를 사용한다. 다른 타입·경로는 `unknown`으로 남는다.
 
+[할당·문자열 경로와 값 축약 결과](EXPANDED_PATH_VALUE_PROJECTION_RESULT.md)는 Python의 새 PyLong 할당 경로와 JavaScript의 문자열 연결 경로를 추가했다. 전체 네이티브 전이의 모든 모델링한 효과를 저장한 상태에서, 결과값만 `X+5`와 ASCII 문자 복사·`'5'`로 투영한 증거와 남은 한계를 구분한다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -54,6 +57,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `trace_cross_full_flow.py`, `prove_cross_full_flow.py`: Python·JavaScript의 함수 입력부터 호출자 복귀까지의 조건부 P-code 연결과 하드웨어 인수 감시. [전체 함수 경로 결과](PYTHON_JS_FULL_FLOW_RESULT.md)에 적용 범위를 기록했다.
 - `slice_js_caller_result.py`, `discover_js_boundaries.py`, `slice_js_summary_reuse.py`, `prove_js_summary_reuse.py`, `prove_python_value_reuse.py`, `evaluate_summary_applicability.py`, `evaluate_holdout_programs.py`: 결과에서의 역방향 선택, 관측 경계, 조건부 요약 재사용과 새 프로그램 평가. [값 요약 재사용 결과](SUMMARY_REUSE_EXPERIMENT.md)에 근거와 한계를 기록했다.
 - `prove_js_handler_transition.py`, `prove_python_handler_transition.py`, `evaluate_alternate_paths.py`, `common_observed_transition.py`: 전체 관측 구간의 상태·효과 요약, 대체 경로 거부, 세 엔진 공통 적용기. [이번 결과](THREE_ENGINE_NATIVE_TRANSITION_RESULT.md)에 재현법과 한계를 기록했다.
+- `build_expanded_native_paths.py`, `project_expanded_values.py`: Python 할당·JavaScript 문자열의 전체 경로 요약과 내부 결과값 증명. [후속 결과](EXPANDED_PATH_VALUE_PROJECTION_RESULT.md)에 범위를 기록했다.
 
 ## 재현
 
@@ -75,4 +79,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[세 엔진 관측 전이 결과](THREE_ENGINE_NATIVE_TRANSITION_RESULT.md)의 다음 연구 순서는 Python 할당 경로와 JavaScript 문자열·오류 경로의 효과 수집, 경계·live-in/out 자동화, 안전한 상태 축약과 핸들러 합성, 호출·할당·예외를 표현하는 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md) 확장이다.
+[할당·문자열 경로와 값 축약 결과](EXPANDED_PATH_VALUE_PROJECTION_RESULT.md)의 다음 연구 순서는 BigInt 오류의 실제 Throw 경계 확보, 여러 길이의 문자열 경로 통합, 경계·live-in/out 자동화, alias·생존성에 근거한 안전한 상태 축약과 핸들러 합성, 호출·할당·예외를 표현하는 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md) 확장이다.

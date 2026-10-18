@@ -15,7 +15,7 @@ import os
 from pathlib import Path
 import signal
 
-from capstone import Cs, CS_ARCH_X86, CS_MODE_64
+from capstone import Cs, CS_AC_WRITE, CS_ARCH_X86, CS_MODE_64
 from capstone.x86 import (X86_OP_MEM, X86_REG_DS, X86_REG_ES, X86_REG_FS,
                          X86_REG_GS, X86_REG_INVALID)
 
@@ -47,6 +47,11 @@ def read_bytes(pid, address, size):
 
 def observed_memory_operands(insn, regs):
     result = memory_operands(insn, regs)
+    # Some Capstone builds label the destination of an SSE memory move as a
+    # read. The first operand is the x86 destination; its P-code is STORE.
+    if (insn.mnemonic in ("movups", "movaps", "movdqu", "movdqa") and
+            insn.operands and insn.operands[0].type == X86_OP_MEM):
+        result = [(address, size, CS_AC_WRITE) for address, size, _ in result]
     if insn.mnemonic == "leave":
         result.append((regs.rbp, 8, 1))
     for operand in insn.operands:

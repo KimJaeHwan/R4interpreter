@@ -34,7 +34,9 @@ class NativePathReplay(PathReplay):
                 node["byte_size"] == 8:
             name = "fs_base" if node["byte_offset"] == 272 else "gs_base"
             value = self.rows[0]["registers"][name]
-            return Dual(bv(value, 64), value)
+            symbolic = getattr(self, "segment_base_symbols", {}).get(name,
+                                                                      bv(value, 64))
+            return Dual(symbolic, value)
         # SLEIGH uses a direct RAM varnode for some RIP-relative literal loads.
         # A RAM target on BRANCH/CBRANCH/CALL remains a control-flow address.
         if node["kind_code"] == 4 and self.current_opcode == "COPY":

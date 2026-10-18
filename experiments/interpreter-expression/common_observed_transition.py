@@ -73,6 +73,12 @@ def normalize_native(source, engine, case, source_digest):
                         "expression": item["expression"],
                         "observed_binding": bind})
     identity = case["identity"]
+    preconditions = case.get("preconditions")
+    if preconditions is None:
+        preconditions = ({"kind": "python_cached_int",
+                          "cache_sha256": source["cache_sha256"],
+                          "minimum_x": 5, "maximum_x": 251, "right": 5}
+                         if engine == "python" else {"kind": "guard_only"})
     return {"engine": engine,
         "source_schema_version": source["schema_version"],
         "identity": {"binary_sha256": source["binary_sha256"],
@@ -81,7 +87,8 @@ def normalize_native(source, engine, case, source_digest):
                      "path_shape_mode": "pc_bytes_next",
                      "path_shape_sha256": identity["path_shape_sha256"],
                      "native_steps": identity["native_steps"]},
-        "interface": {"inputs": native_inputs()},
+        "interface": {"inputs": native_inputs() +
+                      case.get("interface_extensions", [])},
         "condition": [case["guard"]],
         "reads": case["reads"],
         "effects": [{"kind": "Write", **item}
@@ -93,11 +100,7 @@ def normalize_native(source, engine, case, source_digest):
                                                    "names": ["r12", "r9"]}}]
                             if "vm_cursor" in case else []),
         "successor": case["successor"],
-        "preconditions": ({"kind": "python_cached_int",
-                           "cache_sha256": source["cache_sha256"],
-                           "minimum_x": 5, "maximum_x": 251, "right": 5}
-                          if engine == "python" else
-                          {"kind": "guard_only"}),
+        "preconditions": preconditions,
         "source_summary_sha256": source_digest,
         "limits": source["limits"]}
 
@@ -132,6 +135,8 @@ def normalize_lua(source, reference_rows, source_digest):
 
 def bound_value(registers, binding):
     kind = binding["kind"]
+    if kind == "segment_base":
+        return registers[binding["name"]]
     if kind == "register_add":
         return sum(registers[name] for name in binding["names"]) & ((1 << 64) - 1)
     value = registers[binding["name"]]
@@ -174,20 +179,66 @@ def python_preconditions(case, meta, rows):
     result_effects = [item for row in rows for item in row["memory"]
                       if item["access"] & 2 and item["size"] == 8 and
                       item["address"] == meta["output_slot"]]
-    if (len(result_effects) != 1 or
-            result_effects[0]["after"] != CACHE_BASE + (x + pre["right"] + 5) * 32):
-        return "unknown(numeric result pointer)"
+    if len(result_effects) != 1:
+        return "unknown(numeric result slot write)"
+    if pre["kind"] == "python_cached_int":
+        if result_effects[0]["after"] != CACHE_BASE + (x + pre["right"] + 5) * 32:
+            return "unknown(numeric result pointer)"
+    else:
+        pointer = result_effects[0]["after"]
+        if CACHE_BASE <= pointer < cache_end or pointer & 15:
+            return "unknown(allocated result pointer)"
+        writes = {(item["address"] - pointer, item["size"]): item["after"]
+                  for row in rows for item in row["memory"] if item["access"] & 2
+                  and pointer <= item["address"] < pointer + 32}
+        py_long_type = int.from_bytes(cache[8:16], "little")
+        if writes != {(0, 8): 1, (8, 8): py_long_type,
+                      (16, 8): 8, (24, 4): x + pre["right"]}:
+            return "unknown(allocated PyLong layout)"
+    return None
+
+
+def javascript_string_preconditions(case, meta, rows):
+    pre = case["preconditions"]
+    if (not meta or meta.get("input_type") != "string" or
+            meta.get("fixture_sha256") != pre["fixture_sha256"] or
+            not meta.get("full_handler") or
+            type(meta.get("input")) is not int or
+            len(str(meta["input"])) != pre["input_decimal_digits"] or
+            rows[0]["registers"]["rax"] & 1 != 1):
+        return "unknown(string input contract)"
+    immediate_address = (rows[0]["registers"]["r12"] +
+                         rows[0]["registers"]["r9"] + 1) & ((1 << 64) - 1)
+    if not any(item["address"] == immediate_address and item["size"] == 1 and
+               item["access"] & 1 and item["before"] == 5
+               for item in rows[0]["memory"]):
+        return "unknown(AddSmi immediate)"
+    string_address = rows[0]["registers"]["rax"] - 1
+    reads = {(item["address"], item["size"]): item["before"]
+             for row in rows for item in row["memory"] if item["access"] & 1}
+    length = reads.get((string_address + 12, 4))
+    characters = [reads.get((string_address + 16 + index, 1))
+                  for index in range(pre["input_decimal_digits"])]
+    if (length != pre["input_decimal_digits"] or
+            any(character is None or not 48 <= character <= 57
+                for character in characters) or
+            int(bytes(characters).decode("ascii")) != meta["input"]):
+        return "unknown(string object/input mismatch)"
     return None
 
 
 def apply_case(common, case, binary, rows, meta=None):
     """Use the same typed expression/guard/effect evaluator for all engines."""
-    expected_preconditions = {"lua": ("lua_entry_snapshot",
-                                      "transition-summary-v0-candidate"),
-                              "python": ("python_cached_int",
-                                         "native-handler-transition-v1"),
-                              "javascript": ("guard_only",
-                                             "native-handler-transition-v1")}
+    expected_preconditions = {"lua": {("lua_entry_snapshot",
+                                       "transition-summary-v0-candidate")},
+                              "python": {("python_cached_int",
+                                          "native-handler-transition-v1"),
+                                         ("python_allocated_result",
+                                          "native-handler-transition-v1")},
+                              "javascript": {("guard_only",
+                                              "native-handler-transition-v1"),
+                                             ("javascript_string",
+                                              "native-handler-transition-v1")}}
     engine = case.get("engine")
     if (common.get("schema_version") != "common-observed-transition-v1" or
             common.get("semantic_model") !=
@@ -197,7 +248,7 @@ def apply_case(common, case, binary, rows, meta=None):
             case not in common.get("cases", []) or
             engine not in expected_preconditions or
             (case.get("preconditions", {}).get("kind"),
-             case.get("source_schema_version")) != expected_preconditions[engine]):
+             case.get("source_schema_version")) not in expected_preconditions[engine]):
         return {"status": "unknown(summary schema or engine)"}
     identity = case["identity"]
     if sha256(binary.read_bytes()).hexdigest() != identity["binary_sha256"]:
@@ -233,8 +284,12 @@ def apply_case(common, case, binary, rows, meta=None):
     if any(item.get("kind") != "Write" for item in case["effects"]):
         return {"status": "unknown(unsupported effect kind)"}
     pre = case["preconditions"]["kind"]
-    if pre == "python_cached_int":
+    if pre in ("python_cached_int", "python_allocated_result"):
         reason = python_preconditions(case, meta, rows)
+        if reason:
+            return {"status": reason}
+    elif pre == "javascript_string":
+        reason = javascript_string_preconditions(case, meta, rows)
         if reason:
             return {"status": reason}
     elif pre == "lua_entry_snapshot":
@@ -337,9 +392,13 @@ def main():
     lua_path = ROOT / "handler_summary_plus7.json"
     python_path = ROOT / "python_binary_op_full_handler_summary.json"
     js_path = ROOT / "js_addsmi_full_handler_summary.json"
+    allocated_path = ROOT / "python_allocated_result_summary.json"
+    string_path = ROOT / "js_string_add_full_handler_summary.json"
     lua_source = json.loads(lua_path.read_text())
     python_source = json.loads(python_path.read_text())
     js_source = json.loads(js_path.read_text())
+    allocated_source = json.loads(allocated_path.read_text())
+    string_source = json.loads(string_path.read_text())
     lua_reference = load_trace(ARTIFACTS / "lua_handler_plus7_x9.jsonl",
                                0x4164B8, 0x415B24)[1]
     common = {"schema_version": "common-observed-transition-v1",
@@ -352,7 +411,13 @@ def main():
                                     sha256(python_path.read_bytes()).hexdigest())] +
                   [normalize_native(js_source, "javascript", item,
                                     sha256(js_path.read_bytes()).hexdigest())
-                   for item in js_source["cases"]]),
+                   for item in js_source["cases"]] +
+                  [normalize_native(allocated_source, "python",
+                                    allocated_source["case"],
+                                    sha256(allocated_path.read_bytes()).hexdigest())] +
+                  [normalize_native(string_source, "javascript", item,
+                                    sha256(string_path.read_bytes()).hexdigest())
+                   for item in string_source["cases"]]),
         "uncovered": "all unlisted or failing guards/paths are unknown"}
     OUTPUT.write_text(json.dumps(common, indent=2) + "\n")
     loaded = json.loads(OUTPUT.read_text())
@@ -372,6 +437,14 @@ def main():
         filename = f"js_handler_holdout_{value}.json.gz"
         meta, body, _ = gzip_records(ARTIFACTS / filename)
         targets.append(("javascript", node_binary, body["rows"], meta, filename, None))
+    for value in (253, 254, 256):
+        filename = f"python_holdout_{value}.json.gz"
+        meta, body, _ = gzip_records(ARTIFACTS / filename)
+        targets.append(("python", PYTHON, body["rows"], meta, filename, None))
+    for value in (38, 251):
+        filename = f"js_string_full_{value}.json.gz"
+        meta, body, _ = gzip_records(ARTIFACTS / filename)
+        targets.append(("javascript", node_binary, body["rows"], meta, filename, None))
     filename = "js_summary_reuse_37.json.gz"
     two_adds = gzip_records(ARTIFACTS / filename)
     for section in two_adds[1:3]:
@@ -388,7 +461,8 @@ def main():
             raise ValueError("overlapping common cases")
         chosen = success[0] if success else {"status": "unknown(no applicable case)",
                                              "candidate_results": applications}
-        expected_application = (meta["input"] != 252 if engine == "javascript" else True)
+        expected_application = filename not in (
+            "js_handler_holdout_252.json.gz", "js_string_full_251.json.gz")
         if (chosen["status"] == "differentially_validated") != expected_application:
             raise ValueError(f"unexpected common applicability: {filename}: {chosen}")
         results.append({"trace": filename, "engine": engine,
@@ -428,6 +502,26 @@ def main():
          if access["access"] & 2)["after"] ^= 1
     bad_js_rows = deepcopy(js_rows)
     bad_js_rows[-1]["next_pc"] = 0
+    alloc_meta, alloc_body, _ = gzip_records(ARTIFACTS / "python_holdout_253.json.gz")
+    alloc_rows = alloc_body["rows"]
+    bad_alloc_rows = deepcopy(alloc_rows)
+    alloc_pointer = next(item["after"] for row in bad_alloc_rows
+                         for item in row["memory"] if item["access"] & 2
+                         and item["address"] == alloc_meta["output_slot"]
+                         and item["size"] == 8)
+    next(item for row in bad_alloc_rows for item in row["memory"]
+         if item["access"] & 2 and item["address"] == alloc_pointer + 24
+         and item["size"] == 4)["after"] ^= 1
+    bad_segment_rows = deepcopy(alloc_rows)
+    bad_segment_rows[0]["registers"]["fs_base"] ^= 8
+    string_meta, string_body, _ = gzip_records(ARTIFACTS / "js_string_full_38.json.gz")
+    string_rows = string_body["rows"]
+    bad_immediate_rows = deepcopy(string_rows)
+    immediate_address = (string_rows[0]["registers"]["r12"] +
+                         string_rows[0]["registers"]["r9"] + 1) & ((1 << 64) - 1)
+    next(item for item in bad_immediate_rows[0]["memory"]
+         if item["access"] & 1 and item["address"] == immediate_address
+         and item["size"] == 1)["before"] = 6
     probes = {
         "wrong_common_schema": apply_case(bad_schema, loaded["cases"][2],
                                           node_binary, js_rows),
@@ -452,7 +546,15 @@ def main():
         "changed_js_write": apply_case(loaded, loaded["cases"][2],
                                        node_binary, bad_fused_rows),
         "wrong_js_successor": apply_case(loaded, loaded["cases"][3],
-                                         node_binary, bad_js_rows)}
+                                         node_binary, bad_js_rows),
+        "wrong_allocated_digit": apply_case(loaded, loaded["cases"][4],
+                                             PYTHON, bad_alloc_rows, alloc_meta),
+        "wrong_python_segment_base": apply_case(loaded, loaded["cases"][4],
+                                                  PYTHON, bad_segment_rows,
+                                                  alloc_meta),
+        "wrong_string_immediate": apply_case(loaded, loaded["cases"][5],
+                                               node_binary, bad_immediate_rows,
+                                               string_meta)}
     negative_probes = {name: item["status"] for name, item in probes.items()}
     if any(not status.startswith("unknown(") for status in negative_probes.values()):
         raise ValueError("common applier accepted an invalid case")

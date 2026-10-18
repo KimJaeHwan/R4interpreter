@@ -310,6 +310,8 @@ class PathReplay:
             return Dual(resize(a.symbolic, bits), a.concrete & mask)
         if opcode == "INT_SEXT":
             return Dual(resize(a.symbolic, bits, signed=True), signed(a.concrete, a.bits) & mask)
+        if opcode == "INT_2COMP":
+            return Dual(resize(-a.symbolic, bits), (-a.concrete) & mask)
         if opcode == "BOOL_NEGATE":
             return bool_dual(a.symbolic == bv(0, a.bits), a.concrete == 0)
         if opcode in ("BOOL_AND", "BOOL_OR", "BOOL_XOR"):
