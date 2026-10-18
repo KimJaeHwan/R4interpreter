@@ -1,5 +1,7 @@
 # 공통 구간 적용기: JavaScript 루프와 Lua 명령 분배
 
+> 후속 [Python 할당 효과 실험](PYTHON_ALLOCATION_EFFECT_RESULT.md)은 같은 적용기를 객체 생성 경로에도 사용하고, `Write`와 논리적 `Allocate`의 차이를 기록했다.
+
 ## 목적과 결과
 
 [JavaScript 문자열 루프 실험](JS_STRING_LOOP_COMPOSITION_RESULT.md)에서 사용한 구간 평가를 문자열 처리 전용 코드에서 분리했다. [공통 구간 적용기](composed_native_transition.py)는 x86-64 P-code에서 저장한 SMT 식을 읽어 **경로 guard, 읽기 주소·값, 순서 있는 쓰기, 16개 범용 레지스터, 플래그 5개, 후속 주소**를 계산하고 네이티브 추적과 대조한다. 언어별 opcode 뜻이나 문자열·Lua 숫자 규칙은 이 코드에 없다.

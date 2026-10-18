@@ -1,5 +1,7 @@
 # Python 할당·JavaScript 문자열 경로와 값 축약
 
+> Python 할당 경로는 후속 [공통 구간·할당 효과 실험](PYTHON_ALLOCATION_EFFECT_RESULT.md)에서 JavaScript·Lua와 같은 적용기로 재실행하고, 물리적 쓰기와 논리적 객체 생성의 근거를 구분했다.
+
 이 문서는 두 자리 문자열까지의 첫 결과를 기록한다. 길이 1~5의 복사 규칙과 길이 1~4의 전체 전이 후속 결과는 [문자열 길이별 실험](JS_STRING_LENGTH_FAMILY_RESULT.md)을 참조한다.
 
 ## 이번 실험에서 확인한 것

@@ -80,6 +80,8 @@ def input_bindings(summary, decls, state, flags, memory):
             binding = item["binding"]
             value = z3.BitVecVal((state[binding["name"]] >> binding["low_bit"])
                                  & ((1 << binding["width"]) - 1), binding["width"])
+        elif item.get("binding", {}).get("kind") == "segment_base":
+            value = z3.BitVecVal(state[item["binding"]["name"]], 64)
         else:
             raise ValueError(f"unsupported segment input {name}")
         bindings.append((decls[name], value))

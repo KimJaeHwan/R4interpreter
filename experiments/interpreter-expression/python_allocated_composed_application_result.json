@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "summary_sha256": "edf356a3557c1ea2aba823482ec021c049337d266841ff2dbb0c74a4877ebaaf",
+  "cases": [
+    {
+      "input": 252,
+      "status": "differentially_validated",
+      "native_steps": 146,
+      "reads_checked": 42,
+      "ordered_writes_checked": 18,
+      "outputs_checked": 21,
+      "result_pointer": 140217488253904,
+      "result_slot": 140217494225352,
+      "object_layout": {
+        "refcount": 1,
+        "type_pointer": 10514112,
+        "size_tag": 8,
+        "digit": 257
+      },
+      "pre_write_reads_in_object_region": [
+        {
+          "pc": "0x5e9802",
+          "address": 140217488253904,
+          "width": 8,
+          "value": 140217488254832
+        }
+      ],
+      "initial_read_bytes": 189,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "allocation_event_proved": false,
+      "trace": "python_holdout_252.json.gz",
+      "trace_sha256": "f106e4f1ae78163eef4d2bf914989ac0be405fa13e27c24005c12bbc8b138cd0"
+    },
+    {
+      "input": 253,
+      "status": "differentially_validated",
+      "native_steps": 146,
+      "reads_checked": 42,
+      "ordered_writes_checked": 18,
+      "outputs_checked": 21,
+      "result_pointer": 140579669992400,
+      "result_slot": 140579675967944,
+      "object_layout": {
+        "refcount": 1,
+        "type_pointer": 10514112,
+        "size_tag": 8,
+        "digit": 258
+      },
+      "pre_write_reads_in_object_region": [
+        {
+          "pc": "0x5e9802",
+          "address": 140579669992400,
+          "width": 8,
+          "value": 140579669993328
+        }
+      ],
+      "initial_read_bytes": 189,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "allocation_event_proved": false,
+      "trace": "python_holdout_253.json.gz",
+      "trace_sha256": "e5d3780ea18388d066c89b05717cf22b337d10c52c5333467e60495ed38f91b6"
+    },
+    {
+      "input": 254,
+      "status": "differentially_validated",
+      "native_steps": 146,
+      "reads_checked": 42,
+      "ordered_writes_checked": 18,
+      "outputs_checked": 21,
+      "result_pointer": 140358563537872,
+      "result_slot": 140358569509320,
+      "object_layout": {
+        "refcount": 1,
+        "type_pointer": 10514112,
+        "size_tag": 8,
+        "digit": 259
+      },
+      "pre_write_reads_in_object_region": [
+        {
+          "pc": "0x5e9802",
+          "address": 140358563537872,
+          "width": 8,
+          "value": 140358563538800
+        }
+      ],
+      "initial_read_bytes": 189,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "allocation_event_proved": false,
+      "trace": "python_holdout_254.json.gz",
+      "trace_sha256": "5d9ad21eec08e9cd6f8886258a4553b0871fb830dccc4e65cfc73292201c81cc"
+    },
+    {
+      "input": 256,
+      "status": "differentially_validated",
+      "native_steps": 146,
+      "reads_checked": 42,
+      "ordered_writes_checked": 18,
+      "outputs_checked": 21,
+      "result_pointer": 140272104596432,
+      "result_slot": 140272110567880,
+      "object_layout": {
+        "refcount": 1,
+        "type_pointer": 10514112,
+        "size_tag": 8,
+        "digit": 261
+      },
+      "pre_write_reads_in_object_region": [
+        {
+          "pc": "0x5e9802",
+          "address": 140272104596432,
+          "width": 8,
+          "value": 140272104597360
+        }
+      ],
+      "initial_read_bytes": 189,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "allocation_event_proved": false,
+      "trace": "python_holdout_256.json.gz",
+      "trace_sha256": "4a07b66ab9303049f4266077a8193f65afc3c9a6d9db326c8676162400392f75"
+    },
+    {
+      "input": 251,
+      "status": "unknown(cached integer domain)",
+      "trace": "python_holdout_251.json.gz",
+      "trace_sha256": "c41d0357fce318ca5222b346f2e492032c817b5dc0e909067c884c822813ac7a"
+    }
+  ],
+  "negative_probes": {
+    "wrong_digit_write": "unknown(allocated PyLong layout)",
+    "wrong_fs_base": "unknown(allocated_pylong_path guard)"
+  },
+  "cached_path_comparison": {
+    "input": 251,
+    "status": "unknown(cached integer domain)",
+    "native_steps": 116,
+    "result_pointer": 10767024,
+    "pointer_in_static_integer_cache": true,
+    "reason": "result 256 reuses the static small-int cache and has another native path"
+  },
+  "metrics": {
+    "targets": 5,
+    "full_native_transitions_matched": 4,
+    "unknown": 1,
+    "distinct_observed_result_pointers": 4,
+    "target_pcode_operations_replayed": 0,
+    "source_pcode_operations_replayed_at_application": 0
+  },
+  "effect_assessment": {
+    "native_write_effects_sufficient_for_observed_transition": true,
+    "logical_allocation_event_proved": false,
+    "reason": "a logical object lifetime, freshness and alias frame are absent from Write effects; allocator reads an old value in the returned region"
+  },
+  "limits": [
+    "exact CPython binary and observed 146-step path",
+    "native path and first-read allocator memory supplied by trace",
+    "no proof of arbitrary heap freshness or all input paths"
+  ]
+}
