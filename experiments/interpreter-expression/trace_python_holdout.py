@@ -1,4 +1,4 @@
-"""Capture one observed CPython BINARY_OP handler in a new program."""
+"""Capture cached-input CPython BINARY_OP, including an uncached-result path."""
 from __future__ import annotations
 
 import argparse
@@ -36,8 +36,8 @@ def main():
     parser.add_argument("input", type=int)
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
-    if not 5 <= args.input <= 251:
-        raise ValueError("native holdout tracer covers the proved cached fast path")
+    if not 5 <= args.input <= 252:
+        raise ValueError("native holdout tracer covers cached inputs and one allocation boundary")
     marker = args.output.with_suffix(".marker.json")
     stdout = args.output.with_suffix(".stdout.txt")
     marker.unlink(missing_ok=True)
@@ -69,8 +69,10 @@ def main():
             ptrace(POKETEXT, child, HANDLER, original)
             before.rip = HANDLER
             ptrace(SETREGS, child, 0, ctypes.addressof(before))
-            if (peek(child, before.r15 - 16, 8) == wanted_left and
-                    peek(child, before.r15 - 8, 8) == wanted_right):
+            observed_left = peek(child, before.r15 - 16, 8)
+            if (peek(child, before.r15 - 8, 8) == wanted_right and
+                    observed_left == wanted_left):
+                wanted_left = observed_left
                 break
             step(child)
             ptrace(POKETEXT, child, HANDLER, (original & ~255) | 0xCC)

@@ -1,0 +1,86 @@
+{
+  "status": "four alternate cases rejected by bounded summaries",
+  "cases": [
+    {
+      "name": "python_result_cache_boundary",
+      "trace_sha256": "f106e4f1ae78163eef4d2bf914989ac0be405fa13e27c24005c12bbc8b138cd0",
+      "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+      "fixture_sha256": "888d0eecee25de8e608c8c59402a2888d8cb7c612bb819075bf643ccc488d609",
+      "input": 252,
+      "input_type": "integer",
+      "oracle": {
+        "type": "summary",
+        "output": 257
+      },
+      "trace_scope": "through_next_handler",
+      "native_steps_recorded": 146,
+      "reference_native_steps": 116,
+      "first_different_native_step": 81,
+      "application": {
+        "status": "unknown(cached integer domain)"
+      }
+    },
+    {
+      "name": "js_outside_proved_domain",
+      "trace_sha256": "b8ec29abb92560b971e9ee6d19fc93095d88e1ccbeebb54b79a0074067f8d1f2",
+      "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+      "fixture_sha256": "ed1c20cf965ec5408e4f713e098bce37fc1935a954c686560c5b5cd9b0493b03",
+      "input": 252,
+      "input_type": "number",
+      "oracle": {
+        "type": "summary",
+        "output": 257
+      },
+      "trace_scope": "through_next_handler",
+      "native_steps_recorded": 23,
+      "reference_native_steps": 23,
+      "first_different_native_step": null,
+      "application": {
+        "status": "unknown(outside case guard)"
+      }
+    },
+    {
+      "name": "js_string_concat",
+      "trace_sha256": "55b2ce127fb34e99c7c2100e102e614486632eba27d07c5c0fa6b6940a2fe6e6",
+      "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+      "fixture_sha256": "4c64b19c47b0fa0a735aca761f611e45d31996b553656ab172df3c92bba9b477",
+      "input": 37,
+      "input_type": "string",
+      "oracle": {
+        "type": "summary",
+        "output": "375"
+      },
+      "trace_scope": "first_11_native_steps",
+      "native_steps_recorded": 11,
+      "reference_native_steps": 23,
+      "first_different_native_step": 7,
+      "application": {
+        "status": "unknown(path identity)"
+      }
+    },
+    {
+      "name": "js_bigint_type_error",
+      "trace_sha256": "860c509402d3b4c269ce5953500b30cdb78564f3ffaf5f0f8ace0247f1ccd336",
+      "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+      "fixture_sha256": "ffbc43d3eae549cff0b0fa03b4d52f9c760d4b83c19b838feda96a19ffe8f274",
+      "input": 37,
+      "input_type": "bigint",
+      "oracle": {
+        "type": "summary",
+        "error": "TypeError"
+      },
+      "trace_scope": "first_11_native_steps",
+      "native_steps_recorded": 11,
+      "reference_native_steps": 23,
+      "first_different_native_step": 7,
+      "application": {
+        "status": "unknown(path identity)"
+      }
+    }
+  ],
+  "limits": [
+    "JS non-Smi probes record only the first 11 native steps",
+    "unknown is a refusal to apply, not a recovered alternate semantics",
+    "Python 252 records through next handler; JS 252 records through next handler"
+  ]
+}

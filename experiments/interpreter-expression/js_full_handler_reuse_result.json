@@ -1,0 +1,115 @@
+{
+  "status": "bounded complete observed AddSmi handler transitions reused",
+  "summary_sha256": "5f2b2e20948919bf97ffa56fce046eec0c79eb8e2562ae439e64483b40db24d5",
+  "source_trace_sha256": "1833bc582ebea2ae8f7eb34f442d360ac8244e170dd4cf29769c7915c36fa2c5",
+  "cases": [
+    {
+      "fixture": "twoAdds",
+      "bytecode_offset": 2,
+      "trace_sha256": "47a37a5a88e213d96226803dd6c866ccf2014f035756b4bc23b775b2066858ff",
+      "application": {
+        "status": "differentially_validated_full_observed_path",
+        "case": "fused_star_then_add",
+        "result_raw": "0x2a00000000",
+        "result_smi": 42,
+        "next_handler_pc": "0x1bb7780",
+        "vm_cursor": "0x39abc6941a8e",
+        "ordered_effects": [
+          {
+            "pc": "0x1bb77f3",
+            "address": "0x7ffd5fd37dd8",
+            "width": 8,
+            "value": "0x2a00000000"
+          }
+        ],
+        "register_and_flag_outputs_checked": 21,
+        "native_steps": 26,
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "fixture": "twoAdds",
+      "bytecode_offset": 6,
+      "trace_sha256": "47a37a5a88e213d96226803dd6c866ccf2014f035756b4bc23b775b2066858ff",
+      "application": {
+        "status": "differentially_validated_full_observed_path",
+        "case": "dispatch_to_return",
+        "result_raw": "0x2f00000000",
+        "result_smi": 47,
+        "next_handler_pc": "0x1bc6f40",
+        "vm_cursor": "0x39abc6941a91",
+        "ordered_effects": [],
+        "register_and_flag_outputs_checked": 21,
+        "native_steps": 23,
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "fixture": "wrappedAdd",
+      "input": 37,
+      "oracle_output": 42,
+      "trace_sha256": "7586417fbc1f278cd612e32548034faeb943aba74a4fecb7b74e07e25d6a2c09",
+      "application": {
+        "status": "differentially_validated_full_observed_path",
+        "case": "dispatch_to_return",
+        "result_raw": "0x2a00000000",
+        "result_smi": 42,
+        "next_handler_pc": "0x1bc6f40",
+        "vm_cursor": "0x3a2a01601b1d",
+        "ordered_effects": [],
+        "register_and_flag_outputs_checked": 21,
+        "native_steps": 23,
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "fixture": "wrappedAdd",
+      "input": 251,
+      "oracle_output": 256,
+      "trace_sha256": "be167b9a4ec774594282cb09976c32848f543c029535b84aafca5d73511e8fc9",
+      "application": {
+        "status": "differentially_validated_full_observed_path",
+        "case": "dispatch_to_return",
+        "result_raw": "0x10000000000",
+        "result_smi": 256,
+        "next_handler_pc": "0x1bc6f40",
+        "vm_cursor": "0x31437b41b1d",
+        "ordered_effects": [],
+        "register_and_flag_outputs_checked": 21,
+        "native_steps": 23,
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "fixture": "wrappedAdd",
+      "input": 252,
+      "oracle_output": 257,
+      "trace_sha256": "b8ec29abb92560b971e9ee6d19fc93095d88e1ccbeebb54b79a0074067f8d1f2",
+      "application": {
+        "status": "unknown(outside case guard)"
+      }
+    }
+  ],
+  "negative_probes": {
+    "wrong_binary": "unknown(binary identity)",
+    "non_smi_tag": "unknown(outside case guard)",
+    "missing_output": "unknown(incomplete output contract)",
+    "missing_write": "unknown(ordered effects mismatch)",
+    "changed_write": "unknown(ordered effects mismatch)",
+    "extra_write": "unknown(ordered effects mismatch)",
+    "wrong_successor": "unknown(path identity)",
+    "unsupported_schema": "unknown(summary schema or engine)",
+    "wrong_engine": "unknown(summary schema or engine)"
+  },
+  "metrics": {
+    "target_cases": 5,
+    "applied_correct": 4,
+    "unknown": 1,
+    "target_pcode_steps_replayed": 0
+  },
+  "limits": [
+    "observed path identities and fixed Node --jitless binary",
+    "other Smi/Number, feedback and error paths are unknown",
+    "full path ends at next native handler entry, not caller return"
+  ]
+}

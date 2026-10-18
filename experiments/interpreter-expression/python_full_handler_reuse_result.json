@@ -1,0 +1,95 @@
+{
+  "status": "bounded complete observed Python BINARY_OP path reused",
+  "summary_sha256": "4c0ebc94b90fbd91f8d04859f8c26bd6e95ecb0a0660780450a506b9ee973f7e",
+  "source_trace_sha256": "fc619f25c7557424cdfe37e220863ad3c970db7ac621bb04a13e3a1bffcd8970",
+  "source": {
+    "source_input": 9,
+    "source_output": 14,
+    "pcode_operations": 626,
+    "path_guard_count": 18,
+    "read_count": 31,
+    "write_count": 12
+  },
+  "applications": [
+    {
+      "input": 37,
+      "oracle": 42,
+      "trace_sha256": "c415ab5da39fb7e609f587182617f038b033da25dbc7554b629718e626bfd7b6",
+      "application": {
+        "status": "differentially_validated_full_observed_path",
+        "input": 37,
+        "result": 42,
+        "result_pointer": "0xa42ff0",
+        "next_handler_pc": "0x56173b",
+        "native_steps": 116,
+        "reads_checked": 31,
+        "ordered_writes_checked": 12,
+        "register_and_flag_outputs_checked": 21,
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "input": 251,
+      "oracle": 256,
+      "trace_sha256": "c41d0357fce318ca5222b346f2e492032c817b5dc0e909067c884c822813ac7a",
+      "application": {
+        "status": "differentially_validated_full_observed_path",
+        "input": 251,
+        "result": 256,
+        "result_pointer": "0xa44ab0",
+        "next_handler_pc": "0x56173b",
+        "native_steps": 116,
+        "reads_checked": 31,
+        "ordered_writes_checked": 12,
+        "register_and_flag_outputs_checked": 21,
+        "target_pcode_steps_replayed": 0
+      }
+    }
+  ],
+  "negative_probes": {
+    "wrong_binary": {
+      "status": "unknown(binary or cache identity)"
+    },
+    "wrong_cache": {
+      "status": "unknown(binary or cache identity)"
+    },
+    "outside_domain": {
+      "status": "unknown(cached integer domain)"
+    },
+    "wrong_operand_metadata": {
+      "status": "unknown(operand or result slot mismatch)"
+    },
+    "wrong_output_slot": {
+      "status": "unknown(operand or result slot mismatch)"
+    },
+    "missing_output": {
+      "status": "unknown(incomplete state contract)"
+    },
+    "changed_write": {
+      "status": "unknown(ordered effects mismatch)"
+    },
+    "missing_write": {
+      "status": "unknown(ordered effects mismatch)"
+    },
+    "wrong_successor": {
+      "status": "unknown(path identity)"
+    },
+    "wrong_engine": {
+      "status": "unknown(summary schema or engine)"
+    },
+    "wrong_schema": {
+      "status": "unknown(summary schema or engine)"
+    }
+  },
+  "metrics": {
+    "target_cases": 2,
+    "applied_correct": 2,
+    "target_pcode_steps_replayed": 0
+  },
+  "limits": [
+    "fixed CPython 3.13 binary and verified small-int cache image",
+    "observed path through next handler entry only",
+    "source value proof specializes object/frame addresses",
+    "alternate Python types, allocations and errors are unknown"
+  ]
+}

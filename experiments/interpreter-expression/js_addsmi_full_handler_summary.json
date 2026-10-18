@@ -1,0 +1,369 @@
+{
+  "schema_version": "native-handler-transition-v1",
+  "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "engine": "javascript",
+  "scope": "two observed AddSmi-to-next-handler paths with Smi X in [5,251] and immediate 5",
+  "entry_interface": "all GPRs, five modeled flags, first-read memory M0",
+  "cases": [
+    {
+      "label": "fused_star_then_add",
+      "identity": {
+        "entry_pc": "0x1bb7780",
+        "next_handler_pc": "0x1bb7780",
+        "path_shape_sha256": "f64efcb85261652b853648e8a7252e4d506c99904559c0e011579c98207c0cda",
+        "native_steps": 26
+      },
+      "guard": "(let ((a!1 (or (not (= ((_ extract 63 35) R_RAX)\n                       #b00000000000000000000000000000))\n               (bvule #b101 ((_ extract 34 32) R_RAX))))\n      (a!2 (= ((_ extract 63 63) R_RAX)\n              ((_ extract 7 7)\n                (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))))\n      (a!3 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000))\n      (a!5 (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe0 R_RBP)))))\n(let ((a!4 (not (= ((_ extract 63 63) (bvadd R_RAX a!3))\n                   ((_ extract 63 63) R_RAX))))\n      (a!6 (bvmul #x0000000000000008\n                  (concat #x00000000000000\n                          (select M0 (bvadd #x0000000000000003 a!5 R_R9))))))\n(let ((a!7 (store (store (store M0\n                                (bvadd #xfffffffffffff958 R_RBP a!6)\n                                ((_ extract 7 0) R_RAX))\n                         (bvadd #xfffffffffffff959 R_RBP a!6)\n                         ((_ extract 15 8) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95a R_RBP a!6)\n                  ((_ extract 23 16) (bvadd R_RAX a!3)))))\n(let ((a!8 (store (store a!7\n                         (bvadd #xfffffffffffff95b R_RBP a!6)\n                         ((_ extract 31 24) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95c R_RBP a!6)\n                  ((_ extract 39 32) (bvadd R_RAX a!3)))))\n(let ((a!9 (store (store a!8\n                         (bvadd #xfffffffffffff95d R_RBP a!6)\n                         ((_ extract 47 40) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95e R_RBP a!6)\n                  ((_ extract 55 48) (bvadd R_RAX a!3)))))\n(let ((a!10 (store a!9\n                   (bvadd #xfffffffffffff95f R_RBP a!6)\n                   ((_ extract 63 56) (bvadd R_RAX a!3)))))\n(let ((a!11 (bvmul #x0000000000000008\n                   (concat #x00000000000000\n                           (select a!10 (bvadd #x0000000000000004 a!5 R_R9))))))\n  (and (= ((_ extract 31 0) R_RAX) #x00000000)\n       a!1\n       (= ((_ extract 63 40) R_RAX) #x000000)\n       (bvule ((_ extract 39 32) R_RAX) #xfb)\n       (= (select M0 (bvadd #x0000000000000001 R_R12 R_R9)) #x05)\n       (= ((_ extract 0 0) R_RAX) #b0)\n       (not (and a!2 a!4))\n       (= (select M0 (bvadd #x0000000000000220 R_R13))\n          (select M0 (bvadd #xffffffffffffffd0 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000221 R_R13))\n          (select M0 (bvadd #xffffffffffffffd1 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000222 R_R13))\n          (select M0 (bvadd #xffffffffffffffd2 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000223 R_R13))\n          (select M0 (bvadd #xffffffffffffffd3 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000224 R_R13))\n          (select M0 (bvadd #xffffffffffffffd4 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000225 R_R13))\n          (select M0 (bvadd #xffffffffffffffd5 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000226 R_R13))\n          (select M0 (bvadd #xffffffffffffffd6 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000227 R_R13))\n          (select M0 (bvadd #xffffffffffffffd7 R_RBP)))\n       (bvule #xbf (select M0 (bvadd #x0000000000000003 a!5 R_R9)))\n       (= (select a!10 (bvadd R_R15 a!11)) #x80)\n       (= (select a!10 (bvadd #x0000000000000001 R_R15 a!11)) #x77)\n       (= (select a!10 (bvadd #x0000000000000002 R_R15 a!11)) #xbb)\n       (= (select a!10 (bvadd #x0000000000000003 R_R15 a!11)) #x01)\n       (= (select a!10 (bvadd #x0000000000000004 R_R15 a!11)) #x00)\n       (= (select a!10 (bvadd #x0000000000000005 R_R15 a!11)) #x00)\n       (= (select a!10 (bvadd #x0000000000000006 R_R15 a!11)) #x00)\n       (= (select a!10 (bvadd #x0000000000000007 R_R15 a!11)) #x00)))))))))",
+      "outputs": [
+        {
+          "binding": "rax",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n  (bvadd R_RAX a!1))"
+        },
+        {
+          "binding": "rcx",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe0 R_RBP))))\n      (a!3 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n(let ((a!2 (bvmul #x0000000000000008\n                  (concat #x00000000000000\n                          (select M0 (bvadd #x0000000000000003 a!1 R_R9))))))\n(let ((a!4 (store (store (store M0\n                                (bvadd #xfffffffffffff958 R_RBP a!2)\n                                ((_ extract 7 0) R_RAX))\n                         (bvadd #xfffffffffffff959 R_RBP a!2)\n                         ((_ extract 15 8) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95a R_RBP a!2)\n                  ((_ extract 23 16) (bvadd R_RAX a!3)))))\n(let ((a!5 (store (store a!4\n                         (bvadd #xfffffffffffff95b R_RBP a!2)\n                         ((_ extract 31 24) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95c R_RBP a!2)\n                  ((_ extract 39 32) (bvadd R_RAX a!3)))))\n(let ((a!6 (store (store a!5\n                         (bvadd #xfffffffffffff95d R_RBP a!2)\n                         ((_ extract 47 40) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95e R_RBP a!2)\n                  ((_ extract 55 48) (bvadd R_RAX a!3)))))\n(let ((a!7 (store a!6\n                  (bvadd #xfffffffffffff95f R_RBP a!2)\n                  ((_ extract 63 56) (bvadd R_RAX a!3)))))\n(let ((a!8 (bvmul #x0000000000000008\n                  (concat #x00000000000000\n                          (select a!7 (bvadd #x0000000000000004 a!1 R_R9))))))\n  (concat (select a!7 (bvadd #x0000000000000007 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000006 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000005 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000004 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000003 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000002 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000001 R_R15 a!8))\n          (select a!7 (bvadd R_R15 a!8))))))))))"
+        },
+        {
+          "binding": "rdx",
+          "sort": "BV64",
+          "expression": "R_RDX"
+        },
+        {
+          "binding": "rbx",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n  (bvadd R_RAX a!1))"
+        },
+        {
+          "binding": "rsp",
+          "sort": "BV64",
+          "expression": "R_RSP"
+        },
+        {
+          "binding": "rbp",
+          "sort": "BV64",
+          "expression": "R_RBP"
+        },
+        {
+          "binding": "rsi",
+          "sort": "BV64",
+          "expression": "(concat (select M0 (bvadd #xffffffffffffffff R_RBP))\n        (select M0 (bvadd #xfffffffffffffffe R_RBP))\n        (select M0 (bvadd #xfffffffffffffffd R_RBP))\n        (select M0 (bvadd #xfffffffffffffffc R_RBP))\n        (select M0 (bvadd #xfffffffffffffffb R_RBP))\n        (select M0 (bvadd #xfffffffffffffffa R_RBP))\n        (select M0 (bvadd #xfffffffffffffff9 R_RBP))\n        (select M0 (bvadd #xfffffffffffffff8 R_RBP)))"
+        },
+        {
+          "binding": "rdi",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe0 R_RBP))))\n      (a!3 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n(let ((a!2 (bvmul #x0000000000000008\n                  (concat #x00000000000000\n                          (select M0 (bvadd #x0000000000000003 a!1 R_R9))))))\n(let ((a!4 (store (store (store M0\n                                (bvadd #xfffffffffffff958 R_RBP a!2)\n                                ((_ extract 7 0) R_RAX))\n                         (bvadd #xfffffffffffff959 R_RBP a!2)\n                         ((_ extract 15 8) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95a R_RBP a!2)\n                  ((_ extract 23 16) (bvadd R_RAX a!3)))))\n(let ((a!5 (store (store a!4\n                         (bvadd #xfffffffffffff95b R_RBP a!2)\n                         ((_ extract 31 24) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95c R_RBP a!2)\n                  ((_ extract 39 32) (bvadd R_RAX a!3)))))\n(let ((a!6 (store (store a!5\n                         (bvadd #xfffffffffffff95d R_RBP a!2)\n                         ((_ extract 47 40) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95e R_RBP a!2)\n                  ((_ extract 55 48) (bvadd R_RAX a!3)))))\n(let ((a!7 (select (store a!6\n                          (bvadd #xfffffffffffff95f R_RBP a!2)\n                          ((_ extract 63 56) (bvadd R_RAX a!3)))\n                   (bvadd #x0000000000000004 a!1 R_R9))))\n  (concat #x00000000000000 a!7)))))))"
+        },
+        {
+          "binding": "r8",
+          "sort": "BV64",
+          "expression": "R_R9"
+        },
+        {
+          "binding": "r9",
+          "sort": "BV64",
+          "expression": "(bvadd #x0000000000000004 R_R9)"
+        },
+        {
+          "binding": "r10",
+          "sort": "BV64",
+          "expression": "R_R10"
+        },
+        {
+          "binding": "r11",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n  (concat #x00000000000000 (select M0 a!1)))"
+        },
+        {
+          "binding": "r12",
+          "sort": "BV64",
+          "expression": "(concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe0 R_RBP)))"
+        },
+        {
+          "binding": "r13",
+          "sort": "BV64",
+          "expression": "R_R13"
+        },
+        {
+          "binding": "r14",
+          "sort": "BV64",
+          "expression": "(concat (select M0 (bvadd #xffffffffffffffd7 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd6 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd5 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd4 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd3 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd2 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd1 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd0 R_RBP)))"
+        },
+        {
+          "binding": "r15",
+          "sort": "BV64",
+          "expression": "R_R15"
+        },
+        {
+          "binding": "eflag0",
+          "sort": "BV8",
+          "expression": "(let ((a!1 ((_ extract 64 64)\n             (bvadd #b00000000000000000000000000000000000000000000000000000000000000001\n                    (concat #b0 (bvadd #x0000000000000003 R_R9))))))\n  (ite (= a!1 #b1) #x01 #x00))"
+        },
+        {
+          "binding": "eflag2",
+          "sort": "BV8",
+          "expression": "(let ((a!1 (bvadd ((_ extract 1 1) (bvadd #x04 ((_ extract 7 0) R_R9)))\n                  ((_ extract 2 2) (bvadd #x04 ((_ extract 7 0) R_R9)))\n                  ((_ extract 3 3) (bvadd #x04 ((_ extract 7 0) R_R9)))\n                  ((_ extract 4 4) (bvadd #x04 ((_ extract 7 0) R_R9)))\n                  ((_ extract 5 5) (bvadd #x04 ((_ extract 7 0) R_R9)))\n                  ((_ extract 6 6) (bvadd #x04 ((_ extract 7 0) R_R9)))\n                  ((_ extract 7 7) (bvadd #x04 ((_ extract 7 0) R_R9))))))\n  (ite (= ((_ extract 0 0) R_R9) a!1) #x01 #x00))"
+        },
+        {
+          "binding": "eflag6",
+          "sort": "BV8",
+          "expression": "(ite (= R_R9 #xfffffffffffffffc) #x01 #x00)"
+        },
+        {
+          "binding": "eflag7",
+          "sort": "BV8",
+          "expression": "(ite (bvsle #x0000000000000000 (bvadd #x0000000000000004 R_R9)) #x00 #x01)"
+        },
+        {
+          "binding": "eflag11",
+          "sort": "BV8",
+          "expression": "(let ((a!1 (not (= ((_ extract 63 63) (bvadd #x0000000000000004 R_R9))\n                   ((_ extract 63 63) (bvadd #x0000000000000003 R_R9))))))\n(let ((a!2 (and (= ((_ extract 63 63) (bvadd #x0000000000000003 R_R9)) #b0) a!1)))\n  (ite a!2 #x01 #x00)))"
+        }
+      ],
+      "reads": [
+        {
+          "pc": "0x1bb7780",
+          "width": 1,
+          "address": "(bvadd #x0000000000000001 R_R12 R_R9)"
+        },
+        {
+          "pc": "0x1bb7789",
+          "width": 1,
+          "address": "(bvadd #x0000000000000002 R_R12 R_R9)"
+        },
+        {
+          "pc": "0x1bb7793",
+          "width": 8,
+          "address": "(bvadd #xfffffffffffffff8 R_RBP)"
+        },
+        {
+          "pc": "0x1bb7797",
+          "width": 8,
+          "address": "(bvadd #xffffffffffffffd0 R_RBP)"
+        },
+        {
+          "pc": "0x1bb77ab",
+          "width": 8,
+          "address": "(bvadd #x0000000000000220 R_R13)"
+        },
+        {
+          "pc": "0x1bb77d3",
+          "width": 8,
+          "address": "(bvadd #xffffffffffffffe0 R_RBP)"
+        },
+        {
+          "pc": "0x1bb77de",
+          "width": 1,
+          "address": "(bvadd #x0000000000000003\n       (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n       R_R9)"
+        },
+        {
+          "pc": "0x1bb77ff",
+          "width": 1,
+          "address": "(bvadd #x0000000000000004\n       (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n       R_R9)"
+        },
+        {
+          "pc": "0x1bb7805",
+          "width": 8,
+          "address": "(let ((a!1 (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe0 R_RBP))))\n      (a!3 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n(let ((a!2 (bvmul #x0000000000000008\n                  (concat #x00000000000000\n                          (select M0 (bvadd #x0000000000000003 a!1 R_R9))))))\n(let ((a!4 (store (store (store M0\n                                (bvadd #xfffffffffffff958 R_RBP a!2)\n                                ((_ extract 7 0) R_RAX))\n                         (bvadd #xfffffffffffff959 R_RBP a!2)\n                         ((_ extract 15 8) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95a R_RBP a!2)\n                  ((_ extract 23 16) (bvadd R_RAX a!3)))))\n(let ((a!5 (store (store a!4\n                         (bvadd #xfffffffffffff95b R_RBP a!2)\n                         ((_ extract 31 24) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95c R_RBP a!2)\n                  ((_ extract 39 32) (bvadd R_RAX a!3)))))\n(let ((a!6 (store (store a!5\n                         (bvadd #xfffffffffffff95d R_RBP a!2)\n                         ((_ extract 47 40) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95e R_RBP a!2)\n                  ((_ extract 55 48) (bvadd R_RAX a!3)))))\n(let ((a!7 (select (store a!6\n                          (bvadd #xfffffffffffff95f R_RBP a!2)\n                          ((_ extract 63 56) (bvadd R_RAX a!3)))\n                   (bvadd #x0000000000000004 a!1 R_R9))))\n  (bvadd R_R15 (bvmul #x0000000000000008 (concat #x00000000000000 a!7)))))))))"
+        }
+      ],
+      "ordered_effects": [
+        {
+          "pc": "0x1bb77f3",
+          "width": 8,
+          "address": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n  (bvadd #xfffffffffffff958\n         R_RBP\n         (bvmul #x0000000000000008 (concat #x00000000000000 (select M0 a!1)))))",
+          "value": "(let ((a!1 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n  (bvadd R_RAX a!1))"
+        }
+      ],
+      "vm_cursor": "(bvadd #x0000000000000004\n       (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n       R_R9)",
+      "successor": "(let ((a!1 (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                   (select M0 (bvadd #xffffffffffffffe0 R_RBP))))\n      (a!3 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n(let ((a!2 (bvmul #x0000000000000008\n                  (concat #x00000000000000\n                          (select M0 (bvadd #x0000000000000003 a!1 R_R9))))))\n(let ((a!4 (store (store (store M0\n                                (bvadd #xfffffffffffff958 R_RBP a!2)\n                                ((_ extract 7 0) R_RAX))\n                         (bvadd #xfffffffffffff959 R_RBP a!2)\n                         ((_ extract 15 8) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95a R_RBP a!2)\n                  ((_ extract 23 16) (bvadd R_RAX a!3)))))\n(let ((a!5 (store (store a!4\n                         (bvadd #xfffffffffffff95b R_RBP a!2)\n                         ((_ extract 31 24) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95c R_RBP a!2)\n                  ((_ extract 39 32) (bvadd R_RAX a!3)))))\n(let ((a!6 (store (store a!5\n                         (bvadd #xfffffffffffff95d R_RBP a!2)\n                         ((_ extract 47 40) (bvadd R_RAX a!3)))\n                  (bvadd #xfffffffffffff95e R_RBP a!2)\n                  ((_ extract 55 48) (bvadd R_RAX a!3)))))\n(let ((a!7 (store a!6\n                  (bvadd #xfffffffffffff95f R_RBP a!2)\n                  ((_ extract 63 56) (bvadd R_RAX a!3)))))\n(let ((a!8 (bvmul #x0000000000000008\n                  (concat #x00000000000000\n                          (select a!7 (bvadd #x0000000000000004 a!1 R_R9))))))\n  (concat (select a!7 (bvadd #x0000000000000007 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000006 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000005 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000004 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000003 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000002 R_R15 a!8))\n          (select a!7 (bvadd #x0000000000000001 R_R15 a!8))\n          (select a!7 (bvadd R_R15 a!8))))))))))",
+      "witness": {
+        "entry_smi": 9,
+        "exit_smi": 14,
+        "pcode_operations": 142,
+        "guard_count": 5,
+        "reads": 9,
+        "native_writes": 1,
+        "semantic_counterexample": "unsat"
+      }
+    },
+    {
+      "label": "dispatch_to_return",
+      "identity": {
+        "entry_pc": "0x1bb7780",
+        "next_handler_pc": "0x1bc6f40",
+        "path_shape_sha256": "7a76bb283ad93e42ebdc3c0b0063b5914c088cb723e15853beb2685b0d95a0ea",
+        "native_steps": 23
+      },
+      "guard": "(let ((a!1 (or (not (= ((_ extract 63 35) R_RAX)\n                       #b00000000000000000000000000000))\n               (bvule #b101 ((_ extract 34 32) R_RAX))))\n      (a!2 (= ((_ extract 63 63) R_RAX)\n              ((_ extract 7 7)\n                (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))))\n      (a!3 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000))\n      (a!5 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n(let ((a!4 (not (= ((_ extract 63 63) (bvadd R_RAX a!3))\n                   ((_ extract 63 63) R_RAX))))\n      (a!6 (bvadd R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!5)))))\n      (a!7 (bvadd #x0000000000000001\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!5)))))\n      (a!8 (bvadd #x0000000000000002\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!5)))))\n      (a!9 (bvadd #x0000000000000003\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!5)))))\n      (a!10 (bvadd #x0000000000000004\n                   R_R15\n                   (bvmul #x0000000000000008\n                          (concat #x00000000000000 (select M0 a!5)))))\n      (a!11 (bvadd #x0000000000000005\n                   R_R15\n                   (bvmul #x0000000000000008\n                          (concat #x00000000000000 (select M0 a!5)))))\n      (a!12 (bvadd #x0000000000000006\n                   R_R15\n                   (bvmul #x0000000000000008\n                          (concat #x00000000000000 (select M0 a!5)))))\n      (a!13 (bvadd #x0000000000000007\n                   R_R15\n                   (bvmul #x0000000000000008\n                          (concat #x00000000000000 (select M0 a!5))))))\n  (and (= ((_ extract 31 0) R_RAX) #x00000000)\n       a!1\n       (= ((_ extract 63 40) R_RAX) #x000000)\n       (bvule ((_ extract 39 32) R_RAX) #xfb)\n       (= (select M0 (bvadd #x0000000000000001 R_R12 R_R9)) #x05)\n       (= ((_ extract 0 0) R_RAX) #b0)\n       (not (and a!2 a!4))\n       (= (select M0 (bvadd #x0000000000000220 R_R13))\n          (select M0 (bvadd #xffffffffffffffd0 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000221 R_R13))\n          (select M0 (bvadd #xffffffffffffffd1 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000222 R_R13))\n          (select M0 (bvadd #xffffffffffffffd2 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000223 R_R13))\n          (select M0 (bvadd #xffffffffffffffd3 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000224 R_R13))\n          (select M0 (bvadd #xffffffffffffffd4 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000225 R_R13))\n          (select M0 (bvadd #xffffffffffffffd5 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000226 R_R13))\n          (select M0 (bvadd #xffffffffffffffd6 R_RBP)))\n       (= (select M0 (bvadd #x0000000000000227 R_R13))\n          (select M0 (bvadd #xffffffffffffffd7 R_RBP)))\n       (not (bvule #xbf (select M0 a!5)))\n       (= (select M0 a!6) #x40)\n       (= (select M0 a!7) #x6f)\n       (= (select M0 a!8) #xbc)\n       (= (select M0 a!9) #x01)\n       (= (select M0 a!10) #x00)\n       (= (select M0 a!11) #x00)\n       (= (select M0 a!12) #x00)\n       (= (select M0 a!13) #x00))))",
+      "outputs": [
+        {
+          "binding": "rax",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n  (bvadd R_RAX a!1))"
+        },
+        {
+          "binding": "rcx",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n(let ((a!2 (bvadd #x0000000000000007\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!3 (bvadd #x0000000000000006\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!4 (bvadd #x0000000000000005\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!5 (bvadd #x0000000000000004\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!6 (bvadd #x0000000000000003\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!7 (bvadd #x0000000000000002\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!8 (bvadd #x0000000000000001\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!9 (bvadd R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1))))))\n  (concat (select M0 a!2)\n          (select M0 a!3)\n          (select M0 a!4)\n          (select M0 a!5)\n          (select M0 a!6)\n          (select M0 a!7)\n          (select M0 a!8)\n          (select M0 a!9))))"
+        },
+        {
+          "binding": "rdx",
+          "sort": "BV64",
+          "expression": "R_RDX"
+        },
+        {
+          "binding": "rbx",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (concat ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   ((_ extract 7 7)\n                     (select M0 (bvadd #x0000000000000001 R_R12 R_R9)))\n                   (select M0 (bvadd #x0000000000000001 R_R12 R_R9))\n                   #x00000000)))\n  (bvadd R_RAX a!1))"
+        },
+        {
+          "binding": "rsp",
+          "sort": "BV64",
+          "expression": "R_RSP"
+        },
+        {
+          "binding": "rbp",
+          "sort": "BV64",
+          "expression": "R_RBP"
+        },
+        {
+          "binding": "rsi",
+          "sort": "BV64",
+          "expression": "(concat (select M0 (bvadd #xffffffffffffffff R_RBP))\n        (select M0 (bvadd #xfffffffffffffffe R_RBP))\n        (select M0 (bvadd #xfffffffffffffffd R_RBP))\n        (select M0 (bvadd #xfffffffffffffffc R_RBP))\n        (select M0 (bvadd #xfffffffffffffffb R_RBP))\n        (select M0 (bvadd #xfffffffffffffffa R_RBP))\n        (select M0 (bvadd #xfffffffffffffff9 R_RBP))\n        (select M0 (bvadd #xfffffffffffffff8 R_RBP)))"
+        },
+        {
+          "binding": "rdi",
+          "sort": "BV64",
+          "expression": "R_RBP"
+        },
+        {
+          "binding": "r8",
+          "sort": "BV64",
+          "expression": "R_R9"
+        },
+        {
+          "binding": "r9",
+          "sort": "BV64",
+          "expression": "(bvadd #x0000000000000003 R_R9)"
+        },
+        {
+          "binding": "r10",
+          "sort": "BV64",
+          "expression": "R_R10"
+        },
+        {
+          "binding": "r11",
+          "sort": "BV64",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n  (concat #x00000000000000 (select M0 a!1)))"
+        },
+        {
+          "binding": "r12",
+          "sort": "BV64",
+          "expression": "(concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n        (select M0 (bvadd #xffffffffffffffe0 R_RBP)))"
+        },
+        {
+          "binding": "r13",
+          "sort": "BV64",
+          "expression": "R_R13"
+        },
+        {
+          "binding": "r14",
+          "sort": "BV64",
+          "expression": "(concat (select M0 (bvadd #xffffffffffffffd7 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd6 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd5 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd4 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd3 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd2 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd1 R_RBP))\n        (select M0 (bvadd #xffffffffffffffd0 R_RBP)))"
+        },
+        {
+          "binding": "r15",
+          "sort": "BV64",
+          "expression": "R_R15"
+        },
+        {
+          "binding": "eflag0",
+          "sort": "BV8",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n  (ite (bvule #xbf (select M0 a!1)) #x00 #x01))"
+        },
+        {
+          "binding": "eflag2",
+          "sort": "BV8",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n(let ((a!2 (bvadd #b1\n                  ((_ extract 1 1) (bvadd #x41 (select M0 a!1)))\n                  ((_ extract 2 2) (bvadd #x41 (select M0 a!1)))\n                  ((_ extract 3 3) (bvadd #x41 (select M0 a!1)))\n                  ((_ extract 4 4) (bvadd #x41 (select M0 a!1)))\n                  ((_ extract 5 5) (bvadd #x41 (select M0 a!1)))\n                  ((_ extract 6 6) (bvadd #x41 (select M0 a!1)))\n                  ((_ extract 7 7) (bvadd #x41 (select M0 a!1))))))\n  (ite (= ((_ extract 0 0) (select M0 a!1)) a!2) #x01 #x00)))"
+        },
+        {
+          "binding": "eflag6",
+          "sort": "BV8",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n  (ite (= (select M0 a!1) #xbf) #x01 #x00))"
+        },
+        {
+          "binding": "eflag7",
+          "sort": "BV8",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n  (ite (bvsle #x00 (bvadd #x41 (select M0 a!1))) #x00 #x01))"
+        },
+        {
+          "binding": "eflag11",
+          "sort": "BV8",
+          "expression": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n(let ((a!2 (not (= ((_ extract 7 7) (select M0 a!1)) #b1)))\n      (a!3 (= ((_ extract 7 7) (bvadd #x41 (select M0 a!1)))\n              ((_ extract 7 7) (select M0 a!1)))))\n  (ite (and a!2 (not a!3)) #x01 #x00)))"
+        }
+      ],
+      "reads": [
+        {
+          "pc": "0x1bb7780",
+          "width": 1,
+          "address": "(bvadd #x0000000000000001 R_R12 R_R9)"
+        },
+        {
+          "pc": "0x1bb7789",
+          "width": 1,
+          "address": "(bvadd #x0000000000000002 R_R12 R_R9)"
+        },
+        {
+          "pc": "0x1bb7793",
+          "width": 8,
+          "address": "(bvadd #xfffffffffffffff8 R_RBP)"
+        },
+        {
+          "pc": "0x1bb7797",
+          "width": 8,
+          "address": "(bvadd #xffffffffffffffd0 R_RBP)"
+        },
+        {
+          "pc": "0x1bb77ab",
+          "width": 8,
+          "address": "(bvadd #x0000000000000220 R_R13)"
+        },
+        {
+          "pc": "0x1bb77d3",
+          "width": 8,
+          "address": "(bvadd #xffffffffffffffe0 R_RBP)"
+        },
+        {
+          "pc": "0x1bb77de",
+          "width": 1,
+          "address": "(bvadd #x0000000000000003\n       (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n       R_R9)"
+        },
+        {
+          "pc": "0x1bb77ea",
+          "width": 8,
+          "address": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n  (bvadd R_R15\n         (bvmul #x0000000000000008 (concat #x00000000000000 (select M0 a!1)))))"
+        }
+      ],
+      "ordered_effects": [],
+      "vm_cursor": "(bvadd #x0000000000000003\n       (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n               (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n       R_R9)",
+      "successor": "(let ((a!1 (bvadd #x0000000000000003\n                  (concat (select M0 (bvadd #xffffffffffffffe7 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe6 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe5 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe4 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe3 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe2 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe1 R_RBP))\n                          (select M0 (bvadd #xffffffffffffffe0 R_RBP)))\n                  R_R9)))\n(let ((a!2 (bvadd #x0000000000000007\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!3 (bvadd #x0000000000000006\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!4 (bvadd #x0000000000000005\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!5 (bvadd #x0000000000000004\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!6 (bvadd #x0000000000000003\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!7 (bvadd #x0000000000000002\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!8 (bvadd #x0000000000000001\n                  R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1)))))\n      (a!9 (bvadd R_R15\n                  (bvmul #x0000000000000008\n                         (concat #x00000000000000 (select M0 a!1))))))\n  (concat (select M0 a!2)\n          (select M0 a!3)\n          (select M0 a!4)\n          (select M0 a!5)\n          (select M0 a!6)\n          (select M0 a!7)\n          (select M0 a!8)\n          (select M0 a!9))))",
+      "witness": {
+        "entry_smi": 14,
+        "exit_smi": 19,
+        "pcode_operations": 122,
+        "guard_count": 5,
+        "reads": 8,
+        "native_writes": 0,
+        "semantic_counterexample": "unsat"
+      }
+    }
+  ],
+  "source_trace_sha256": "1833bc582ebea2ae8f7eb34f442d360ac8244e170dd4cf29769c7915c36fa2c5",
+  "limits": [
+    "observed path identities and fixed Node --jitless binary",
+    "other Smi/Number, feedback and error paths are unknown",
+    "full path ends at next native handler entry, not caller return"
+  ]
+}

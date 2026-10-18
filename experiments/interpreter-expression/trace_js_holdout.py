@@ -1,4 +1,4 @@
-"""Capture the bounded AddSmi prefix in a different JS program."""
+"""Capture AddSmi numeric paths or alternate-type prefixes in separate programs."""
 from __future__ import annotations
 
 import argparse
@@ -12,6 +12,7 @@ import shutil
 import signal
 
 from capstone import Cs, CS_ARCH_X86, CS_MODE_64
+import pypcode
 
 from trace_cross_full_flow import observed_memory_operands, read_bytes, registers
 from trace_input_provenance import (CONT, PEEKTEXT, POKETEXT, SETREGS,
@@ -34,8 +35,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=int)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--full-handler", action="store_true")
+    parser.add_argument("--string", action="store_true")
+    parser.add_argument("--bigint-error", action="store_true")
     args = parser.parse_args()
+    if args.string and args.bigint_error:
+        raise ValueError("choose one alternate input type")
     binary = Path(shutil.which("node"))
+    fixture = (ROOT / "js_bigint_error_fixture.js" if args.bigint_error else
+               ROOT / "js_string_holdout_fixture.js" if args.string else FIXTURE)
     boundary = json.loads(BOUNDARY.read_text())["prefix"]
     entry_pc = int(boundary["entry_pc"], 16)
     end_pc = int(boundary["end_branch_pc"], 16)
@@ -48,7 +56,7 @@ def main():
         with stdout.open("w") as stream:
             os.dup2(stream.fileno(), 1)
             os.execv(str(binary), [str(binary), "--jitless", "--no-warnings",
-                                   str(FIXTURE), str(args.input), str(marker)])
+                                   str(fixture), str(args.input), str(marker)])
     try:
         wait_stopped(child, signal.SIGTRAP)
         ptrace(CONT, child)
@@ -59,6 +67,7 @@ def main():
         ptrace(POKETEXT, child, entry_pc, (original & ~255) | 0xCC)
         decoder = Cs(CS_ARCH_X86, CS_MODE_64)
         decoder.detail = True
+        pcode = pypcode.Context("x86:LE:64:default") if args.full_handler else None
         for attempt in range(100):
             ptrace(CONT, child)
             wait_stopped(child, signal.SIGTRAP)
@@ -68,7 +77,9 @@ def main():
             ptrace(POKETEXT, child, entry_pc, original)
             before.rip = entry_pc
             ptrace(SETREGS, child, 0, ctypes.addressof(before))
-            if (before.rax == args.input << 32 and
+            valid_type = (bool(before.rax & 1) if args.string or args.bigint_error
+                          else before.rax == args.input << 32)
+            if (valid_type and
                     read_bytes(child, before.r12 + before.r9, 2) == bytes([0x4B, 5])):
                 break
             step(child)
@@ -76,7 +87,7 @@ def main():
         else:
             raise RuntimeError("holdout AddSmi site was not found")
         rows = []
-        for index in range(boundary["native_steps"]):
+        for index in range(500 if args.full_handler else boundary["native_steps"]):
             before = getregs(child)
             pc = before.rip
             raw = read_bytes(child, pc, 16)
@@ -96,24 +107,42 @@ def main():
                             "before": was, "after": now}
                            for (address, size, access), was, now in
                            zip(accesses, old, new)]})
-        if rows[-1]["pc"] != end_pc or \
-                hex(rows[-1]["next_pc"]) != boundary["exit_pc"]:
+            if args.full_handler and index + 1 >= boundary["native_steps"] and any(
+                    op.opcode.name == "BRANCHIND" for op in pcode.translate(
+                        raw[:insn.size], base_address=pc,
+                        max_instructions=1).ops):
+                break
+        else:
+            if args.full_handler:
+                raise RuntimeError("holdout handler did not reach indirect dispatch")
+        if (not (args.string or args.bigint_error) and
+                (rows[boundary["native_steps"] - 1]["pc"] != end_pc or
+                 hex(rows[boundary["native_steps"] - 1]["next_pc"]) != boundary["exit_pc"])):
             raise RuntimeError("holdout prefix reached a different cutpoint")
         ptrace(CONT, child)
         status = os.waitpid(child, 0)[1]
         if not os.WIFEXITED(status) or os.WEXITSTATUS(status):
             raise RuntimeError("holdout fixture did not exit cleanly")
-        actual = json.loads(stdout.read_text().splitlines()[-1])["result"]
-        if actual != args.input + 5:
+        output = json.loads(stdout.read_text().splitlines()[-1])
+        actual = output.get("error") if args.bigint_error else output["result"]
+        expected = ("TypeError" if args.bigint_error else
+                    str(args.input) + "5" if args.string else args.input + 5)
+        if actual != expected:
             raise RuntimeError("holdout JavaScript program output changed")
         with gzip.open(args.output, "wt") as stream:
             stream.write(json.dumps({"type": "meta", "input": args.input,
                 "binary_sha256": sha256(binary.read_bytes()).hexdigest(),
-                "fixture_sha256": sha256(FIXTURE.read_bytes()).hexdigest()}) + "\n")
+                "fixture_sha256": sha256(fixture.read_bytes()).hexdigest(),
+                "input_type": ("bigint" if args.bigint_error else
+                               "string" if args.string else "number"),
+                "full_handler": args.full_handler}) + "\n")
             stream.write(json.dumps({"type": "path", "rows": rows}) + "\n")
-            stream.write(json.dumps({"type": "summary", "output": actual}) + "\n")
+            stream.write(json.dumps({"type": "summary",
+                                     "error" if args.bigint_error else "output": actual}) + "\n")
         print(json.dumps({"input": args.input, "output": actual,
-                          "prefix_steps": len(rows), "breakpoint_attempts": attempt + 1}))
+                          "native_steps": len(rows),
+                          "next_handler": hex(rows[-1]["next_pc"]),
+                          "breakpoint_attempts": attempt + 1}))
     finally:
         try:
             os.kill(child, signal.SIGKILL)

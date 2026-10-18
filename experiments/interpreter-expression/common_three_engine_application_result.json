@@ -1,0 +1,184 @@
+{
+  "summary_sha256": "dd38955fc2cc6d10be5bfc7010796b108cd6ac07f97b1405d76fbe66ea1ab898",
+  "cases_in_summary": 4,
+  "targets": [
+    {
+      "trace": "lua_handler_plus11_x9.jsonl",
+      "engine": "lua",
+      "bytecode_offset": null,
+      "trace_sha256": "1d9cc2264fad4b254e17cb362c8cfbb3fc6b28e6057133dcf578dae8c369fe30",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "lua",
+        "native_steps": 23,
+        "outputs_checked": 21,
+        "reads_checked": 2,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 2,
+        "next_pc": "0x415b24",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "lua_handler_plus7_zero.jsonl",
+      "engine": "lua",
+      "bytecode_offset": null,
+      "trace_sha256": "2497964aa907ccf74d00196fb5f91e90c39ac84f064fb7b346080c4d769ac1b6",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "lua",
+        "native_steps": 23,
+        "outputs_checked": 21,
+        "reads_checked": 2,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 2,
+        "next_pc": "0x415b24",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "python_holdout_37.json.gz",
+      "engine": "python",
+      "bytecode_offset": null,
+      "trace_sha256": "c415ab5da39fb7e609f587182617f038b033da25dbc7554b629718e626bfd7b6",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "python",
+        "native_steps": 116,
+        "outputs_checked": 21,
+        "reads_checked": 31,
+        "derived_outputs_checked": 0,
+        "ordered_writes_checked": 12,
+        "next_pc": "0x56173b",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "python_holdout_251.json.gz",
+      "engine": "python",
+      "bytecode_offset": null,
+      "trace_sha256": "c41d0357fce318ca5222b346f2e492032c817b5dc0e909067c884c822813ac7a",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "python",
+        "native_steps": 116,
+        "outputs_checked": 21,
+        "reads_checked": 31,
+        "derived_outputs_checked": 0,
+        "ordered_writes_checked": 12,
+        "next_pc": "0x56173b",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_handler_holdout_37.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "7586417fbc1f278cd612e32548034faeb943aba74a4fecb7b74e07e25d6a2c09",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 23,
+        "outputs_checked": 21,
+        "reads_checked": 8,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 0,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_handler_holdout_251.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "be167b9a4ec774594282cb09976c32848f543c029535b84aafca5d73511e8fc9",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 23,
+        "outputs_checked": 21,
+        "reads_checked": 8,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 0,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_handler_holdout_252.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": null,
+      "trace_sha256": "b8ec29abb92560b971e9ee6d19fc93095d88e1ccbeebb54b79a0074067f8d1f2",
+      "application": {
+        "status": "unknown(no applicable case)",
+        "candidate_results": [
+          {
+            "status": "unknown(path identity)"
+          },
+          {
+            "status": "unknown(outside case guard)"
+          }
+        ]
+      }
+    },
+    {
+      "trace": "js_summary_reuse_37.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": 2,
+      "trace_sha256": "47a37a5a88e213d96226803dd6c866ccf2014f035756b4bc23b775b2066858ff",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 26,
+        "outputs_checked": 21,
+        "reads_checked": 9,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 1,
+        "next_pc": "0x1bb7780",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    {
+      "trace": "js_summary_reuse_37.json.gz",
+      "engine": "javascript",
+      "bytecode_offset": 6,
+      "trace_sha256": "47a37a5a88e213d96226803dd6c866ccf2014f035756b4bc23b775b2066858ff",
+      "application": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 23,
+        "outputs_checked": 21,
+        "reads_checked": 8,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 0,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    }
+  ],
+  "negative_probes": {
+    "wrong_common_schema": "unknown(summary schema or engine)",
+    "unknown_engine": "unknown(summary schema or engine)",
+    "wrong_source_schema": "unknown(summary schema or engine)",
+    "missing_output": "unknown(incomplete state contract)",
+    "missing_derived_output": "unknown(incomplete derived output contract)",
+    "unsupported_effect_kind": "unknown(unsupported effect kind)",
+    "corrupted_lua_snapshot": "unknown(outside case guard)",
+    "wrong_python_operand": "unknown(operand or result slot mismatch)",
+    "changed_js_write": "unknown(ordered effects mismatch)",
+    "wrong_js_successor": "unknown(path identity)"
+  },
+  "metrics": {
+    "engines": 3,
+    "targets": 9,
+    "applied_correct": 8,
+    "unknown": 1,
+    "target_pcode_steps_replayed": 0
+  },
+  "limits": [
+    "each case covers one observed native path and pinned executable",
+    "Lua source summary predates the newer native summaries",
+    "common core shares expression/guard/read/write/output evaluation; engine adapters validate entry contracts",
+    "alternative paths and full script reconstruction remain unknown"
+  ]
+}
