@@ -1,0 +1,863 @@
+{
+  "schema_version": 1,
+  "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "parametric_loop_proof": {
+    "entry_cursor": 15,
+    "threshold": "14 + string_length",
+    "next_cursor": "cursor + 2",
+    "continue_guard": "unsigned(cursor + 2) < unsigned(threshold)",
+    "copy_alias_condition": "destination + cursor != source + cursor + 1",
+    "loop_branches": [
+      {
+        "branch": "continue",
+        "native_steps": 7,
+        "pcode_operations": 40,
+        "checks": {
+          "guard_inequality": "unsat",
+          "cursor_inequality": "unsat",
+          "threshold_change": "unsat",
+          "source_base_change": "unsat",
+          "destination_base_change": "unsat",
+          "read_0_address_inequality": "unsat",
+          "read_1_address_inequality": "unsat",
+          "write_0_address_inequality": "unsat",
+          "write_0_value_inequality": "unsat",
+          "write_1_address_inequality": "unsat",
+          "write_1_value_inequality": "unsat"
+        }
+      },
+      {
+        "branch": "exit",
+        "native_steps": 7,
+        "pcode_operations": 40,
+        "checks": {
+          "guard_inequality": "unsat",
+          "cursor_inequality": "unsat",
+          "threshold_change": "unsat",
+          "source_base_change": "unsat",
+          "destination_base_change": "unsat",
+          "read_0_address_inequality": "unsat",
+          "read_1_address_inequality": "unsat",
+          "write_0_address_inequality": "unsat",
+          "write_0_value_inequality": "unsat",
+          "write_1_address_inequality": "unsat",
+          "write_1_value_inequality": "unsat"
+        }
+      }
+    ],
+    "tail_branches": [
+      {
+        "path": "odd_tail",
+        "guard_inequality": "unsat"
+      },
+      {
+        "path": "even_exit",
+        "guard_inequality": "unsat"
+      }
+    ],
+    "bounded_length_domain": [
+      2,
+      11
+    ],
+    "iteration_schedule_inequality": "unsat",
+    "odd_tail_parity_inequality": "unsat"
+  },
+  "sources": {
+    "odd": {
+      "trace": "js_string_full_251.json.gz",
+      "sha256": "9d1ee7fa06aaf3694768fdda9dc32a2d0b7c2f1c5be6d664c7c70854cc8f127d"
+    },
+    "even": {
+      "trace": "js_string_full_1000.json.gz",
+      "sha256": "f5691bf2347e81d58ee162e32dcefdb8cb30f6c95ddf87f6fab88e12ea6630b4"
+    }
+  },
+  "targets": [
+    {
+      "input": 37,
+      "status": "differentially_validated",
+      "trace_sha256": "90284c69449d2199b2cb301245a301183d71994d99cd578ccc08727974ab66d6",
+      "length": 2,
+      "pair_iterations": 1,
+      "odd_tail": false,
+      "output": "375",
+      "native_steps": 230,
+      "source_pcode_operations_replayed": 1055,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "even_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 36,
+          "source_pcode_operations": 136,
+          "guards": 10,
+          "reads": 11,
+          "ordered_writes": 1,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 251,
+      "status": "differentially_validated",
+      "trace_sha256": "9d1ee7fa06aaf3694768fdda9dc32a2d0b7c2f1c5be6d664c7c70854cc8f127d",
+      "length": 3,
+      "pair_iterations": 1,
+      "odd_tail": true,
+      "output": "2515",
+      "native_steps": 232,
+      "source_pcode_operations_replayed": 1064,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "odd_tail_and_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 38,
+          "source_pcode_operations": 145,
+          "guards": 10,
+          "reads": 12,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 1000,
+      "status": "differentially_validated",
+      "trace_sha256": "f5691bf2347e81d58ee162e32dcefdb8cb30f6c95ddf87f6fab88e12ea6630b4",
+      "length": 4,
+      "pair_iterations": 2,
+      "odd_tail": false,
+      "output": "10005",
+      "native_steps": 237,
+      "source_pcode_operations_replayed": 1095,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "even_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 36,
+          "source_pcode_operations": 136,
+          "guards": 10,
+          "reads": 11,
+          "ordered_writes": 1,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 10000,
+      "status": "differentially_validated",
+      "trace_sha256": "fd940f8daf11a731cf5d0166c32ac66c2aadb31c9c78a9d38a269e5e034c5410",
+      "length": 5,
+      "pair_iterations": 2,
+      "odd_tail": true,
+      "output": "100005",
+      "native_steps": 239,
+      "source_pcode_operations_replayed": 1104,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "odd_tail_and_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 38,
+          "source_pcode_operations": 145,
+          "guards": 10,
+          "reads": 12,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 123456,
+      "status": "differentially_validated",
+      "trace_sha256": "655971d4082baf24f9701d78f2d6aeda6b4f5a2b472c218d799df970ae7712d9",
+      "length": 6,
+      "pair_iterations": 3,
+      "odd_tail": false,
+      "output": "1234565",
+      "native_steps": 244,
+      "source_pcode_operations_replayed": 1135,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_3_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "even_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 36,
+          "source_pcode_operations": 136,
+          "guards": 10,
+          "reads": 11,
+          "ordered_writes": 1,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 1234567,
+      "status": "differentially_validated",
+      "trace_sha256": "bb09289cdc844da9bea5a8437a18373cb12a1176fa67e2eec39c693b892c5458",
+      "length": 7,
+      "pair_iterations": 3,
+      "odd_tail": true,
+      "output": "12345675",
+      "native_steps": 246,
+      "source_pcode_operations_replayed": 1144,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_3_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "odd_tail_and_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 38,
+          "source_pcode_operations": 145,
+          "guards": 10,
+          "reads": 12,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 12345678,
+      "status": "differentially_validated",
+      "trace_sha256": "871b62c0350ab5f13cc46c8af975c029b2abc0139270f803be931f20b95f6d1f",
+      "length": 8,
+      "pair_iterations": 4,
+      "odd_tail": false,
+      "output": "123456785",
+      "native_steps": 251,
+      "source_pcode_operations_replayed": 1175,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_3_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_4_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "even_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 36,
+          "source_pcode_operations": 136,
+          "guards": 10,
+          "reads": 11,
+          "ordered_writes": 1,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 123456789,
+      "status": "differentially_validated",
+      "trace_sha256": "72ad905317ed1c02df863b099d0b23af312b0db29183fe40b84b93b5812d560c",
+      "length": 9,
+      "pair_iterations": 4,
+      "odd_tail": true,
+      "output": "1234567895",
+      "native_steps": 253,
+      "source_pcode_operations_replayed": 1184,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_3_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_4_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "odd_tail_and_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 38,
+          "source_pcode_operations": 145,
+          "guards": 10,
+          "reads": 12,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 1234567890,
+      "status": "differentially_validated",
+      "trace_sha256": "83408d26597db43ef72a1c83b3e7fccd8a1cde6d71ddfd4861826cb55aa78ccb",
+      "length": 10,
+      "pair_iterations": 5,
+      "odd_tail": false,
+      "output": "12345678905",
+      "native_steps": 258,
+      "source_pcode_operations_replayed": 1215,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_3_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_4_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_5_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "even_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 36,
+          "source_pcode_operations": 136,
+          "guards": 10,
+          "reads": 11,
+          "ordered_writes": 1,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 12345678901,
+      "status": "differentially_validated",
+      "trace_sha256": "a59223204901cbd35588317b08bc87bc12b814bdfbc6c444b6c62cb7c2142545",
+      "length": 11,
+      "pair_iterations": 5,
+      "odd_tail": true,
+      "output": "123456789015",
+      "native_steps": 260,
+      "source_pcode_operations_replayed": 1224,
+      "target_pcode_operations_replayed": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "source_first_pc": "0x1bb7780",
+          "source_last_pc": "0x1ab4137",
+          "native_steps": 187,
+          "source_pcode_operations": 879,
+          "guards": 44,
+          "reads": 35,
+          "ordered_writes": 27,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_1_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_2_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_3_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_4_continue",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "pair_5_exit",
+          "source_first_pc": "0x1ab4140",
+          "source_last_pc": "0x1ab415b",
+          "native_steps": 7,
+          "source_pcode_operations": 40,
+          "guards": 1,
+          "reads": 2,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        },
+        {
+          "label": "odd_tail_and_return",
+          "source_first_pc": "0x1ab415d",
+          "source_last_pc": "0x1bb77f1",
+          "native_steps": 38,
+          "source_pcode_operations": 145,
+          "guards": 10,
+          "reads": 12,
+          "ordered_writes": 2,
+          "state_match": true,
+          "read_effect_match": true
+        }
+      ]
+    },
+    {
+      "input": 123456789012,
+      "status": "unknown(prefix path shape)",
+      "completed_stages": []
+    },
+    {
+      "input": 1234567890123,
+      "status": "unknown(prefix path shape)",
+      "completed_stages": []
+    },
+    {
+      "input": 12345678901234,
+      "status": "unknown(prefix path shape)",
+      "completed_stages": []
+    },
+    {
+      "input": 123456789012345,
+      "status": "unknown(prefix path shape)",
+      "completed_stages": []
+    },
+    {
+      "input": 1234567890123456,
+      "status": "unknown(prefix path shape)",
+      "completed_stages": []
+    }
+  ],
+  "metrics": {
+    "targets": 15,
+    "full_native_transitions_matched": 10,
+    "target_pcode_operations_replayed": 0
+  },
+  "limits": [
+    "target native trace supplies path and first-read memory",
+    "only observed scalar state and native read/write effects are modeled",
+    "source P-code is replayed per segment at application time",
+    "segment boundaries and source choices are currently manual"
+  ]
+}

@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "summary_sha256": "7e3b5acf16b13f8225d34526182abd8a5b33aade0650998c1b1c2e6cdc8a67a6",
+  "targets": [
+    {
+      "input": 37,
+      "status": "differentially_validated",
+      "digits": 2,
+      "pair_iterations": 1,
+      "output": "375",
+      "native_steps": 230,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "even_return",
+          "native_steps": 36,
+          "reads_checked": 11,
+          "ordered_writes_checked": 1,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_probe_37.json.gz",
+      "trace_sha256": "90284c69449d2199b2cb301245a301183d71994d99cd578ccc08727974ab66d6"
+    },
+    {
+      "input": 251,
+      "status": "differentially_validated",
+      "digits": 3,
+      "pair_iterations": 1,
+      "output": "2515",
+      "native_steps": 232,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "odd_tail_and_return",
+          "native_steps": 38,
+          "reads_checked": 12,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_251.json.gz",
+      "trace_sha256": "9d1ee7fa06aaf3694768fdda9dc32a2d0b7c2f1c5be6d664c7c70854cc8f127d"
+    },
+    {
+      "input": 1000,
+      "status": "differentially_validated",
+      "digits": 4,
+      "pair_iterations": 2,
+      "output": "10005",
+      "native_steps": 237,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "even_return",
+          "native_steps": 36,
+          "reads_checked": 11,
+          "ordered_writes_checked": 1,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_1000.json.gz",
+      "trace_sha256": "f5691bf2347e81d58ee162e32dcefdb8cb30f6c95ddf87f6fab88e12ea6630b4"
+    },
+    {
+      "input": 10000,
+      "status": "differentially_validated",
+      "digits": 5,
+      "pair_iterations": 2,
+      "output": "100005",
+      "native_steps": 239,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "odd_tail_and_return",
+          "native_steps": 38,
+          "reads_checked": 12,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_10000.json.gz",
+      "trace_sha256": "fd940f8daf11a731cf5d0166c32ac66c2aadb31c9c78a9d38a269e5e034c5410"
+    },
+    {
+      "input": 123456,
+      "status": "differentially_validated",
+      "digits": 6,
+      "pair_iterations": 3,
+      "output": "1234565",
+      "native_steps": 244,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "even_return",
+          "native_steps": 36,
+          "reads_checked": 11,
+          "ordered_writes_checked": 1,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_123456.json.gz",
+      "trace_sha256": "655971d4082baf24f9701d78f2d6aeda6b4f5a2b472c218d799df970ae7712d9"
+    },
+    {
+      "input": 1234567,
+      "status": "differentially_validated",
+      "digits": 7,
+      "pair_iterations": 3,
+      "output": "12345675",
+      "native_steps": 246,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "odd_tail_and_return",
+          "native_steps": 38,
+          "reads_checked": 12,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_1234567.json.gz",
+      "trace_sha256": "bb09289cdc844da9bea5a8437a18373cb12a1176fa67e2eec39c693b892c5458"
+    },
+    {
+      "input": 12345678,
+      "status": "differentially_validated",
+      "digits": 8,
+      "pair_iterations": 4,
+      "output": "123456785",
+      "native_steps": 251,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "even_return",
+          "native_steps": 36,
+          "reads_checked": 11,
+          "ordered_writes_checked": 1,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_12345678.json.gz",
+      "trace_sha256": "871b62c0350ab5f13cc46c8af975c029b2abc0139270f803be931f20b95f6d1f"
+    },
+    {
+      "input": 123456789,
+      "status": "differentially_validated",
+      "digits": 9,
+      "pair_iterations": 4,
+      "output": "1234567895",
+      "native_steps": 253,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "odd_tail_and_return",
+          "native_steps": 38,
+          "reads_checked": 12,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_123456789.json.gz",
+      "trace_sha256": "72ad905317ed1c02df863b099d0b23af312b0db29183fe40b84b93b5812d560c"
+    },
+    {
+      "input": 1234567890,
+      "status": "differentially_validated",
+      "digits": 10,
+      "pair_iterations": 5,
+      "output": "12345678905",
+      "native_steps": 258,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "even_return",
+          "native_steps": 36,
+          "reads_checked": 11,
+          "ordered_writes_checked": 1,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_1234567890.json.gz",
+      "trace_sha256": "83408d26597db43ef72a1c83b3e7fccd8a1cde6d71ddfd4861826cb55aa78ccb"
+    },
+    {
+      "input": 12345678901,
+      "status": "differentially_validated",
+      "digits": 11,
+      "pair_iterations": 5,
+      "output": "123456789015",
+      "native_steps": 260,
+      "target_pcode_operations_replayed": 0,
+      "source_pcode_operations_replayed_at_application": 0,
+      "target_intermediate_state_used_as_input": false,
+      "stages": [
+        {
+          "label": "prefix",
+          "native_steps": 187,
+          "reads_checked": 35,
+          "ordered_writes_checked": 27,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_continue",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "pair_exit",
+          "native_steps": 7,
+          "reads_checked": 2,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        },
+        {
+          "label": "odd_tail_and_return",
+          "native_steps": 38,
+          "reads_checked": 12,
+          "ordered_writes_checked": 2,
+          "outputs_checked": 21
+        }
+      ],
+      "trace": "js_string_full_12345678901.json.gz",
+      "trace_sha256": "a59223204901cbd35588317b08bc87bc12b814bdfbc6c444b6c62cb7c2142545"
+    },
+    {
+      "input": 123456789012,
+      "status": "unknown(binary/schema/length domain)",
+      "trace": "js_string_full_123456789012.json.gz",
+      "trace_sha256": "4be04bb8b08c481d32d5136b26d2c4028f3f6ebb80d7eddae644a2d46e095958"
+    },
+    {
+      "input": 1234567890123,
+      "status": "unknown(binary/schema/length domain)",
+      "trace": "js_string_full_1234567890123.json.gz",
+      "trace_sha256": "b17f9a333c0109b680f696c40b7159174b149dedce969272f1d1dae202b59f7a"
+    },
+    {
+      "input": 12345678901234,
+      "status": "unknown(binary/schema/length domain)",
+      "trace": "js_string_full_12345678901234.json.gz",
+      "trace_sha256": "13c6e77f91667c3c07a522e8ef55ad822ba683522a6e3b3afcc27ca34c721178"
+    },
+    {
+      "input": 123456789012345,
+      "status": "unknown(binary/schema/length domain)",
+      "trace": "js_string_full_123456789012345.json.gz",
+      "trace_sha256": "3b3cc200f404b0285fbbeb93d25996f0b3c69c6dfa1b4f7ad89a5ded5e58a46d"
+    },
+    {
+      "input": 1234567890123456,
+      "status": "unknown(binary/schema/length domain)",
+      "trace": "js_string_full_1234567890123456.json.gz",
+      "trace_sha256": "838a2cdf1ab76928cc70f9c9e113bc3e2195adf3f17432b0dc0e287a4102f277"
+    }
+  ],
+  "negative_probes": {
+    "wrong_immediate": "unknown(AddSmi immediate)",
+    "wrong_entry_object": "unknown(string object/input mismatch)",
+    "wrong_ordered_write": "unknown(prefix ordered effects)",
+    "wrong_native_path": "unknown(pair_continue path shape)"
+  },
+  "metrics": {
+    "targets": 15,
+    "full_native_transitions_matched": 10,
+    "unknown": 5,
+    "target_pcode_operations_replayed": 0,
+    "source_pcode_operations_replayed_at_application": 0
+  },
+  "limits": [
+    "native trace supplies the target path and first-read memory",
+    "only observed x86-64 scalar state and native reads/writes are checked",
+    "exact pinned Node binary, fixture and length 2..11 domain",
+    "allocation alias and arbitrary-path completeness are not proved"
+  ]
+}
