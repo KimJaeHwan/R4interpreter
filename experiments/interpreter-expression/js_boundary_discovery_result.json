@@ -1,0 +1,62 @@
+{
+  "status": "observed P-code control boundary discovery",
+  "full_trace_sha256": "6b5342d767002a310cd440ab28548e66759bee1fa7c176c0ec67cdb3cc6e2008",
+  "reuse_trace_sha256": "1833bc582ebea2ae8f7eb34f442d360ac8244e170dd4cf29769c7915c36fa2c5",
+  "entry_dispatch": {
+    "step": 24979,
+    "pc": "0x1ba8d1e",
+    "opcode": "BRANCHIND",
+    "target_pc": "0x1bb7780"
+  },
+  "arithmetic": {
+    "step": 24989,
+    "pc": "0x1bb77a6",
+    "ordinal": 2,
+    "opcode": "INT_ADD",
+    "memory_addresses": []
+  },
+  "full_path": {
+    "arithmetic_index": 9,
+    "prefix_end_index": 10,
+    "prefix_exit_pc": "0x1bb77ab",
+    "prefix_exit_branch_pc": "0x1bb77a9",
+    "handler_dispatch_index": 22,
+    "handler_dispatch_pc": "0x1bb77f1",
+    "next_handler_pc": "0x1bc6f40",
+    "entry_step": 24980,
+    "entry_pc": "0x1bb7780"
+  },
+  "reuse_paths": [
+    {
+      "arithmetic_index": 9,
+      "prefix_end_index": 10,
+      "prefix_exit_pc": "0x1bb77ab",
+      "prefix_exit_branch_pc": "0x1bb77a9",
+      "handler_dispatch_index": 25,
+      "handler_dispatch_pc": "0x1bb780c",
+      "next_handler_pc": "0x1bb7780",
+      "bytecode_offset": 2
+    },
+    {
+      "arithmetic_index": 9,
+      "prefix_end_index": 10,
+      "prefix_exit_pc": "0x1bb77ab",
+      "prefix_exit_branch_pc": "0x1bb77a9",
+      "handler_dispatch_index": 22,
+      "handler_dispatch_pc": "0x1bb77f1",
+      "next_handler_pc": "0x1bc6f40",
+      "bytecode_offset": 6
+    }
+  ],
+  "prefix": {
+    "entry_pc": "0x1bb7780",
+    "end_index_in_local_paths": 10,
+    "end_branch_pc": "0x1bb77a9",
+    "exit_pc": "0x1bb77ab",
+    "native_steps": 11
+  },
+  "limits": [
+    "boundaries are for observed paths in a pinned Node binary",
+    "other handler exits and bytecode configurations require independent analysis"
+  ]
+}

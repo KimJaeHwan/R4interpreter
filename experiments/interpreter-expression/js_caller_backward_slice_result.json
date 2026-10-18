@@ -1,0 +1,1921 @@
+{
+  "status": "concrete path-local caller-result backward slice",
+  "trace_sha256": "6b5342d767002a310cd440ab28548e66759bee1fa7c176c0ec67cdb3cc6e2008",
+  "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "caller_result": {
+    "location": "RAX",
+    "value_raw": 60129542144
+  },
+  "native_steps": 25104,
+  "distinct_native_instructions_lifted": 14066,
+  "selected_steps": 104,
+  "selected_pcode_operations": 207,
+  "selected": [
+    {
+      "step": 74,
+      "pc": "0x1bbdb12",
+      "ordinal": 2,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226798"
+      ]
+    },
+    {
+      "step": 74,
+      "pc": "0x1bbdb12",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 81,
+      "pc": "0x1bbdb33",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 81,
+      "pc": "0x1bbdb33",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226738"
+      ]
+    },
+    {
+      "step": 1486,
+      "pc": "0x7f24b5971263",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d404b08"
+      ]
+    },
+    {
+      "step": 1486,
+      "pc": "0x7f24b5971263",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 1495,
+      "pc": "0x7f24b5971296",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 1495,
+      "pc": "0x7f24b5971296",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7f24b5ab5b38"
+      ]
+    },
+    {
+      "step": 1542,
+      "pc": "0x7f24b597160b",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7f24b5ab5b38"
+      ]
+    },
+    {
+      "step": 1542,
+      "pc": "0x7f24b597160b",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 1615,
+      "pc": "0x7f24b5971356",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 1615,
+      "pc": "0x7f24b5971356",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7f24b5ab6238"
+      ]
+    },
+    {
+      "step": 3070,
+      "pc": "0x1438fb0",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3079,
+      "pc": "0x1438c08",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3087,
+      "pc": "0x143454e",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3090,
+      "pc": "0x1434556",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3096,
+      "pc": "0x7f24b59728d4",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3125,
+      "pc": "0x7f24b59729c3",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3138,
+      "pc": "0x7f24b5970ff9",
+      "ordinal": 0,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 3138,
+      "pc": "0x7f24b5970ff9",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3142,
+      "pc": "0x7f24b597100b",
+      "ordinal": 2,
+      "opcode": "INT_AND",
+      "memory_addresses": []
+    },
+    {
+      "step": 3233,
+      "pc": "0x7f24b59716b0",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7f24b5ab6238"
+      ]
+    },
+    {
+      "step": 3233,
+      "pc": "0x7f24b59716b0",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3237,
+      "pc": "0x7f24b5971b54",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3284,
+      "pc": "0x7f24b5971b92",
+      "ordinal": 0,
+      "opcode": "INT_MULT",
+      "memory_addresses": []
+    },
+    {
+      "step": 3284,
+      "pc": "0x7f24b5971b92",
+      "ordinal": 1,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 3284,
+      "pc": "0x7f24b5971b92",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3291,
+      "pc": "0x7f24b5971bb2",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 3291,
+      "pc": "0x7f24b5971bb2",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7f24b5ab5b38"
+      ]
+    },
+    {
+      "step": 5181,
+      "pc": "0xc88805",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d571da2393e"
+      ]
+    },
+    {
+      "step": 5181,
+      "pc": "0xc88805",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 5181,
+      "pc": "0xc88805",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 5182,
+      "pc": "0xc88809",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 5182,
+      "pc": "0xc88809",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d405b78"
+      ]
+    },
+    {
+      "step": 5670,
+      "pc": "0xc9e217",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 5670,
+      "pc": "0xc9e217",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d4726d0"
+      ]
+    },
+    {
+      "step": 7208,
+      "pc": "0xc9fab8",
+      "ordinal": 5,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d4726d0"
+      ]
+    },
+    {
+      "step": 7208,
+      "pc": "0xc9fab8",
+      "ordinal": 6,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 7208,
+      "pc": "0xc9fab8",
+      "ordinal": 7,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d4726d0"
+      ]
+    },
+    {
+      "step": 9257,
+      "pc": "0x12fd9c8",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d405b78"
+      ]
+    },
+    {
+      "step": 9257,
+      "pc": "0x12fd9c8",
+      "ordinal": 1,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 9257,
+      "pc": "0x12fd9c8",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 9259,
+      "pc": "0x12fcbcf",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9259,
+      "pc": "0x12fcbcf",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225d88"
+      ]
+    },
+    {
+      "step": 9316,
+      "pc": "0x12f1375",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9316,
+      "pc": "0x12f1375",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225218"
+      ]
+    },
+    {
+      "step": 9349,
+      "pc": "0x12f0849",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225d88"
+      ]
+    },
+    {
+      "step": 9349,
+      "pc": "0x12f0849",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9349,
+      "pc": "0x12f0849",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 9350,
+      "pc": "0x12f084c",
+      "ordinal": 0,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 9350,
+      "pc": "0x12f084c",
+      "ordinal": 1,
+      "opcode": "SUBPIECE",
+      "memory_addresses": []
+    },
+    {
+      "step": 9350,
+      "pc": "0x12f084c",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 9353,
+      "pc": "0x12f08a0",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225218"
+      ]
+    },
+    {
+      "step": 9353,
+      "pc": "0x12f08a0",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9354,
+      "pc": "0x12f08a4",
+      "ordinal": 0,
+      "opcode": "INT_MULT",
+      "memory_addresses": []
+    },
+    {
+      "step": 9354,
+      "pc": "0x12f08a4",
+      "ordinal": 1,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 9354,
+      "pc": "0x12f08a4",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9355,
+      "pc": "0x12f08a8",
+      "ordinal": 0,
+      "opcode": "INT_MULT",
+      "memory_addresses": []
+    },
+    {
+      "step": 9355,
+      "pc": "0x12f08a8",
+      "ordinal": 1,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 9355,
+      "pc": "0x12f08a8",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9356,
+      "pc": "0x12f08ac",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9356,
+      "pc": "0x12f08ac",
+      "ordinal": 1,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225218"
+      ]
+    },
+    {
+      "step": 9410,
+      "pc": "0x12f1813",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225218"
+      ]
+    },
+    {
+      "step": 9410,
+      "pc": "0x12f1813",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9423,
+      "pc": "0x12f184e",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9423,
+      "pc": "0x12f184e",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225ddc"
+      ]
+    },
+    {
+      "step": 9627,
+      "pc": "0x129901e",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225ddc"
+      ]
+    },
+    {
+      "step": 9627,
+      "pc": "0x129901e",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9627,
+      "pc": "0x129901e",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 9636,
+      "pc": "0x1299041",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 9636,
+      "pc": "0x1299041",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d472908"
+      ]
+    },
+    {
+      "step": 14950,
+      "pc": "0x7f24b59711f2",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7f24b5ab5b38"
+      ]
+    },
+    {
+      "step": 14950,
+      "pc": "0x7f24b59711f2",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15023,
+      "pc": "0x7f24b5971356",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15023,
+      "pc": "0x7f24b5971356",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7f24b5ab61a8"
+      ]
+    },
+    {
+      "step": 15146,
+      "pc": "0x7f24b59716b0",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7f24b5ab61a8"
+      ]
+    },
+    {
+      "step": 15146,
+      "pc": "0x7f24b59716b0",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15150,
+      "pc": "0x7f24b5971b54",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15224,
+      "pc": "0x7f24b5971c09",
+      "ordinal": 0,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 15224,
+      "pc": "0x7f24b5971c09",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15228,
+      "pc": "0x7f24b59715ed",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15269,
+      "pc": "0x105f7a7",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15327,
+      "pc": "0xd4af16",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15327,
+      "pc": "0xd4af16",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb2260f0"
+      ]
+    },
+    {
+      "step": 15834,
+      "pc": "0xd4afa1",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb2260f0"
+      ]
+    },
+    {
+      "step": 15834,
+      "pc": "0xd4afa1",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15852,
+      "pc": "0x105f7ea",
+      "ordinal": 0,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 15852,
+      "pc": "0x105f7ea",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15865,
+      "pc": "0x1034dfb",
+      "ordinal": 0,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 15865,
+      "pc": "0x1034dfb",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15900,
+      "pc": "0xd4aec8",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d4726d0"
+      ]
+    },
+    {
+      "step": 15900,
+      "pc": "0xd4aec8",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15900,
+      "pc": "0xd4aec8",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 15901,
+      "pc": "0xd4aece",
+      "ordinal": 2,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 15901,
+      "pc": "0xd4aece",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 15905,
+      "pc": "0x1034e42",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15907,
+      "pc": "0x1034e48",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15907,
+      "pc": "0x1034e48",
+      "ordinal": 1,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 15917,
+      "pc": "0x101f714",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15917,
+      "pc": "0x101f714",
+      "ordinal": 1,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 15924,
+      "pc": "0x101f726",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15937,
+      "pc": "0x1059569",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 15937,
+      "pc": "0x1059569",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226070"
+      ]
+    },
+    {
+      "step": 16134,
+      "pc": "0x1059788",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226070"
+      ]
+    },
+    {
+      "step": 16134,
+      "pc": "0x1059788",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16164,
+      "pc": "0x1032182",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16164,
+      "pc": "0x1032182",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226070"
+      ]
+    },
+    {
+      "step": 16197,
+      "pc": "0x1032209",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226070"
+      ]
+    },
+    {
+      "step": 16197,
+      "pc": "0x1032209",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16204,
+      "pc": "0xd49cf6",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16204,
+      "pc": "0xd49cf6",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226070"
+      ]
+    },
+    {
+      "step": 16207,
+      "pc": "0xd49cfc",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16207,
+      "pc": "0xd49cfc",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226058"
+      ]
+    },
+    {
+      "step": 16241,
+      "pc": "0xd49d7c",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226058"
+      ]
+    },
+    {
+      "step": 16241,
+      "pc": "0xd49d7c",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16244,
+      "pc": "0xd49d81",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226070"
+      ]
+    },
+    {
+      "step": 16244,
+      "pc": "0xd49d81",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16271,
+      "pc": "0x101f831",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16271,
+      "pc": "0x101f831",
+      "ordinal": 1,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 16275,
+      "pc": "0x101f83f",
+      "ordinal": 0,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 16275,
+      "pc": "0x101f83f",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16284,
+      "pc": "0x1057cd1",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16324,
+      "pc": "0x1057d94",
+      "ordinal": 2,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 16324,
+      "pc": "0x1057d94",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 16338,
+      "pc": "0x1057dd9",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16338,
+      "pc": "0x1057dd9",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d46e328"
+      ]
+    },
+    {
+      "step": 16361,
+      "pc": "0x105791d",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16361,
+      "pc": "0x105791d",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226018"
+      ]
+    },
+    {
+      "step": 16394,
+      "pc": "0x105799f",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226018"
+      ]
+    },
+    {
+      "step": 16394,
+      "pc": "0x105799f",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16426,
+      "pc": "0x1057e63",
+      "ordinal": 2,
+      "opcode": "INT_XOR",
+      "memory_addresses": []
+    },
+    {
+      "step": 16426,
+      "pc": "0x1057e63",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 16435,
+      "pc": "0x1057e78",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16435,
+      "pc": "0x1057e78",
+      "ordinal": 1,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 16436,
+      "pc": "0x1057e7b",
+      "ordinal": 5,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d46e328"
+      ]
+    },
+    {
+      "step": 16436,
+      "pc": "0x1057e7b",
+      "ordinal": 6,
+      "opcode": "INT_SUB",
+      "memory_addresses": []
+    },
+    {
+      "step": 16436,
+      "pc": "0x1057e7b",
+      "ordinal": 7,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 16444,
+      "pc": "0x1057e9d",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 16444,
+      "pc": "0x1057e9d",
+      "ordinal": 1,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d46e640"
+      ]
+    },
+    {
+      "step": 17687,
+      "pc": "0xc928d9",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d472908"
+      ]
+    },
+    {
+      "step": 17687,
+      "pc": "0xc928d9",
+      "ordinal": 2,
+      "opcode": "INT_SEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 17688,
+      "pc": "0xc928dd",
+      "ordinal": 0,
+      "opcode": "INT_AND",
+      "memory_addresses": []
+    },
+    {
+      "step": 17688,
+      "pc": "0xc928dd",
+      "ordinal": 2,
+      "opcode": "INT_LEFT",
+      "memory_addresses": []
+    },
+    {
+      "step": 17689,
+      "pc": "0xc928e1",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 17689,
+      "pc": "0xc928e1",
+      "ordinal": 1,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225ec8"
+      ]
+    },
+    {
+      "step": 17960,
+      "pc": "0x1045ff2",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225ec8"
+      ]
+    },
+    {
+      "step": 17960,
+      "pc": "0x1045ff2",
+      "ordinal": 2,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 17976,
+      "pc": "0x102092c",
+      "ordinal": 0,
+      "opcode": "INT_AND",
+      "memory_addresses": []
+    },
+    {
+      "step": 17976,
+      "pc": "0x102092c",
+      "ordinal": 2,
+      "opcode": "INT_SRIGHT",
+      "memory_addresses": []
+    },
+    {
+      "step": 17981,
+      "pc": "0x1020941",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 17994,
+      "pc": "0x1056d3f",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 17994,
+      "pc": "0x1056d3f",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225e30"
+      ]
+    },
+    {
+      "step": 18005,
+      "pc": "0x1056d63",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d46e640"
+      ]
+    },
+    {
+      "step": 18005,
+      "pc": "0x1056d63",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18005,
+      "pc": "0x1056d63",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18017,
+      "pc": "0x101f476",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18020,
+      "pc": "0x101f482",
+      "ordinal": 2,
+      "opcode": "INT_SUB",
+      "memory_addresses": []
+    },
+    {
+      "step": 18020,
+      "pc": "0x101f482",
+      "ordinal": 3,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18028,
+      "pc": "0x101f4b5",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18028,
+      "pc": "0x101f4b5",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225de0"
+      ]
+    },
+    {
+      "step": 18032,
+      "pc": "0x101f4cb",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18032,
+      "pc": "0x101f4cb",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225de4"
+      ]
+    },
+    {
+      "step": 18265,
+      "pc": "0x1032240",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225de0"
+      ]
+    },
+    {
+      "step": 18265,
+      "pc": "0x1032240",
+      "ordinal": 1,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18265,
+      "pc": "0x1032240",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18276,
+      "pc": "0x10322a2",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18276,
+      "pc": "0x10322a2",
+      "ordinal": 1,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d46e0d8"
+      ]
+    },
+    {
+      "step": 18297,
+      "pc": "0x10322e8",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225de4"
+      ]
+    },
+    {
+      "step": 18297,
+      "pc": "0x10322e8",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18297,
+      "pc": "0x10322e8",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18302,
+      "pc": "0x10322fd",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18302,
+      "pc": "0x10322fd",
+      "ordinal": 1,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d46e0d9"
+      ]
+    },
+    {
+      "step": 18323,
+      "pc": "0x1056da8",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225e30"
+      ]
+    },
+    {
+      "step": 18323,
+      "pc": "0x1056da8",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18332,
+      "pc": "0x1056dd4",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18332,
+      "pc": "0x1056dd4",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225e38"
+      ]
+    },
+    {
+      "step": 18374,
+      "pc": "0x1056e5f",
+      "ordinal": 1,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225e38"
+      ]
+    },
+    {
+      "step": 18374,
+      "pc": "0x1056e5f",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18393,
+      "pc": "0x10209cb",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18393,
+      "pc": "0x10209cb",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225e50"
+      ]
+    },
+    {
+      "step": 18400,
+      "pc": "0x1020fc7",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18400,
+      "pc": "0x1020fc7",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb225e54"
+      ]
+    },
+    {
+      "step": 18558,
+      "pc": "0x1032240",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225e50"
+      ]
+    },
+    {
+      "step": 18558,
+      "pc": "0x1032240",
+      "ordinal": 1,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18558,
+      "pc": "0x1032240",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18569,
+      "pc": "0x10322a2",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18569,
+      "pc": "0x10322a2",
+      "ordinal": 1,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d46e0da"
+      ]
+    },
+    {
+      "step": 18590,
+      "pc": "0x10322e8",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb225e54"
+      ]
+    },
+    {
+      "step": 18590,
+      "pc": "0x10322e8",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18590,
+      "pc": "0x10322e8",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 18595,
+      "pc": "0x10322fd",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 18595,
+      "pc": "0x10322fd",
+      "ordinal": 1,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x3d46e0db"
+      ]
+    },
+    {
+      "step": 20130,
+      "pc": "0xe9ab70",
+      "ordinal": 0,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x3d46e0d8"
+      ]
+    },
+    {
+      "step": 20130,
+      "pc": "0xe9ab70",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 20130,
+      "pc": "0xe9ab70",
+      "ordinal": 2,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 20131,
+      "pc": "0xe9ab72",
+      "ordinal": 1,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 20131,
+      "pc": "0xe9ab72",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x27995f701d98"
+      ]
+    },
+    {
+      "step": 24974,
+      "pc": "0x1ba8d09",
+      "ordinal": 2,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226738"
+      ]
+    },
+    {
+      "step": 24974,
+      "pc": "0x1ba8d09",
+      "ordinal": 3,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 24980,
+      "pc": "0x1bb7780",
+      "ordinal": 3,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x27995f701d9b"
+      ]
+    },
+    {
+      "step": 24980,
+      "pc": "0x1bb7780",
+      "ordinal": 4,
+      "opcode": "INT_SEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 24980,
+      "pc": "0x1bb7780",
+      "ordinal": 5,
+      "opcode": "INT_ZEXT",
+      "memory_addresses": []
+    },
+    {
+      "step": 24983,
+      "pc": "0x1bb778f",
+      "ordinal": 0,
+      "opcode": "INT_AND",
+      "memory_addresses": []
+    },
+    {
+      "step": 24983,
+      "pc": "0x1bb778f",
+      "ordinal": 2,
+      "opcode": "INT_LEFT",
+      "memory_addresses": []
+    },
+    {
+      "step": 24988,
+      "pc": "0x1bb77a3",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    },
+    {
+      "step": 24989,
+      "pc": "0x1bb77a6",
+      "ordinal": 2,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    {
+      "step": 25001,
+      "pc": "0x1bb77ee",
+      "ordinal": 0,
+      "opcode": "COPY",
+      "memory_addresses": []
+    }
+  ],
+  "return_edges_with_live_result": [
+    {
+      "step": 15235,
+      "pc": "0x7f24b59715fa",
+      "next_pc": "0x7f24b59729ce",
+      "rax": "0x3d4742b0"
+    },
+    {
+      "step": 15254,
+      "pc": "0x7f24b5972961",
+      "next_pc": "0x7f24b5c9bbac",
+      "rax": "0x3d4742b0"
+    },
+    {
+      "step": 15258,
+      "pc": "0x7f24b5c9bbb2",
+      "next_pc": "0x105f781",
+      "rax": "0x3d4742b0"
+    },
+    {
+      "step": 15902,
+      "pc": "0xd4aed1",
+      "next_pc": "0x1034e3a",
+      "rax": "0x2"
+    },
+    {
+      "step": 25014,
+      "pc": "0x1bc6fa5",
+      "next_pc": "0x1a0a654",
+      "rax": "0xe00000000"
+    },
+    {
+      "step": 25033,
+      "pc": "0x1a0a6cd",
+      "next_pc": "0x1a0a654",
+      "rax": "0xe00000000"
+    },
+    {
+      "step": 25065,
+      "pc": "0x1bc6fa5",
+      "next_pc": "0x1a0a654",
+      "rax": "0xe00000000"
+    },
+    {
+      "step": 25084,
+      "pc": "0x1a0a6cd",
+      "next_pc": "0x1a0a654",
+      "rax": "0xe00000000"
+    }
+  ],
+  "discovered_value_chain": {
+    "parent_parameter_read": {
+      "step": 74,
+      "pc": "0x1bbdb12",
+      "ordinal": 2,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226798"
+      ]
+    },
+    "child_parameter_write": {
+      "step": 81,
+      "pc": "0x1bbdb33",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226738"
+      ]
+    },
+    "child_parameter_read": {
+      "step": 24974,
+      "pc": "0x1ba8d09",
+      "ordinal": 2,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226738"
+      ]
+    },
+    "value_arithmetic": {
+      "step": 24989,
+      "pc": "0x1bb77a6",
+      "ordinal": 2,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    "returned_result_edges": [
+      {
+        "step": 25014,
+        "pc": "0x1bc6fa5",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      },
+      {
+        "step": 25033,
+        "pc": "0x1a0a6cd",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      },
+      {
+        "step": 25065,
+        "pc": "0x1bc6fa5",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      },
+      {
+        "step": 25084,
+        "pc": "0x1a0a6cd",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      }
+    ],
+    "observed_parameter_raw": 38654705664,
+    "observed_result_raw": 60129542144,
+    "watch_noninterference": {
+      "parent": {
+        "address": "0x7ffceb226798",
+        "start_step": 0,
+        "end_step": 25054
+      },
+      "child": {
+        "address": "0x7ffceb226738",
+        "start_step": 82,
+        "end_step": 24974
+      },
+      "write_hits": [],
+      "read_hits": [
+        {
+          "step": 11,
+          "pc": "0x1bbff8d",
+          "label": "parent_parameter"
+        },
+        {
+          "step": 74,
+          "pc": "0x1bbdb12",
+          "label": "parent_parameter"
+        },
+        {
+          "step": 24974,
+          "pc": "0x1ba8d09",
+          "label": "child_parameter"
+        }
+      ]
+    }
+  },
+  "entry_source_groups": [
+    {
+      "address": "0x3d404b08",
+      "size": 8,
+      "first_selected_read": {
+        "step": 1486,
+        "pc": "0x7f24b5971263",
+        "value_raw": 1028072080
+      },
+      "role": "other_runtime_input_or_generated_code"
+    },
+    {
+      "address": "0x3d571da2393e",
+      "size": 1,
+      "first_selected_read": {
+        "step": 5181,
+        "pc": "0xc88805",
+        "value_raw": 53
+      },
+      "role": "other_runtime_input_or_generated_code"
+    },
+    {
+      "address": "0x7ffceb226798",
+      "size": 8,
+      "first_selected_read": {
+        "step": 74,
+        "pc": "0x1bbdb12",
+        "value_raw": 38654705664
+      },
+      "role": "parent_parameter"
+    }
+  ],
+  "excluded_region_audit": {
+    "excluded_counts": {
+      "control_or_opaque_branch": 467,
+      "control_or_opaque_branchind": 121,
+      "control_or_opaque_call": 493,
+      "control_or_opaque_callind": 16,
+      "control_or_opaque_callother": 277,
+      "control_or_opaque_cbranch": 3477,
+      "control_or_opaque_return": 511,
+      "native_memory_writes_outside_value_slice": 4559
+    },
+    "excluded_examples": {
+      "control_or_opaque_branch": {
+        "step": 25100,
+        "pc": "0x1a0a6b1",
+        "instruction": "jmp 0x1a0a642"
+      },
+      "control_or_opaque_cbranch": {
+        "step": 25097,
+        "pc": "0x1a0a6a2",
+        "instruction": "jne 0x1a0a6a9"
+      },
+      "control_or_opaque_return": {
+        "step": 25084,
+        "pc": "0x1a0a6cd",
+        "instruction": "ret"
+      },
+      "native_memory_writes_outside_value_slice": {
+        "step": 25083,
+        "pc": "0x1a0a6cc",
+        "address": "0x7ffceb226798"
+      },
+      "control_or_opaque_callind": {
+        "step": 25053,
+        "pc": "0x1a0a652",
+        "instruction": "call rcx"
+      },
+      "control_or_opaque_branchind": {
+        "step": 25002,
+        "pc": "0x1bb77f1",
+        "instruction": "jmp rcx"
+      },
+      "control_or_opaque_call": {
+        "step": 24808,
+        "pc": "0xd1e27a",
+        "instruction": "call 0xd0b1e0"
+      },
+      "control_or_opaque_callother": {
+        "step": 24367,
+        "pc": "0x25f518d",
+        "instruction": "lock cmpxchg qword ptr [rbx], rdx"
+      }
+    },
+    "selected_internal_control_instructions": 0,
+    "interpretation": "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"
+  },
+  "entry_sources": [
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b08"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b09"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b0a"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b0b"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b0c"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b0d"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b0e"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d404b0f"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x3d571da2393e"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb226798"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb226799"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb22679a"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb22679b"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb22679c"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb22679d"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb22679e"
+    },
+    {
+      "kind": "memory",
+      "step": 0,
+      "address": "0x7ffceb22679f"
+    }
+  ],
+  "debts": [],
+  "limits": [
+    "concrete recorded path and observed memory addresses only",
+    "branch feasibility and unobserved memory effects require separate checks",
+    "call/return control edges are reported, not proved by data-only slicing"
+  ]
+}

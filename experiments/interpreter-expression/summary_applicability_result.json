@@ -1,0 +1,178 @@
+{
+  "status": "bounded cross-engine summary applicability policy",
+  "policy": {
+    "value": "apply only when identity, guard, type and required read footprint match",
+    "transition": "apply only when the summary covers all ordered effects and the continuation",
+    "unknown": "return unknown on unsupported path, state, code, read, write, or effect"
+  },
+  "javascript": {
+    "summary_sha256": "9f5db4f93c1a1a55c3d9457f4de473c96ac07cdcfba0cea4968c424bd92916bb",
+    "cases": {
+      "valid_prefix": {
+        "status": "differentially_validated",
+        "predicted_tagged_result": "0x1300000000",
+        "observed_tagged_result": "0x1300000000",
+        "native_steps_replayed": 0,
+        "register_and_flag_outputs_checked": 21,
+        "read_footprint": [
+          [
+            "0x1bb7780",
+            5347720043151,
+            1
+          ],
+          [
+            "0x1bb7789",
+            5347720043152,
+            1
+          ],
+          [
+            "0x1bb7793",
+            140720698778712,
+            8
+          ],
+          [
+            "0x1bb7797",
+            140720698778672,
+            8
+          ]
+        ]
+      },
+      "wrong_code": {
+        "status": "unknown(code validity)"
+      },
+      "unexpected_write": {
+        "status": "unknown(unexpected native write)"
+      },
+      "extra_read": {
+        "status": "unknown(read footprint mismatch)"
+      },
+      "wrong_state": {
+        "status": "unknown(state mismatch)",
+        "binding": "r8"
+      },
+      "missing_register_output": {
+        "status": "unknown(incomplete output contract)"
+      },
+      "unproved_effect_contract": {
+        "status": "unknown(effect contract)"
+      },
+      "full_handler": {
+        "status": "unknown(cutpoint mismatch)"
+      }
+    },
+    "proved_scope": "11-step arithmetic prefix; zero native writes"
+  },
+  "python": {
+    "summary_sha256": "430117ad341a090d78d0a98e57203c987e9268a68c7595c6b9fbb7ab0b57a42b",
+    "cases": {
+      "valid_numeric_value": {
+        "status": "applied",
+        "value": 10
+      },
+      "below_domain": {
+        "status": "unknown(outside proved domain)"
+      },
+      "wrong_operand": {
+        "status": "unknown(outside proved domain)"
+      },
+      "wrong_cache": {
+        "status": "unknown(cache identity)"
+      },
+      "full_transition": {
+        "status": "unknown(unresolved native effects)"
+      }
+    },
+    "native_effect_inventory": [
+      {
+        "step_in_segment": 3,
+        "pc": "0x562288",
+        "address": "0x7fef25c94230",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 21,
+        "pc": "0x5622ca",
+        "address": "0x7fef25807ba0",
+        "width": 1,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 25,
+        "pc": "0x5622d6",
+        "address": "0x7fef25807ba0",
+        "width": 2,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 27,
+        "pc": "0x5622dd",
+        "address": "0x7ffd52785308",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 29,
+        "pc": "0x5932b4",
+        "address": "0x7ffd52785300",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 30,
+        "pc": "0x5932b6",
+        "address": "0x7ffd527852f8",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 31,
+        "pc": "0x5932b8",
+        "address": "0x7ffd527852f0",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 33,
+        "pc": "0x5932bc",
+        "address": "0x7ffd527852e8",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 49,
+        "pc": "0x5932f3",
+        "address": "0x7ffd527852d8",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 51,
+        "pc": "0x5e9714",
+        "address": "0x7ffd527852d0",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 52,
+        "pc": "0x5e9715",
+        "address": "0x7ffd527852c8",
+        "width": 8,
+        "role": "unmodeled_native_effect"
+      },
+      {
+        "step_in_segment": 109,
+        "pc": "0x562316",
+        "address": "0x7fef25c94248",
+        "width": 8,
+        "role": "result_slot"
+      }
+    ],
+    "modeled_result_writes": 1,
+    "unmodeled_native_writes": 11
+  },
+  "limits": [
+    "all positive cases use saved concrete target traces",
+    "unknown does not establish behavior of a skipped path"
+  ]
+}

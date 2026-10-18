@@ -1,0 +1,53 @@
+{
+  "status": "guarded arithmetic-prefix summary reused at second bytecode site",
+  "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "fixture_sha256": "a46a69d1033d043feba1479dc570149938499ca2a13bab6a73098ee4c14f58e7",
+  "source_offset": 2,
+  "target_offset": 6,
+  "source_entry": 9,
+  "target_entry": 14,
+  "target_output": 19,
+  "summary_sha256": "9f5db4f93c1a1a55c3d9457f4de473c96ac07cdcfba0cea4968c424bd92916bb",
+  "target_validation": {
+    "status": "differentially_validated",
+    "predicted_tagged_result": "0x1300000000",
+    "observed_tagged_result": "0x1300000000",
+    "native_steps_replayed": 0,
+    "register_and_flag_outputs_checked": 21,
+    "read_footprint": [
+      [
+        "0x1bb7780",
+        5347720043151,
+        1
+      ],
+      [
+        "0x1bb7789",
+        5347720043152,
+        1
+      ],
+      [
+        "0x1bb7793",
+        140720698778712,
+        8
+      ],
+      [
+        "0x1bb7797",
+        140720698778672,
+        8
+      ]
+    ]
+  },
+  "non_smi_probe": {
+    "status": "unknown(outside conditional path)"
+  },
+  "noncanonical_smi_probe": {
+    "status": "unknown(outside conditional path)"
+  },
+  "out_of_range_probe": {
+    "status": "unknown(outside conditional path)"
+  },
+  "wrong_successor_probe": {
+    "status": "unknown(cutpoint mismatch)"
+  },
+  "uncovered": "feedback check, Star0 fusion, dispatch and slow paths"
+}

@@ -13,7 +13,8 @@
 | 두 handler 합성 | 기존 Lua 요약의 출력에서 5개 명령의 fetch/decode/dispatch를 거쳐 다음 handler 입력 계산 | `x+7; +11` 바이트코드 6 입력, 둘째 진입 snapshot 입력 없이 차등 확인 |
 | 공통 입력식 투영 | 기존 Lua 핸들러·연결 요약과 작은 VM 경로 요약에 같은 기호 투영기 적용 | Lua `X+7`, `X+11`, 두 핸들러 `X+18`; 작은 VM 30개 평가 중 28 pass·2 accepted_unknown |
 | Lua 분기·함수 호출 | VM 입력부터 `printf` 인수까지 `X=0 → 10`, 그 외 `→ X+5`를 조건부 P-code 경로로 증명 | 2개 분기·6개 입력. ABI·진입 상태·경로 전제가 필요하며 전체 경로 완전성은 미증명 |
-| Python 3.13·JavaScript Ignition | 양쪽의 bytecode fetch→native handler 분배를 실제 주소로 연결하고 같은 guard/식 적용기에 연결 | 각 2개 native 분기 경로, 14개 출력 차등 검증. 계산식은 아직 표본 기반 후보이며 native 값 증명은 미완료 |
+| Python 3.13·JavaScript Ignition 첫 교차 실험 | 양쪽의 bytecode fetch→native handler 분배를 실제 주소로 연결하고 같은 guard/식 적용기에 연결 | 각 2개 native 분기 경로, 14개 출력 차등 검증. 이 초기 결과의 값 식은 표본 기반 후보이며 아래 후속 실험에서 범위를 좁혀 증명 |
+| Python·JavaScript 값 요약 재사용 | JavaScript `AddSmi` 앞부분의 조건부 상태 요약과 Python cached PyLong 숫자 요약을 다른 입력에 적용 | 새 프로그램에서 엔진당 3건: 2건 정확 적용·1건 `unknown`·불일치 0건. 전체 핸들러 효과는 미완성 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -33,6 +34,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [Python·JavaScript 첫 교차 결과](PYTHON_JS_FIRST_RESULT.md)는 CPython 3.13.5와 Node 24.19.0 Ignition의 실제 bytecode→native dispatch 대응, 공통 값 sort 형식, 14개 출력 검증을 기록한다. 후속 [전체 함수 경로 결과](PYTHON_JS_FULL_FLOW_RESULT.md)는 제한된 VM 입력 상태에서 분기·호출·덧셈·반환을 P-code와 하드웨어 감시점으로 연결한다. 기존 portable 적용기의 새 CLI 입력은 계속 `unknown`으로 둔다.
 
+[값 요약 재사용 실험](SUMMARY_REUSE_EXPERIMENT.md)은 호출 결과에서 역방향 의존성을 찾고, 관측된 JavaScript 핸들러 경계를 선택한 뒤, Python·JavaScript 값 요약을 다른 실행에 적용한다. 두 엔진의 새 프로그램 결과는 각각 2건 정확 적용·1건 `unknown`이며 대상 P-code 재생은 0회다. Python의 숫자 결과 이외 네이티브 쓰기 11개와 JavaScript 핸들러 뒷부분은 전체 전이 요약에 아직 포함되지 않는다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -48,6 +51,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `prove_lua_full_flow.py`, `export_lua_portability_gate.py`: Lua 분기 경로의 입력·VM·반환 연결과 다른 바이트코드의 검증 등급을 공통 형식으로 내보낸다. [Lua 단계 정리](LUA_PRE_PYTHON_JS_READINESS.md)에 범위와 재현법이 있다.
 - `python_branch_fixture.py`, `js_branch_fixture.js`, `trace_cross_native.py`, `cross_dispatch_pcode.py`, `collect_cross_language.py`, `portable_guard_eval.py`: 두 새 인터프리터의 경계 추적·P-code·공통 후보 적용기. [교차 결과](PYTHON_JS_FIRST_RESULT.md)에 재현법과 한계를 기록했다.
 - `trace_cross_full_flow.py`, `prove_cross_full_flow.py`: Python·JavaScript의 함수 입력부터 호출자 복귀까지의 조건부 P-code 연결과 하드웨어 인수 감시. [전체 함수 경로 결과](PYTHON_JS_FULL_FLOW_RESULT.md)에 적용 범위를 기록했다.
+- `slice_js_caller_result.py`, `discover_js_boundaries.py`, `slice_js_summary_reuse.py`, `prove_js_summary_reuse.py`, `prove_python_value_reuse.py`, `evaluate_summary_applicability.py`, `evaluate_holdout_programs.py`: 결과에서의 역방향 선택, 관측 경계, 조건부 요약 재사용과 새 프로그램 평가. [값 요약 재사용 결과](SUMMARY_REUSE_EXPERIMENT.md)에 근거와 한계를 기록했다.
 
 ## 재현
 
@@ -69,4 +73,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 Lua 입력 출처, 분기·함수 호출, 반환 경로를 조건부로 연결했다. Python·JavaScript의 첫 adapter와 분배 구간은 관측했다. 다음에는 새 두 언어의 값 계산 경로와 객체/Number 타입 분기를 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md)으로 연결하고, 설명하지 못한 호출·메모리·JOIN·동적 코드를 `unknown`으로 남긴다.
+[실험 순서와 통과 조건](NEXT_EXPERIMENT.md)의 Lua 입력 출처, 분기·함수 호출, 반환 경로를 조건부로 연결했다. Python·JavaScript에서는 숫자 경로의 값 요약을 제한적으로 재사용했다. 다음에는 Python의 남은 네이티브 효과, JavaScript 핸들러 뒷부분, 새 객체/Number 타입 분기를 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md)에 연결하고 설명하지 못한 경로는 `unknown`으로 남긴다.

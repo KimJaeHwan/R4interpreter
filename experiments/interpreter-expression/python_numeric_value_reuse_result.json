@@ -1,0 +1,71 @@
+{
+  "status": "conditional Python numeric-value summary reused",
+  "summary_sha256": "430117ad341a090d78d0a98e57203c987e9268a68c7595c6b9fbb7ab0b57a42b",
+  "target_trace_sha256": "ae45346a368c4e0ba44da5ffb1e9d8a2a861a8154c7dcf36d95f0f941c3ba36d",
+  "source_input": [
+    {
+      "slot": "0x7f982e09d248",
+      "step": 2,
+      "pointer": "0xa42bd0",
+      "value": 9
+    },
+    {
+      "slot": "0x7f982e09d250",
+      "step": 1,
+      "pointer": "0xa42b50",
+      "value": 5
+    }
+  ],
+  "target_input": [
+    {
+      "slot": "0x7fef25c94248",
+      "step": 2,
+      "pointer": "0xa42b50",
+      "value": 5
+    },
+    {
+      "slot": "0x7fef25c94250",
+      "step": 1,
+      "pointer": "0xa42b50",
+      "value": 5
+    }
+  ],
+  "source_result": {
+    "slot": "0x7f982e09d248",
+    "step": 109,
+    "pointer": "0xa42c70"
+  },
+  "target_result": {
+    "slot": "0x7fef25c94248",
+    "step": 109,
+    "pointer": "0xa42bf0"
+  },
+  "predicted_numeric_result": 10,
+  "observed_numeric_result": 10,
+  "target_native_steps": 116,
+  "target_pcode_steps_replayed": 0,
+  "negative_probes": {
+    "below_domain": {
+      "status": "unknown(outside proved domain)"
+    },
+    "wrong_right_operand": {
+      "status": "unknown(outside proved domain)"
+    },
+    "wrong_cache": {
+      "status": "unknown(cache identity)"
+    },
+    "full_transition": {
+      "status": "unknown(unresolved native effects)"
+    },
+    "wrong_type": {
+      "status": "unknown(type contract)"
+    }
+  },
+  "target_other_native_writes_outside_value_contract": 11,
+  "limits": [
+    "source P-code proof specializes native object/frame addresses and other state",
+    "target is concrete differential validation, not a theorem for arbitrary cached-object/frame states",
+    "cached PyLong path and verified fixed binary cache image only",
+    "non-result writes and errors require an effect-aware summary"
+  ]
+}

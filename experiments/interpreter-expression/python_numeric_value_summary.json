@@ -1,0 +1,45 @@
+{
+  "schema_version": "vm-value-summary-v1",
+  "engine_type": "cached_nonnegative_PyLong",
+  "inputs": [
+    {
+      "name": "X",
+      "type": "cached_nonnegative_PyLong"
+    },
+    {
+      "name": "Y",
+      "type": "cached_nonnegative_PyLong"
+    }
+  ],
+  "guard": {
+    "minimum_x": 5,
+    "maximum_x": 251,
+    "right_equals": 5,
+    "cache_sha256": "0848e8ec3eac0aa064b111fbe4d5b096e1ae2a4cc286f797d51b239bbb0d9a6e"
+  },
+  "output": {
+    "type": "cached_nonnegative_PyLong",
+    "value_expression": {
+      "op": "add",
+      "left": {
+        "var": "X"
+      },
+      "right": {
+        "const": 5
+      }
+    }
+  },
+  "effect_scope": "numeric result only; other native writes remain unresolved",
+  "proof_scope": "source P-code proof specializes object/frame addresses and other native state; target is a concrete differential check",
+  "evidence": {
+    "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+    "source_trace_sha256": "fc619f25c7557424cdfe37e220863ad3c970db7ac621bb04a13e3a1bffcd8970",
+    "cache_sha256": "0848e8ec3eac0aa064b111fbe4d5b096e1ae2a4cc286f797d51b239bbb0d9a6e",
+    "source_input_value": 9,
+    "source_output_value": 14,
+    "source_native_steps": 116,
+    "source_pcode_operations": 626,
+    "source_guard_count": 61,
+    "conditional_equality": "unsat counterexample"
+  }
+}

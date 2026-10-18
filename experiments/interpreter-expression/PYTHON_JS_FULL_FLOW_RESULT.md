@@ -1,5 +1,7 @@
 # Python·JavaScript 분기·호출·계산·반환 연결
 
+후속 [값 요약 재사용 실험](SUMMARY_REUSE_EXPERIMENT.md)은 JavaScript 산술 앞부분과 Python 숫자 결과를 다른 실행에 적용한다. 이 문서의 전체 함수 경로 증명을 전체 네이티브 효과의 재사용 증명으로 확대하지 않는다.
+
 ## 결론
 
 CPython 3.13.5와 Node 24.19.0 `--jitless`에서 같은 `branchCall` fixture의 네이티브 실행을 함수 진입부터 호출자에게 복귀하는 지점까지 기록했다. Ghidra SLEIGH의 Low P-code로 분기, 호출 인수, 자식 함수의 덧셈, 두 번의 반환을 재생하고 구간별 식을 합쳤다. [기계 판독 결과](cross_full_flow_result.json)는 두 엔진 모두 다음 **조건부 함수 결과**를 확인한다.

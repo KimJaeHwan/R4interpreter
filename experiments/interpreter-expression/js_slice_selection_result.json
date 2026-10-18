@@ -1,0 +1,353 @@
+{
+  "status": "path-local SSA data and predicate producer slices",
+  "trace_sha256": "1833bc582ebea2ae8f7eb34f442d360ac8244e170dd4cf29769c7915c36fa2c5",
+  "binary_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "daasdmlkas_commit": "3a274f93d455d3caaebf72365e64820770341787",
+  "source": "real SLEIGH P-code, wrapped as an observed straight-line native path",
+  "caller_trace_sha256": "6b5342d767002a310cd440ab28548e66759bee1fa7c176c0ec67cdb3cc6e2008",
+  "boundary_discovery_sha256": "a40b3bfd0b5f029035e7c759c3501e50bbc1285be5cc520070cd51e6ba711717",
+  "caller_value_chain": {
+    "parent_parameter_read": {
+      "step": 74,
+      "pc": "0x1bbdb12",
+      "ordinal": 2,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226798"
+      ]
+    },
+    "child_parameter_write": {
+      "step": 81,
+      "pc": "0x1bbdb33",
+      "ordinal": 2,
+      "opcode": "STORE",
+      "memory_addresses": [
+        "0x7ffceb226738"
+      ]
+    },
+    "child_parameter_read": {
+      "step": 24974,
+      "pc": "0x1ba8d09",
+      "ordinal": 2,
+      "opcode": "LOAD",
+      "memory_addresses": [
+        "0x7ffceb226738"
+      ]
+    },
+    "value_arithmetic": {
+      "step": 24989,
+      "pc": "0x1bb77a6",
+      "ordinal": 2,
+      "opcode": "INT_ADD",
+      "memory_addresses": []
+    },
+    "returned_result_edges": [
+      {
+        "step": 25014,
+        "pc": "0x1bc6fa5",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      },
+      {
+        "step": 25033,
+        "pc": "0x1a0a6cd",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      },
+      {
+        "step": 25065,
+        "pc": "0x1bc6fa5",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      },
+      {
+        "step": 25084,
+        "pc": "0x1a0a6cd",
+        "next_pc": "0x1a0a654",
+        "rax": "0xe00000000"
+      }
+    ],
+    "observed_parameter_raw": 38654705664,
+    "observed_result_raw": 60129542144,
+    "watch_noninterference": {
+      "parent": {
+        "address": "0x7ffceb226798",
+        "start_step": 0,
+        "end_step": 25054
+      },
+      "child": {
+        "address": "0x7ffceb226738",
+        "start_step": 82,
+        "end_step": 24974
+      },
+      "write_hits": [],
+      "read_hits": [
+        {
+          "step": 11,
+          "pc": "0x1bbff8d",
+          "label": "parent_parameter"
+        },
+        {
+          "step": 74,
+          "pc": "0x1bbdb12",
+          "label": "parent_parameter"
+        },
+        {
+          "step": 24974,
+          "pc": "0x1ba8d09",
+          "label": "child_parameter"
+        }
+      ]
+    }
+  },
+  "caller_entry_source_groups": [
+    {
+      "address": "0x3d404b08",
+      "size": 8,
+      "first_selected_read": {
+        "step": 1486,
+        "pc": "0x7f24b5971263",
+        "value_raw": 1028072080
+      },
+      "role": "other_runtime_input_or_generated_code"
+    },
+    {
+      "address": "0x3d571da2393e",
+      "size": 1,
+      "first_selected_read": {
+        "step": 5181,
+        "pc": "0xc88805",
+        "value_raw": 53
+      },
+      "role": "other_runtime_input_or_generated_code"
+    },
+    {
+      "address": "0x7ffceb226798",
+      "size": 8,
+      "first_selected_read": {
+        "step": 74,
+        "pc": "0x1bbdb12",
+        "value_raw": 38654705664
+      },
+      "role": "parent_parameter"
+    }
+  ],
+  "caller_excluded_region_audit": {
+    "excluded_counts": {
+      "control_or_opaque_branch": 467,
+      "control_or_opaque_branchind": 121,
+      "control_or_opaque_call": 493,
+      "control_or_opaque_callind": 16,
+      "control_or_opaque_callother": 277,
+      "control_or_opaque_cbranch": 3477,
+      "control_or_opaque_return": 511,
+      "native_memory_writes_outside_value_slice": 4559
+    },
+    "excluded_examples": {
+      "control_or_opaque_branch": {
+        "step": 25100,
+        "pc": "0x1a0a6b1",
+        "instruction": "jmp 0x1a0a642"
+      },
+      "control_or_opaque_cbranch": {
+        "step": 25097,
+        "pc": "0x1a0a6a2",
+        "instruction": "jne 0x1a0a6a9"
+      },
+      "control_or_opaque_return": {
+        "step": 25084,
+        "pc": "0x1a0a6cd",
+        "instruction": "ret"
+      },
+      "native_memory_writes_outside_value_slice": {
+        "step": 25083,
+        "pc": "0x1a0a6cc",
+        "address": "0x7ffceb226798"
+      },
+      "control_or_opaque_callind": {
+        "step": 25053,
+        "pc": "0x1a0a652",
+        "instruction": "call rcx"
+      },
+      "control_or_opaque_branchind": {
+        "step": 25002,
+        "pc": "0x1bb77f1",
+        "instruction": "jmp rcx"
+      },
+      "control_or_opaque_call": {
+        "step": 24808,
+        "pc": "0xd1e27a",
+        "instruction": "call 0xd0b1e0"
+      },
+      "control_or_opaque_callother": {
+        "step": 24367,
+        "pc": "0x25f518d",
+        "instruction": "lock cmpxchg qword ptr [rbx], rdx"
+      }
+    },
+    "selected_internal_control_instructions": 0,
+    "interpretation": "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"
+  },
+  "sink": {
+    "pc": "0x1bb77a6",
+    "register": "rbx",
+    "width": 8
+  },
+  "native_instructions": 11,
+  "pcode_operations": 78,
+  "value_slice": {
+    "selected": [
+      {
+        "native_pc": "0x1bb7780",
+        "pcode_ordinal": 0,
+        "opcode": "INT_ADD"
+      },
+      {
+        "native_pc": "0x1bb7780",
+        "pcode_ordinal": 1,
+        "opcode": "INT_MULT"
+      },
+      {
+        "native_pc": "0x1bb7780",
+        "pcode_ordinal": 2,
+        "opcode": "INT_ADD"
+      },
+      {
+        "native_pc": "0x1bb7780",
+        "pcode_ordinal": 3,
+        "opcode": "LOAD"
+      },
+      {
+        "native_pc": "0x1bb7780",
+        "pcode_ordinal": 4,
+        "opcode": "INT_SEXT"
+      },
+      {
+        "native_pc": "0x1bb7780",
+        "pcode_ordinal": 5,
+        "opcode": "INT_ZEXT"
+      },
+      {
+        "native_pc": "0x1bb778f",
+        "pcode_ordinal": 0,
+        "opcode": "INT_AND"
+      },
+      {
+        "native_pc": "0x1bb778f",
+        "pcode_ordinal": 2,
+        "opcode": "INT_LEFT"
+      },
+      {
+        "native_pc": "0x1bb77a3",
+        "pcode_ordinal": 0,
+        "opcode": "COPY"
+      },
+      {
+        "native_pc": "0x1bb77a6",
+        "pcode_ordinal": 2,
+        "opcode": "INT_ADD"
+      }
+    ],
+    "nodes": 26,
+    "observed_inputs": 4,
+    "unresolved_reads": 0
+  },
+  "predicate_producers": [
+    {
+      "branch_pc": "0x1bb779d",
+      "taken": false,
+      "producer_pc": "0x1bb779d",
+      "selected": [
+        {
+          "native_pc": "0x1bb779b",
+          "pcode_ordinal": 2,
+          "opcode": "INT_AND"
+        },
+        {
+          "native_pc": "0x1bb779b",
+          "pcode_ordinal": 4,
+          "opcode": "INT_EQUAL"
+        },
+        {
+          "native_pc": "0x1bb779d",
+          "pcode_ordinal": 0,
+          "opcode": "BOOL_NEGATE"
+        }
+      ],
+      "nodes": 8,
+      "observed_inputs": 1,
+      "unresolved_reads": 0
+    },
+    {
+      "branch_pc": "0x1bb77a9",
+      "taken": false,
+      "producer_pc": "0x1bb77a6",
+      "selected": [
+        {
+          "native_pc": "0x1bb7780",
+          "pcode_ordinal": 0,
+          "opcode": "INT_ADD"
+        },
+        {
+          "native_pc": "0x1bb7780",
+          "pcode_ordinal": 1,
+          "opcode": "INT_MULT"
+        },
+        {
+          "native_pc": "0x1bb7780",
+          "pcode_ordinal": 2,
+          "opcode": "INT_ADD"
+        },
+        {
+          "native_pc": "0x1bb7780",
+          "pcode_ordinal": 3,
+          "opcode": "LOAD"
+        },
+        {
+          "native_pc": "0x1bb7780",
+          "pcode_ordinal": 4,
+          "opcode": "INT_SEXT"
+        },
+        {
+          "native_pc": "0x1bb7780",
+          "pcode_ordinal": 5,
+          "opcode": "INT_ZEXT"
+        },
+        {
+          "native_pc": "0x1bb778f",
+          "pcode_ordinal": 0,
+          "opcode": "INT_AND"
+        },
+        {
+          "native_pc": "0x1bb778f",
+          "pcode_ordinal": 2,
+          "opcode": "INT_LEFT"
+        },
+        {
+          "native_pc": "0x1bb77a3",
+          "pcode_ordinal": 0,
+          "opcode": "COPY"
+        },
+        {
+          "native_pc": "0x1bb77a6",
+          "pcode_ordinal": 1,
+          "opcode": "INT_SCARRY"
+        }
+      ],
+      "nodes": 26,
+      "observed_inputs": 4,
+      "unresolved_reads": 0
+    }
+  ],
+  "union_selected_pcode_operations": 14,
+  "excluded_frame_load_pcs": [
+    "0x1bb7793",
+    "0x1bb7797"
+  ],
+  "unresolved": [
+    "caller-level control and excluded-region opaque effects need separate checks",
+    "branch direction and path feasibility are checked by native replay/Z3",
+    "path-local SSA does not prove interprocedural or alternate paths",
+    "unmodeled memory aliases outside the observed prefix remain unknown"
+  ]
+}
