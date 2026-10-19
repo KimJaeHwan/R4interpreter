@@ -1,0 +1,76 @@
+{
+  "schema_version": "common-control-worklist-v1",
+  "artifact_sha256": "ca3ef724dfcd5283e56f03b4ac611e15bb9da32296896fed0b237be2a66e516d",
+  "units": 13,
+  "engines": {
+    "python": {
+      "branch_occurrences": 489,
+      "call_occurrences": 48,
+      "opposites_seen_in_another_trace": 3,
+      "source_fixed_unsat_occurrences": 92
+    },
+    "lua": {
+      "branch_occurrences": 166,
+      "call_occurrences": 13,
+      "opposites_seen_in_another_trace": 21,
+      "source_fixed_unsat_occurrences": 0
+    },
+    "javascript": {
+      "branch_occurrences": 4,
+      "call_occurrences": 0,
+      "opposites_seen_in_another_trace": 0,
+      "source_fixed_unsat_occurrences": 0
+    }
+  },
+  "candidate_probes": [
+    {
+      "id": "python_prefix_x0",
+      "input": 0,
+      "classification": "earlier_divergence",
+      "first_relevant_step": 133,
+      "followup_obligation_id": "python_252:branch:133"
+    },
+    {
+      "id": "python_numeric_x251",
+      "input": 251,
+      "classification": "target_opposite_observed",
+      "first_relevant_step": 764,
+      "followup_obligation_id": null
+    },
+    {
+      "id": "python_prefix_x1",
+      "input": 1,
+      "classification": "target_same_edge",
+      "first_relevant_step": 158,
+      "followup_obligation_id": null
+    },
+    {
+      "id": "python_numeric_x1",
+      "input": 1,
+      "classification": "earlier_divergence",
+      "first_relevant_step": 331,
+      "followup_obligation_id": "python_252:branch:331"
+    }
+  ],
+  "negative_controls": {
+    "occurrence_step_swap": "rejected",
+    "wrong_target_successor": "rejected",
+    "fixture_swap": "rejected",
+    "source_environment_promotion": "rejected",
+    "earlier_divergence_as_hit": "rejected",
+    "same_edge_as_hit": "rejected",
+    "timeout_as_infeasible": "rejected",
+    "current_guard_in_prefix": "rejected",
+    "call_exception_deleted": "rejected",
+    "lua_repeated_pc_wrong_occurrence": "rejected",
+    "holdout_trace_swap": "rejected"
+  },
+  "whole_program_complete": false,
+  "limits": [
+    "only observed native path and contiguous Lua VM occurrences",
+    "same PC in another occurrence or environment is not a proof",
+    "SMT SAT is a candidate; target trace can diverge earlier",
+    "normal return does not close exception paths",
+    "JS caller and Lua watched-slot gaps remain outside this inventory"
+  ]
+}
