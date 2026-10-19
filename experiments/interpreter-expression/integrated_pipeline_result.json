@@ -426,6 +426,7 @@
         "reads_checked": 31,
         "derived_outputs_checked": 0,
         "ordered_writes_checked": 12,
+        "read_after_write_bytes_checked": 65,
         "next_pc": "0x56173b",
         "target_pcode_steps_replayed": 0,
         "discovered_boundary": {
@@ -447,6 +448,7 @@
         "reads_checked": 8,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 0,
+        "read_after_write_bytes_checked": 0,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0,
         "discovered_boundary": {

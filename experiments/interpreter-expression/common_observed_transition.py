@@ -14,9 +14,12 @@ from pathlib import Path
 import shutil
 
 import z3
+from capstone import Cs, CS_ARCH_X86, CS_MODE_64
+from capstone.x86_const import X86_REG_FS, X86_REG_GS
 
 from apply_transition_summary import declarations, expression, load_trace
 from cross_dispatch_pcode import read_vaddr
+from composed_native_transition import BASE_FRAME_MNEMONICS
 from prove_cross_full_flow import PYTHON, ROOT
 from prove_js_summary_reuse import concrete_value
 from prove_lua_full_flow import initial_memory
@@ -240,6 +243,58 @@ def javascript_string_preconditions(case, meta, rows):
     return None
 
 
+def trace_memory_versions(rows):
+    """Reject read values that disagree with earlier observed reads or writes."""
+    current = {}
+    read_after_write = 0
+    written = set()
+    for row in rows:
+        for access in row["memory"]:
+            address, size, mode = access["address"], access["size"], access["access"]
+            if mode & 1:
+                if access["before"] is None:
+                    return False, read_after_write
+                for index in range(size):
+                    byte_address = (address + index) & ((1 << 64) - 1)
+                    value = (access["before"] >> (8 * index)) & 255
+                    if byte_address in current and current[byte_address] != value:
+                        return False, read_after_write
+                    if byte_address in written:
+                        read_after_write += 1
+                    current[byte_address] = value
+            if mode & 2:
+                if access["after"] is None:
+                    return False, read_after_write
+                for index in range(size):
+                    byte_address = (address + index) & ((1 << 64) - 1)
+                    current[byte_address] = (access["after"] >> (8 * index)) & 255
+                    written.add(byte_address)
+    return True, read_after_write
+
+
+def segment_base_frame(rows, inputs):
+    base_inputs = {item["binding"]["name"] for item in inputs
+                   if item["binding"]["kind"] == "segment_base"}
+    if not base_inputs:
+        return None
+    if base_inputs != {"fs_base", "gs_base"}:
+        return "unknown(segment base frame contract)"
+    decoder = Cs(CS_ARCH_X86, CS_MODE_64)
+    decoder.detail = True
+    entry = rows[0]["registers"]
+    for row in rows:
+        decoded = list(decoder.disasm(bytes.fromhex(row["bytes"]), row["pc"]))
+        if (len(decoded) != 1 or decoded[0].size * 2 != len(row["bytes"]) or
+                decoded[0].mnemonic not in BASE_FRAME_MNEMONICS or
+                {X86_REG_FS, X86_REG_GS}.intersection(decoded[0].regs_access()[1])):
+            return "unknown(unsupported segment base preservation)"
+        if any(row[side].get(name) != entry[name]
+               for side in ("registers", "registers_after")
+               for name in base_inputs):
+            return "unknown(segment base changed)"
+    return None
+
+
 def apply_case(common, case, binary, rows, meta=None):
     """Use the same typed expression/guard/effect evaluator for all engines."""
     expected_preconditions = {"lua": {("lua_entry_snapshot",
@@ -247,6 +302,8 @@ def apply_case(common, case, binary, rows, meta=None):
                               "python": {("python_cached_int",
                                           "native-handler-transition-v1"),
                                          ("python_allocated_result",
+                                          "native-handler-transition-v1"),
+                                         ("observed_native_path",
                                           "native-handler-transition-v1")},
                               "javascript": {("guard_only",
                                               "native-handler-transition-v1"),
@@ -272,6 +329,12 @@ def apply_case(common, case, binary, rows, meta=None):
             len(rows) != identity["native_steps"] or
             shape(rows, identity["path_shape_mode"]) != identity["path_shape_sha256"]):
         return {"status": "unknown(path identity)"}
+    frame_error = segment_base_frame(rows, case["interface"]["inputs"])
+    if frame_error:
+        return {"status": frame_error}
+    memory_consistent, read_after_write_bytes = trace_memory_versions(rows)
+    if not memory_consistent:
+        return {"status": "unknown(trace memory version mismatch)"}
     expected_outputs = {f"R_{name.upper()}":
                         ("BV64", {"kind": "register", "name": name})
                         for name in REGISTER_OFFSETS.values()}
@@ -308,7 +371,7 @@ def apply_case(common, case, binary, rows, meta=None):
     elif pre == "lua_entry_snapshot":
         if "entry_memory" not in rows[0]:
             return {"status": "unknown(entry memory snapshot)"}
-    elif pre != "guard_only":
+    elif pre not in ("guard_only", "observed_native_path"):
         return {"status": "unknown(unsupported precondition)"}
     decls = declarations(case)
     bindings = []
@@ -393,6 +456,7 @@ def apply_case(common, case, binary, rows, meta=None):
             "outputs_checked": len(output_values), "reads_checked": len(reads),
             "derived_outputs_checked": len(derived),
             "ordered_writes_checked": len(effects),
+            "read_after_write_bytes_checked": read_after_write_bytes,
             "next_pc": hex(successor), "target_pcode_steps_replayed": 0}
 
 

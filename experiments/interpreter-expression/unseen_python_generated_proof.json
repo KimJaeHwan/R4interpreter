@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "generated_summary_sha256": "79680c9c71bdfbe6823f91f1d13b3cbac78b99fb2041bb1370e9fa3e70a4b59c",
+  "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+  "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "source_input": 252,
+  "candidate_inventory": [
+    {
+      "begin": 26,
+      "end_exclusive": 42,
+      "entry_predecessor": 25,
+      "entry_pc": "0x5612b0",
+      "exit_pc": "0x5612f0",
+      "native_steps": 16,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 42,
+      "end_exclusive": 60,
+      "entry_predecessor": 41,
+      "entry_pc": "0x5612f0",
+      "exit_pc": "0x563018",
+      "native_steps": 18,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 60,
+      "end_exclusive": 156,
+      "entry_predecessor": 59,
+      "entry_pc": "0x563018",
+      "exit_pc": "0x5a82a8",
+      "native_steps": 96,
+      "internal_indirect_calls": 1,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 156,
+      "end_exclusive": 214,
+      "entry_predecessor": 155,
+      "entry_pc": "0x5a82a8",
+      "exit_pc": "0x56138b",
+      "native_steps": 58,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 214,
+      "end_exclusive": 235,
+      "entry_predecessor": 213,
+      "entry_pc": "0x56138b",
+      "exit_pc": "0x564f61",
+      "native_steps": 21,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 235,
+      "end_exclusive": 388,
+      "entry_predecessor": 234,
+      "entry_pc": "0x564f61",
+      "exit_pc": "0x5612b0",
+      "native_steps": 153,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 388,
+      "end_exclusive": 404,
+      "entry_predecessor": 387,
+      "entry_pc": "0x5612b0",
+      "exit_pc": "0x5636f9",
+      "native_steps": 16,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 404,
+      "end_exclusive": 513,
+      "entry_predecessor": 403,
+      "entry_pc": "0x5636f9",
+      "exit_pc": "0x7f4d238ca080",
+      "native_steps": 109,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 513,
+      "end_exclusive": 623,
+      "entry_predecessor": 512,
+      "entry_pc": "0x7f4d238ca080",
+      "exit_pc": "0x565038",
+      "native_steps": 110,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 623,
+      "end_exclusive": 649,
+      "entry_predecessor": 622,
+      "entry_pc": "0x565038",
+      "exit_pc": "0x5612b0",
+      "native_steps": 26,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 649,
+      "end_exclusive": 665,
+      "entry_predecessor": 648,
+      "entry_pc": "0x5612b0",
+      "exit_pc": "0x5612f0",
+      "native_steps": 16,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 665,
+      "end_exclusive": 683,
+      "entry_predecessor": 664,
+      "entry_pc": "0x5612f0",
+      "exit_pc": "0x56227c",
+      "native_steps": 18,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 683,
+      "end_exclusive": 829,
+      "entry_predecessor": 682,
+      "entry_pc": "0x56227c",
+      "exit_pc": "0x56173b",
+      "native_steps": 146,
+      "internal_indirect_calls": 2,
+      "result_object_matches": 1,
+      "selection_reason": "output slot pointer and object type/tag/digit writes"
+    },
+    {
+      "begin": 829,
+      "end_exclusive": 923,
+      "entry_predecessor": 828,
+      "entry_pc": "0x56173b",
+      "exit_pc": "0x56173b",
+      "native_steps": 94,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    },
+    {
+      "begin": 923,
+      "end_exclusive": 1017,
+      "entry_predecessor": 922,
+      "entry_pc": "0x56173b",
+      "exit_pc": "0x561334",
+      "native_steps": 94,
+      "internal_indirect_calls": 0,
+      "result_object_matches": 0,
+      "selection_reason": "no unique output-object write contract"
+    }
+  ],
+  "selected_boundary": {
+    "begin": 683,
+    "end_exclusive": 829,
+    "entry_predecessor": 682,
+    "entry_pc": "0x56227c",
+    "exit_pc": "0x56173b",
+    "native_steps": 146,
+    "internal_indirect_calls": 2
+  },
+  "selection_object_pointer": "0x7f4d2346e570",
+  "selection_output_slot": "0x7f4d23a96248",
+  "generated_case_metrics": {
+    "pcode_operations": 726,
+    "pcode_reads": 47,
+    "unique_native_reads": 42,
+    "ordered_native_writes": 18,
+    "path_guard_count": 26
+  },
+  "source_application": {
+    "status": "differentially_validated",
+    "engine": "python",
+    "native_steps": 146,
+    "outputs_checked": 21,
+    "reads_checked": 42,
+    "derived_outputs_checked": 0,
+    "ordered_writes_checked": 18,
+    "read_after_write_bytes_checked": 65,
+    "next_pc": "0x56173b",
+    "target_pcode_steps_replayed": 0
+  },
+  "value_refinement": {
+    "input_sort": "BV32",
+    "decoded_output_sort": "BV32",
+    "input_binding": "digit at fixed source PyLong object +24",
+    "output_binding": "final memory at output slot -> pointer +8/+16/+24",
+    "inferred_additive_constant": 5,
+    "conditional_domain": "252 <= X <= 256, fixed other registers, flags, first-read memory, FS/GS and allocator state",
+    "proofs": {
+      "fixed_environment_path_guard_covers_domain": "unsat",
+      "decoded_final_digit_equals_candidate": "unsat",
+      "final_pointer_matches_observation": "unsat",
+      "result_tag_equals_one_digit_positive": "unsat",
+      "result_type_matches_pinned_PyLong": "unsat",
+      "wrong_plus_six_has_counterexample": "sat",
+      "output_does_not_alias_input_object": "unsat",
+      "output_does_not_alias_result_slot": "unsat",
+      "output_does_not_alias_static_cache": "unsat"
+    },
+    "value_replay_pcode_operations": 726,
+    "value_replay_guard_count": 91,
+    "value_replay_reads": 47,
+    "value_replay_writes": 18,
+    "fixed_first_read_bytes": 189,
+    "logical_allocate_or_freshness_proved": false
+  },
+  "generation_did_not_read_prior_allocated_summary": true
+}

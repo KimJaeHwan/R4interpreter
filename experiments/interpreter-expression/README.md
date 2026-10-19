@@ -101,6 +101,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `common_native_slice.py`, `run_integrated_pipeline.py`, `integrated_case.*`, `integrated_lua_runner.c`, `lua_pool_failure_retry_fixture.c`: 새 세 엔진 경로의 값 후보 선택·증명서 기반 IL·평가 oracle·제어된 Lua 실패/재시도. [통합 결과](INTEGRATED_PIPELINE_RESULT.md)에 범위와 재현 순서가 있다.
 - `native_ast_il.py`, `analyze_dependency_slice.py`, `freeze_js_long_string.py`, `apply_js_long_string.py`, `trace_lua_allocator_failure.py`, `freeze_lua_allocator_paths.py`, `apply_lua_allocator_paths.py`, `probe_python_exception_boundary.py`: 공통 전이 IL, 주소·제어 의무, 새 JS/Lua 경로와 Python 예외 접점을 기록한다. [다음 연구 단위](NEXT_RESEARCH_UNIT_RESULT.md)에 증거 경계와 재현 순서가 있다.
 - `discover_dispatch_intervals.py`, `observed_pcode_schedule.py`, `audit_observed_dependencies.py`: 관측 분배 후보의 검색·전이 승인, `cmov` 명령 내부 실행 경로, 세 엔진 의존성 기록. [분배 경계·의존성 감사](BOUNDARY_DEPENDENCY_RESULT.md)에 범위와 재현 순서가 있다.
+- `probe_unseen_python_path.py`: 기존 할당 요약을 사용하지 않고 관측 Python 구간의 전체 네이티브 전이를 생성해 다른 입력에 적용한다. 이웃 분배 구간의 의미 미분류 재사용과 두 숫자 경로의 조건부 값 IL 공유를 [실험 결과](UNSEEN_PATH_FAMILY_PROBE_RESULT.md)에 기록했다.
 - `refine_common_numeric_il.py`: 세 엔진의 네이티브 값 AST에서 공통 덧셈 후보를 얻고 typed 값 IL에 대한 조건부 refinement, 원래 전이 효과, 새 입력 적용을 확인한다. [공통 숫자 IL 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)에 근거와 한계가 있다.
 
 ## 재현
@@ -123,4 +124,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[공통 숫자 IL 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)의 후속 과제는 입력·출력 decode 계약의 typed 인터페이스, 다른 호출 문맥에서의 재검증, 저장된 요약이 없는 분배 후보의 의미 경계 제안, 주소 별칭·제어 의존성 검증, 전체 효과를 보존한 의미 축약이다.
+[새 경로 전이 실험](UNSEEN_PATH_FAMILY_PROBE_RESULT.md) 뒤에는 저장된 요약이 없는 구간의 입력·출력 의미를 자동으로 찾고, 분기·예외 경로의 범위를 넓히며, allocator와 객체 주소 별칭의 범위 계약을 세우고, 서로 이어지는 구간의 전체 상태·효과를 보존한 채 합성해야 한다. 현재의 공통 숫자 IL은 관측된 두 대체 경로의 조건부 값 표현이다.

@@ -22,8 +22,8 @@ from pcode_transition_summary import FLAG_OFFSETS, REGISTER_OFFSETS
 MASK64 = (1 << 64) - 1
 BASE_FRAME_MNEMONICS = {
     "add", "and", "call", "cmovs", "cmp", "endbr64", "imul", "ja", "jbe",
-    "je", "jmp", "jne", "jns", "js", "lea", "mov", "movsxd", "movzx",
-    "neg", "or", "pop", "push", "ret", "shl", "shr", "sub", "test", "xor"}
+    "je", "jle", "jmp", "jne", "jns", "js", "lea", "mov", "movsxd", "movzx",
+    "cdqe", "neg", "or", "pop", "push", "ret", "sar", "shl", "shr", "sub", "test", "xor"}
 
 
 def number(term):

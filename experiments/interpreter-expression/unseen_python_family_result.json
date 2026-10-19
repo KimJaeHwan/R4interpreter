@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "generated_summary_sha256": "79680c9c71bdfbe6823f91f1d13b3cbac78b99fb2041bb1370e9fa3e70a4b59c",
+  "source_proof_sha256": "c7b43835f6c1edcb9789fbb565eeb88de2295ef3789df20cafe829089144eb49",
+  "fresh_trace_sha256": "532f2b07eec08a42be5d765c2fa9979f15dd758b954fb5c49d41dda4b8ebe695",
+  "generated_path": {
+    "status": "differentially_validated",
+    "source_input": 252,
+    "fresh_input": 255,
+    "source_steps": 146,
+    "fresh_steps": 146,
+    "reads_checked": 42,
+    "ordered_writes_checked": 18,
+    "target_pcode_steps_replayed": 0,
+    "fresh_object_layout": {
+      "refcount": 1,
+      "type_pointer": 10514112,
+      "size_tag": 8,
+      "digit": 260
+    },
+    "fresh_decoded_value": 260
+  },
+  "negative_controls": {
+    "wrong_successor": "unknown(path identity)",
+    "wrong_read_address": "unknown(operand evidence)",
+    "wrong_read_value": "unknown(operand evidence)",
+    "wrong_fs_base": "unknown(segment base changed)",
+    "changed_final_gs_base": "unknown(segment base changed)",
+    "wrong_read_after_write_value": "unknown(trace memory version mismatch)",
+    "missing_write": "unknown(ordered effects mismatch)",
+    "wrong_pointer": "unknown(allocated result pointer)",
+    "wrong_type": "unknown(allocated PyLong layout)",
+    "wrong_tag": "unknown(allocated PyLong layout)",
+    "wrong_digit": "unknown(allocated PyLong layout)",
+    "core_missing_effect": "unknown(ordered effects mismatch)",
+    "core_reordered_effects": "unknown(ordered effects mismatch)",
+    "core_wrong_successor": "unknown(successor mismatch)",
+    "outside_domain_257_metadata": "unknown(cached integer domain)",
+    "allocated_on_cached_251": "unknown(path identity)",
+    "allocated_domain_251": "unknown(cached integer domain)",
+    "cached_on_allocated_252": "unknown(path identity)",
+    "cached_domain_252": "unknown(cached integer domain)",
+    "removed_dispatch_edge": "unknown(no exact frozen delimiter pair)",
+    "missing_middle_row": "rejected(discontinuous trace)",
+    "reordered_middle_rows": "rejected(discontinuous trace)"
+  },
+  "post_generation_reference_comparison": {
+    "old_summary_sha256": "205d6bec85a6d8ced78380818849eb7268e48e09e1a138907524f8ffb6247ea6",
+    "full_guard_state_read_write_successor_match": true,
+    "old_summary_used_to_generate": false
+  },
+  "numeric_path_family": {
+    "value_il": {
+      "schema_version": "bounded-value-il-v1",
+      "inputs": [
+        {
+          "name": "X",
+          "sort": "BV32"
+        }
+      ],
+      "nodes": [
+        {
+          "id": 0,
+          "op": "input",
+          "sort": "BV32",
+          "name": "X"
+        },
+        {
+          "id": 1,
+          "op": "bv",
+          "sort": "BV32",
+          "value": 5
+        },
+        {
+          "id": 2,
+          "op": "bvadd",
+          "sort": "BV32",
+          "args": [
+            0,
+            1
+          ]
+        }
+      ],
+      "result": {
+        "node": 2,
+        "name": "Y",
+        "sort": "BV32"
+      },
+      "domain": "unsigned X in [5,256], with a separately admitted native path contract for each subrange",
+      "interpretation": "nonnegative integer; signed and unsigned values coincide in this domain"
+    },
+    "input_domain_union": "5..256 only under the corresponding admitted path contract",
+    "cached_path": {
+      "domain": "5..251",
+      "fresh_251_status": "differentially_validated",
+      "ordered_writes": 12
+    },
+    "allocated_path": {
+      "domain": "252..256 under fixed source allocator state for value proof",
+      "fresh_255_status": "differentially_validated",
+      "ordered_writes": 18
+    },
+    "routing_completeness_proved": false,
+    "logical_allocate_or_freshness_proved": false,
+    "meaning": "two alternative path contracts share one numeric value IL; native effects remain distinct"
+  },
+  "limits": [
+    "candidate selection uses a Python object-field analysis goal",
+    "fresh full transition is differentially validated on one 255 trace",
+    "value coverage holds with the fixed source allocator/TLS/free-list memory and other entry state",
+    "no new unknown engine opcode classification or all-path routing proof"
+  ]
+}

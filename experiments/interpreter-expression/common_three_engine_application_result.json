@@ -15,6 +15,7 @@
         "reads_checked": 2,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 2,
+        "read_after_write_bytes_checked": 0,
         "next_pc": "0x415b24",
         "target_pcode_steps_replayed": 0
       }
@@ -32,6 +33,7 @@
         "reads_checked": 2,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 2,
+        "read_after_write_bytes_checked": 0,
         "next_pc": "0x415b24",
         "target_pcode_steps_replayed": 0
       }
@@ -49,6 +51,7 @@
         "reads_checked": 31,
         "derived_outputs_checked": 0,
         "ordered_writes_checked": 12,
+        "read_after_write_bytes_checked": 65,
         "next_pc": "0x56173b",
         "target_pcode_steps_replayed": 0
       }
@@ -66,6 +69,7 @@
         "reads_checked": 31,
         "derived_outputs_checked": 0,
         "ordered_writes_checked": 12,
+        "read_after_write_bytes_checked": 65,
         "next_pc": "0x56173b",
         "target_pcode_steps_replayed": 0
       }
@@ -83,6 +87,7 @@
         "reads_checked": 8,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 0,
+        "read_after_write_bytes_checked": 0,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -100,6 +105,7 @@
         "reads_checked": 8,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 0,
+        "read_after_write_bytes_checked": 0,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -146,6 +152,7 @@
         "reads_checked": 42,
         "derived_outputs_checked": 0,
         "ordered_writes_checked": 18,
+        "read_after_write_bytes_checked": 65,
         "next_pc": "0x56173b",
         "target_pcode_steps_replayed": 0
       }
@@ -163,6 +170,7 @@
         "reads_checked": 42,
         "derived_outputs_checked": 0,
         "ordered_writes_checked": 18,
+        "read_after_write_bytes_checked": 65,
         "next_pc": "0x56173b",
         "target_pcode_steps_replayed": 0
       }
@@ -180,6 +188,7 @@
         "reads_checked": 42,
         "derived_outputs_checked": 0,
         "ordered_writes_checked": 18,
+        "read_after_write_bytes_checked": 65,
         "next_pc": "0x56173b",
         "target_pcode_steps_replayed": 0
       }
@@ -197,6 +206,7 @@
         "reads_checked": 48,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 30,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -214,6 +224,7 @@
         "reads_checked": 49,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 31,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -231,6 +242,7 @@
         "reads_checked": 47,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 29,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -248,6 +260,7 @@
         "reads_checked": 47,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 29,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -265,6 +278,7 @@
         "reads_checked": 48,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 30,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -282,6 +296,7 @@
         "reads_checked": 48,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 30,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -299,6 +314,7 @@
         "reads_checked": 49,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 31,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -316,6 +332,7 @@
         "reads_checked": 49,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 31,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -333,6 +350,7 @@
         "reads_checked": 50,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 32,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -350,6 +368,7 @@
         "reads_checked": 50,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 32,
+        "read_after_write_bytes_checked": 81,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -396,6 +415,7 @@
         "reads_checked": 9,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 1,
+        "read_after_write_bytes_checked": 0,
         "next_pc": "0x1bb7780",
         "target_pcode_steps_replayed": 0
       }
@@ -413,6 +433,7 @@
         "reads_checked": 8,
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 0,
+        "read_after_write_bytes_checked": 0,
         "next_pc": "0x1bc6f40",
         "target_pcode_steps_replayed": 0
       }
@@ -430,7 +451,7 @@
     "changed_js_write": "unknown(ordered effects mismatch)",
     "wrong_js_successor": "unknown(path identity)",
     "wrong_allocated_digit": "unknown(allocated PyLong layout)",
-    "wrong_python_segment_base": "unknown(outside case guard)",
+    "wrong_python_segment_base": "unknown(segment base changed)",
     "wrong_string_immediate": "unknown(AddSmi immediate)",
     "wrong_three_digit_source": "unknown(string object/input mismatch)",
     "wrong_four_digit_output": "unknown(ordered effects mismatch)"

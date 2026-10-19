@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "generated_summary_sha256": "627578c3e181fdf4425f2654a5e58b7c2754acadd275af9f26ec17c1d6e47f02",
+  "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+  "fresh_trace_sha256": "71335b6e87a6fcd2f013153ecbff2768ef763341a17b9f41e4cb797adf3a4d9a",
+  "source_preceding_path": "allocated result interval for input 252",
+  "target_preceding_path": "cached result interval for input 43",
+  "matched_boundary": {
+    "begin": 799,
+    "end_exclusive": 893,
+    "entry_predecessor": 798,
+    "entry_pc": "0x56173b",
+    "exit_pc": "0x56173b",
+    "native_steps": 94,
+    "internal_indirect_calls": 0
+  },
+  "native_transition": {
+    "status": "differentially_validated",
+    "engine": "python",
+    "native_steps": 94,
+    "outputs_checked": 21,
+    "reads_checked": 27,
+    "derived_outputs_checked": 0,
+    "ordered_writes_checked": 18,
+    "read_after_write_bytes_checked": 56,
+    "next_pc": "0x56173b",
+    "target_pcode_steps_replayed": 0
+  },
+  "wrong_successor": "unknown(path identity)",
+  "core_missing_effect": "unknown(ordered effects mismatch)",
+  "wrong_final_fs_base": "unknown(segment base changed)",
+  "wrong_read_after_write_value": "unknown(trace memory version mismatch)",
+  "bytecode_or_high_level_handler_meaning_identified": false,
+  "value_projection_derived_from_this_interval": false,
+  "scope": "adjacent native dispatch interval can be generated and reused across two observed predecessor paths; semantic classification remains open"
+}
