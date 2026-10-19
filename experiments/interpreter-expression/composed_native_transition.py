@@ -10,12 +10,18 @@ from hashlib import sha256
 import json
 
 import z3
+from capstone import Cs, CS_ARCH_X86, CS_MODE_64
+from capstone.x86_const import X86_REG_FS, X86_REG_GS
 
 from apply_transition_summary import declarations, expression
 from pcode_transition_summary import FLAG_OFFSETS, REGISTER_OFFSETS
 
 
 MASK64 = (1 << 64) - 1
+BASE_FRAME_MNEMONICS = {
+    "add", "and", "call", "cmovs", "cmp", "endbr64", "imul", "ja", "jbe",
+    "je", "jmp", "jne", "jns", "js", "lea", "mov", "movsxd", "movzx",
+    "neg", "or", "pop", "push", "ret", "shl", "shr", "sub", "test", "xor"}
 
 
 def number(term):
@@ -56,6 +62,7 @@ def parse_segments(summary, expected_labels):
                         for item in segment["effects"]],
             "successor": expression(segment["successor"], "BV64", decls),
             "identity": segment["identity"],
+            "preserved_state": segment.get("preserved_state", {}),
             "evidence": segment["evidence"]}
     if set(parsed) != set(expected_labels):
         raise ValueError("frozen segment roles changed")
@@ -98,6 +105,26 @@ def apply_segment(label, segment, rows, summary, decls, state, flags, memory):
             path_shape(rows, identity.get("path_shape_mode", "pc_bytes_next")) !=
             identity["path_shape_sha256"]):
         return None, f"unknown({label} path shape)"
+    base_inputs = {item["binding"]["name"] for item in summary["interface"]["inputs"]
+                   if item.get("binding", {}).get("kind") == "segment_base"}
+    frame = segment.get("preserved_state", {})
+    if set(frame) != base_inputs or any(
+            name not in {"fs_base", "gs_base"} or
+            rule != "x86_scalar_no_base_write_v1" for name, rule in frame.items()):
+        return None, f"unknown({label} segment base frame contract)"
+    if frame:
+        decoder = Cs(CS_ARCH_X86, CS_MODE_64)
+        decoder.detail = True
+        for row in rows:
+            decoded = list(decoder.disasm(bytes.fromhex(row["bytes"]), row["pc"]))
+            if (len(decoded) != 1 or decoded[0].size * 2 != len(row["bytes"]) or
+                    decoded[0].mnemonic not in BASE_FRAME_MNEMONICS or
+                    {X86_REG_FS, X86_REG_GS}.intersection(decoded[0].regs_access()[1])):
+                return None, f"unknown({label} unsupported base preservation)"
+            if any(name not in state or
+                   row["registers"].get(name) != state[name] or
+                   row["registers_after"].get(name) != state[name] for name in frame):
+                return None, f"unknown({label} segment base changed)"
     observed_entry = rows[0]["registers"]
     if (any(state[name] != observed_entry[name]
             for name in REGISTER_OFFSETS.values()) or
@@ -142,8 +169,9 @@ def apply_segment(label, segment, rows, summary, decls, state, flags, memory):
                       {f"F_{bit}" for bit in FLAG_OFFSETS.values()})
     if set(outputs) != expected_names:
         return None, f"unknown({label} incomplete state)"
-    next_state = {name: outputs[f"R_{name.upper()}"]
-                  for name in REGISTER_OFFSETS.values()}
+    next_state = {name: state[name] for name in frame}
+    next_state.update({name: outputs[f"R_{name.upper()}"]
+                       for name in REGISTER_OFFSETS.values()})
     next_flags = {bit: outputs[f"F_{bit}"] for bit in FLAG_OFFSETS.values()}
     observed = rows[-1]["registers_after"]
     if (any(next_state[name] != observed[name] for name in next_state) or

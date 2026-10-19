@@ -21,6 +21,7 @@
 | JavaScript 문자열 복사 루프 합성 | 세·네 자리의 공통 앞·뒤 구간과 두 문자 반복 구간을 기호 전이로 저장해 조합 | 길이 2~11의 10건에서 전체 네이티브 전이 일치; 12~16의 5건은 다른 경로라 `unknown`. 저장된 요약 적용 시 P-code 재생 0회 |
 | JavaScript·Lua 공통 구간 합성 | 문자열 루프 평가 코어를 분리하고 Lua 숫자 핸들러→fetch/decode/dispatch→핸들러에도 적용 | JavaScript 10건 일치·5건 `unknown` 유지; Lua 6개 입력에서 각 51개 명령의 상태·읽기·쓰기가 일치. 적용 시 P-code 재생 0회 |
 | Python PyLong 할당 효과 | 동일한 구간 적용기로 캐시 밖 객체 생성 경로의 전체 네이티브 전이와 객체 필드를 확인 | 할당 경로 4건 일치·캐시 경로 1건 `unknown`; `Write`로 관측된 바이트 전이는 재현하지만 논리적 `Allocate`·freshness는 미증명 |
+| Python 제한 풀 객체 수명 | 실제 CPython 호출의 범위 지정 allocator에서 네이티브 helper 요약과 수명 ledger 연결 | 2개 성공 경로 × 4슬롯 조건부 SMT 증명; 별도 입력 2개를 포함한 3회 실행에서 helper 30회·객체 15개 일치, 잘못된 수명 기록 13종 거부 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -52,6 +53,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [Python 할당 효과 결과](PYTHON_ALLOCATION_EFFECT_RESULT.md)는 같은 적용기로 PyLong 새 객체 경로의 읽기 42개·쓰기 18개와 결과 객체 필드를 재현한다. 기존 주소의 바이트를 먼저 읽는 추적도 확인했으므로, 네이티브 `Write`와 논리적 `Allocate`·객체 수명 증명을 구분한다.
 
+[Python 제한 풀 수명 결과](PYTHON_POOL_LIFETIME_RESULT.md)는 CPython 객체 도메인 allocator의 명시된 4슬롯 풀에서 생성·해제·주소 재사용·고갈을 기록했다. 풀 상태 helper의 전체 메모리 전이를 조건부로 증명하고, 관측된 `PyLong` 객체를 세대별 수명 ledger에 연결했다. 일반 CPython 힙의 소유권 증명까지 확장된 결과는 아니다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -74,6 +77,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `compose_js_string_loop.py`, `freeze_js_string_loop.py`, `apply_js_string_loop_summary.py`: 두 문자 루프의 guard·효과 증명, 다섯 구간 전이 요약 생성, 저장된 요약의 대상 추적 적용. [루프 합성 결과](JS_STRING_LOOP_COMPOSITION_RESULT.md)에 증거와 한계를 기록했다.
 - `composed_native_transition.py`, `freeze_lua_handler_bridge_segments.py`, `apply_lua_handler_bridge_summary.py`: JavaScript·Lua가 공유하는 구간 평가 코어와 Lua 핸들러·분배 구간의 동결·합성. [공통 구간 결과](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)에 재현법을 기록했다.
 - `freeze_python_allocated_segment.py`, `apply_python_allocated_segment.py`: 기존 Python 할당 P-code 요약을 공통 구간 형식으로 동결·적용하고 객체 필드·캐시 경로·할당 의미의 한계를 확인한다. [할당 효과 결과](PYTHON_ALLOCATION_EFFECT_RESULT.md)에 근거가 있다.
+- `verify_python_composed_core.py`: 원래 진입 상태를 고정한 공통 코어 변조 9종과 FS 상대 읽기를 포함한 Python 두 구간 연결을 확인한다.
+- `python_pool_lifetime_fixture.c`, `trace_python_pool_lifetime.py`, `freeze_pool_lifetime.py`, `pool_lifetime_ledger.py`, `apply_pool_lifetime.py`: 실제 CPython의 제한된 객체 풀 trace, 네이티브 수명 helper 증명, 별도 입력 적용. [수명 결과](PYTHON_POOL_LIFETIME_RESULT.md)에 증거와 재현 순서가 있다.
 
 ## 재현
 
@@ -95,4 +100,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[Python 할당 효과 결과](PYTHON_ALLOCATION_EFFECT_RESULT.md)의 다음 연구 순서는 객체 수명과 alias 근거를 갖춘 `Allocate` 효과, 실제 Throw 경계가 있는 예외 사례, 12자리 이상에서 바뀌는 JavaScript 앞 경로, 경계·live-in/out 자동화와 [공통 전이 형식](COMMON_VM_TRANSITION_FORMAT.md) 확장이다.
+[Python 제한 풀 수명 결과](PYTHON_POOL_LIFETIME_RESULT.md)의 다음 연구 순서는 검증된 수명 이벤트를 공통 효과 형식에 넣고, 실제 Throw 경계가 있는 예외 사례, 12자리 이상에서 바뀌는 JavaScript 앞 경로, 경계·live-in/out 자동화로 진행한다.

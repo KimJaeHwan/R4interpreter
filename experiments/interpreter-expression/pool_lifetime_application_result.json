@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "native_summary_sha256": "cd5593654109d08e3b6dd386ba1934f9248232238b8b487e1516316d2e33b863",
+  "native_refinement_sha256": "8231b4233d6adc3a404e5afc2bf2736b939098304275f8734ac6ce3d45508348",
+  "cases": [
+    {
+      "input": 1073741824,
+      "origin": "source",
+      "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+      "native_helper_calls_matched": 10,
+      "native_steps_matched": 215,
+      "native_reads_checked": 25,
+      "ordered_writes_checked": 15,
+      "ownership": {
+        "events": 11,
+        "constructed_objects": 5,
+        "failed_allocations": 1,
+        "same_address_new_generation": [
+          {
+            "slot": 0,
+            "pointer": 4215056,
+            "new_generation": 2
+          }
+        ],
+        "final_live": 0,
+        "observed_object_bytes": 160
+      },
+      "ledger_rejection_controls": {
+        "missing_event": "incomplete or inconsistent event history",
+        "interior_pointer": "event pointer is not the slot base",
+        "oversized_request": "request differs from fixed slot extent",
+        "overlapping_allocation": "occupied slot or generation overflow",
+        "double_release": "stale or unowned object generation",
+        "reuse_without_generation_increment": "allocation generation mismatch",
+        "failure_changed_state": "failure changed or misreported pool state",
+        "incorrect_live_mask": "event state transition mismatch",
+        "stale_generation_access": "stale or unowned object generation",
+        "inactive_slot_null_generation": "stale or unowned object generation",
+        "out_of_bounds_access": "invalid pointer or object extent",
+        "generation_overflow": "occupied slot or generation overflow",
+        "duplicate_object_snapshot": "missing constructed object"
+      },
+      "status": "native_summary_and_controlled_lifetime_matched"
+    },
+    {
+      "input": 1073742000,
+      "origin": "holdout",
+      "trace_sha256": "4586ec8ea65ab2189e511c2e6bc7ca986e7344dc8861e548bf8954270c34f999",
+      "native_helper_calls_matched": 10,
+      "native_steps_matched": 215,
+      "native_reads_checked": 25,
+      "ordered_writes_checked": 15,
+      "ownership": {
+        "events": 11,
+        "constructed_objects": 5,
+        "failed_allocations": 1,
+        "same_address_new_generation": [
+          {
+            "slot": 0,
+            "pointer": 4215056,
+            "new_generation": 2
+          }
+        ],
+        "final_live": 0,
+        "observed_object_bytes": 160
+      },
+      "ledger_rejection_controls": {
+        "missing_event": "incomplete or inconsistent event history",
+        "interior_pointer": "event pointer is not the slot base",
+        "oversized_request": "request differs from fixed slot extent",
+        "overlapping_allocation": "occupied slot or generation overflow",
+        "double_release": "stale or unowned object generation",
+        "reuse_without_generation_increment": "allocation generation mismatch",
+        "failure_changed_state": "failure changed or misreported pool state",
+        "incorrect_live_mask": "event state transition mismatch",
+        "stale_generation_access": "stale or unowned object generation",
+        "inactive_slot_null_generation": "stale or unowned object generation",
+        "out_of_bounds_access": "invalid pointer or object extent",
+        "generation_overflow": "occupied slot or generation overflow",
+        "duplicate_object_snapshot": "missing constructed object"
+      },
+      "status": "native_summary_and_controlled_lifetime_matched"
+    },
+    {
+      "input": 1074741800,
+      "origin": "holdout",
+      "trace_sha256": "9153037d9dffa5d43dd2db62ae326e4ef1253025858b76810cea9192733b2346",
+      "native_helper_calls_matched": 10,
+      "native_steps_matched": 215,
+      "native_reads_checked": 25,
+      "ordered_writes_checked": 15,
+      "ownership": {
+        "events": 11,
+        "constructed_objects": 5,
+        "failed_allocations": 1,
+        "same_address_new_generation": [
+          {
+            "slot": 0,
+            "pointer": 4215056,
+            "new_generation": 2
+          }
+        ],
+        "final_live": 0,
+        "observed_object_bytes": 160
+      },
+      "ledger_rejection_controls": {
+        "missing_event": "incomplete or inconsistent event history",
+        "interior_pointer": "event pointer is not the slot base",
+        "oversized_request": "request differs from fixed slot extent",
+        "overlapping_allocation": "occupied slot or generation overflow",
+        "double_release": "stale or unowned object generation",
+        "reuse_without_generation_increment": "allocation generation mismatch",
+        "failure_changed_state": "failure changed or misreported pool state",
+        "incorrect_live_mask": "event state transition mismatch",
+        "stale_generation_access": "stale or unowned object generation",
+        "inactive_slot_null_generation": "stale or unowned object generation",
+        "out_of_bounds_access": "invalid pointer or object extent",
+        "generation_overflow": "occupied slot or generation overflow",
+        "duplicate_object_snapshot": "missing constructed object"
+      },
+      "status": "native_summary_and_controlled_lifetime_matched"
+    }
+  ],
+  "native_admission_controls": {
+    "state_return_stack_overlap": "native helper refinement precondition failed",
+    "invalid_live_partition": "native helper refinement precondition failed",
+    "wrong_return_stack_word": "return stack word differs from proof precondition",
+    "out_of_range_slot": "native helper refinement precondition failed"
+  },
+  "proof_levels": {
+    "native_helper": "SMT conditional refinement for both successful paths and four slots; complete byte-memory frame",
+    "allocation_ledger": "checked full event history under explicit static-pool, bounded, initially-free assumptions",
+    "cpython_binding": "observed hook and PyLong object snapshots on exact CPython 3.13.5 library"
+  },
+  "limits": [
+    "helper proof assumes ABI, nonoverlapping state and return stack, valid live mask and operation preconditions",
+    "hook-to-CPython allocation and object initialization are observational checks",
+    "only explicitly scoped PyLong calls in a fixed-size controlled pool are covered",
+    "default CPython allocator and other Python code paths remain outside this result"
+  ]
+}

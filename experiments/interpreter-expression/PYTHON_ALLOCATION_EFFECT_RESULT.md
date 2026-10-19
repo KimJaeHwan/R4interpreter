@@ -1,5 +1,7 @@
 # Python PyLong 할당 경로와 공통 전이 효과
 
+> 후속 [제한된 풀의 객체 수명 실험](PYTHON_POOL_LIFETIME_RESULT.md)은 명시된 4슬롯 allocator에서 생성·해제·주소 재사용을 별도 ledger로 확인한다.
+
 ## 실험 질문
 
 문자열 복사와 Lua 숫자·분배에 적용한 [공통 네이티브 구간 코어](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)가 Python의 **새 객체를 만드는 경로**에도 적용되는가? 그리고 바이트 단위 `Write` 효과만으로 객체의 논리적 할당까지 표현할 수 있는가?

@@ -122,6 +122,10 @@
   "segments": [
     {
       "label": "allocated_pylong_path",
+      "preserved_state": {
+        "fs_base": "x86_scalar_no_base_write_v1",
+        "gs_base": "x86_scalar_no_base_write_v1"
+      },
       "identity": {
         "entry_pc": "0x56227c",
         "next_pc": "0x56173b",

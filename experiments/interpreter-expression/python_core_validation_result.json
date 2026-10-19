@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "direct_core_valid_control": true,
+  "direct_core_rejections": {
+    "read_value": "unknown(control read footprint/value)",
+    "write_value": "unknown(control ordered effects)",
+    "write_order": "unknown(control ordered effects)",
+    "final_state": "unknown(control state)",
+    "successor_observation": "unknown(control path shape)",
+    "trace_continuity": "unknown(control trace state continuity)",
+    "base_change": "unknown(control segment base changed)",
+    "missing_base_contract": "unknown(control segment base frame contract)",
+    "frozen_successor": "unknown(control successor)"
+  },
+  "two_segment_cases": [
+    {
+      "input": 252,
+      "status": "differentially_validated",
+      "segments": 2,
+      "base_inputs_consumed_after_boundary": true
+    },
+    {
+      "input": 253,
+      "status": "differentially_validated",
+      "segments": 2,
+      "base_inputs_consumed_after_boundary": true
+    },
+    {
+      "input": 254,
+      "status": "differentially_validated",
+      "segments": 2,
+      "base_inputs_consumed_after_boundary": true
+    },
+    {
+      "input": 256,
+      "status": "differentially_validated",
+      "segments": 2,
+      "base_inputs_consumed_after_boundary": true
+    }
+  ],
+  "fixed_original_inputs_during_mutations": true,
+  "python_admission_used_in_direct_controls": false,
+  "summary_sha256": "e6cc93fe69274d52712f4b1abb030c67148244c5fca0b0674446af3ffe55e309"
+}

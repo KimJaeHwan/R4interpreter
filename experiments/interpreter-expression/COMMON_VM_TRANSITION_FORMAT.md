@@ -6,6 +6,8 @@
 
 [Python 할당 효과 실험](PYTHON_ALLOCATION_EFFECT_RESULT.md)은 같은 코어로 PyLong 객체 경로의 관측된 상태와 `Write` 효과를 재현했다. 기존 힙 바이트를 먼저 읽고 덮어쓰는 기록이 있으므로, `Write` 목록만으로 논리적 객체 수명·freshness를 증명하지 않는다. 아래의 `Allocate`는 아직 구현된 효과가 아니라 필요한 확장이다.
 
+[제한된 CPython 풀 수명 실험](PYTHON_POOL_LIFETIME_RESULT.md)은 별도 ledger에서 `Allocate(slot, generation, extent)`, `Free(slot, generation)`, `AllocationFailed`를 모델링하고 네이티브 helper 요약과 연결했다. 공통 적용기 내부의 정식 효과로는 아직 통합되지 않았다. 고정 4슬롯 풀의 조건부 증명과 일반 힙의 소유권 주장을 구분한다.
+
 [Python·JavaScript 첫 교차 실험](PYTHON_JS_FIRST_RESULT.md)은 초기 값 투영에 `Z`와 `F64` sort를 추가했다. 후속 [전체 관측 핸들러 실험](THREE_ENGINE_NATIVE_TRANSITION_RESULT.md)은 고정된 숫자 경로에서 출력 레지스터·읽기·순서 있는 쓰기·다음 핸들러까지 확장했다. 다른 타입, 예외, 전체 호출 합성은 아직 이 요약 범위 밖이다.
 
 ## 공통으로 표현할 것

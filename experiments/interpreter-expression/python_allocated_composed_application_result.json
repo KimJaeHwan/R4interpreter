@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "summary_sha256": "edf356a3557c1ea2aba823482ec021c049337d266841ff2dbb0c74a4877ebaaf",
+  "summary_sha256": "5891730680c68893c94192f454390655ca22d65caddbc4f6c9ebc4a68a64daa4",
   "cases": [
     {
       "input": 252,
@@ -131,7 +131,7 @@
   ],
   "negative_probes": {
     "wrong_digit_write": "unknown(allocated PyLong layout)",
-    "wrong_fs_base": "unknown(allocated_pylong_path guard)"
+    "wrong_fs_base": "unknown(allocated_pylong_path segment base changed)"
   },
   "cached_path_comparison": {
     "input": 251,

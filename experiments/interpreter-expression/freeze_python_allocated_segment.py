@@ -81,6 +81,8 @@ def main():
             item["condition"], *bindings))) for item in model.guards):
         raise ValueError("Python source guard failed")
     segment = {"label": "allocated_pylong_path",
+        "preserved_state": {name.lower(): "x86_scalar_no_base_write_v1"
+                            for name in bases},
         "identity": {"entry_pc": case["identity"]["entry_pc"],
                      "next_pc": case["identity"]["next_handler_pc"],
                      "native_steps": len(rows),
