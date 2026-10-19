@@ -1,0 +1,219 @@
+{
+  "schema_version": "lua-branch-dispatch-map-v1",
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "bytecode_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+  "static_fetch_sites": {
+    "0x4154a5": {
+      "mask_pc": "0x4154ac",
+      "dispatch_pc": "0x4154af"
+    },
+    "0x41553a": {
+      "mask_pc": "0x415540",
+      "dispatch_pc": "0x415543"
+    },
+    "0x415b24": {
+      "mask_pc": "0x415b2e",
+      "dispatch_pc": "0x415b31"
+    }
+  },
+  "traces": [
+    {
+      "input_label": "x0",
+      "trace_sha256": "55a4aaf886836ab2bdae60b960bf166e5af6f51d5b103b0af980eb7ee0e5debd",
+      "bytecode_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+      "observed_fetches": 6,
+      "vm_code_regions": 2,
+      "events": [
+        {
+          "fetch_trace_step": 54855,
+          "dispatch_trace_step": 54858,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 612826440,
+          "raw_instruction_word": 139,
+          "numeric_opcode": 11,
+          "handler_entry_pc": "0x416ac8",
+          "jump_table_read_address": "0x422978",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 0,
+          "file_byte_offset": 47
+        },
+        {
+          "fetch_trace_step": 54912,
+          "dispatch_trace_step": 54915,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 612826444,
+          "raw_instruction_word": 8323261,
+          "numeric_opcode": 61,
+          "handler_entry_pc": "0x415ee0",
+          "jump_table_read_address": "0x422b08",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 1,
+          "file_byte_offset": 51
+        },
+        {
+          "fetch_trace_step": 54941,
+          "dispatch_trace_step": 54944,
+          "fetch_pc": "0x4154a5",
+          "dispatch_pc": "0x4154af",
+          "runtime_code_address": 612826452,
+          "raw_instruction_word": 128,
+          "numeric_opcode": 0,
+          "handler_entry_pc": "0x415550",
+          "jump_table_read_address": "0x422920",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 3,
+          "file_byte_offset": 59
+        },
+        {
+          "fetch_trace_step": 54962,
+          "dispatch_trace_step": 54965,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 612826456,
+          "raw_instruction_word": 2147614977,
+          "numeric_opcode": 1,
+          "handler_entry_pc": "0x416dc0",
+          "jump_table_read_address": "0x422928",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 4,
+          "file_byte_offset": 63
+        },
+        {
+          "fetch_trace_step": 54980,
+          "dispatch_trace_step": 54983,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 612826460,
+          "raw_instruction_word": 16908485,
+          "numeric_opcode": 69,
+          "handler_entry_pc": "0x415780",
+          "jump_table_read_address": "0x422b48",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 5,
+          "file_byte_offset": 67
+        },
+        {
+          "fetch_trace_step": 55118,
+          "dispatch_trace_step": 55121,
+          "fetch_pc": "0x4154a5",
+          "dispatch_pc": "0x4154af",
+          "runtime_code_address": 612826736,
+          "raw_instruction_word": 2214592661,
+          "numeric_opcode": 21,
+          "handler_entry_pc": "0x4164b8",
+          "jump_table_read_address": "0x4229c8",
+          "vm_code_region": 1,
+          "index_from_min_observed_address": 0,
+          "file_byte_offset": 111
+        }
+      ],
+      "coverage": "captured replay_step windows only",
+      "all_bytecodes_enumerated": false
+    },
+    {
+      "input_label": "x9",
+      "trace_sha256": "686052bb8f60aae92ad1ea10e53e88c7e9ba6dd1a365f23c3b512b43ead7422e",
+      "bytecode_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+      "observed_fetches": 6,
+      "vm_code_regions": 2,
+      "events": [
+        {
+          "fetch_trace_step": 55010,
+          "dispatch_trace_step": 55013,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 261033288,
+          "raw_instruction_word": 139,
+          "numeric_opcode": 11,
+          "handler_entry_pc": "0x416ac8",
+          "jump_table_read_address": "0x422978",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 0,
+          "file_byte_offset": 47
+        },
+        {
+          "fetch_trace_step": 55067,
+          "dispatch_trace_step": 55070,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 261033292,
+          "raw_instruction_word": 8323261,
+          "numeric_opcode": 61,
+          "handler_entry_pc": "0x415ee0",
+          "jump_table_read_address": "0x422b08",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 1,
+          "file_byte_offset": 51
+        },
+        {
+          "fetch_trace_step": 55101,
+          "dispatch_trace_step": 55104,
+          "fetch_pc": "0x4154a5",
+          "dispatch_pc": "0x4154af",
+          "runtime_code_address": 261033316,
+          "raw_instruction_word": 128,
+          "numeric_opcode": 0,
+          "handler_entry_pc": "0x415550",
+          "jump_table_read_address": "0x422920",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 7,
+          "file_byte_offset": 75
+        },
+        {
+          "fetch_trace_step": 55122,
+          "dispatch_trace_step": 55125,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 261033320,
+          "raw_instruction_word": 267,
+          "numeric_opcode": 11,
+          "handler_entry_pc": "0x416ac8",
+          "jump_table_read_address": "0x422978",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 8,
+          "file_byte_offset": 79
+        },
+        {
+          "fetch_trace_step": 55179,
+          "dispatch_trace_step": 55182,
+          "fetch_pc": "0x41553a",
+          "dispatch_pc": "0x415543",
+          "runtime_code_address": 261033324,
+          "raw_instruction_word": 16908485,
+          "numeric_opcode": 69,
+          "handler_entry_pc": "0x415780",
+          "jump_table_read_address": "0x422b48",
+          "vm_code_region": 0,
+          "index_from_min_observed_address": 9,
+          "file_byte_offset": 83
+        },
+        {
+          "fetch_trace_step": 55317,
+          "dispatch_trace_step": 55320,
+          "fetch_pc": "0x4154a5",
+          "dispatch_pc": "0x4154af",
+          "runtime_code_address": 261033584,
+          "raw_instruction_word": 2214592661,
+          "numeric_opcode": 21,
+          "handler_entry_pc": "0x4164b8",
+          "jump_table_read_address": "0x4229c8",
+          "vm_code_region": 1,
+          "index_from_min_observed_address": 0,
+          "file_byte_offset": 111
+        }
+      ],
+      "coverage": "captured replay_step windows only",
+      "all_bytecodes_enumerated": false
+    }
+  ],
+  "claim": "observed bytecode word, low-seven-bit index register, table read and handler target agree in selected replay windows",
+  "limits": [
+    "no opcode-name or handler-semantic inference",
+    "index_from_min_observed_address is not a function-start bytecode index",
+    "static three-site shape does not by itself prove jump-table address arithmetic",
+    "uncaptured fetches and alternate paths remain unknown",
+    "mapping does not complete the long native-state gaps"
+  ]
+}

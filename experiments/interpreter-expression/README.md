@@ -110,6 +110,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `refine_common_numeric_il.py`: 세 엔진의 네이티브 값 AST에서 공통 덧셈 후보를 얻고 typed 값 IL에 대한 조건부 refinement, 원래 전이 효과, 새 입력 적용을 확인한다. [공통 숫자 IL 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)에 근거와 한계가 있다.
 - `build_common_program_representation.py`: 선택된 Python 전체 관측 경로, Lua·JavaScript 핸들러 구간, Lua 분기·호출 바이트코드의 입력→출력 값 체인과 제어된 풀 수명 효과를 하나의 표현 IL로 만든다. [공통 프로그램 표현 결과](COMMON_PROGRAM_REPRESENTATION_RESULT.md)에 적용 범위와 남은 전체 로직 복원 조건을 구분했다.
 - `build_common_control_worklist.py`: 세 엔진의 관측된 네이티브 분기·호출 발생을 공통 작업 목록으로 만들고 Python SMT 후보와 새 입력 `1`의 실제 추적을 연결한다. [제어 흐름 작업 목록 결과](COMMON_CONTROL_WORKLIST_RESULT.md)에 재현법과 미해결 경로를 기록했다.
+- `map_lua_branch_dispatch.py`, `build_boundary_relevance_map.py`: Lua 분기·호출 바이트코드의 실제 fetch·분배 발생을 네이티브 진입에 연결하고, 세 엔진의 경계 등급 및 값·쓰기·주소·제어 slice를 비교한다. [전체 로직 복원 1·2단계와 첫 대체 분기](BOUNDARY_RELEVANCE_STAGE_RESULT.md)에 남은 경로 의무를 기록했다.
 
 ## 재현
 
@@ -131,4 +132,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[제어 흐름 작업 목록 결과](COMMON_CONTROL_WORKLIST_RESULT.md)의 첫 이탈 분기부터 후보 후속 경로를 확인하고, 호출·예외와 외부 상태에 의존하는 분기를 분리해야 한다. allocator 수명 증거와 Lua의 긴 값 전달 간격 및 JavaScript 호출자 경로의 전체 상태 합성도 남아 있다. 현재의 공통 숫자 IL과 프로그램 표현 IL은 선택된 경로의 조건부 부분 로직이다.
+[전체 로직 복원 1·2단계와 첫 대체 분기](BOUNDARY_RELEVANCE_STAGE_RESULT.md)의 관련성 지도에서 다른 반대쪽 경로와 호출·예외를 확인하고 Python·JavaScript의 선택된 구간에 실제 바이트코드 cursor를 연결해야 한다. allocator 수명 증거와 Lua의 긴 값 전달 간격 및 JavaScript 호출자 경로의 전체 상태 합성도 남아 있다. 현재의 공통 숫자 IL과 프로그램 표현 IL은 선택된 경로의 조건부 부분 로직이다.

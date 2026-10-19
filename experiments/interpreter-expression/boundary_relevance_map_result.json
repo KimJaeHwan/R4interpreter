@@ -1,0 +1,53 @@
+{
+  "schema_version": "boundary-relevance-map-v1",
+  "artifact_sha256": "b516fcff167644acd8c2dc0b1983de5fe90cd151209040e22c64ac1c8e450e31",
+  "boundaries_by_kind": {
+    "observed_indirect_dispatch_pair": 8,
+    "local_value_analysis_cutpoint": 2,
+    "contiguous_vm_value_window": 7
+  },
+  "control_classifications": {
+    "relevance_unresolved_outside_selected_slice": 673,
+    "branch_reachability_obligation_preserved": 44,
+    "call_return_exception_obligation": 3
+  },
+  "slice_operation_counts": {
+    "python_252:numeric_transition": {
+      "value": 6,
+      "value_and_observed_writes": 103,
+      "plus_addresses_and_all_observed_control": 311
+    },
+    "lua_branch_x0:vm_window": {
+      "value": 27,
+      "value_and_observed_writes": 146,
+      "plus_addresses_and_all_observed_control": 515
+    },
+    "javascript_segment:handler_segment": {
+      "value": 8,
+      "value_and_observed_writes": 8,
+      "plus_addresses_and_all_observed_control": 47
+    }
+  },
+  "first_lua_branch_frontier": {
+    "native_branch_pc": "0x415f30",
+    "next_captured_bytecode_offsets": [
+      59,
+      75
+    ]
+  },
+  "negative_controls": {
+    "shift_python_boundary": "rejected",
+    "promote_lua_cutpoint": "rejected",
+    "repeat_lua_pc_occurrence_swap": "rejected",
+    "drop_address_control_obligation": "rejected",
+    "close_call_exception": "rejected",
+    "foreign_bytecode_offset": "rejected",
+    "branch_frontier_wrong_edge": "rejected"
+  },
+  "upstream_negative_controls": {
+    "python_transition_certificate": "rejected",
+    "missing_worklist_occurrence": "rejected",
+    "foreign_lua_bytecode_offset": "rejected"
+  },
+  "whole_program_complete": false
+}
