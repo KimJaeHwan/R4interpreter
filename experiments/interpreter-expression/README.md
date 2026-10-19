@@ -105,6 +105,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `probe_connected_python_program.py`: Python의 캐시·할당 숫자 경로와 다음 분배 구간을 계산된 상태·메모리로 순차 연결하고, 제어 edge의 미탐색 의무와 쓰기 보존형 표시를 [연결 결과](CONNECTED_PYTHON_PROGRAM_RESULT.md)에 기록했다.
 - `probe_python_remaining_scope.py`: Python 할당 경로의 고정 환경 조건분기 반대쪽을 SMT로 검사하고 새 `251`·`254` 전체 추적으로 확인했다. 호출 인자와 바깥 반환 연결, allocator 수명의 미해결 의무는 [남은 범위 결과](PYTHON_REMAINING_SCOPE_RESULT.md)에 기록했다.
 - `probe_connected_python_prefix.py`, `probe_python_prefix_branches.py`, `common_program_path_il.py`, `build_evidence_program_il.py`: Python 호출자 앞부분을 libc 벡터 호출 12명령만 남기고 연속 재생하며, 반대 분기 후보를 실제 추적과 대조한다. 세 전체 추적의 증거 포함 경로 IL과 미해결 의무 판정은 [경로 IL 설계](EVIDENCE_PROGRAM_IL_DESIGN.md)에 기록했다.
+- `bounded_memset_contract.py`, `common_path_executor.py`, `apply_bounded_python_program.py`, `audit_python_branch_candidates.py`, `audit_python_lifetime_authority.py`: 고정 libc의 8바이트 0 채우기 경로를 조건부 계약으로 계산하고 Python의 4개 전체 경로에서 6구간을 연속 적용한다. 분기 후보의 실제 도달과 기본 allocator의 미승인 수명을 [계산 경로 결과](BOUNDED_PROGRAM_EXECUTION_RESULT.md)에 구분했다.
 - `refine_common_numeric_il.py`: 세 엔진의 네이티브 값 AST에서 공통 덧셈 후보를 얻고 typed 값 IL에 대한 조건부 refinement, 원래 전이 효과, 새 입력 적용을 확인한다. [공통 숫자 IL 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)에 근거와 한계가 있다.
 
 ## 재현
@@ -127,4 +128,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[경로 IL 설계](EVIDENCE_PROGRAM_IL_DESIGN.md)의 판정기를 기준으로 libc 외부 호출 계약, 미탐색 분기·예외 경로, allocator 수명 증거를 차례로 닫아야 한다. 현재의 공통 숫자 IL과 경로 IL은 관측된 대체 경로의 조건부 부분 로직이다.
+[계산 경로 결과](BOUNDED_PROGRAM_EXECUTION_RESULT.md)를 출발점으로 다른 외부 호출 경로, 미탐색 분기·예외, allocator 수명 증거와 Lua·JavaScript 적용을 확장해야 한다. 현재의 공통 숫자 IL과 경로 IL은 관측된 대체 경로의 조건부 부분 로직이다.

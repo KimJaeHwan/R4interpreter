@@ -1,0 +1,80 @@
+{
+  "schema_version": "python-default-allocator-authority-v1",
+  "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "cases": [
+    {
+      "input": 252,
+      "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "object_pointer": "0x7f4d2346e570",
+      "native_evidence": {
+        "helper_call_observed": "0x5932f3 -> 0x5e9710",
+        "field_writes": [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ],
+          [
+            24,
+            4
+          ]
+        ],
+        "prior_read_count": 1
+      },
+      "authority_status": "absent",
+      "effect": "unknown(Write evidence does not establish Allocate)",
+      "missing": [
+        "allocator extent/generation and prior free/reuse history",
+        "success and failure contract",
+        "ownership transfer"
+      ]
+    },
+    {
+      "input": 254,
+      "trace_sha256": "7c2d9d5cc26aa355c110abeb970b49283672dff64d11f0c2dfe9493261df495d",
+      "object_pointer": "0x7fd363796570",
+      "native_evidence": {
+        "helper_call_observed": "0x5932f3 -> 0x5e9710",
+        "field_writes": [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ],
+          [
+            24,
+            4
+          ]
+        ],
+        "prior_read_count": 1
+      },
+      "authority_status": "absent",
+      "effect": "unknown(Write evidence does not establish Allocate)",
+      "missing": [
+        "allocator extent/generation and prior free/reuse history",
+        "success and failure contract",
+        "ownership transfer"
+      ]
+    }
+  ],
+  "negative_controls": {
+    "foreign_controlled_pool_authority": "foreign_or_mismatched",
+    "matching_metadata_without_allocator_proof": "metadata_only_unverified"
+  },
+  "scope": "native object writes and pre-reads verified; default allocator ownership unproved",
+  "logical_allocate_authorized": false
+}

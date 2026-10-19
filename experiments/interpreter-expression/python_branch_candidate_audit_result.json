@@ -1,0 +1,68 @@
+{
+  "schema_version": "python-branch-candidate-audit-v1",
+  "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "source_smt_environment": "source252 fixed other state and prefix guards",
+  "candidate_status_vocabulary": [
+    "binary_mismatch",
+    "earlier_divergence",
+    "fixture_mismatch",
+    "solver_timeout",
+    "target_not_reached",
+    "target_opposite_observed",
+    "target_same_edge",
+    "trace_invalid",
+    "unsupported_binding"
+  ],
+  "negative_controls": {
+    "truncated_trace": "target_not_reached",
+    "earlier_divergence": "not_a_target_edge_witness",
+    "non_successor_target": "trace_invalid",
+    "different_target_instruction": "unsupported_binding"
+  },
+  "cases": [
+    {
+      "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "target_trace_sha256": "ae45346a368c4e0ba44da5ffb1e9d8a2a861a8154c7dcf36d95f0f941c3ba36d",
+      "source_entry_registers_sha256": "a5f7366734b4867be9de8a1f29270b62506d39509645bf551bfcad22aa93b1ae",
+      "target_entry_registers_sha256": "87b163692b9549f743e7201fb06542a46a13b6d6bbe9db7471d32f557153c557",
+      "source_input": 252,
+      "candidate_input": 0,
+      "source_fixed_input_domain": [
+        0,
+        256
+      ],
+      "source_pcode_guard_index": 84,
+      "query": "opposite edge with only prior path guards",
+      "target_native_pc": "0x5a82b0",
+      "first_relevant_step": 133,
+      "first_relevant_pc": "0x5a8250",
+      "status": "earlier_divergence",
+      "control_prefix_reproduced_until_target": false,
+      "source_fixed_entry_environment_reproduced": false,
+      "native_observation_closes_candidate": false
+    },
+    {
+      "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "target_trace_sha256": "2b01d30cf86bcef03c09a98d8580a723222ae657aec79cfdf4070909460bd9da",
+      "source_entry_registers_sha256": "a5f7366734b4867be9de8a1f29270b62506d39509645bf551bfcad22aa93b1ae",
+      "target_entry_registers_sha256": "02545d464ff347a514049573f3506782e0f89e08fc220a706a43811e9d606c5a",
+      "source_input": 252,
+      "candidate_input": 251,
+      "source_fixed_input_domain": [
+        251,
+        256
+      ],
+      "source_pcode_guard_index": 40,
+      "query": "opposite edge with only prior path guards",
+      "target_native_pc": "0x5e978a",
+      "first_relevant_step": 764,
+      "first_relevant_pc": "0x5e978a",
+      "status": "target_opposite_observed",
+      "control_prefix_reproduced_until_target": true,
+      "source_fixed_entry_environment_reproduced": false,
+      "native_observation_closes_candidate": true
+    }
+  ],
+  "scope": "two saved candidates; full scalar native control/bytes prefix compared with libc ASLR normalization, independent entry states",
+  "complete_route_set": false
+}

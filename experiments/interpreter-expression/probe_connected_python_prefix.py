@@ -34,7 +34,7 @@ class IndirectMemoryTargetReplay(NativePathReplay):
         return super().read(node)
 
 
-def first_read_memory(rows, input_address, witness, x):
+def first_read_memory(rows, input_address, witness, x, *, symbolic_unobserved=False):
     first = {}
     written = set()
     for row in rows:
@@ -59,7 +59,10 @@ def first_read_memory(rows, input_address, witness, x):
     require([first.get(digit + offset) for offset in range(4)] ==
             [(witness >> (8 * offset)) & 255 for offset in range(4)],
             "entry digit not available in first-read memory")
-    memory = z3.K(z3.BitVecSort(64), z3.BitVecVal(0, 8))
+    memory = (z3.Array(f"UNKNOWN_ENTRY_BYTES_{witness}",
+                       z3.BitVecSort(64), z3.BitVecSort(8))
+              if symbolic_unobserved else
+              z3.K(z3.BitVecSort(64), z3.BitVecVal(0, 8)))
     for address, byte in first.items():
         memory = z3.Store(memory, z3.BitVecVal(address, 64), z3.BitVecVal(byte, 8))
     for offset in range(4):
@@ -77,13 +80,14 @@ def verify_base_frame(rows):
             "FS/GS base changed inside P-code prefix or external call")
 
 
-def replay(rows, memory, register_symbols=None):
+def replay(rows, memory, register_symbols=None, flag_symbols=None):
     before = rows[0]["registers"]
     model = IndirectMemoryTargetReplay(rows[0], rows, lifted_instructions(PYTHON, rows),
         register_symbols={offset: (register_symbols or {}).get(name,
                            z3.BitVecVal(before[name], 64))
                           for offset, name in REGISTER_OFFSETS.items()},
-        flag_symbols={offset: z3.BitVecVal((before["eflags"] >> bit) & 1, 8)
+        flag_symbols={offset: (flag_symbols or {}).get(bit,
+                      z3.BitVecVal((before["eflags"] >> bit) & 1, 8))
                       for offset, bit in FLAG_OFFSETS.items()},
         memory_symbol=memory, address_guards=True)
     model.run()

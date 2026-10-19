@@ -1,0 +1,403 @@
+{
+  "schema_version": "bounded-python-program-application-v1",
+  "program_il_sha256": "b03fe9995cef0de13941c43fb9d992df4b7647f7cabbfafa59e32fd8bd6264dc",
+  "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "fixture_bytecode_sha256": {
+    "branchCall": "53b50a126596ec4f241d44001a011acb4339cc6683f39d7c83bbc0a399bc8431",
+    "addFive": "c484e2a0d1070b0d64df8791eeec4b396c0da9d0c28618fa7afdfcfff75eeca1"
+  },
+  "cases": [
+    {
+      "status": "bounded_path_applied",
+      "nodes_applied": 6,
+      "certificates": [
+        {
+          "node": "caller_before_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 513,
+          "guard_terms": 292,
+          "ordered_writes": 78
+        },
+        {
+          "node": "opaque_libc_vector_call",
+          "op": "OpaqueExternalCall",
+          "grade": "conditional_checked_external_call",
+          "libc_sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92",
+          "base": "0x7f46c7c04000",
+          "entry_file_offset": "0x17c080",
+          "selected_instruction_offsets": [
+            "0x17c080",
+            "0x17c086",
+            "0x17c089",
+            "0x17c08d",
+            "0x17c040",
+            "0x17c046",
+            "0x17c04c",
+            "0x17c052",
+            "0x17c059",
+            "0x17c05e",
+            "0x17c063",
+            "0x17c069"
+          ],
+          "native_steps": 12,
+          "contract": "pinned AVX-512 eight-byte zero fill path",
+          "definite_write_address": "0x7f46c7f4c240",
+          "definite_write_extent": 8,
+          "same_value_write_lanes": 2,
+          "same_value_writes_preserved": true,
+          "computed_scalar_outputs": 16,
+          "defined_flag_bits": [
+            0,
+            6,
+            7,
+            11
+          ],
+          "undefined_flag_bits": [
+            2
+          ],
+          "status": "checked_exact_witness_conditional_contract"
+        },
+        {
+          "node": "caller_after_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 158,
+          "guard_terms": 96,
+          "ordered_writes": 22
+        },
+        {
+          "node": "numeric_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 116,
+          "reads_checked": 31,
+          "ordered_writes": 12
+        },
+        {
+          "node": "next_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 94,
+          "reads_checked": 27,
+          "ordered_writes": 18
+        },
+        {
+          "node": "caller_return",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 94,
+          "guard_terms": 70,
+          "ordered_writes": 18
+        }
+      ],
+      "input": 251,
+      "trace_sha256": "2b01d30cf86bcef03c09a98d8580a723222ae657aec79cfdf4070909460bd9da",
+      "initial_environment_first_read_bytes": 687,
+      "output_pointer": "0xa44ab0",
+      "numeric_value": 256,
+      "output_grade": "pinned_cached_PyLong_layout",
+      "all_inputs_or_other_environments": false
+    },
+    {
+      "status": "bounded_path_applied",
+      "nodes_applied": 6,
+      "certificates": [
+        {
+          "node": "caller_before_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 513,
+          "guard_terms": 292,
+          "ordered_writes": 78
+        },
+        {
+          "node": "opaque_libc_vector_call",
+          "op": "OpaqueExternalCall",
+          "grade": "conditional_checked_external_call",
+          "libc_sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92",
+          "base": "0x7f4d2374e000",
+          "entry_file_offset": "0x17c080",
+          "selected_instruction_offsets": [
+            "0x17c080",
+            "0x17c086",
+            "0x17c089",
+            "0x17c08d",
+            "0x17c040",
+            "0x17c046",
+            "0x17c04c",
+            "0x17c052",
+            "0x17c059",
+            "0x17c05e",
+            "0x17c063",
+            "0x17c069"
+          ],
+          "native_steps": 12,
+          "contract": "pinned AVX-512 eight-byte zero fill path",
+          "definite_write_address": "0x7f4d23a96240",
+          "definite_write_extent": 8,
+          "same_value_write_lanes": 2,
+          "same_value_writes_preserved": true,
+          "computed_scalar_outputs": 16,
+          "defined_flag_bits": [
+            0,
+            6,
+            7,
+            11
+          ],
+          "undefined_flag_bits": [
+            2
+          ],
+          "status": "checked_exact_witness_conditional_contract"
+        },
+        {
+          "node": "caller_after_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 158,
+          "guard_terms": 96,
+          "ordered_writes": 22
+        },
+        {
+          "node": "numeric_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 146,
+          "reads_checked": 42,
+          "ordered_writes": 18
+        },
+        {
+          "node": "next_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 94,
+          "reads_checked": 27,
+          "ordered_writes": 18
+        },
+        {
+          "node": "caller_return",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 94,
+          "guard_terms": 70,
+          "ordered_writes": 18
+        }
+      ],
+      "input": 252,
+      "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "initial_environment_first_read_bytes": 751,
+      "output_pointer": "0x7f4d2346e570",
+      "numeric_value": 257,
+      "output_grade": "computed_allocated_object_digit",
+      "all_inputs_or_other_environments": false
+    },
+    {
+      "status": "bounded_path_applied",
+      "nodes_applied": 6,
+      "certificates": [
+        {
+          "node": "caller_before_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 513,
+          "guard_terms": 292,
+          "ordered_writes": 78
+        },
+        {
+          "node": "opaque_libc_vector_call",
+          "op": "OpaqueExternalCall",
+          "grade": "conditional_checked_external_call",
+          "libc_sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92",
+          "base": "0x7fd363a78000",
+          "entry_file_offset": "0x17c080",
+          "selected_instruction_offsets": [
+            "0x17c080",
+            "0x17c086",
+            "0x17c089",
+            "0x17c08d",
+            "0x17c040",
+            "0x17c046",
+            "0x17c04c",
+            "0x17c052",
+            "0x17c059",
+            "0x17c05e",
+            "0x17c063",
+            "0x17c069"
+          ],
+          "native_steps": 12,
+          "contract": "pinned AVX-512 eight-byte zero fill path",
+          "definite_write_address": "0x7fd363dc0240",
+          "definite_write_extent": 8,
+          "same_value_write_lanes": 2,
+          "same_value_writes_preserved": true,
+          "computed_scalar_outputs": 16,
+          "defined_flag_bits": [
+            0,
+            6,
+            7,
+            11
+          ],
+          "undefined_flag_bits": [
+            2
+          ],
+          "status": "checked_exact_witness_conditional_contract"
+        },
+        {
+          "node": "caller_after_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 158,
+          "guard_terms": 96,
+          "ordered_writes": 22
+        },
+        {
+          "node": "numeric_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 146,
+          "reads_checked": 42,
+          "ordered_writes": 18
+        },
+        {
+          "node": "next_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 94,
+          "reads_checked": 27,
+          "ordered_writes": 18
+        },
+        {
+          "node": "caller_return",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 94,
+          "guard_terms": 70,
+          "ordered_writes": 18
+        }
+      ],
+      "input": 254,
+      "trace_sha256": "7c2d9d5cc26aa355c110abeb970b49283672dff64d11f0c2dfe9493261df495d",
+      "initial_environment_first_read_bytes": 751,
+      "output_pointer": "0x7fd363796570",
+      "numeric_value": 259,
+      "output_grade": "computed_allocated_object_digit",
+      "all_inputs_or_other_environments": false
+    },
+    {
+      "status": "bounded_path_applied",
+      "nodes_applied": 6,
+      "certificates": [
+        {
+          "node": "caller_before_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 513,
+          "guard_terms": 292,
+          "ordered_writes": 78
+        },
+        {
+          "node": "opaque_libc_vector_call",
+          "op": "OpaqueExternalCall",
+          "grade": "conditional_checked_external_call",
+          "libc_sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92",
+          "base": "0x7f04eb1a4000",
+          "entry_file_offset": "0x17c080",
+          "selected_instruction_offsets": [
+            "0x17c080",
+            "0x17c086",
+            "0x17c089",
+            "0x17c08d",
+            "0x17c040",
+            "0x17c046",
+            "0x17c04c",
+            "0x17c052",
+            "0x17c059",
+            "0x17c05e",
+            "0x17c063",
+            "0x17c069"
+          ],
+          "native_steps": 12,
+          "contract": "pinned AVX-512 eight-byte zero fill path",
+          "definite_write_address": "0x7f04eb4ec240",
+          "definite_write_extent": 8,
+          "same_value_write_lanes": 2,
+          "same_value_writes_preserved": true,
+          "computed_scalar_outputs": 16,
+          "defined_flag_bits": [
+            0,
+            6,
+            7,
+            11
+          ],
+          "undefined_flag_bits": [
+            2
+          ],
+          "status": "checked_exact_witness_conditional_contract"
+        },
+        {
+          "node": "caller_after_external",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 158,
+          "guard_terms": 96,
+          "ordered_writes": 22
+        },
+        {
+          "node": "numeric_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 146,
+          "reads_checked": 42,
+          "ordered_writes": 18
+        },
+        {
+          "node": "next_transition",
+          "op": "FrozenNativeTransition",
+          "grade": "computed_frozen_native_transition",
+          "native_steps": 94,
+          "reads_checked": 27,
+          "ordered_writes": 18
+        },
+        {
+          "node": "caller_return",
+          "op": "PcodeReplayedWindow",
+          "grade": "computed_Pcode_exact_witness",
+          "native_steps": 94,
+          "guard_terms": 70,
+          "ordered_writes": 18
+        }
+      ],
+      "input": 255,
+      "trace_sha256": "a062db0bb4c7fb49b0c262d97bafbb0df0ccf7e3cf36cb0b43cff2a5554d6d6a",
+      "initial_environment_first_read_bytes": 751,
+      "output_pointer": "0x7f04eaec2570",
+      "numeric_value": 260,
+      "output_grade": "computed_allocated_object_digit",
+      "all_inputs_or_other_environments": false
+    }
+  ],
+  "negative_controls": {
+    "wrong_libc_code_byte": "rejected",
+    "truncated_libc_instruction": "rejected",
+    "extra_libc_memory_access": "rejected",
+    "extra_libc_memory_write": "rejected",
+    "wrong_libc_return_read_address": "rejected",
+    "wrong_libc_return_read_width": "rejected",
+    "wrong_libc_return_read_mode": "rejected",
+    "wrong_vector_mask_or_value": "rejected",
+    "wrong_requested_extent": "rejected",
+    "wrong_external_output_register": "rejected",
+    "wrong_prefix_to_numeric_memory": "rejected",
+    "wrong_prefix_to_numeric_register": "rejected",
+    "opaque_node_without_contract": "rejected",
+    "omitted_final_node": "rejected",
+    "unobserved_memory_not_zero_filled": "symbolic"
+  },
+  "scope": "four exact observed native paths with first-read environment supplied at entry",
+  "limits": [
+    "the pinned libc path contract covers zero fill of eight bytes only",
+    "native P-code and frozen summaries follow observed path shapes",
+    "freshness, exception exits and other entry environments remain unknown",
+    "this is not a complete executable common program IL"
+  ]
+}
