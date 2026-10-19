@@ -1,0 +1,71 @@
+{
+  "schema_version": "common-program-representation-v1",
+  "artifact_sha256": "94aca5aea8256aafc5dc57f880680169775aeb5042809a363cf59fc549f08520",
+  "routes": {
+    "python_251": {
+      "native_steps": 987,
+      "nodes": 6,
+      "unknown_obligations": 131,
+      "conditional_branches": 117,
+      "calls": 12
+    },
+    "python_252": {
+      "native_steps": 1017,
+      "nodes": 6,
+      "unknown_obligations": 139,
+      "conditional_branches": 124,
+      "calls": 12
+    },
+    "python_254": {
+      "native_steps": 1017,
+      "nodes": 6,
+      "unknown_obligations": 139,
+      "conditional_branches": 124,
+      "calls": 12
+    },
+    "python_255": {
+      "native_steps": 1017,
+      "nodes": 6,
+      "unknown_obligations": 139,
+      "conditional_branches": 124,
+      "calls": 12
+    },
+    "lua_segment": {
+      "native_steps": 23,
+      "nodes": 1,
+      "unknown_obligations": 3,
+      "conditional_branches": 2,
+      "calls": 0
+    },
+    "javascript_segment": {
+      "native_steps": 23,
+      "nodes": 1,
+      "unknown_obligations": 5,
+      "conditional_branches": 4,
+      "calls": 0
+    }
+  },
+  "negative_controls": {
+    "engine_swap": "rejected",
+    "domain_promotion": "rejected",
+    "handoff_promotion": "rejected",
+    "libc_extent": "rejected",
+    "libc_output": "rejected",
+    "native_effect": "rejected",
+    "guard": "rejected",
+    "source_trace": "rejected",
+    "false_branch_certificate": "rejected",
+    "unknown_deletion": "rejected",
+    "unknown_as_noop": "rejected",
+    "value_operand": "rejected"
+  },
+  "scope": "4 exact Python full native paths; 1 Lua and 1 JS local segment",
+  "whole_program_complete": false,
+  "native_standalone_executable": false,
+  "remaining": [
+    "enumerate and prove other control/exception paths",
+    "authorize object lifetime and heap effects",
+    "compose enclosing Lua/JS paths and broader input/environment domains",
+    "render readable whole-program logic from verified CFG"
+  ]
+}
