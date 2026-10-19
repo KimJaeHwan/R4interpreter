@@ -26,6 +26,7 @@
 | 세 엔진 통합 경로·값 실험 | 분기·호출의 새 입력 `42`를 세 엔진에서 재증명하고 공통 값 슬라이스·제한된 IL로 투영 | Python·JavaScript 저장 숫자 구간 각 1건 일치, Lua는 새 경로 재증명. 문자열 2·6자리 요약 일치, 12자리 `unknown`; Lua 제한 풀 실패·GC·새 시도 관측 |
 | 공통 AST-IL·새 경로 연구 | 네이티브 전이 AST의 typed IL 변환, 주소·제어 의존성 감사, JS 12~18자리 요약, Lua allocator 실패·재시도 수명 효과, CPython 예외 절단점 | 270개 식 루트 동등성 확인; JS 새 입력 3건·Lua 새 입력 2건 적용. Python 예외는 2건의 절단점 관측이며 오류 전파 구간은 미증명 |
 | 관측 분배 경계·의존성 재검사 | 간접 분배 사이에서 기존 숫자 전이에 맞는 구간을 자동 탐색하고 `cmov`의 실제 P-code 경로를 확인 | Python·JavaScript의 새 입력 `43` 각 1구간 적용, Python `252`는 `unknown`. JavaScript 전체 호출자에는 미지원 내부 흐름 등 4,228건이 남음 |
+| 세 엔진 공통 숫자 값 IL | Lua·Python·JavaScript의 서로 다른 결과 표현을 decode하고 같은 3노드 `BV32 X+5` 값 IL로 조건부 refinement | 각 엔진의 저장된 P-code 경로에서 공통 영역 `5..251`의 값 관계를 SMT로 확인. 새 Lua `42`, Python·JavaScript `43` 일치; 전체 네이티브 효과는 별도 계약으로 유지 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -69,6 +70,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [분배 경계·의존성 감사 결과](BOUNDARY_DEPENDENCY_RESULT.md)는 고정 PC 없이 간접 분배 사이의 후보를 찾고 기존 전체 전이로 승인한 결과를 기록한다. `cmov` 내부에서 실제로 실행된 P-code만 고르는 검사와 미지원 JavaScript 흐름의 남은 의무도 구분한다.
 
+[공통 숫자 IL refinement 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)는 세 엔진의 값 계산을 작은 typed IL로 분리하고, Python 객체·JavaScript Smi·Lua payload의 연결 및 원래 네이티브 효과 계약을 별도로 검증한다. 이 IL은 숫자 결과의 축약이며 전체 실행의 효과 삭제 증명은 아니다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -98,6 +101,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `common_native_slice.py`, `run_integrated_pipeline.py`, `integrated_case.*`, `integrated_lua_runner.c`, `lua_pool_failure_retry_fixture.c`: 새 세 엔진 경로의 값 후보 선택·증명서 기반 IL·평가 oracle·제어된 Lua 실패/재시도. [통합 결과](INTEGRATED_PIPELINE_RESULT.md)에 범위와 재현 순서가 있다.
 - `native_ast_il.py`, `analyze_dependency_slice.py`, `freeze_js_long_string.py`, `apply_js_long_string.py`, `trace_lua_allocator_failure.py`, `freeze_lua_allocator_paths.py`, `apply_lua_allocator_paths.py`, `probe_python_exception_boundary.py`: 공통 전이 IL, 주소·제어 의무, 새 JS/Lua 경로와 Python 예외 접점을 기록한다. [다음 연구 단위](NEXT_RESEARCH_UNIT_RESULT.md)에 증거 경계와 재현 순서가 있다.
 - `discover_dispatch_intervals.py`, `observed_pcode_schedule.py`, `audit_observed_dependencies.py`: 관측 분배 후보의 검색·전이 승인, `cmov` 명령 내부 실행 경로, 세 엔진 의존성 기록. [분배 경계·의존성 감사](BOUNDARY_DEPENDENCY_RESULT.md)에 범위와 재현 순서가 있다.
+- `refine_common_numeric_il.py`: 세 엔진의 네이티브 값 AST에서 공통 덧셈 후보를 얻고 typed 값 IL에 대한 조건부 refinement, 원래 전이 효과, 새 입력 적용을 확인한다. [공통 숫자 IL 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)에 근거와 한계가 있다.
 
 ## 재현
 
@@ -119,4 +123,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[분배 경계·의존성 감사 결과](BOUNDARY_DEPENDENCY_RESULT.md)의 후속 과제는 저장된 요약이 없는 분배 후보의 의미 경계 제안, 주소 별칭·제어 의존성 검증, CPython 오류 전파 및 Lua unwind의 네이티브 효과 요약, 전체 효과를 보존한 의미 축약이다.
+[공통 숫자 IL 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)의 후속 과제는 입력·출력 decode 계약의 typed 인터페이스, 다른 호출 문맥에서의 재검증, 저장된 요약이 없는 분배 후보의 의미 경계 제안, 주소 별칭·제어 의존성 검증, 전체 효과를 보존한 의미 축약이다.
