@@ -1,0 +1,68 @@
+{
+  "schema_version": "evidence-program-path-result-v1",
+  "program_il_sha256": "b03fe9995cef0de13941c43fb9d992df4b7647f7cabbfafa59e32fd8bd6264dc",
+  "readiness": {
+    "observed_path_partition_complete": true,
+    "observed_native_access_ledger_complete_for_traces": true,
+    "value_projection_executable": true,
+    "native_program_il_executable": false,
+    "declared_route_set_complete": false,
+    "lifetime_effects_authorized": false,
+    "whole_logic_reconstruction_ready": false,
+    "common_program_il_final": false,
+    "counts": {
+      "opaque_native_steps_across_routes": 36,
+      "opaque_regions": 3,
+      "unexplored_branch_occurrences": 362,
+      "conditional_native_edges_proved_in_source_domain": 92,
+      "previously_unobserved_edges_closed_by_source_proof": 91,
+      "unclosed_branch_occurrences_after_source_proof": 271,
+      "unique_unexplored_native_edges": 107,
+      "unknown_call_exception_edges": 36,
+      "unique_unknown_call_targets": 11,
+      "unsupported_pcode_occurrences": 6,
+      "allocated_routes_without_lifetime_authority": 2
+    },
+    "scope": "three exact observed inputs, not arbitrary input/environment completeness"
+  },
+  "related_exception_observation": {
+    "artifact_sha256": "0a0571ed8cd9e49cf1020615fa4569befef73fd1fda8bd50df81284466397dc4",
+    "binary_sha256": "525077da1068f5087ceea522ab11fb37f5086df54d160d4e3abeb8721290a8b7",
+    "observed_cases": 2,
+    "status": "separate controlled-pool fixture; observed cutpoints only",
+    "closes_selected_routes": false
+  },
+  "related_zero_branch_candidate": {
+    "artifact_sha256": "d29b22a4fee894dbd85a38efeeaf189f0a25a64c652080cd8ebb8f8a651e197d",
+    "source_fixed_environment_sat_witness": 0,
+    "candidate_execution_status": "earlier divergence; proposed PC not reached",
+    "closes_proposed_edge": false
+  },
+  "negative_controls": {
+    "missing_native_effect": "rejected",
+    "wrong_state_handoff": "rejected",
+    "omitted_branch": "rejected",
+    "omitted_conditional_certificate": "rejected",
+    "exception_called_normal": "rejected",
+    "false_allocate": "rejected",
+    "wrong_value_operand": "rejected",
+    "false_value_refinement_domain": "rejected",
+    "wrong_fixture_bytecode": "rejected",
+    "fake_native_executor": "rejected",
+    "wrong_route_summary": "rejected",
+    "hidden_opaque_region": "rejected",
+    "hidden_masked_write": "rejected",
+    "mixed_width_value_dag": "rejected",
+    "false_whole_logic_ready": "rejected",
+    "foreign_exception_evidence_promoted": "rejected",
+    "unrealized_sat_candidate_promoted": "rejected"
+  },
+  "next_obligations": [
+    "replace prefix opaque regions with computed state/memory transitions",
+    "model vector memset or bind a checked external-call effect contract",
+    "rebind zero-object tag and environment before accepting widened-prefix SAT candidate",
+    "enumerate branch alternatives and actual exception exits under a declared environment",
+    "obtain allocator extent/generation/ownership authority for CPython",
+    "lower semantic call/control/effect operations to an executable cross-engine IL"
+  ]
+}

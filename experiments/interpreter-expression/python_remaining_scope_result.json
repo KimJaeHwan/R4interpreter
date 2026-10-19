@@ -15,6 +15,200 @@
       256
     ],
     "opposite_edges_unsat_in_source_domain": 33,
+    "native_conditional_edges_proved_in_source_domain": [
+      {
+        "step_in_selected": 7,
+        "pc": "0x562298",
+        "opposite_successor": "0x56c390",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 14,
+        "pc": "0x5622b3",
+        "opposite_successor": "0x437c88",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 40,
+        "pc": "0x5932d3",
+        "opposite_successor": "0x593392",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 43,
+        "pc": "0x5932df",
+        "opposite_successor": "0x593310",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 45,
+        "pc": "0x5932e4",
+        "opposite_successor": "0x5933b0",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 56,
+        "pc": "0x5e9725",
+        "opposite_successor": "0x45ebe5",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 60,
+        "pc": "0x5e9739",
+        "opposite_successor": "0x5e98f8",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 69,
+        "pc": "0x5e975b",
+        "opposite_successor": "0x5e9860",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 81,
+        "pc": "0x5e978a",
+        "opposite_successor": "0x5e978c",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 84,
+        "pc": "0x5e97bd",
+        "opposite_successor": "0x5e998d",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 87,
+        "pc": "0x5e97d0",
+        "opposite_successor": "0x5e999b",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 94,
+        "pc": "0x5e97f5",
+        "opposite_successor": "0x5e99c4",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 100,
+        "pc": "0x5e980c",
+        "opposite_successor": "0x5e9888",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 105,
+        "pc": "0x5e9817",
+        "opposite_successor": "0x5e9935",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 110,
+        "pc": "0x5e9836",
+        "opposite_successor": "0x5e9a26",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 114,
+        "pc": "0x5e984d",
+        "opposite_successor": "0x5e99e3",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 122,
+        "pc": "0x5932fc",
+        "opposite_successor": "0x593401",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 132,
+        "pc": "0x5622ed",
+        "opposite_successor": "0x5622ef",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 135,
+        "pc": "0x562303",
+        "opposite_successor": "0x569400",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 137,
+        "pc": "0x56230c",
+        "opposite_successor": "0x56a7c5",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 173,
+        "pc": "0x580cd0",
+        "opposite_successor": "0x580e06",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 177,
+        "pc": "0x580ce0",
+        "opposite_successor": "0x580dbd",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 181,
+        "pc": "0x580cf3",
+        "opposite_successor": "0x580d1f",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 186,
+        "pc": "0x580d04",
+        "opposite_successor": "0x580d16",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 189,
+        "pc": "0x580d0b",
+        "opposite_successor": "0x580d0d",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 192,
+        "pc": "0x580d1d",
+        "opposite_successor": "0x580cfd",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 195,
+        "pc": "0x580d26",
+        "opposite_successor": "0x580f8b",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 199,
+        "pc": "0x580d35",
+        "opposite_successor": "0x580d44",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 202,
+        "pc": "0x580d3e",
+        "opposite_successor": "0x580f68",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 206,
+        "pc": "0x580d4d",
+        "opposite_successor": "0x580d5c",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 209,
+        "pc": "0x580d56",
+        "opposite_successor": "0x43e9d0",
+        "prefix_opposite": "unsat"
+      },
+      {
+        "step_in_selected": 214,
+        "pc": "0x580d71",
+        "opposite_successor": "0x58102d",
+        "prefix_opposite": "unsat"
+      }
+    ],
     "widened_domain": [
       251,
       256

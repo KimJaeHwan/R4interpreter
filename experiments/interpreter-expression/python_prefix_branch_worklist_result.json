@@ -1,0 +1,466 @@
+{
+  "schema_version": "python-prefix-branch-worklist-v1",
+  "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+  "candidate_trace_sha256": "ae45346a368c4e0ba44da5ffb1e9d8a2a861a8154c7dcf36d95f0f941c3ba36d",
+  "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "selected_prefix_native_steps": 513,
+  "source_fixed_environment_domain": [
+    251,
+    256
+  ],
+  "pcode_conditional_opposites_unsat": 62,
+  "native_conditional_proofs": [
+    {
+      "absolute_step": 5,
+      "pc": "0x56504b",
+      "opposite_successor": "0x565051",
+      "pcode_guard_index": 2,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 10,
+      "pc": "0x56a3f8",
+      "opposite_successor": "0x56d39d",
+      "pcode_guard_index": 6,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 12,
+      "pc": "0x56a402",
+      "opposite_successor": "0x565051",
+      "pcode_guard_index": 8,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 16,
+      "pc": "0x565055",
+      "opposite_successor": "0x56cca9",
+      "pcode_guard_index": 11,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 19,
+      "pc": "0x565061",
+      "opposite_successor": "0x56cc99",
+      "pcode_guard_index": 13,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 33,
+      "pc": "0x5612c9",
+      "opposite_successor": "0x5612cf",
+      "pcode_guard_index": 20,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 51,
+      "pc": "0x561310",
+      "opposite_successor": "0x569220",
+      "pcode_guard_index": 30,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 66,
+      "pc": "0x563031",
+      "opposite_successor": "0x56bb0d",
+      "pcode_guard_index": 39,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 73,
+      "pc": "0x56304a",
+      "opposite_successor": "0x435f0a",
+      "pcode_guard_index": 41,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 100,
+      "pc": "0x59c25e",
+      "opposite_successor": "0x59c484",
+      "pcode_guard_index": 57,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 103,
+      "pc": "0x59c26a",
+      "opposite_successor": "0x59c484",
+      "pcode_guard_index": 58,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 110,
+      "pc": "0x59c283",
+      "opposite_successor": "0x59c46c",
+      "pcode_guard_index": 61,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 114,
+      "pc": "0x59c294",
+      "opposite_successor": "0x59c350",
+      "pcode_guard_index": 64,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 117,
+      "pc": "0x59c2a4",
+      "opposite_successor": "0x59c4a7",
+      "pcode_guard_index": 66,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 127,
+      "pc": "0x5a8233",
+      "opposite_successor": "0x44c057",
+      "pcode_guard_index": 72,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 130,
+      "pc": "0x5a8244",
+      "opposite_successor": "0x5a83e8",
+      "pcode_guard_index": 75,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 133,
+      "pc": "0x5a8250",
+      "opposite_successor": "0x5a83c8",
+      "pcode_guard_index": 76,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 148,
+      "pc": "0x5a8287",
+      "opposite_successor": "0x5a82e0",
+      "pcode_guard_index": 79,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 158,
+      "pc": "0x5a82b0",
+      "opposite_successor": "0x5a82b7",
+      "pcode_guard_index": 84,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 163,
+      "pc": "0x59c2bb",
+      "opposite_successor": "0x59c2d8",
+      "pcode_guard_index": 88,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 178,
+      "pc": "0x563097",
+      "opposite_successor": "0x563099",
+      "pcode_guard_index": 107,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 181,
+      "pc": "0x5630ac",
+      "opposite_successor": "0x5630ae",
+      "pcode_guard_index": 109,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 183,
+      "pc": "0x5630bf",
+      "opposite_successor": "0x56a7c5",
+      "pcode_guard_index": 110,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 185,
+      "pc": "0x5630c9",
+      "opposite_successor": "0x5630fa",
+      "pcode_guard_index": 111,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 190,
+      "pc": "0x58d64b",
+      "opposite_successor": "0x58d6a8",
+      "pcode_guard_index": 114,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 192,
+      "pc": "0x58d654",
+      "opposite_successor": "0x58d65f",
+      "pcode_guard_index": 115,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 194,
+      "pc": "0x58d65d",
+      "opposite_successor": "0x58d668",
+      "pcode_guard_index": 116,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 200,
+      "pc": "0x5630dc",
+      "opposite_successor": "0x434d56",
+      "pcode_guard_index": 120,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 202,
+      "pc": "0x5630e5",
+      "opposite_successor": "0x56a7c5",
+      "pcode_guard_index": 121,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 239,
+      "pc": "0x564f72",
+      "opposite_successor": "0x56b379",
+      "pcode_guard_index": 137,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 247,
+      "pc": "0x564f8f",
+      "opposite_successor": "0x437d00",
+      "pcode_guard_index": 140,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 265,
+      "pc": "0x564fcf",
+      "opposite_successor": "0x569599",
+      "pcode_guard_index": 149,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 268,
+      "pc": "0x564fe1",
+      "opposite_successor": "0x569599",
+      "pcode_guard_index": 152,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 283,
+      "pc": "0x58c811",
+      "opposite_successor": "0x442d88",
+      "pcode_guard_index": 162,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 286,
+      "pc": "0x58c81f",
+      "opposite_successor": "0x442d88",
+      "pcode_guard_index": 164,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 308,
+      "pc": "0x530942",
+      "opposite_successor": "0x530c98",
+      "pcode_guard_index": 177,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 320,
+      "pc": "0x530979",
+      "opposite_successor": "0x531318",
+      "pcode_guard_index": 181,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 323,
+      "pc": "0x530985",
+      "opposite_successor": "0x530ad8",
+      "pcode_guard_index": 182,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 326,
+      "pc": "0x530994",
+      "opposite_successor": "0x530aa8",
+      "pcode_guard_index": 184,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 331,
+      "pc": "0x5309a8",
+      "opposite_successor": "0x5309ae",
+      "pcode_guard_index": 186,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 333,
+      "pc": "0x530bc4",
+      "opposite_successor": "0x531143",
+      "pcode_guard_index": 187,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 357,
+      "pc": "0x58c843",
+      "opposite_successor": "0x58c890",
+      "pcode_guard_index": 202,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 360,
+      "pc": "0x58c84a",
+      "opposite_successor": "0x58c8b0",
+      "pcode_guard_index": 204,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 363,
+      "pc": "0x58c852",
+      "opposite_successor": "0x58c8a0",
+      "pcode_guard_index": 206,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 365,
+      "pc": "0x58c858",
+      "opposite_successor": "0x58c85a",
+      "pcode_guard_index": 207,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 375,
+      "pc": "0x564ffe",
+      "opposite_successor": "0x56d076",
+      "pcode_guard_index": 216,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 379,
+      "pc": "0x56500f",
+      "opposite_successor": "0x5695e0",
+      "pcode_guard_index": 219,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 395,
+      "pc": "0x5612c9",
+      "opposite_successor": "0x5612cf",
+      "pcode_guard_index": 227,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 428,
+      "pc": "0x563750",
+      "opposite_successor": "0x5686df",
+      "pcode_guard_index": 240,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 433,
+      "pc": "0x563764",
+      "opposite_successor": "0x436443",
+      "pcode_guard_index": 242,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 440,
+      "pc": "0x56377c",
+      "opposite_successor": "0x569858",
+      "pcode_guard_index": 244,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 443,
+      "pc": "0x56378e",
+      "opposite_successor": "0x56b618",
+      "pcode_guard_index": 246,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 445,
+      "pc": "0x56379b",
+      "opposite_successor": "0x5637a1",
+      "pcode_guard_index": 247,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 448,
+      "pc": "0x56987c",
+      "opposite_successor": "0x5637a1",
+      "pcode_guard_index": 250,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 450,
+      "pc": "0x56988e",
+      "opposite_successor": "0x5637a1",
+      "pcode_guard_index": 252,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 454,
+      "pc": "0x5698a0",
+      "opposite_successor": "0x4363bc",
+      "pcode_guard_index": 255,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 481,
+      "pc": "0x55ffca",
+      "opposite_successor": "0x56009f",
+      "pcode_guard_index": 269,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 486,
+      "pc": "0x55ffe1",
+      "opposite_successor": "0x56009f",
+      "pcode_guard_index": 271,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 492,
+      "pc": "0x55fffc",
+      "opposite_successor": "0x560172",
+      "pcode_guard_index": 275,
+      "prefix_opposite": "unsat"
+    },
+    {
+      "absolute_step": 507,
+      "pc": "0x56003c",
+      "opposite_successor": "0x560080",
+      "pcode_guard_index": 287,
+      "prefix_opposite": "unsat"
+    }
+  ],
+  "internal_pcode_conditionals": [
+    {
+      "guard_index": 122,
+      "pc": "0x5630f6",
+      "opposite": "unsat",
+      "witness": null
+    },
+    {
+      "guard_index": 131,
+      "pc": "0x5613b8",
+      "opposite": "unsat",
+      "witness": null
+    }
+  ],
+  "widened_domain": [
+    0,
+    256
+  ],
+  "candidate": {
+    "guard_index": 84,
+    "pc": "0x5a82b0",
+    "opposite": "sat",
+    "witness": 0,
+    "native_status": "unrealized_in_default_zero_trace",
+    "first_actual_divergence_step": 133,
+    "first_actual_divergence_pc": "0x5a8250",
+    "source_successor": "0x5a8256",
+    "actual_zero_successor": "0x5a83c8",
+    "reason": "zero object's tag and other live-ins differ from fixed source252 object"
+  },
+  "scope": "first 513 native steps; prefix-only guard queries under source252 fixed other state",
+  "does_not_close_zero_candidate": true
+}

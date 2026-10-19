@@ -1,0 +1,159 @@
+{
+  "schema_version": "python-connected-prefix-v1",
+  "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "cases": [
+    {
+      "input": 251,
+      "trace_sha256": "2b01d30cf86bcef03c09a98d8580a723222ae657aec79cfdf4070909460bd9da",
+      "first_read_environment_bytes": 536,
+      "before_external": {
+        "native_steps": 513,
+        "pcode_operations": 2595,
+        "modeled_reads": 129,
+        "ordered_writes": 78,
+        "guard_terms": 292,
+        "observed_witness_full_model_check": "unsat"
+      },
+      "external_call": {
+        "native_steps": 12,
+        "entry_step": 513,
+        "exit_step": 525,
+        "semantics": "opaque observed libc vector call",
+        "observed_effects": [
+          {
+            "step": 523,
+            "pc": "0x7f46c7d80063",
+            "address": 139941979144768,
+            "size": 64,
+            "changed_byte_offsets": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "write_flag": false
+          }
+        ],
+        "read_operand_bytes": 72,
+        "call_return_frame": "observed ABI-preserved registers and RSP",
+        "post_state_source": "observed trace, not computed from libc contract"
+      },
+      "after_external": {
+        "native_steps": 158,
+        "pcode_operations": 653,
+        "modeled_reads": 46,
+        "ordered_writes": 22,
+        "guard_terms": 96,
+        "observed_witness_full_model_check": "unsat"
+      },
+      "numeric_entry_step": 683,
+      "complete_symbolic_prefix": false
+    },
+    {
+      "input": 252,
+      "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "first_read_environment_bytes": 536,
+      "before_external": {
+        "native_steps": 513,
+        "pcode_operations": 2595,
+        "modeled_reads": 129,
+        "ordered_writes": 78,
+        "guard_terms": 292,
+        "observed_witness_full_model_check": "unsat"
+      },
+      "external_call": {
+        "native_steps": 12,
+        "entry_step": 513,
+        "exit_step": 525,
+        "semantics": "opaque observed libc vector call",
+        "observed_effects": [
+          {
+            "step": 523,
+            "pc": "0x7f4d238ca063",
+            "address": 139969287512640,
+            "size": 64,
+            "changed_byte_offsets": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "write_flag": false
+          }
+        ],
+        "read_operand_bytes": 72,
+        "call_return_frame": "observed ABI-preserved registers and RSP",
+        "post_state_source": "observed trace, not computed from libc contract"
+      },
+      "after_external": {
+        "native_steps": 158,
+        "pcode_operations": 653,
+        "modeled_reads": 46,
+        "ordered_writes": 22,
+        "guard_terms": 96,
+        "observed_witness_full_model_check": "unsat"
+      },
+      "numeric_entry_step": 683,
+      "complete_symbolic_prefix": false
+    },
+    {
+      "input": 254,
+      "trace_sha256": "7c2d9d5cc26aa355c110abeb970b49283672dff64d11f0c2dfe9493261df495d",
+      "first_read_environment_bytes": 536,
+      "before_external": {
+        "native_steps": 513,
+        "pcode_operations": 2595,
+        "modeled_reads": 129,
+        "ordered_writes": 78,
+        "guard_terms": 292,
+        "observed_witness_full_model_check": "unsat"
+      },
+      "external_call": {
+        "native_steps": 12,
+        "entry_step": 513,
+        "exit_step": 525,
+        "semantics": "opaque observed libc vector call",
+        "observed_effects": [
+          {
+            "step": 523,
+            "pc": "0x7fd363bf4063",
+            "address": 140545890189888,
+            "size": 64,
+            "changed_byte_offsets": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "write_flag": false
+          }
+        ],
+        "read_operand_bytes": 72,
+        "call_return_frame": "observed ABI-preserved registers and RSP",
+        "post_state_source": "observed trace, not computed from libc contract"
+      },
+      "after_external": {
+        "native_steps": 158,
+        "pcode_operations": 653,
+        "modeled_reads": 46,
+        "ordered_writes": 22,
+        "guard_terms": 96,
+        "observed_witness_full_model_check": "unsat"
+      },
+      "numeric_entry_step": 683,
+      "complete_symbolic_prefix": false
+    }
+  ],
+  "scope": "all non-libc caller-prefix native steps P-code replayed at observed witness; libc call opaque",
+  "limits": [
+    "external libc vector call post-state is observed, not symbolically derived",
+    "unexplored prefix branches and exception exits remain open",
+    "first-read environment bytes are target-trace supplied"
+  ]
+}

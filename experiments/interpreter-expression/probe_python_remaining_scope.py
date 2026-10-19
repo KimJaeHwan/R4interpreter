@@ -13,7 +13,8 @@ import z3
 
 from common_observed_transition import apply_case
 from pcode_transition_summary import FLAG_OFFSETS, REGISTER_OFFSETS
-from probe_connected_python_program import adapter, matching_boundary, require
+from probe_connected_python_program import (adapter, matching_boundary,
+                                            path_inventory, require)
 from probe_unseen_python_path import ARTIFACTS, COMMON, GENERATED, NEIGHBOR_SUMMARY, PYTHON, ROOT, SOURCE
 from prove_cross_full_flow import (CACHE_BASE, check_watches, find_write,
     initial_memory, load_trace, one, replay, unsat, word)
@@ -123,6 +124,18 @@ def branch_audit(source_rows, source_meta, alternate_rows, heldout_rows):
     restricted, widened = results
     require(all(item["opposite"] == "unsat" for item in restricted["answers"]),
             "fixed source path has feasible alternate in its stated domain")
+    native_branches = path_inventory(selected, {})["conditional_branches"]
+    require(len(native_branches) == 32, "native branch occurrence count changed")
+    native_proofs = []
+    for edge in native_branches:
+        matches = [item for item in restricted["answers"]
+                   if item["pc"] == edge["pc"]]
+        require(len(matches) == 1 and matches[0]["opposite"] == "unsat",
+                "native conditional edge lacks its P-code prefix proof")
+        native_proofs.append({"step_in_selected": edge["step_in_slice"],
+                              "pc": edge["pc"],
+                              "opposite_successor": edge["opposite_successor"],
+                              "prefix_opposite": "unsat"})
     sat_edges = [item for item in widened["answers"] if item["opposite"] == "sat"]
     require(len(sat_edges) == 1 and sat_edges[0]["witness"] == 251 and
             sat_edges[0]["pc"] == "0x5e978a", "alternate model changed")
@@ -151,6 +164,7 @@ def branch_audit(source_rows, source_meta, alternate_rows, heldout_rows):
             "pcode_cbranch_guards": len(guards),
             "source_domain": [252, 256],
             "opposite_edges_unsat_in_source_domain": len(restricted["answers"]),
+            "native_conditional_edges_proved_in_source_domain": native_proofs,
             "widened_domain": [251, 256], "first_feasible_alternate": sat_edges[0],
             "observed_successors": {str(k): hex(v) for k, v in observed.items()},
             "scope": "source252 fixed other entry registers, allocator/TLS memory and earlier path guards",
