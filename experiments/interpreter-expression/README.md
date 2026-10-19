@@ -103,6 +103,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `discover_dispatch_intervals.py`, `observed_pcode_schedule.py`, `audit_observed_dependencies.py`: 관측 분배 후보의 검색·전이 승인, `cmov` 명령 내부 실행 경로, 세 엔진 의존성 기록. [분배 경계·의존성 감사](BOUNDARY_DEPENDENCY_RESULT.md)에 범위와 재현 순서가 있다.
 - `probe_unseen_python_path.py`: 기존 할당 요약을 사용하지 않고 관측 Python 구간의 전체 네이티브 전이를 생성해 다른 입력에 적용한다. 이웃 분배 구간의 의미 미분류 재사용과 두 숫자 경로의 조건부 값 IL 공유를 [실험 결과](UNSEEN_PATH_FAMILY_PROBE_RESULT.md)에 기록했다.
 - `probe_connected_python_program.py`: Python의 캐시·할당 숫자 경로와 다음 분배 구간을 계산된 상태·메모리로 순차 연결하고, 제어 edge의 미탐색 의무와 쓰기 보존형 표시를 [연결 결과](CONNECTED_PYTHON_PROGRAM_RESULT.md)에 기록했다.
+- `probe_python_remaining_scope.py`: Python 할당 경로의 고정 환경 조건분기 반대쪽을 SMT로 검사하고 새 `251`·`254` 전체 추적으로 확인했다. 호출 인자와 바깥 반환 연결, allocator 수명의 미해결 의무는 [남은 범위 결과](PYTHON_REMAINING_SCOPE_RESULT.md)에 기록했다.
 - `refine_common_numeric_il.py`: 세 엔진의 네이티브 값 AST에서 공통 덧셈 후보를 얻고 typed 값 IL에 대한 조건부 refinement, 원래 전이 효과, 새 입력 적용을 확인한다. [공통 숫자 IL 결과](COMMON_NUMERIC_REFINEMENT_RESULT.md)에 근거와 한계가 있다.
 
 ## 재현

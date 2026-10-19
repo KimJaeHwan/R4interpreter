@@ -1,0 +1,235 @@
+{
+  "experiment": "CPython bounded missing-scope audit",
+  "binary_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+  "frozen_summaries_sha256": {
+    "first": "79680c9c71bdfbe6823f91f1d13b3cbac78b99fb2041bb1370e9fa3e70a4b59c",
+    "second": "627578c3e181fdf4425f2654a5e58b7c2754acadd275af9f26ec17c1d6e47f02",
+    "cached": "4efef1e57b41668b5600e1a2f3373baa3792e8083852bb1453aac4976ebd1608"
+  },
+  "branch": {
+    "selected_native_steps": 240,
+    "pcode_operations": 1136,
+    "pcode_cbranch_guards": 33,
+    "source_domain": [
+      252,
+      256
+    ],
+    "opposite_edges_unsat_in_source_domain": 33,
+    "widened_domain": [
+      251,
+      256
+    ],
+    "first_feasible_alternate": {
+      "guard_index": 40,
+      "pc": "0x5e978a",
+      "opposite": "sat",
+      "witness": 251
+    },
+    "observed_successors": {
+      "252": "0x5e97b0",
+      "251": "0x5e978c",
+      "254": "0x5e97b0"
+    },
+    "scope": "source252 fixed other entry registers, allocator/TLS memory and earlier path guards",
+    "remaining_after_first_divergence": "unknown; saved allocated suffix is inapplicable",
+    "controls": [
+      "current guard excluded from prefix query",
+      "out-of-domain witness excluded",
+      "SAT candidate executed independently"
+    ]
+  },
+  "paths": [
+    {
+      "input": 251,
+      "route": "cached",
+      "trace_sha256": "2b01d30cf86bcef03c09a98d8580a723222ae657aec79cfdf4070909460bd9da",
+      "prefix_total_native_steps": 683,
+      "entry_branch_replayed_native_steps": 235,
+      "entry_branch_pcode_operations": 1094,
+      "entry_branch_value_at_rsi": "ZeroExt(32, X) under 5..251, fixed entry environment",
+      "proved_local_prefix_windows": {
+        "parent_producer": 16,
+        "argument_to_child_local": 2,
+        "child_load": 34
+      },
+      "prefix_unmodeled_gaps_remain": true,
+      "frozen_first_native_steps": 116,
+      "frozen_second_native_steps": 94,
+      "suffix_replayed_native_steps": 94,
+      "suffix_pcode_operations": 410,
+      "suffix_full_state_and_memory_audit": {
+        "modeled_reads": 37,
+        "native_read_operands": 27,
+        "ordered_native_writes": 18,
+        "modeled_final_gprs": 16,
+        "modeled_final_flags": 5
+      },
+      "output_pointer": "0xa44ab0",
+      "numeric_value": 256,
+      "status": "input/call local bridge, two frozen transitions, caller suffix replay validated",
+      "negative_controls": [
+        "wrong call argument value rejected",
+        "wrong child parameter slot rejected",
+        "wrong suffix entry GPR, flag and FS base rejected",
+        "corrupted caller return slot rejected"
+      ]
+    },
+    {
+      "input": 252,
+      "route": "allocated",
+      "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "prefix_total_native_steps": 683,
+      "entry_branch_replayed_native_steps": 235,
+      "entry_branch_pcode_operations": 1094,
+      "entry_branch_value_at_rsi": "ZeroExt(32, X) under 252..256, fixed entry environment",
+      "proved_local_prefix_windows": {
+        "parent_producer": 16,
+        "argument_to_child_local": 2,
+        "child_load": 34
+      },
+      "prefix_unmodeled_gaps_remain": true,
+      "frozen_first_native_steps": 146,
+      "frozen_second_native_steps": 94,
+      "suffix_replayed_native_steps": 94,
+      "suffix_pcode_operations": 410,
+      "suffix_full_state_and_memory_audit": {
+        "modeled_reads": 37,
+        "native_read_operands": 27,
+        "ordered_native_writes": 18,
+        "modeled_final_gprs": 16,
+        "modeled_final_flags": 5
+      },
+      "output_pointer": "0x7f4d2346e570",
+      "numeric_value": 257,
+      "status": "input/call local bridge, two frozen transitions, caller suffix replay validated",
+      "negative_controls": [
+        "wrong call argument value rejected",
+        "wrong child parameter slot rejected",
+        "wrong suffix entry GPR, flag and FS base rejected",
+        "corrupted caller return slot rejected"
+      ]
+    },
+    {
+      "input": 254,
+      "route": "allocated",
+      "trace_sha256": "7c2d9d5cc26aa355c110abeb970b49283672dff64d11f0c2dfe9493261df495d",
+      "prefix_total_native_steps": 683,
+      "entry_branch_replayed_native_steps": 235,
+      "entry_branch_pcode_operations": 1094,
+      "entry_branch_value_at_rsi": "ZeroExt(32, X) under 252..256, fixed entry environment",
+      "proved_local_prefix_windows": {
+        "parent_producer": 16,
+        "argument_to_child_local": 2,
+        "child_load": 34
+      },
+      "prefix_unmodeled_gaps_remain": true,
+      "frozen_first_native_steps": 146,
+      "frozen_second_native_steps": 94,
+      "suffix_replayed_native_steps": 94,
+      "suffix_pcode_operations": 410,
+      "suffix_full_state_and_memory_audit": {
+        "modeled_reads": 37,
+        "native_read_operands": 27,
+        "ordered_native_writes": 18,
+        "modeled_final_gprs": 16,
+        "modeled_final_flags": 5
+      },
+      "output_pointer": "0x7fd363796570",
+      "numeric_value": 259,
+      "status": "input/call local bridge, two frozen transitions, caller suffix replay validated",
+      "negative_controls": [
+        "wrong call argument value rejected",
+        "wrong child parameter slot rejected",
+        "wrong suffix entry GPR, flag and FS base rejected",
+        "corrupted caller return slot rejected"
+      ]
+    }
+  ],
+  "allocator": [
+    {
+      "input": 252,
+      "object_pointer": "0x7f4d2346e570",
+      "object_field_writes": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          16,
+          8
+        ],
+        [
+          24,
+          4
+        ]
+      ],
+      "first_read_before_field_write": [
+        {
+          "step_in_first": 97,
+          "pc": "0x5e9802",
+          "address": "0x7f4d2346e570"
+        }
+      ],
+      "helper_call_observed": "0x5932f3 -> 0x5e9710",
+      "logical_allocate": "unknown",
+      "logical_free": "unknown",
+      "freshness_and_nonaliasing": "unknown",
+      "missing_authority": [
+        "allocator extent/generation and prior free/reuse history",
+        "success and failure contract",
+        "ownership transfer"
+      ],
+      "negative_control": "field writes and returned pointer alone do not authorize Allocate"
+    },
+    {
+      "input": 254,
+      "object_pointer": "0x7fd363796570",
+      "object_field_writes": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          16,
+          8
+        ],
+        [
+          24,
+          4
+        ]
+      ],
+      "first_read_before_field_write": [
+        {
+          "step_in_first": 97,
+          "pc": "0x5e9802",
+          "address": "0x7fd363796570"
+        }
+      ],
+      "helper_call_observed": "0x5932f3 -> 0x5e9710",
+      "logical_allocate": "unknown",
+      "logical_free": "unknown",
+      "freshness_and_nonaliasing": "unknown",
+      "missing_authority": [
+        "allocator extent/generation and prior free/reuse history",
+        "success and failure contract",
+        "ownership transfer"
+      ],
+      "negative_control": "field writes and returned pointer alone do not authorize Allocate"
+    }
+  ],
+  "complete_python_program": false,
+  "open_obligations": [
+    "caller prefix gaps and alternate paths",
+    "native calls and exceptions outside selected route",
+    "CPython allocator lifetime contract",
+    "independent model of all external memory effects"
+  ]
+}
