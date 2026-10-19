@@ -1,0 +1,751 @@
+{
+  "schema_version": "integrated-pipeline-result-v1",
+  "benchmark": {
+    "branch": "zero/nonzero arithmetic with one child call",
+    "string": "ASCII decimal input plus character 5",
+    "oracles": {
+      "integrated_case.lua": "2280875dd4d486dcc4c22ec31b20ba188c2f732dbebe8b7e53a9fd7797639cb4",
+      "integrated_case.py": "3153e77aa316d3fefba522c6b9297433fc13f3d1a3db621f2f77584abdc7c79f",
+      "integrated_case.js": "2e7ac4970a4ef830cc839871140fed79c94e836e9f72fedd87d8149c9bd3cd9a"
+    },
+    "oracle_not_analysis_input": true
+  },
+  "branch": {
+    "source_proof_sha256": {
+      "lua": "abc2cacc1e65c4c9e9d942e4662f72f692a15d8dd97a04c77aa5aed4f25a51c2",
+      "python_javascript": "5ef58a4bd4db11287c220b582e3518090560c3adffea1e93a0068a56ab4ac1e7"
+    },
+    "fresh_input": 42,
+    "fresh_native_certificates": {
+      "lua": {
+        "engine": "lua",
+        "input": 42,
+        "output": 47,
+        "trace_sha256": "fa6c47701925ef6eb3d408f4e5234762d88c5700ef3d2c9e39f30b8b5d034c10",
+        "input_prefix": {
+          "run_lua_entry_pc": "0x401490",
+          "entry_register": "RSI",
+          "saved_register": "RBP",
+          "saved_register_transfer_pcode_proved": true,
+          "saved_register_preserved_across_luaL_newstate": "x86-64 SysV ABI assumption; witness checked",
+          "source_native_pc": "0x416ea1",
+          "source_expression": "X",
+          "source_expression_pcode_proved": true,
+          "a_to_b_intervening_writes_inspected": 291,
+          "b_to_source_intervening_writes_inspected": 2811,
+          "a_to_b_no_recorded_aliasing_write": true,
+          "b_to_source_no_recorded_aliasing_write": true,
+          "long_input_slots_hardware_watch_no_write": true
+        },
+        "vm_path": {
+          "source_native_pc": "0x416ea1",
+          "callee_native_pc": "0x4164b8",
+          "result_native_pc": "0x417cea",
+          "guard": "X != 0",
+          "guard_equivalence": "unsat",
+          "payload_expression": "X + 5",
+          "payload_equivalence": "unsat",
+          "observed_address_guard_equivalence": "unsat",
+          "undefined_overflow_flag_observations": [
+            {
+              "pc": "0x415ee3",
+              "step": 54940,
+              "bit": 11
+            },
+            {
+              "pc": "0x415ee9",
+              "step": 54942,
+              "bit": 11
+            },
+            {
+              "pc": "0x415ef4",
+              "step": 54945,
+              "bit": 11
+            },
+            {
+              "pc": "0x415f25",
+              "step": 54956,
+              "bit": 11
+            },
+            {
+              "pc": "0x415e27",
+              "step": 54963,
+              "bit": 11
+            },
+            {
+              "pc": "0x415553",
+              "step": 54974,
+              "bit": 11
+            },
+            {
+              "pc": "0x415557",
+              "step": 54975,
+              "bit": 11
+            },
+            {
+              "pc": "0x415561",
+              "step": 54978,
+              "bit": 11
+            },
+            {
+              "pc": "0x415565",
+              "step": 54979,
+              "bit": 11
+            },
+            {
+              "pc": "0x416ad3",
+              "step": 54997,
+              "bit": 11
+            },
+            {
+              "pc": "0x416ad7",
+              "step": 54998,
+              "bit": 11
+            },
+            {
+              "pc": "0x416ada",
+              "step": 54999,
+              "bit": 11
+            },
+            {
+              "pc": "0x416ae6",
+              "step": 55003,
+              "bit": 11
+            },
+            {
+              "pc": "0x416aef",
+              "step": 55005,
+              "bit": 11
+            },
+            {
+              "pc": "0x41578c",
+              "step": 55055,
+              "bit": 11
+            },
+            {
+              "pc": "0x415790",
+              "step": 55056,
+              "bit": 11
+            },
+            {
+              "pc": "0x41579b",
+              "step": 55059,
+              "bit": 11
+            },
+            {
+              "pc": "0x4157a2",
+              "step": 55061,
+              "bit": 11
+            },
+            {
+              "pc": "0x4157b8",
+              "step": 55068,
+              "bit": 11
+            },
+            {
+              "pc": "0x40680c",
+              "step": 55104,
+              "bit": 11
+            },
+            {
+              "pc": "0x406833",
+              "step": 55115,
+              "bit": 11
+            },
+            {
+              "pc": "0x406841",
+              "step": 55119,
+              "bit": 11
+            },
+            {
+              "pc": "0x4068d8",
+              "step": 55143,
+              "bit": 11
+            },
+            {
+              "pc": "0x4068f4",
+              "step": 55150,
+              "bit": 11
+            },
+            {
+              "pc": "0x4164bf",
+              "step": 55191,
+              "bit": 11
+            },
+            {
+              "pc": "0x4164c5",
+              "step": 55193,
+              "bit": 11
+            },
+            {
+              "pc": "0x4164d0",
+              "step": 55196,
+              "bit": 11
+            },
+            {
+              "pc": "0x4164d4",
+              "step": 55197,
+              "bit": 11
+            },
+            {
+              "pc": "0x4164de",
+              "step": 55200,
+              "bit": 11
+            }
+          ],
+          "guard_count": 145,
+          "native_instructions": 281,
+          "pcode_operations": 2195,
+          "pcode_reads": 73,
+          "pcode_writes": 31,
+          "initial_memory_bytes": 209
+        },
+        "return_suffix": {
+          "vm_payload_write_pc": "0x417cea",
+          "native_result_store_pc": "0x401542",
+          "printf_call_pc": "0x401388",
+          "printf_second_argument_expression": "P",
+          "vm_to_native_stack_pcode_proved": true,
+          "native_stack_to_printf_argument_pcode_proved": true,
+          "lua_close_intervening_writes_inspected": 1733,
+          "lua_close_no_recorded_stack_aliasing_write": true,
+          "native_return_slot_hardware_watch_no_write": true,
+          "vm_to_native_instructions": 122,
+          "vm_to_native_pcode_operations": 688,
+          "native_tail_instructions": 12,
+          "native_tail_pcode_operations": 56
+        },
+        "native_total_steps": 66149,
+        "scope": "fresh conditional P-code replay; not frozen full-path application"
+      },
+      "python": {
+        "engine": "python",
+        "witness": 42,
+        "native_steps": 987,
+        "output": 47,
+        "guard_expression": "5 <= X <= 251",
+        "value_expression": "X + 5",
+        "value_equivalence": "unsat",
+        "cache_alias_exclusion": 37,
+        "branch_bytecode_offset": 36,
+        "call_argument": "X",
+        "proof_domain": "5 <= X <= 251 and X != 37",
+        "cache_sha256": "0848e8ec3eac0aa064b111fbe4d5b096e1ae2a4cc286f797d51b239bbb0d9a6e",
+        "hardware_watches": {
+          "child_parameter": {
+            "watched_steps": 92,
+            "address": "0x7efd771bd240",
+            "read_pc": "0x5612bf"
+          },
+          "input_pyint_digit": {
+            "watched_steps": 893,
+            "address": "0xa43008",
+            "read_pc": null
+          },
+          "input_pyint_tag": {
+            "watched_steps": 893,
+            "address": "0xa43000",
+            "read_pc": null
+          },
+          "parent_call_argument": {
+            "watched_steps": 161,
+            "address": "0x7efd771bd1f0",
+            "read_pc": "0x56036c"
+          },
+          "parent_local": {
+            "watched_steps": 893,
+            "address": "0x7efd771bd1d8",
+            "read_pc": null
+          }
+        },
+        "hardware_read_events": [
+          {
+            "step": 134,
+            "pc": "0x5a8256",
+            "label": "input_pyint_tag"
+          },
+          {
+            "step": 149,
+            "pc": "0x5a8289",
+            "label": "input_pyint_digit"
+          },
+          {
+            "step": 559,
+            "pc": "0x56036c",
+            "label": "parent_call_argument"
+          },
+          {
+            "step": 653,
+            "pc": "0x5612bf",
+            "label": "child_parameter"
+          },
+          {
+            "step": 744,
+            "pc": "0x5e973f",
+            "label": "input_pyint_tag"
+          },
+          {
+            "step": 755,
+            "pc": "0x5e9769",
+            "label": "input_pyint_digit"
+          }
+        ],
+        "gap_noninterference": {
+          "register": "rsi",
+          "kill_pc": "0x564fd5",
+          "instructions_without_read": 32
+        },
+        "segments": {
+          "branch": {
+            "native_steps": 235,
+            "pcode_operations": 1094,
+            "guard_count": 135
+          },
+          "parent_argument": {
+            "native_steps": 16,
+            "pcode_operations": 57,
+            "guard_count": 8
+          },
+          "call_bridge": {
+            "native_steps": 2,
+            "pcode_operations": 4,
+            "guard_count": 2
+          },
+          "child_operands": {
+            "native_steps": 34,
+            "pcode_operations": 120,
+            "guard_count": 18
+          },
+          "addition": {
+            "native_steps": 116,
+            "pcode_operations": 626,
+            "guard_count": 61
+          },
+          "child_return_bridge": {
+            "native_steps": 94,
+            "pcode_operations": 410,
+            "guard_count": 70
+          },
+          "outer_return_bridge": {
+            "native_steps": 94,
+            "pcode_operations": 410,
+            "guard_count": 70
+          }
+        },
+        "result": "conditional end-to-end proof through caller dispatch",
+        "trace_sha256": "0c31912553486da0a5f27528914b2c709aa21d847a2d6bebd6b8c174f3db729d"
+      },
+      "javascript": {
+        "engine": "javascript",
+        "witness": 42,
+        "native_steps": 29446,
+        "output": 47,
+        "guard_expression": "5 <= X <= 251",
+        "value_expression": "X + 5",
+        "value_equivalence": "unsat",
+        "branch_bytecode_offset": 17,
+        "return_bytecode_offset": 24,
+        "call_argument": "X",
+        "proof_domain": "5 <= X <= 251",
+        "hardware_watches": {
+          "child_parameter": {
+            "watched_steps": 29234,
+            "address": "0x7fff4f3cce38",
+            "read_pc": "0x1ba8d09"
+          },
+          "parent_parameter": {
+            "watched_steps": 29396,
+            "address": "0x7fff4f3cce98",
+            "read_pc": null
+          }
+        },
+        "hardware_read_events": [
+          {
+            "step": 11,
+            "pc": "0x1bbff8d",
+            "label": "parent_parameter"
+          },
+          {
+            "step": 74,
+            "pc": "0x1bbdb12",
+            "label": "parent_parameter"
+          },
+          {
+            "step": 29316,
+            "pc": "0x1ba8d09",
+            "label": "child_parameter"
+          }
+        ],
+        "gap_noninterference": {
+          "register": "rbx",
+          "kill_pc": "0x19ff01a",
+          "instructions_without_read": 19
+        },
+        "segments": {
+          "branch": {
+            "native_steps": 39,
+            "pcode_operations": 165,
+            "guard_count": 27
+          },
+          "call_argument": {
+            "native_steps": 82,
+            "pcode_operations": 363,
+            "guard_count": 59
+          },
+          "child_load": {
+            "native_steps": 8,
+            "pcode_operations": 24,
+            "guard_count": 5
+          },
+          "addition": {
+            "native_steps": 23,
+            "pcode_operations": 122,
+            "guard_count": 13
+          },
+          "child_return_bridge": {
+            "native_steps": 51,
+            "pcode_operations": 222,
+            "guard_count": 39
+          },
+          "outer_return_bridge": {
+            "native_steps": 50,
+            "pcode_operations": 218,
+            "guard_count": 37
+          }
+        },
+        "result": "conditional end-to-end proof through caller dispatch",
+        "trace_sha256": "9da8af632fdd70392c74badc0a4a79c762232065af7eeeef41247e568b3d90f4"
+      }
+    },
+    "frozen_numeric_segments": {
+      "python": {
+        "status": "differentially_validated",
+        "engine": "python",
+        "native_steps": 116,
+        "outputs_checked": 21,
+        "reads_checked": 31,
+        "derived_outputs_checked": 0,
+        "ordered_writes_checked": 12,
+        "next_pc": "0x56173b",
+        "target_pcode_steps_replayed": 0
+      },
+      "javascript": {
+        "status": "differentially_validated",
+        "engine": "javascript",
+        "native_steps": 23,
+        "outputs_checked": 21,
+        "reads_checked": 8,
+        "derived_outputs_checked": 1,
+        "ordered_writes_checked": 0,
+        "next_pc": "0x1bc6f40",
+        "target_pcode_steps_replayed": 0
+      }
+    },
+    "frozen_lua_numeric_segment": "unknown(different branch-call handler path)",
+    "value_slices": {
+      "lua": {
+        "sink": "R12 VM payload after arithmetic",
+        "native_steps_in_slice_interval": 281,
+        "raw_dynamic_pcode_operations": 2195,
+        "selected_value_pcode_operations": 19,
+        "selected_native_steps": 9,
+        "selected_store_operations": 2,
+        "entry_live_byte_lanes": 12,
+        "slice_debts": [],
+        "scope": "data-value slice only; guards and other effects remain in path certificates"
+      },
+      "python": {
+        "sink": "caller-visible VM result slot",
+        "native_steps_in_slice_interval": 987,
+        "raw_dynamic_pcode_operations": 5320,
+        "selected_value_pcode_operations": 50,
+        "selected_native_steps": 30,
+        "selected_store_operations": 5,
+        "entry_live_byte_lanes": 24,
+        "slice_debts": [],
+        "scope": "data-value slice only; guards and other effects remain in path certificates"
+      },
+      "javascript": {
+        "sink": "caller-visible RAX",
+        "native_steps_in_slice_interval": 29446,
+        "raw_dynamic_pcode_operations": 199761,
+        "selected_value_pcode_operations": 229,
+        "selected_native_steps": 118,
+        "selected_store_operations": 35,
+        "entry_live_byte_lanes": 17,
+        "slice_debts": [
+          {
+            "reason": "selected native instruction contains internal P-code control",
+            "examples": [
+              {
+                "step": 6579,
+                "pc": "0x7f1086280b9d",
+                "instruction": "cmovne rax, rdi"
+              }
+            ],
+            "count": 1
+          }
+        ],
+        "scope": "data-value slice only; guards and other effects remain in path certificates"
+      }
+    },
+    "common_il_sha256": "78c7bd39c4a7957051b9fa81d87e8b633937aec3f267b1d27ff67c0439c84b03",
+    "cases": [
+      {
+        "input": 0,
+        "prediction": 10,
+        "oracle_outputs": {
+          "lua": "10",
+          "python": "10",
+          "javascript": "10"
+        },
+        "status": "admitted"
+      },
+      {
+        "input": 9,
+        "prediction": 14,
+        "oracle_outputs": {
+          "lua": "14",
+          "python": "14",
+          "javascript": "14"
+        },
+        "status": "admitted"
+      },
+      {
+        "input": 42,
+        "prediction": 47,
+        "oracle_outputs": {
+          "lua": "47",
+          "python": "47",
+          "javascript": "47"
+        },
+        "status": "admitted"
+      },
+      {
+        "input": 251,
+        "prediction": 256,
+        "oracle_outputs": {
+          "lua": "256",
+          "python": "256",
+          "javascript": "256"
+        },
+        "status": "admitted"
+      },
+      {
+        "input": 252,
+        "prediction": null,
+        "oracle_outputs": {
+          "lua": "257",
+          "python": "257",
+          "javascript": "257"
+        },
+        "status": "unknown(outside shared guard)"
+      }
+    ],
+    "negative_controls": {
+      "python_wrong_successor": "unknown(path identity)",
+      "javascript_wrong_successor": "unknown(path identity)"
+    }
+  },
+  "string": {
+    "frozen_summary_sha256": "7e3b5acf16b13f8225d34526182abd8a5b33aade0650998c1b1c2e6cdc8a67a6",
+    "cases": [
+      {
+        "input_ascii": "42",
+        "length": 2,
+        "oracle_outputs": {
+          "lua": "425",
+          "python": "425",
+          "javascript": "425"
+        },
+        "native_js": {
+          "input": 42,
+          "status": "differentially_validated",
+          "digits": 2,
+          "pair_iterations": 1,
+          "output": "425",
+          "native_steps": 230,
+          "target_pcode_operations_replayed": 0,
+          "source_pcode_operations_replayed_at_application": 0,
+          "target_intermediate_state_used_as_input": false,
+          "stages": [
+            {
+              "label": "prefix",
+              "native_steps": 187,
+              "reads_checked": 35,
+              "ordered_writes_checked": 27,
+              "outputs_checked": 21
+            },
+            {
+              "label": "pair_exit",
+              "native_steps": 7,
+              "reads_checked": 2,
+              "ordered_writes_checked": 2,
+              "outputs_checked": 21
+            },
+            {
+              "label": "even_return",
+              "native_steps": 36,
+              "reads_checked": 11,
+              "ordered_writes_checked": 1,
+              "outputs_checked": 21
+            }
+          ]
+        },
+        "trace_sha256": "106207380aaf728955d979b19a0ad7d73b15bb41e1d51fbdb53e460ff7a9e3fd"
+      },
+      {
+        "input_ascii": "234567",
+        "length": 6,
+        "oracle_outputs": {
+          "lua": "2345675",
+          "python": "2345675",
+          "javascript": "2345675"
+        },
+        "native_js": {
+          "input": 234567,
+          "status": "differentially_validated",
+          "digits": 6,
+          "pair_iterations": 3,
+          "output": "2345675",
+          "native_steps": 244,
+          "target_pcode_operations_replayed": 0,
+          "source_pcode_operations_replayed_at_application": 0,
+          "target_intermediate_state_used_as_input": false,
+          "stages": [
+            {
+              "label": "prefix",
+              "native_steps": 187,
+              "reads_checked": 35,
+              "ordered_writes_checked": 27,
+              "outputs_checked": 21
+            },
+            {
+              "label": "pair_continue",
+              "native_steps": 7,
+              "reads_checked": 2,
+              "ordered_writes_checked": 2,
+              "outputs_checked": 21
+            },
+            {
+              "label": "pair_continue",
+              "native_steps": 7,
+              "reads_checked": 2,
+              "ordered_writes_checked": 2,
+              "outputs_checked": 21
+            },
+            {
+              "label": "pair_exit",
+              "native_steps": 7,
+              "reads_checked": 2,
+              "ordered_writes_checked": 2,
+              "outputs_checked": 21
+            },
+            {
+              "label": "even_return",
+              "native_steps": 36,
+              "reads_checked": 11,
+              "ordered_writes_checked": 1,
+              "outputs_checked": 21
+            }
+          ]
+        },
+        "trace_sha256": "688295e687eddc91e06e79c548f7e3eb45f33c3747e8c0110d22a2ace01b15f6"
+      },
+      {
+        "input_ascii": "123456789012",
+        "length": 12,
+        "oracle_outputs": {
+          "lua": "1234567890125",
+          "python": "1234567890125",
+          "javascript": "1234567890125"
+        },
+        "native_js": {
+          "input": 123456789012,
+          "status": "unknown(binary/schema/length domain)"
+        },
+        "trace_sha256": "5c0f84f5517ce52446af656907e3aab99fae14f92cad96608e49b10bacfbff4d"
+      }
+    ],
+    "negative_controls": {
+      "changed_js_write": "unknown(prefix ordered effects)"
+    },
+    "lua_python_native_string_transition": "unknown(no frozen path)",
+    "javascript_gc": "unknown(no lifetime proof)"
+  },
+  "lifetime": {
+    "lua_long_string_pool": {
+      "source_sha256": "98a1cea513dc6b0c053583cbb0b7c4d7959f647cbe1715e34caa224399de7d8c",
+      "effects": 18,
+      "failure": "unknown(not exercised)"
+    },
+    "python_pylong_pool": {
+      "source_sha256": "5c26830b310cba55c04646ed4dce17166f6e8c337a8300caea417c4c9d28b56d",
+      "effects": 33,
+      "failure": "observed pool exhaustion only"
+    },
+    "javascript_gc": "unknown(not analyzed)",
+    "scope": "separate controlled fixtures; not lifetime effects of the branch/string benchmark programs",
+    "lua_failure_retry": {
+      "binary_sha256": "28642fa8ece57f099df1c9dd269ef3962f1da608451aed358f52231a6f3db9a6",
+      "source_sha256": "db0085d29b70bf8b92fac81efa5d97f2398382d8aced41efa2841d153e1ae880",
+      "observation_sha256": "c67bb1156450650b398e8013dc06d782f102fba8abc171dcd591bb53cfae8170",
+      "events": [
+        {
+          "kind": "Allocate",
+          "requested_extent": 105,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "kind": "AllocationFailed",
+          "requested_extent": 121,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "kind": "AllocationFailed",
+          "requested_extent": 121,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "kind": "Free",
+          "requested_extent": 105,
+          "generation": 1,
+          "live_after": 0
+        },
+        {
+          "kind": "Allocate",
+          "requested_extent": 121,
+          "generation": 2,
+          "live_after": 1
+        },
+        {
+          "kind": "Free",
+          "requested_extent": 121,
+          "generation": 2,
+          "live_after": 0
+        }
+      ],
+      "protected_call_failure_status": "LUA_ERRMEM (checked by fixture)",
+      "same_address_new_generation": true,
+      "failed_allocator_callbacks_before_gc": 2,
+      "successful_new_attempt_after_gc": true,
+      "negative_controls": {
+        "failure_changes_live_state": "Lua failure changed ownership or extent",
+        "retry_uses_stale_generation": "Lua allocation state changed",
+        "release_wrong_extent": "Lua release state changed"
+      },
+      "evidence": "controlled allocator observations; no frozen native summary for this binary"
+    }
+  },
+  "limits": [
+    "native paths, source programs and runtimes are pinned to fixed binaries and ABI",
+    "fresh branch paths are re-proved; only Python/JS numeric handler segments use frozen common transition summaries",
+    "backward slice is a value projection; control dependencies and excluded effects are not erased",
+    "Lua/Python pool ownership comes from separate controlled fixtures",
+    "Lua failure/retry is allocator-observed only; no frozen native summary for that path, and JavaScript GC is unknown",
+    "all unsupported guards, path shapes, aliases and effects are unknown"
+  ]
+}

@@ -115,6 +115,8 @@ class PathReplay:
         self.current_pc = None
         self.touched_regs = set()
         self.touched_flags = set()
+        self.undefined_flags = set()
+        self.undefined_flag_observations = []
 
     def read(self, node):
         kind, offset, size = node["kind_code"], node["byte_offset"], node["byte_size"]
@@ -125,6 +127,11 @@ class PathReplay:
             return self.unique[(offset, size)]
         if kind == 2 and offset in FLAG_OFFSETS:
             assert size == 1
+            if (offset in self.undefined_flags and
+                    not (offset == 523 and
+                         self.shift_has_undefined_overflow(self.current_row))):
+                raise ValueError(f"undefined flag {FLAG_OFFSETS[offset]} read at "
+                                 f"{self.current_pc:#x} before a defined write")
             return Dual(self.flags[offset], self.flags_concrete[offset])
         if kind == 2 and offset in VECTOR_OFFSETS:
             assert size == 16
@@ -155,6 +162,7 @@ class PathReplay:
         if offset in FLAG_OFFSETS:
             self.flags[offset] = value.symbolic
             self.flags_concrete[offset] = value.concrete
+            self.undefined_flags.discard(offset)
             self.touched_flags.add(offset)
             return
         if offset in VECTOR_OFFSETS:
@@ -423,8 +431,29 @@ class PathReplay:
             for offset in self.touched_flags:
                 bit = FLAG_OFFSETS[offset]
                 expected = (row["registers_after"]["eflags"] >> bit) & 1
+                if bit == 11 and self.shift_has_undefined_overflow(row):
+                    self.undefined_flags.add(offset)
+                    self.flags[offset] = z3.BitVec(
+                        f"UNDEFINED_OF_{pc:x}_{row['step']}", 8)
+                    self.flags_concrete[offset] = expected
+                    self.undefined_flag_observations.append(
+                        {"pc": hex(pc), "step": row["step"], "bit": bit})
+                    continue
                 if self.flags_concrete[offset] != expected:
                     raise AssertionError(f"flag {bit} mismatch at {pc:#x}")
+
+    @staticmethod
+    def shift_has_undefined_overflow(row):
+        """Recognize immediate shifts/rotates for which x86 leaves OF undefined."""
+        instruction = row.get("instruction", "")
+        if not instruction or instruction.split()[0] not in (
+                "shl", "sal", "shr", "sar", "rol", "ror") or "," not in instruction:
+            return False
+        try:
+            count = int(instruction.rsplit(",", 1)[1].strip(), 0)
+        except ValueError:
+            return False
+        return 2 <= count < 32
 
 
 def serialize_expr(expression):

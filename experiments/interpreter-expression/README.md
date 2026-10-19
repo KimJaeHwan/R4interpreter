@@ -23,6 +23,7 @@
 | Python PyLong 할당 효과 | 동일한 구간 적용기로 캐시 밖 객체 생성 경로의 전체 네이티브 전이와 객체 필드를 확인 | 할당 경로 4건 일치·캐시 경로 1건 `unknown`; `Write`로 관측된 바이트 전이는 재현하지만 논리적 `Allocate`·freshness는 미증명 |
 | Python 제한 풀 객체 수명 | 실제 CPython 호출의 범위 지정 allocator에서 네이티브 helper 요약과 수명 ledger 연결 | 2개 성공 경로 × 4슬롯 조건부 SMT 증명; 별도 입력 2개를 포함한 3회 실행에서 helper 30회·객체 15개 일치, 잘못된 수명 기록 13종 거부 |
 | 공통 수명 효과 합성 | 언어 중립 `Allocate`·`Free`·`AllocationFailed` 상태를 네이티브 구간 전이와 연결 | 별도 입력 2개를 포함한 3회 실행에서 성공 helper 30회와 수명 효과 33개 합성; 부정 입력 18종 거부. 고갈 3건은 관측 효과로 유지 |
+| 세 엔진 통합 경로·값 실험 | 분기·호출의 새 입력 `42`를 세 엔진에서 재증명하고 공통 값 슬라이스·제한된 IL로 투영 | Python·JavaScript 저장 숫자 구간 각 1건 일치, Lua는 새 경로 재증명. 문자열 2·6자리 요약 일치, 12자리 `unknown`; Lua 제한 풀 실패·GC·새 시도 관측 |
 
 Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령, 1,608개 SSA JOIN, 442개 미해결 읽기 노드를 가진다. [루트 결과](lua_root_probe_result.json), [VM 결과](lua_vm_probe_result.json), [Bundle 전체 기록](lua_bundle_stats.json)을 구분해서 읽어야 한다. 전체 기록은 61번째 함수의 관측 범위 오류로 중단됐다.
 
@@ -60,6 +61,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [Lua 공통 수명 효과 결과](LUA_POOL_COMMON_LIFETIME_RESULT.md)는 같은 코어를 Lua 5.4.8의 긴 문자열 allocator 호출과 GC 해제에 연결했다. 고정 Lua ELF의 네이티브 helper를 별도로 증명하고 두 새 입력에 요약을 적용했다.
 
+[세 엔진 통합 실험 결과](INTEGRATED_PIPELINE_RESULT.md)는 저장된 경로 증명·숫자 구간 요약·공통 값 슬라이스·제한된 값 IL을 한 실행기로 묶었다. Lua allocator 실패와 길이 경계의 `unknown`도 별도 근거로 보존했다. 아직 자동 P-code/SSA→IL 생성은 아니다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -86,6 +89,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `python_pool_lifetime_fixture.c`, `trace_python_pool_lifetime.py`, `freeze_pool_lifetime.py`, `pool_lifetime_ledger.py`, `apply_pool_lifetime.py`: 실제 CPython의 제한된 객체 풀 trace, 네이티브 수명 helper 증명, 별도 입력 적용. [수명 결과](PYTHON_POOL_LIFETIME_RESULT.md)에 증거와 재현 순서가 있다.
 - `common_lifetime_effects.py`, `apply_common_pool_effects.py`: 주소 공간·domain·자원·generation으로 정의한 공통 수명 효과와 네이티브 구간 합성 검증. [공통 수명 결과](COMMON_LIFETIME_EFFECT_RESULT.md)에 적용 조건과 한계가 있다.
 - `lua_pool_lifetime_fixture.c`, `trace_lua_pool_lifetime.py`, `freeze_lua_pool_lifetime.py`, `apply_lua_pool_effects.py`: 실제 Lua allocator 호출의 제한 풀 수명 효과와 GC 해제·주소 재사용 검증. [Lua 공통 수명 결과](LUA_POOL_COMMON_LIFETIME_RESULT.md)에 재현 순서가 있다.
+- `common_native_slice.py`, `run_integrated_pipeline.py`, `integrated_case.*`, `integrated_lua_runner.c`, `lua_pool_failure_retry_fixture.c`: 새 세 엔진 경로의 값 후보 선택·증명서 기반 IL·평가 oracle·제어된 Lua 실패/재시도. [통합 결과](INTEGRATED_PIPELINE_RESULT.md)에 범위와 재현 순서가 있다.
 
 ## 재현
 
@@ -107,4 +111,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[Lua 공통 수명 효과 결과](LUA_POOL_COMMON_LIFETIME_RESULT.md) 이후에는 Lua의 다른 요청 크기와 allocator 실패·재시도를 분리하고, CPython 고갈·예외 경로에도 별도 네이티브 요약을 붙인다. 이후 12자리 이상에서 바뀌는 JavaScript 앞 경로와 경계·live-in/out 자동화를 시험한다.
+[세 엔진 통합 실험 결과](INTEGRATED_PIPELINE_RESULT.md)의 다음 연구 단위는 인증서 문자열을 벗어난 식·효과 IL 생성, 주소·제어 의존성 슬라이스와 경계 자동화, Lua 실패/CPython 예외의 별도 네이티브 요약, 12자리 이상 JavaScript 경로 동결을 묶어 진행한다.

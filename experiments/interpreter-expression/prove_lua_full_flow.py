@@ -288,6 +288,8 @@ def prove_vm_path(records, x, witness_payload):
             "result_native_pc": "0x417cea", "guard": "X == 0" if is_zero else "X != 0",
             "guard_equivalence": "unsat", "payload_expression": "10" if is_zero else "X + 5",
             "payload_equivalence": "unsat", "observed_address_guard_equivalence": "unsat",
+            "undefined_overflow_flag_observations": modeled.undefined_flag_observations,
+            "guard_count": len(modeled.guards),
             "native_instructions": len(rows), "pcode_operations": modeled.operation_count,
             "pcode_reads": len(modeled.reads), "pcode_writes": len(modeled.effects),
             "initial_memory_bytes": first_reads}

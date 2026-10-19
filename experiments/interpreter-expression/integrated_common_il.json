@@ -1,0 +1,84 @@
+{
+  "schema_version": "bounded-common-vm-il-v1",
+  "construction": "finite certificate projection; P-code slice is an independent provenance audit",
+  "input": {
+    "name": "X",
+    "type": "integer",
+    "admitted": "X=0 or 5<=X<=251"
+  },
+  "paths": [
+    {
+      "guard": {
+        "op": "eq",
+        "left": {
+          "op": "input",
+          "name": "X"
+        },
+        "right": {
+          "op": "const",
+          "value": 0
+        }
+      },
+      "return_value": {
+        "op": "const",
+        "value": 10,
+        "type": "int"
+      },
+      "observed_child_call": {
+        "argument": {
+          "op": "const",
+          "value": 5
+        },
+        "argument_evidence": "Python/JavaScript native call bridge only"
+      }
+    },
+    {
+      "guard": {
+        "op": "range",
+        "input": "X",
+        "minimum": 5,
+        "maximum": 251
+      },
+      "return_value": {
+        "op": "add",
+        "left": {
+          "op": "input",
+          "name": "X"
+        },
+        "right": {
+          "op": "const",
+          "value": 5
+        },
+        "type": "int"
+      },
+      "observed_child_call": {
+        "argument": {
+          "op": "input",
+          "name": "X"
+        },
+        "argument_evidence": "Python/JavaScript native call bridge only"
+      }
+    }
+  ],
+  "call": {
+    "kind": "ObservedChildCall",
+    "callee": "observed_child_call",
+    "argument_scope": "Python/JavaScript certificates; Lua native entry observed",
+    "non_value_effects": "retained in native path evidence; not eliminated"
+  },
+  "unknown": "all other input values or different native path/ABI/state",
+  "pseudocode": "if (X == 0) return 10;\nif (5 <= X && X <= 251) return X + 5;\nreturn unknown;",
+  "evidence": {
+    "source_certificate_sha256": {
+      "lua": "abc2cacc1e65c4c9e9d942e4662f72f692a15d8dd97a04c77aa5aed4f25a51c2",
+      "python_javascript": "5ef58a4bd4db11287c220b582e3518090560c3adffea1e93a0068a56ab4ac1e7"
+    },
+    "frozen_native_summary_sha256": "4efef1e57b41668b5600e1a2f3373baa3792e8083852bb1453aac4976ebd1608",
+    "fresh_holdout_trace_sha256": {
+      "lua": "fa6c47701925ef6eb3d408f4e5234762d88c5700ef3d2c9e39f30b8b5d034c10",
+      "python": "0c31912553486da0a5f27528914b2c709aa21d847a2d6bebd6b8c174f3db729d",
+      "javascript": "9da8af632fdd70392c74badc0a4a79c762232065af7eeeef41247e568b3d90f4"
+    }
+  },
+  "claim": "conditional certificate-based result-value projection; not automated SSA-to-IL generation or full effect erasure"
+}

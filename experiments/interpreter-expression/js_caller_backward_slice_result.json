@@ -1780,6 +1780,8 @@
       "control_or_opaque_return": 511,
       "native_memory_writes_outside_value_slice": 4559
     },
+    "raw_dynamic_pcode_operations": 128262,
+    "selected_memory_versions": 33,
     "excluded_examples": {
       "control_or_opaque_branch": {
         "step": 25100,

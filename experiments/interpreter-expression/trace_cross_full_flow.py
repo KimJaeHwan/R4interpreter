@@ -259,7 +259,8 @@ def main():
                     if args.engine == "python":
                         if bridge_phase == "source" and any(
                                 address == bridge_source and size == 8 and
-                                after_value == (0xA42B50 if entry_value == 0 else 0xA42BD0)
+                                after_value == (0xA42B50 if entry_value == 0
+                                                else entry_value_address)
                                 for (address, size, _), after_value in zip(accesses, new)):
                             watches[0] = {"address": bridge_source, "label": "parent_call_argument",
                                           "start_step": steps + 1, "mode": "read_write"}

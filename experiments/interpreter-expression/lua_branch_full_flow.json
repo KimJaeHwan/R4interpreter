@@ -36,6 +36,139 @@
         "payload_expression": "10",
         "payload_equivalence": "unsat",
         "observed_address_guard_equivalence": "unsat",
+        "undefined_overflow_flag_observations": [
+          {
+            "pc": "0x415ee3",
+            "step": 54917,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ee9",
+            "step": 54919,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ef4",
+            "step": 54922,
+            "bit": 11
+          },
+          {
+            "pc": "0x415f25",
+            "step": 54933,
+            "bit": 11
+          },
+          {
+            "pc": "0x415553",
+            "step": 54946,
+            "bit": 11
+          },
+          {
+            "pc": "0x415557",
+            "step": 54947,
+            "bit": 11
+          },
+          {
+            "pc": "0x415561",
+            "step": 54950,
+            "bit": 11
+          },
+          {
+            "pc": "0x415565",
+            "step": 54951,
+            "bit": 11
+          },
+          {
+            "pc": "0x416dc3",
+            "step": 54967,
+            "bit": 11
+          },
+          {
+            "pc": "0x416dc7",
+            "step": 54968,
+            "bit": 11
+          },
+          {
+            "pc": "0x416dd8",
+            "step": 54972,
+            "bit": 11
+          },
+          {
+            "pc": "0x41578c",
+            "step": 54988,
+            "bit": 11
+          },
+          {
+            "pc": "0x415790",
+            "step": 54989,
+            "bit": 11
+          },
+          {
+            "pc": "0x41579b",
+            "step": 54992,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157a2",
+            "step": 54994,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157b8",
+            "step": 55001,
+            "bit": 11
+          },
+          {
+            "pc": "0x40680c",
+            "step": 55037,
+            "bit": 11
+          },
+          {
+            "pc": "0x406833",
+            "step": 55048,
+            "bit": 11
+          },
+          {
+            "pc": "0x406841",
+            "step": 55052,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068d8",
+            "step": 55076,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068f4",
+            "step": 55083,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164bf",
+            "step": 55124,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164c5",
+            "step": 55126,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d0",
+            "step": 55129,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d4",
+            "step": 55130,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164de",
+            "step": 55133,
+            "bit": 11
+          }
+        ],
+        "guard_count": 112,
         "native_instructions": 237,
         "pcode_operations": 1879,
         "pcode_reads": 54,
@@ -87,6 +220,154 @@
         "payload_expression": "X + 5",
         "payload_equivalence": "unsat",
         "observed_address_guard_equivalence": "unsat",
+        "undefined_overflow_flag_observations": [
+          {
+            "pc": "0x415ee3",
+            "step": 55072,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ee9",
+            "step": 55074,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ef4",
+            "step": 55077,
+            "bit": 11
+          },
+          {
+            "pc": "0x415f25",
+            "step": 55088,
+            "bit": 11
+          },
+          {
+            "pc": "0x415e27",
+            "step": 55095,
+            "bit": 11
+          },
+          {
+            "pc": "0x415553",
+            "step": 55106,
+            "bit": 11
+          },
+          {
+            "pc": "0x415557",
+            "step": 55107,
+            "bit": 11
+          },
+          {
+            "pc": "0x415561",
+            "step": 55110,
+            "bit": 11
+          },
+          {
+            "pc": "0x415565",
+            "step": 55111,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad3",
+            "step": 55129,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad7",
+            "step": 55130,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ada",
+            "step": 55131,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ae6",
+            "step": 55135,
+            "bit": 11
+          },
+          {
+            "pc": "0x416aef",
+            "step": 55137,
+            "bit": 11
+          },
+          {
+            "pc": "0x41578c",
+            "step": 55187,
+            "bit": 11
+          },
+          {
+            "pc": "0x415790",
+            "step": 55188,
+            "bit": 11
+          },
+          {
+            "pc": "0x41579b",
+            "step": 55191,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157a2",
+            "step": 55193,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157b8",
+            "step": 55200,
+            "bit": 11
+          },
+          {
+            "pc": "0x40680c",
+            "step": 55236,
+            "bit": 11
+          },
+          {
+            "pc": "0x406833",
+            "step": 55247,
+            "bit": 11
+          },
+          {
+            "pc": "0x406841",
+            "step": 55251,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068d8",
+            "step": 55275,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068f4",
+            "step": 55282,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164bf",
+            "step": 55323,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164c5",
+            "step": 55325,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d0",
+            "step": 55328,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d4",
+            "step": 55329,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164de",
+            "step": 55332,
+            "bit": 11
+          }
+        ],
+        "guard_count": 145,
         "native_instructions": 281,
         "pcode_operations": 2195,
         "pcode_reads": 73,
@@ -138,6 +419,154 @@
         "payload_expression": "X + 5",
         "payload_equivalence": "unsat",
         "observed_address_guard_equivalence": "unsat",
+        "undefined_overflow_flag_observations": [
+          {
+            "pc": "0x415ee3",
+            "step": 54939,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ee9",
+            "step": 54941,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ef4",
+            "step": 54944,
+            "bit": 11
+          },
+          {
+            "pc": "0x415f25",
+            "step": 54955,
+            "bit": 11
+          },
+          {
+            "pc": "0x415e27",
+            "step": 54962,
+            "bit": 11
+          },
+          {
+            "pc": "0x415553",
+            "step": 54973,
+            "bit": 11
+          },
+          {
+            "pc": "0x415557",
+            "step": 54974,
+            "bit": 11
+          },
+          {
+            "pc": "0x415561",
+            "step": 54977,
+            "bit": 11
+          },
+          {
+            "pc": "0x415565",
+            "step": 54978,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad3",
+            "step": 54996,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad7",
+            "step": 54997,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ada",
+            "step": 54998,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ae6",
+            "step": 55002,
+            "bit": 11
+          },
+          {
+            "pc": "0x416aef",
+            "step": 55004,
+            "bit": 11
+          },
+          {
+            "pc": "0x41578c",
+            "step": 55054,
+            "bit": 11
+          },
+          {
+            "pc": "0x415790",
+            "step": 55055,
+            "bit": 11
+          },
+          {
+            "pc": "0x41579b",
+            "step": 55058,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157a2",
+            "step": 55060,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157b8",
+            "step": 55067,
+            "bit": 11
+          },
+          {
+            "pc": "0x40680c",
+            "step": 55103,
+            "bit": 11
+          },
+          {
+            "pc": "0x406833",
+            "step": 55114,
+            "bit": 11
+          },
+          {
+            "pc": "0x406841",
+            "step": 55118,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068d8",
+            "step": 55142,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068f4",
+            "step": 55149,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164bf",
+            "step": 55190,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164c5",
+            "step": 55192,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d0",
+            "step": 55195,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d4",
+            "step": 55196,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164de",
+            "step": 55199,
+            "bit": 11
+          }
+        ],
+        "guard_count": 145,
         "native_instructions": 281,
         "pcode_operations": 2195,
         "pcode_reads": 73,
@@ -189,6 +618,154 @@
         "payload_expression": "X + 5",
         "payload_equivalence": "unsat",
         "observed_address_guard_equivalence": "unsat",
+        "undefined_overflow_flag_observations": [
+          {
+            "pc": "0x415ee3",
+            "step": 54976,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ee9",
+            "step": 54978,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ef4",
+            "step": 54981,
+            "bit": 11
+          },
+          {
+            "pc": "0x415f25",
+            "step": 54992,
+            "bit": 11
+          },
+          {
+            "pc": "0x415e27",
+            "step": 54999,
+            "bit": 11
+          },
+          {
+            "pc": "0x415553",
+            "step": 55010,
+            "bit": 11
+          },
+          {
+            "pc": "0x415557",
+            "step": 55011,
+            "bit": 11
+          },
+          {
+            "pc": "0x415561",
+            "step": 55014,
+            "bit": 11
+          },
+          {
+            "pc": "0x415565",
+            "step": 55015,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad3",
+            "step": 55033,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad7",
+            "step": 55034,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ada",
+            "step": 55035,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ae6",
+            "step": 55039,
+            "bit": 11
+          },
+          {
+            "pc": "0x416aef",
+            "step": 55041,
+            "bit": 11
+          },
+          {
+            "pc": "0x41578c",
+            "step": 55091,
+            "bit": 11
+          },
+          {
+            "pc": "0x415790",
+            "step": 55092,
+            "bit": 11
+          },
+          {
+            "pc": "0x41579b",
+            "step": 55095,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157a2",
+            "step": 55097,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157b8",
+            "step": 55104,
+            "bit": 11
+          },
+          {
+            "pc": "0x40680c",
+            "step": 55140,
+            "bit": 11
+          },
+          {
+            "pc": "0x406833",
+            "step": 55151,
+            "bit": 11
+          },
+          {
+            "pc": "0x406841",
+            "step": 55155,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068d8",
+            "step": 55179,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068f4",
+            "step": 55186,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164bf",
+            "step": 55227,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164c5",
+            "step": 55229,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d0",
+            "step": 55232,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d4",
+            "step": 55233,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164de",
+            "step": 55236,
+            "bit": 11
+          }
+        ],
+        "guard_count": 145,
         "native_instructions": 281,
         "pcode_operations": 2195,
         "pcode_reads": 73,
@@ -240,6 +817,154 @@
         "payload_expression": "X + 5",
         "payload_equivalence": "unsat",
         "observed_address_guard_equivalence": "unsat",
+        "undefined_overflow_flag_observations": [
+          {
+            "pc": "0x415ee3",
+            "step": 54948,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ee9",
+            "step": 54950,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ef4",
+            "step": 54953,
+            "bit": 11
+          },
+          {
+            "pc": "0x415f25",
+            "step": 54964,
+            "bit": 11
+          },
+          {
+            "pc": "0x415e27",
+            "step": 54971,
+            "bit": 11
+          },
+          {
+            "pc": "0x415553",
+            "step": 54982,
+            "bit": 11
+          },
+          {
+            "pc": "0x415557",
+            "step": 54983,
+            "bit": 11
+          },
+          {
+            "pc": "0x415561",
+            "step": 54986,
+            "bit": 11
+          },
+          {
+            "pc": "0x415565",
+            "step": 54987,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad3",
+            "step": 55005,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad7",
+            "step": 55006,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ada",
+            "step": 55007,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ae6",
+            "step": 55011,
+            "bit": 11
+          },
+          {
+            "pc": "0x416aef",
+            "step": 55013,
+            "bit": 11
+          },
+          {
+            "pc": "0x41578c",
+            "step": 55063,
+            "bit": 11
+          },
+          {
+            "pc": "0x415790",
+            "step": 55064,
+            "bit": 11
+          },
+          {
+            "pc": "0x41579b",
+            "step": 55067,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157a2",
+            "step": 55069,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157b8",
+            "step": 55076,
+            "bit": 11
+          },
+          {
+            "pc": "0x40680c",
+            "step": 55112,
+            "bit": 11
+          },
+          {
+            "pc": "0x406833",
+            "step": 55123,
+            "bit": 11
+          },
+          {
+            "pc": "0x406841",
+            "step": 55127,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068d8",
+            "step": 55151,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068f4",
+            "step": 55158,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164bf",
+            "step": 55199,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164c5",
+            "step": 55201,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d0",
+            "step": 55204,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d4",
+            "step": 55205,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164de",
+            "step": 55208,
+            "bit": 11
+          }
+        ],
+        "guard_count": 145,
         "native_instructions": 281,
         "pcode_operations": 2195,
         "pcode_reads": 73,
@@ -291,6 +1016,154 @@
         "payload_expression": "X + 5",
         "payload_equivalence": "unsat",
         "observed_address_guard_equivalence": "unsat",
+        "undefined_overflow_flag_observations": [
+          {
+            "pc": "0x415ee3",
+            "step": 55020,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ee9",
+            "step": 55022,
+            "bit": 11
+          },
+          {
+            "pc": "0x415ef4",
+            "step": 55025,
+            "bit": 11
+          },
+          {
+            "pc": "0x415f25",
+            "step": 55036,
+            "bit": 11
+          },
+          {
+            "pc": "0x415e27",
+            "step": 55043,
+            "bit": 11
+          },
+          {
+            "pc": "0x415553",
+            "step": 55054,
+            "bit": 11
+          },
+          {
+            "pc": "0x415557",
+            "step": 55055,
+            "bit": 11
+          },
+          {
+            "pc": "0x415561",
+            "step": 55058,
+            "bit": 11
+          },
+          {
+            "pc": "0x415565",
+            "step": 55059,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad3",
+            "step": 55077,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ad7",
+            "step": 55078,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ada",
+            "step": 55079,
+            "bit": 11
+          },
+          {
+            "pc": "0x416ae6",
+            "step": 55083,
+            "bit": 11
+          },
+          {
+            "pc": "0x416aef",
+            "step": 55085,
+            "bit": 11
+          },
+          {
+            "pc": "0x41578c",
+            "step": 55135,
+            "bit": 11
+          },
+          {
+            "pc": "0x415790",
+            "step": 55136,
+            "bit": 11
+          },
+          {
+            "pc": "0x41579b",
+            "step": 55139,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157a2",
+            "step": 55141,
+            "bit": 11
+          },
+          {
+            "pc": "0x4157b8",
+            "step": 55148,
+            "bit": 11
+          },
+          {
+            "pc": "0x40680c",
+            "step": 55184,
+            "bit": 11
+          },
+          {
+            "pc": "0x406833",
+            "step": 55195,
+            "bit": 11
+          },
+          {
+            "pc": "0x406841",
+            "step": 55199,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068d8",
+            "step": 55223,
+            "bit": 11
+          },
+          {
+            "pc": "0x4068f4",
+            "step": 55230,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164bf",
+            "step": 55271,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164c5",
+            "step": 55273,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d0",
+            "step": 55276,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164d4",
+            "step": 55277,
+            "bit": 11
+          },
+          {
+            "pc": "0x4164de",
+            "step": 55280,
+            "bit": 11
+          }
+        ],
+        "guard_count": 145,
         "native_instructions": 281,
         "pcode_operations": 2195,
         "pcode_reads": 73,

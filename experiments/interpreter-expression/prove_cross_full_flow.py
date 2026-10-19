@@ -216,7 +216,7 @@ def python_case(path, witness):
     cache_hash = verify_cache(meta)
     assert_no_write(rows, CACHE_BASE + (10 + 5) * 32,
                     (256 - 10 + 1) * 32, 0, len(rows))
-    expected_output = 10 if witness == 0 else 14
+    expected_output = 10 if witness == 0 else witness + 5
     expected_pointer = CACHE_BASE + (expected_output + 5) * 32
     if summary["output_raw"] != expected_pointer:
         raise ValueError("Python returned the wrong cached PyLong object")
@@ -236,8 +236,13 @@ def python_case(path, witness):
     branch_end = one(rows, 0x564F61)
     branch_rows = rows[:branch_end]
     x = z3.BitVec("PY_X", 32)
+    # Symbolizing the digit of one fixed cache object can make the output
+    # point back at that same object when X + 5 equals the object's cache key.
+    # In that case pointer arithmetic remains valid but the cached object's
+    # numeric content no longer equals its key. Keep this semantic precondition.
+    value_domain = z3.And(bounded(x), x != witness - 5) if witness else None
     if witness:
-        memory, _ = small_int_memory(branch_rows, meta["entry_value_address"], 9, x)
+        memory, _ = small_int_memory(branch_rows, meta["entry_value_address"], witness, x)
     else:
         memory, _ = initial_memory(branch_rows)
     branch, branch_guard, branch_stat = checked_segment(branch_rows, PYTHON, memory)
@@ -264,7 +269,7 @@ def python_case(path, witness):
     parent_frame = rows[0]["registers"]["rbx"]
     child_frame = rows[add]["registers"]["rbx"]
     call_arg = parent_frame + 0x60
-    argument_pointer = CACHE_BASE + ((9 if witness else 5) + 5) * 32
+    argument_pointer = CACHE_BASE + ((witness if witness else 5) + 5) * 32
     parent_local = parent_frame + 0x48
     if meta["entry_value_address"] != CACHE_BASE + ((witness + 5) * 32):
         raise ValueError("unexpected Python entry object")
@@ -333,10 +338,11 @@ def python_case(path, witness):
     add_model, add_guard, add_stat = checked_segment(add_rows, PYTHON, memory)
     output_slot = rows[child_return]["registers"]["r15"] - 8
     if witness:
-        unsat(bounded(x), z3.Not(add_guard))
         expected_child_pointer = bv(CACHE_BASE, 64) + \
             ((z3.ZeroExt(32, x) + bv(10, 64)) << 5)
-        unsat(bounded(x), add_guard,
+        unsat(value_domain, expected_child_pointer == bv(argument_pointer, 64))
+        unsat(value_domain, z3.Not(add_guard))
+        unsat(value_domain, add_guard,
               word(add_model.memory, output_slot) != expected_child_pointer)
     else:
         expected_child_pointer = bv(expected_pointer, 64)
@@ -350,7 +356,7 @@ def python_case(path, witness):
                                [(output_slot, returned_pointer, expected_pointer)])
     return_model, return_guard, return_stat = checked_segment(return_rows, PYTHON, memory)
     if witness:
-        unsat(bounded(x), z3.Not(z3.substitute(
+        unsat(value_domain, z3.Not(z3.substitute(
             return_guard, (returned_pointer, expected_child_pointer))))
     else:
         unsat(returned_pointer == bv(expected_pointer, 64), z3.Not(return_guard))
@@ -370,9 +376,14 @@ def python_case(path, witness):
           word(outer_model.memory, caller_output_slot) != outer_pointer)
     return {"engine": "python", "witness": witness,
             "native_steps": len(rows), "output": expected_output,
+            "guard_expression": "X == 0" if witness == 0 else "5 <= X <= 251",
+            "value_expression": "10" if witness == 0 else "X + 5",
+            "value_equivalence": "unsat",
+            "cache_alias_exclusion": witness - 5 if witness else None,
             "branch_bytecode_offset": expected_offset,
             "call_argument": 5 if witness == 0 else "X",
-            "proof_domain": "X = 0" if witness == 0 else "5 <= X <= 251",
+            "proof_domain": ("X = 0" if witness == 0 else
+                             f"5 <= X <= 251 and X != {witness - 5}"),
             "cache_sha256": cache_hash,
             "hardware_watches": watches,
             "hardware_read_events": summary["hardware_read_events"],
@@ -387,7 +398,7 @@ def python_case(path, witness):
 
 def javascript_case(path, witness):
     meta, rows, summary = load_trace(path, "javascript", witness, JAVASCRIPT)
-    expected_output = 10 if witness == 0 else 14
+    expected_output = 10 if witness == 0 else witness + 5
     if summary["output_raw"] != expected_output << 32:
         raise ValueError("JavaScript function returned the wrong Smi")
     watches = check_watches(summary, {"parent_parameter", "child_parameter"})
@@ -492,6 +503,9 @@ def javascript_case(path, witness):
     unsat(outer_guard, outer_model.regs[0] != outer_tag)
     return {"engine": "javascript", "witness": witness,
             "native_steps": len(rows), "output": expected_output,
+            "guard_expression": "X == 0" if witness == 0 else "5 <= X <= 251",
+            "value_expression": "10" if witness == 0 else "X + 5",
+            "value_equivalence": "unsat",
             "branch_bytecode_offset": branch_offset,
             "return_bytecode_offset": final_offset,
             "call_argument": 5 if witness == 0 else "X",
