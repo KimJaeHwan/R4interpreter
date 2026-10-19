@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "full_caller_intervals": {
+    "lua": {
+      "trace_sha256": "fa6c47701925ef6eb3d408f4e5234762d88c5700ef3d2c9e39f30b8b5d034c10",
+      "interval_native_steps": 281,
+      "raw_pcode_operations": 2195,
+      "selected_pcode_operations": 545,
+      "selected_native_steps": 235,
+      "observed_cmov_guards_checked": 0,
+      "observed_skipped_pcode_operations": 0,
+      "unsupported_local_control_steps": 0,
+      "debt_count": 0,
+      "debts_by_reason": {},
+      "unsupported_local_instruction_families": {},
+      "debt_examples": [],
+      "entry_live_byte_lanes": 429,
+      "syntactic_debt_free": true,
+      "retained_control_operations": 31,
+      "excluded_control_counts": {
+        "control_or_opaque_branch": 8,
+        "control_or_opaque_call": 2
+      },
+      "cmov_guard_examples": []
+    },
+    "python": {
+      "trace_sha256": "0c31912553486da0a5f27528914b2c709aa21d847a2d6bebd6b8c174f3db729d",
+      "interval_native_steps": 987,
+      "raw_pcode_operations": 5320,
+      "selected_pcode_operations": 1755,
+      "selected_native_steps": 800,
+      "observed_cmov_guards_checked": 3,
+      "observed_skipped_pcode_operations": 2,
+      "unsupported_local_control_steps": 0,
+      "debt_count": 0,
+      "debts_by_reason": {},
+      "unsupported_local_instruction_families": {},
+      "debt_examples": [],
+      "entry_live_byte_lanes": 1377,
+      "syntactic_debt_free": true,
+      "retained_control_operations": 151,
+      "excluded_control_counts": {
+        "control_or_opaque_branch": 4,
+        "control_or_opaque_call": 9,
+        "control_or_opaque_callother": 2
+      },
+      "cmov_guard_examples": [
+        {
+          "step": 554,
+          "kind": "cmov_observed_guard",
+          "pc": "0x56035e",
+          "executed_pcode_operations": 6,
+          "lifted_pcode_operations": 7,
+          "guard_smt2": "(not (and (= F_6 #x00) (= F_11 F_7)))",
+          "observed_flags_imply_guard": "unsat"
+        },
+        {
+          "step": 226,
+          "kind": "cmov_observed_guard",
+          "pc": "0x5613b8",
+          "executed_pcode_operations": 4,
+          "lifted_pcode_operations": 4,
+          "guard_smt2": "(not (= F_6 #x00))",
+          "observed_flags_imply_guard": "unsat"
+        },
+        {
+          "step": 205,
+          "kind": "cmov_observed_guard",
+          "pc": "0x5630f6",
+          "executed_pcode_operations": 4,
+          "lifted_pcode_operations": 5,
+          "guard_smt2": "(not (= F_6 #x00))",
+          "observed_flags_imply_guard": "unsat"
+        }
+      ]
+    },
+    "javascript": {
+      "trace_sha256": "9da8af632fdd70392c74badc0a4a79c762232065af7eeeef41247e568b3d90f4",
+      "interval_native_steps": 29446,
+      "raw_pcode_operations": 199761,
+      "selected_pcode_operations": 80154,
+      "selected_native_steps": 25795,
+      "observed_cmov_guards_checked": 64,
+      "observed_skipped_pcode_operations": 35,
+      "unsupported_local_control_steps": 4211,
+      "debt_count": 4228,
+      "debts_by_reason": {
+        "unsupported instruction-local P-code control": 4211,
+        "selected opaque P-code operation CALLOTHER": 11,
+        "selected P-code LOAD lacks captured native read": 6
+      },
+      "unsupported_local_instruction_families": {
+        "lock": 20,
+        "bsf": 2,
+        "rep": 4189
+      },
+      "debt_examples": [
+        {
+          "step": 28709,
+          "pc": "0x25f518d",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg qword ptr [rbx], rdx"
+        },
+        {
+          "step": 28585,
+          "pc": "0x25f5d2b",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg qword ptr [rbx], rdx"
+        },
+        {
+          "step": 28149,
+          "pc": "0x7f1085f553be",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg dword ptr [rdi], edx"
+        },
+        {
+          "step": 27852,
+          "pc": "0x7f1085f553be",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg dword ptr [rdi], edx"
+        },
+        {
+          "step": 27530,
+          "pc": "0x7f1085f553be",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg dword ptr [rdi], edx"
+        },
+        {
+          "step": 27345,
+          "pc": "0x7f1085f553be",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg dword ptr [rdi], edx"
+        },
+        {
+          "step": 27070,
+          "pc": "0x25f518d",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg qword ptr [rbx], rdx"
+        },
+        {
+          "step": 27005,
+          "pc": "0x25f5d2b",
+          "reason": "unsupported instruction-local P-code control",
+          "instruction": "lock cmpxchg qword ptr [rbx], rdx"
+        }
+      ],
+      "entry_live_byte_lanes": 13676,
+      "syntactic_debt_free": false,
+      "retained_control_operations": 8272,
+      "excluded_control_counts": {
+        "control_or_opaque_branch": 4535,
+        "control_or_opaque_call": 493,
+        "control_or_opaque_callother": 144
+      },
+      "cmov_guard_examples": [
+        {
+          "step": 29421,
+          "kind": "cmov_observed_guard",
+          "pc": "0x1a0a6c2",
+          "executed_pcode_operations": 4,
+          "lifted_pcode_operations": 5,
+          "guard_smt2": "(= F_11 F_7)",
+          "observed_flags_imply_guard": "unsat"
+        },
+        {
+          "step": 29370,
+          "kind": "cmov_observed_guard",
+          "pc": "0x1a0a6c2",
+          "executed_pcode_operations": 4,
+          "lifted_pcode_operations": 5,
+          "guard_smt2": "(= F_11 F_7)",
+          "observed_flags_imply_guard": "unsat"
+        },
+        {
+          "step": 28656,
+          "kind": "cmov_observed_guard",
+          "pc": "0xe3d94e",
+          "executed_pcode_operations": 4,
+          "lifted_pcode_operations": 5,
+          "guard_smt2": "(= F_6 #x00)",
+          "observed_flags_imply_guard": "unsat"
+        },
+        {
+          "step": 28640,
+          "kind": "cmov_observed_guard",
+          "pc": "0xe3d94e",
+          "executed_pcode_operations": 5,
+          "lifted_pcode_operations": 5,
+          "guard_smt2": "(not (= F_6 #x00))",
+          "observed_flags_imply_guard": "unsat"
+        }
+      ]
+    }
+  },
+  "fresh_dispatch_intervals": {
+    "python": {
+      "trace_sha256": "71335b6e87a6fcd2f013153ecbff2768ef763341a17b9f41e4cb797adf3a4d9a",
+      "interval_native_steps": 116,
+      "raw_pcode_operations": 626,
+      "selected_pcode_operations": 192,
+      "selected_native_steps": 93,
+      "observed_cmov_guards_checked": 0,
+      "observed_skipped_pcode_operations": 0,
+      "unsupported_local_control_steps": 0,
+      "debt_count": 0,
+      "debts_by_reason": {},
+      "unsupported_local_instruction_families": {},
+      "debt_examples": [],
+      "entry_live_byte_lanes": 241,
+      "syntactic_debt_free": true,
+      "retained_control_operations": 18,
+      "excluded_control_counts": {},
+      "cmov_guard_examples": []
+    },
+    "javascript": {
+      "trace_sha256": "df59a6e652c5359cdf821fb7b9e92299e12f4f5e58010d956c5485a6c7cec754",
+      "interval_native_steps": 23,
+      "raw_pcode_operations": 122,
+      "selected_pcode_operations": 47,
+      "selected_native_steps": 20,
+      "observed_cmov_guards_checked": 0,
+      "observed_skipped_pcode_operations": 0,
+      "unsupported_local_control_steps": 0,
+      "debt_count": 0,
+      "debts_by_reason": {},
+      "unsupported_local_instruction_families": {},
+      "debt_examples": [],
+      "entry_live_byte_lanes": 114,
+      "syntactic_debt_free": true,
+      "retained_control_operations": 5,
+      "excluded_control_counts": {},
+      "cmov_guard_examples": []
+    }
+  },
+  "negative_controls": {
+    "cmov": {
+      "skipped_destination": {
+        "pc": "0x5630f6",
+        "status": "unknown",
+        "reason": "unsupported CMOV local path: CMOV complete scalar exit state differs from observation"
+      },
+      "wrong_fallthrough": {
+        "pc": "0x5630f6",
+        "status": "unknown",
+        "reason": "unsupported CMOV local path: CMOV did not fall through to the next native instruction"
+      },
+      "altered_input_flag": {
+        "pc": "0x5630f6",
+        "status": "unknown",
+        "reason": "unsupported CMOV local path: register r12 mismatch at 0x5630f6: 0xa08540 != 0x9f5a60"
+      },
+      "executed_destination": {
+        "pc": "0x5613b8",
+        "status": "unknown",
+        "reason": "unsupported CMOV local path: register rax mismatch at 0x5613b8: 0xb != 0xa"
+      }
+    }
+  },
+  "scope": "observed P-code dependency inventory; a zero debt count does not prove alias independence or effect removability",
+  "remaining": "unsupported JS REP/atomic local flow, AVX-512 CALLOTHER and access-mode-zero rows remain unknown"
+}

@@ -208,6 +208,10 @@
           }
         },
         "selected_internal_control_instructions": 0,
+        "supported_local_guards": [],
+        "unsupported_local_control_steps": 0,
+        "skipped_observed_pcode_operations": 0,
+        "syntactic_debt_free": false,
         "interpretation": "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"
       },
       "scope": "data-value slice only; guards and other effects remain in path certificates"
@@ -657,6 +661,10 @@
           }
         },
         "selected_internal_control_instructions": 0,
+        "supported_local_guards": [],
+        "unsupported_local_control_steps": 0,
+        "skipped_observed_pcode_operations": 0,
+        "syntactic_debt_free": false,
         "interpretation": "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"
       },
       "scope": "data-value slice only; guards and other effects remain in path certificates"
@@ -2485,6 +2493,10 @@
           }
         },
         "selected_internal_control_instructions": 1,
+        "supported_local_guards": [],
+        "unsupported_local_control_steps": 0,
+        "skipped_observed_pcode_operations": 0,
+        "syntactic_debt_free": false,
         "interpretation": "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"
       },
       "scope": "data-value slice only; guards and other effects remain in path certificates"

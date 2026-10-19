@@ -76,7 +76,8 @@ def selected_sources(operation, row, step, live, debts, include_addresses=False)
     return True, active, source, []
 
 
-def caller_slice(rows, sinks=None, include_address_control=False):
+def caller_slice(rows, sinks=None, include_address_control=False,
+                 strict_schedule=False):
     ctx = pypcode.Context("x86:LE:64:default")
     lifted = {}
     live = set(sinks) if sinks is not None else lanes("register", 0, 8, 0)
@@ -92,6 +93,9 @@ def caller_slice(rows, sinks=None, include_address_control=False):
     raw_pcode_operations = 0
     address_dependency_ops = 0
     control_dependency_ops = 0
+    local_guards = []
+    unsupported_local = 0
+    skipped_observed_ops = 0
     for step in range(len(rows) - 1, -1, -1):
         row = rows[step]
         signature = (row["pc"], row["bytes"])
@@ -101,10 +105,23 @@ def caller_slice(rows, sinks=None, include_address_control=False):
                 max_instructions=1).ops if op.opcode.name != "IMARK"]
         operations = lifted[signature]
         raw_pcode_operations += len(operations)
+        effective_ordinals = list(range(len(operations)))
+        if strict_schedule:
+            from observed_pcode_schedule import schedule
+            effective_ordinals, evidence, unresolved = schedule(row, operations)
+            if evidence is not None:
+                local_guards.append({"step": step, **evidence})
+                skipped_observed_ops += len(operations) - len(effective_ordinals)
+            if unresolved is not None:
+                unsupported_local += 1
+                debts.append({"step": step, "pc": hex(row["pc"]),
+                              "reason": unresolved,
+                              "instruction": row["instruction"]})
+        effective_set = set(effective_ordinals)
         live_after = set(live)
         matched_native_writes = set()
         selected_ordinals = set()
-        for ordinal in range(len(operations) - 1, -1, -1):
+        for ordinal in reversed(effective_ordinals):
             operation = operations[ordinal]
             if include_address_control and operation.opcode.name in {
                     "CBRANCH", "BRANCHIND", "CALLIND", "RETURN"}:
@@ -128,7 +145,8 @@ def caller_slice(rows, sinks=None, include_address_control=False):
                              "memory_addresses": [hex(x) for x in addresses]})
             selected_ordinals.add(ordinal)
             step_counts[step] += 1
-        if selected_ordinals and any(op.opcode.name == "CBRANCH" for op in operations):
+        if (not strict_schedule and selected_ordinals and
+                any(op.opcode.name == "CBRANCH" for op in operations)):
             selected_internal_controls.append({"step": step, "pc": hex(row["pc"]),
                                                "instruction": row["instruction"]})
         for access in row["memory"]:
@@ -141,9 +159,12 @@ def caller_slice(rows, sinks=None, include_address_control=False):
                 excluded["native_memory_writes_outside_value_slice"] += 1
                 excluded_examples.setdefault("native_memory_writes_outside_value_slice", {
                     "step": step, "pc": hex(row["pc"]), "address": hex(access["address"])})
-        for operation in operations:
+        for ordinal, operation in enumerate(operations):
             if operation.opcode.name in {"CALL", "CALLIND", "RETURN", "CBRANCH",
                                          "BRANCH", "BRANCHIND", "CALLOTHER"}:
+                if strict_schedule and (ordinal not in effective_set or
+                                        ordinal in selected_ordinals):
+                    continue
                 category = "control_or_opaque_" + operation.opcode.name.lower()
                 excluded[category] += 1
                 excluded_examples.setdefault(category, {"step": step,
@@ -172,5 +193,9 @@ def caller_slice(rows, sinks=None, include_address_control=False):
              "retained_control_operations": control_dependency_ops,
              "excluded_examples": excluded_examples,
              "selected_internal_control_instructions": len(selected_internal_controls),
-             "interpretation": "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"}
+             "supported_local_guards": local_guards if strict_schedule else [],
+             "unsupported_local_control_steps": unsupported_local,
+             "skipped_observed_pcode_operations": skipped_observed_ops,
+             "syntactic_debt_free": strict_schedule and not debts,
+             "interpretation": "observed path dependency inventory; excluded effects and aliasing writes are not proved removable" if strict_schedule else "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"}
     return selected, debts, live, return_edges, len(lifted), len(step_counts), audit

@@ -20,6 +20,8 @@ from common_native_slice import caller_slice, lanes
 from common_observed_transition import apply_case as apply_frozen_native
 from composed_native_transition import parse_segments
 from cross_dispatch_pcode import read_vaddr
+from discover_dispatch_intervals import candidates, choose_summary
+from common_observed_transition import shape
 from prove_cross_full_flow import (CACHE_BASE, JAVASCRIPT, PYTHON,
                                    javascript_case, load_trace, python_case,
                                    verify_cache)
@@ -147,12 +149,18 @@ def bounded_numeric_segments(common, cross_rows):
     reasons = {}
     for engine in ("python", "javascript"):
         meta, rows, summary = cross_rows[engine]
-        entry = 0x56227C if engine == "python" else 0x1BB7780
-        exit_pc = 0x56173B if engine == "python" else 0x1BC6F40
-        start = next(i for i, row in enumerate(rows) if row["pc"] == entry)
-        end = next(i for i in range(start + 1, len(rows)) if rows[i]["pc"] == exit_pc)
-        segment = rows[start:end]
-        case = common["cases"][1 if engine == "python" else 3]
+        case = choose_summary(common, engine)
+        identity = case["identity"]
+        windows = candidates(rows)
+        matches = [item for item in windows if
+            item["native_steps"] == identity["native_steps"] and
+            shape(rows[item["begin"]:item["end_exclusive"]],
+                  identity["path_shape_mode"]) ==
+            identity["path_shape_sha256"]]
+        require(len(matches) == 1,
+                f"{engine} frozen dispatch interval is absent or ambiguous")
+        boundary = matches[0]
+        segment = rows[boundary["begin"]:boundary["end_exclusive"]]
         if engine == "python":
             cache_hash = verify_cache(meta)
             adapter = {"input": BRANCH_INPUT,
@@ -167,7 +175,8 @@ def bounded_numeric_segments(common, cross_rows):
         verdict = apply_frozen_native(common, case, binary, segment, adapter)
         require(verdict["status"] == "differentially_validated",
                 f"{engine} frozen numeric segment did not apply: {verdict}")
-        applied[engine] = verdict
+        applied[engine] = {**verdict, "discovered_boundary": boundary,
+                           "dispatch_candidate_count": len(windows)}
         changed = deepcopy(segment)
         changed[-1]["next_pc"] ^= 1
         bad = apply_frozen_native(common, case, binary, changed, adapter)

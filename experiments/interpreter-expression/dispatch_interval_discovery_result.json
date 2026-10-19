@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "summary_sha256": "4efef1e57b41668b5600e1a2f3373baa3792e8083852bb1453aac4976ebd1608",
+  "cases": [
+    {
+      "engine": "python",
+      "input": 42,
+      "trace_sha256": "0c31912553486da0a5f27528914b2c709aa21d847a2d6bebd6b8c174f3db729d",
+      "candidate_count": 15,
+      "shape_matches": 1,
+      "status": "differentially_validated",
+      "boundary": {
+        "begin": 683,
+        "end_exclusive": 799,
+        "entry_predecessor": 682,
+        "entry_pc": "0x56227c",
+        "exit_pc": "0x56173b",
+        "native_steps": 116,
+        "internal_indirect_calls": 2
+      },
+      "guard_count": 1,
+      "reads_checked": 31,
+      "ordered_writes_checked": 12,
+      "outputs_checked": 21,
+      "wrong_successor": "unknown(path identity)",
+      "wrong_write": "unknown(ordered effects mismatch)",
+      "wrong_read_address": "unknown(operand evidence)",
+      "wrong_dispatch_edge": "unknown(no matching delimiter pair)",
+      "target_pcode_steps_replayed": 0
+    },
+    {
+      "engine": "javascript",
+      "input": 42,
+      "trace_sha256": "9da8af632fdd70392c74badc0a4a79c762232065af7eeeef41247e568b3d90f4",
+      "candidate_count": 120,
+      "shape_matches": 1,
+      "status": "differentially_validated",
+      "boundary": {
+        "begin": 29322,
+        "end_exclusive": 29345,
+        "entry_predecessor": 29321,
+        "entry_pc": "0x1bb7780",
+        "exit_pc": "0x1bc6f40",
+        "native_steps": 23,
+        "internal_indirect_calls": 0
+      },
+      "guard_count": 1,
+      "reads_checked": 8,
+      "ordered_writes_checked": 0,
+      "outputs_checked": 21,
+      "wrong_successor": "unknown(path identity)",
+      "wrong_write": null,
+      "wrong_read_address": "unknown(outside case guard)",
+      "wrong_dispatch_edge": "unknown(no matching delimiter pair)",
+      "target_pcode_steps_replayed": 0
+    },
+    {
+      "engine": "python",
+      "input": 43,
+      "trace_sha256": "71335b6e87a6fcd2f013153ecbff2768ef763341a17b9f41e4cb797adf3a4d9a",
+      "candidate_count": 15,
+      "shape_matches": 1,
+      "status": "differentially_validated",
+      "boundary": {
+        "begin": 683,
+        "end_exclusive": 799,
+        "entry_predecessor": 682,
+        "entry_pc": "0x56227c",
+        "exit_pc": "0x56173b",
+        "native_steps": 116,
+        "internal_indirect_calls": 2
+      },
+      "guard_count": 1,
+      "reads_checked": 31,
+      "ordered_writes_checked": 12,
+      "outputs_checked": 21,
+      "wrong_successor": "unknown(path identity)",
+      "wrong_write": "unknown(ordered effects mismatch)",
+      "wrong_read_address": "unknown(operand evidence)",
+      "wrong_dispatch_edge": "unknown(no matching delimiter pair)",
+      "target_pcode_steps_replayed": 0
+    },
+    {
+      "engine": "javascript",
+      "input": 43,
+      "trace_sha256": "df59a6e652c5359cdf821fb7b9e92299e12f4f5e58010d956c5485a6c7cec754",
+      "candidate_count": 120,
+      "shape_matches": 1,
+      "status": "differentially_validated",
+      "boundary": {
+        "begin": 29112,
+        "end_exclusive": 29135,
+        "entry_predecessor": 29111,
+        "entry_pc": "0x1bb7780",
+        "exit_pc": "0x1bc6f40",
+        "native_steps": 23,
+        "internal_indirect_calls": 0
+      },
+      "guard_count": 1,
+      "reads_checked": 8,
+      "ordered_writes_checked": 0,
+      "outputs_checked": 21,
+      "wrong_successor": "unknown(path identity)",
+      "wrong_write": null,
+      "wrong_read_address": "unknown(outside case guard)",
+      "wrong_dispatch_edge": "unknown(no matching delimiter pair)",
+      "target_pcode_steps_replayed": 0
+    },
+    {
+      "engine": "python",
+      "input": 252,
+      "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "candidate_count": 15,
+      "shape_matches": 0,
+      "status": "unknown(different dispatch interval)",
+      "same_entry_different_length": [
+        146
+      ]
+    }
+  ],
+  "candidate_rule": "consecutive observed P-code BRANCHIND edges; no fixed native entry or exit PC",
+  "admission_rule": "unique exact frozen path shape followed by full guard, state, read, ordered-write, successor validation",
+  "limits": "candidate edges can be unrelated indirect branches; unknown handlers and alternate exits are not inferred"
+}

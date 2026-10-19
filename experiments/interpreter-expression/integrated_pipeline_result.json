@@ -427,7 +427,17 @@
         "derived_outputs_checked": 0,
         "ordered_writes_checked": 12,
         "next_pc": "0x56173b",
-        "target_pcode_steps_replayed": 0
+        "target_pcode_steps_replayed": 0,
+        "discovered_boundary": {
+          "begin": 683,
+          "end_exclusive": 799,
+          "entry_predecessor": 682,
+          "entry_pc": "0x56227c",
+          "exit_pc": "0x56173b",
+          "native_steps": 116,
+          "internal_indirect_calls": 2
+        },
+        "dispatch_candidate_count": 15
       },
       "javascript": {
         "status": "differentially_validated",
@@ -438,7 +448,17 @@
         "derived_outputs_checked": 1,
         "ordered_writes_checked": 0,
         "next_pc": "0x1bc6f40",
-        "target_pcode_steps_replayed": 0
+        "target_pcode_steps_replayed": 0,
+        "discovered_boundary": {
+          "begin": 29322,
+          "end_exclusive": 29345,
+          "entry_predecessor": 29321,
+          "entry_pc": "0x1bb7780",
+          "exit_pc": "0x1bc6f40",
+          "native_steps": 23,
+          "internal_indirect_calls": 0
+        },
+        "dispatch_candidate_count": 120
       }
     },
     "frozen_lua_numeric_segment": "unknown(different branch-call handler path)",
