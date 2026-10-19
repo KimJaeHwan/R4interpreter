@@ -29,7 +29,7 @@ def memory_candidates(row, width, mode):
             if entry["size"] == width and entry["access"] & mode]
 
 
-def selected_sources(operation, row, step, live, debts):
+def selected_sources(operation, row, step, live, debts, include_addresses=False):
     name = operation.opcode.name
     if name == "STORE":
         width = operation.inputs[2].size
@@ -45,6 +45,8 @@ def selected_sources(operation, row, step, live, debts):
                           "candidate_addresses": [hex(x["address"]) for x in candidates]})
         killed = set().union(*(active for _, active in touched))
         source = node_lanes(operation.inputs[2], step)
+        if include_addresses:
+            source |= node_lanes(operation.inputs[1], step)
         return True, killed, source, [entry["address"] for entry, _ in touched]
     if operation.output is None:
         return False, set(), set(), []
@@ -64,6 +66,8 @@ def selected_sources(operation, row, step, live, debts):
                           "candidate_addresses": [hex(x["address"]) for x in candidates]})
         source = set().union(*(lanes("memory", item["address"], item["size"], step)
                                for item in candidates))
+        if include_addresses:
+            source |= node_lanes(operation.inputs[1], step)
         return True, active, source, [item["address"] for item in candidates]
     if name in {"CALLOTHER", "INDIRECT"}:
         debts.append({"step": step, "pc": hex(row["pc"]),
@@ -72,7 +76,7 @@ def selected_sources(operation, row, step, live, debts):
     return True, active, source, []
 
 
-def caller_slice(rows, sinks=None):
+def caller_slice(rows, sinks=None, include_address_control=False):
     ctx = pypcode.Context("x86:LE:64:default")
     lifted = {}
     live = set(sinks) if sinks is not None else lanes("register", 0, 8, 0)
@@ -86,6 +90,8 @@ def caller_slice(rows, sinks=None):
     excluded_examples = {}
     selected_internal_controls = []
     raw_pcode_operations = 0
+    address_dependency_ops = 0
+    control_dependency_ops = 0
     for step in range(len(rows) - 1, -1, -1):
         row = rows[step]
         signature = (row["pc"], row["bytes"])
@@ -100,10 +106,19 @@ def caller_slice(rows, sinks=None):
         selected_ordinals = set()
         for ordinal in range(len(operations) - 1, -1, -1):
             operation = operations[ordinal]
-            included, killed, source, addresses = selected_sources(
-                operation, row, step, live, debts)
+            if include_address_control and operation.opcode.name in {
+                    "CBRANCH", "BRANCHIND", "CALLIND", "RETURN"}:
+                included, killed, source, addresses = (True, set(),
+                    set().union(*(node_lanes(item, step)
+                                  for item in operation.inputs)), [])
+                control_dependency_ops += 1
+            else:
+                included, killed, source, addresses = selected_sources(
+                    operation, row, step, live, debts, include_address_control)
             if not included:
                 continue
+            if include_address_control and operation.opcode.name in {"LOAD", "STORE"}:
+                address_dependency_ops += 1
             live.difference_update(killed)
             live.update(source)
             if operation.opcode.name == "STORE":
@@ -153,6 +168,8 @@ def caller_slice(rows, sinks=None):
              "raw_dynamic_pcode_operations": raw_pcode_operations,
              "selected_store_operations": sum(item["opcode"] == "STORE"
                                                for item in selected),
+             "selected_address_dependencies": address_dependency_ops,
+             "retained_control_operations": control_dependency_ops,
              "excluded_examples": excluded_examples,
              "selected_internal_control_instructions": len(selected_internal_controls),
              "interpretation": "excluded effects do not touch the demanded concrete value bytes on this recorded path; control edges and unknown-address effects are not generally proved safe"}

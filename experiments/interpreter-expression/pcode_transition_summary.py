@@ -24,7 +24,7 @@ REGISTER_OFFSETS = {
     152: "r11", 160: "r12", 168: "r13", 176: "r14", 184: "r15",
 }
 FLAG_OFFSETS = {512: 0, 514: 2, 518: 6, 519: 7, 523: 11}
-VECTOR_OFFSETS = {4608: "xmm0"}
+VECTOR_OFFSETS = {4608 + 64 * index: f"xmm{index}" for index in range(16)}
 ENTRY_PC = 0x4164B8
 EXIT_PC = 0x415B22
 
@@ -133,9 +133,14 @@ class PathReplay:
                 raise ValueError(f"undefined flag {FLAG_OFFSETS[offset]} read at "
                                  f"{self.current_pc:#x} before a defined write")
             return Dual(self.flags[offset], self.flags_concrete[offset])
-        if kind == 2 and offset in VECTOR_OFFSETS:
-            assert size == 16
-            return self.vectors[offset]
+        if kind == 2:
+            vector_base = next((root for root in VECTOR_OFFSETS
+                                if root <= offset and offset + size <= root + 16), None)
+            if vector_base is not None:
+                shift = (offset - vector_base) * 8
+                vector = self.vectors[vector_base]
+                return Dual(z3.Extract(shift + bits - 1, shift, vector.symbolic),
+                            (vector.concrete >> shift) & ((1 << bits) - 1))
         if kind == 2 and offset == 648 and size == 8:
             return self.ip
         if kind == 2:
@@ -155,6 +160,9 @@ class PathReplay:
         if kind == 3:
             self.unique[(offset, size)] = value
             return
+        if kind == 4:
+            self.store(Dual(bv(offset, 64), offset), value)
+            return
         assert kind == 2
         if offset == 648 and size == 8:
             self.ip = value
@@ -165,9 +173,16 @@ class PathReplay:
             self.undefined_flags.discard(offset)
             self.touched_flags.add(offset)
             return
-        if offset in VECTOR_OFFSETS:
-            assert size == 16
-            self.vectors[offset] = value
+        vector_base = next((root for root in VECTOR_OFFSETS
+                            if root <= offset and offset + size <= root + 16), None)
+        if vector_base is not None:
+            shift = (offset - vector_base) * 8
+            old = self.vectors[vector_base]
+            mask = ((1 << bits) - 1) << shift
+            self.vectors[vector_base] = Dual(
+                (old.symbolic & bv(((1 << 128) - 1) ^ mask, 128)) |
+                (resize(value.symbolic, 128) << shift),
+                (old.concrete & ~mask) | (value.concrete << shift))
             return
         base = next((root for root in REGISTER_OFFSETS if root <= offset < root + 8), None)
         if base is None or offset + size > base + 8:

@@ -1,8 +1,8 @@
-{"type":"meta","version":504,"pool_base":4358768,"slots":1,"capacity":160,"alignment":16}
-{"type":"event","sequence":0,"kind":"Allocate","generation":1,"live_before":0,"live_after":1,"requested":105,"pointer":4358768}
+{"type":"meta","version":504,"pool_base":4358800,"slots":1,"capacity":160,"alignment":16,"retry_length":96}
+{"type":"event","sequence":0,"kind":"Allocate","generation":1,"live_before":0,"live_after":1,"requested":105,"pointer":4358800}
 {"type":"event","sequence":1,"kind":"AllocationFailed","generation":1,"live_before":1,"live_after":1,"requested":121,"pointer":0}
 {"type":"event","sequence":2,"kind":"AllocationFailed","generation":1,"live_before":1,"live_after":1,"requested":121,"pointer":0}
-{"type":"event","sequence":3,"kind":"Free","generation":1,"live_before":1,"live_after":0,"requested":105,"pointer":4358768}
-{"type":"event","sequence":4,"kind":"Allocate","generation":2,"live_before":0,"live_after":1,"requested":121,"pointer":4358768}
-{"type":"event","sequence":5,"kind":"Free","generation":2,"live_before":1,"live_after":0,"requested":121,"pointer":4358768}
+{"type":"event","sequence":3,"kind":"Free","generation":1,"live_before":1,"live_after":0,"requested":105,"pointer":4358800}
+{"type":"event","sequence":4,"kind":"Allocate","generation":2,"live_before":0,"live_after":1,"requested":121,"pointer":4358800}
+{"type":"event","sequence":5,"kind":"Free","generation":2,"live_before":1,"live_after":0,"requested":121,"pointer":4358800}
 {"type":"result","errors":0,"final_live":0,"final_generation":2}

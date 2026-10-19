@@ -49,7 +49,8 @@ def observed_memory_operands(insn, regs):
     result = memory_operands(insn, regs)
     # Some Capstone builds label the destination of an SSE memory move as a
     # read. The first operand is the x86 destination; its P-code is STORE.
-    if (insn.mnemonic in ("movups", "movaps", "movdqu", "movdqa") and
+    if (insn.mnemonic in ("movups", "movaps", "movdqu", "movdqa",
+                          "movq", "movd") and
             insn.operands and insn.operands[0].type == X86_OP_MEM):
         result = [(address, size, CS_AC_WRITE) for address, size, _ in result]
     if insn.mnemonic == "leave":

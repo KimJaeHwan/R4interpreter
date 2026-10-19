@@ -37,9 +37,11 @@ class NativePathReplay(PathReplay):
             symbolic = getattr(self, "segment_base_symbols", {}).get(name,
                                                                       bv(value, 64))
             return Dual(symbolic, value)
-        # SLEIGH uses a direct RAM varnode for some RIP-relative literal loads.
-        # A RAM target on BRANCH/CBRANCH/CALL remains a control-flow address.
-        if node["kind_code"] == 4 and self.current_opcode == "COPY":
+        # SLEIGH uses a direct RAM varnode for RIP-relative data operands,
+        # including MOVD's INT_ZEXT. Control targets stay addresses.
+        if node["kind_code"] == 4 and self.current_opcode not in {
+                "BRANCH", "CBRANCH", "CALL", "BRANCHIND", "CALLIND",
+                "RETURN"}:
             address = node["byte_offset"]
             return self.load(Dual(bv(address, 64), address), node["byte_size"])
         return super().read(node)

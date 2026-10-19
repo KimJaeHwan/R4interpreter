@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+  "source_trace_sha256": "542a9a091514c280c910897a5c094ce0353a933fa737a3f347912e1a2b422c37",
+  "protected_globals": {
+    "live": "0x428280",
+    "generation": "0x42827c",
+    "live_extent": "0x428260",
+    "storage": "0x428290"
+  },
+  "conditional_proofs": {
+    "failure_first": {
+      "zero_return": "unsat",
+      "no_live_write": "unsat",
+      "no_generation_write": "unsat",
+      "no_live_extent_write": "unsat"
+    },
+    "failure_internal_retry": {
+      "zero_return": "unsat",
+      "no_live_write": "unsat",
+      "no_generation_write": "unsat",
+      "no_live_extent_write": "unsat"
+    },
+    "success_initial": {
+      "storage_pointer_return": "unsat",
+      "live_set": "unsat",
+      "extent_set": "unsat",
+      "generation_incremented": "unsat"
+    },
+    "successful_new_call": {
+      "storage_pointer_return": "unsat",
+      "live_set": "unsat",
+      "extent_set": "unsat",
+      "generation_incremented": "unsat"
+    },
+    "free_before_retry": {
+      "null_return": "unsat",
+      "live_cleared": "unsat",
+      "extent_cleared": "unsat",
+      "generation_preserved": "unsat"
+    },
+    "free_after_retry": {
+      "null_return": "unsat",
+      "live_cleared": "unsat",
+      "extent_cleared": "unsat",
+      "generation_preserved": "unsat"
+    }
+  },
+  "scope": "six native allocator cutpoints under frozen path guards and disjoint stack frame; success additionally assumes requested extent <=160 and generation != 2^32-1"
+}

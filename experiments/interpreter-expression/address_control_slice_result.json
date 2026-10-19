@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "baseline_sha256": "bb0072dcde48afa58db124ca1796f826ee0fd5ad1d69317bc6b0ef5a90751d39",
+  "engines": {
+    "lua": {
+      "trace_sha256": "fa6c47701925ef6eb3d408f4e5234762d88c5700ef3d2c9e39f30b8b5d034c10",
+      "native_steps_in_interval": 281,
+      "raw_dynamic_pcode_operations": 2195,
+      "baseline_value_pcode_operations": 19,
+      "address_control_pcode_operations": 545,
+      "selected_native_steps": 235,
+      "selected_address_dependencies": 71,
+      "retained_control_operations": 31,
+      "selected_opcode_counts": {
+        "BOOL_AND": 1,
+        "BOOL_NEGATE": 12,
+        "BOOL_OR": 2,
+        "BRANCHIND": 5,
+        "CBRANCH": 24,
+        "COPY": 100,
+        "INT_ADD": 74,
+        "INT_AND": 46,
+        "INT_EQUAL": 26,
+        "INT_LEFT": 11,
+        "INT_MULT": 14,
+        "INT_NOTEQUAL": 3,
+        "INT_OR": 1,
+        "INT_RIGHT": 14,
+        "INT_SBORROW": 2,
+        "INT_SEXT": 6,
+        "INT_SLESS": 4,
+        "INT_SRIGHT": 1,
+        "INT_SUB": 29,
+        "INT_XOR": 2,
+        "INT_ZEXT": 95,
+        "LOAD": 54,
+        "RETURN": 2,
+        "STORE": 17
+      },
+      "entry_live_byte_lanes": 429,
+      "debts": [
+        {
+          "reason": "selected native instruction contains internal P-code control",
+          "examples": [
+            {
+              "step": 277,
+              "pc": "0x4164ec",
+              "instruction": "je 0x417ce4"
+            },
+            {
+              "step": 254,
+              "pc": "0x41548b",
+              "instruction": "jne 0x417b44"
+            },
+            {
+              "step": 238,
+              "pc": "0x4157f0",
+              "instruction": "js 0x418a97"
+            },
+            {
+              "step": 212,
+              "pc": "0x40687e",
+              "instruction": "jg 0x4068cb"
+            },
+            {
+              "step": 210,
+              "pc": "0x406879",
+              "instruction": "jne 0x406860"
+            },
+            {
+              "step": 203,
+              "pc": "0x406879",
+              "instruction": "jne 0x406860"
+            },
+            {
+              "step": 194,
+              "pc": "0x406848",
+              "instruction": "jle 0x406880"
+            },
+            {
+              "step": 183,
+              "pc": "0x406821",
+              "instruction": "jle 0x406a28"
+            }
+          ],
+          "count": 24
+        }
+      ],
+      "debt_count": 1,
+      "excluded_effect_counts": {
+        "control_or_opaque_branch": 8,
+        "control_or_opaque_branchind": 5,
+        "control_or_opaque_call": 2,
+        "control_or_opaque_cbranch": 24,
+        "control_or_opaque_return": 2,
+        "native_memory_writes_outside_value_slice": 14
+      },
+      "scope": "concrete address and recorded path control closure; no effect erasure"
+    },
+    "python": {
+      "trace_sha256": "0c31912553486da0a5f27528914b2c709aa21d847a2d6bebd6b8c174f3db729d",
+      "native_steps_in_interval": 987,
+      "raw_dynamic_pcode_operations": 5320,
+      "baseline_value_pcode_operations": 50,
+      "address_control_pcode_operations": 1759,
+      "selected_native_steps": 800,
+      "selected_address_dependencies": 283,
+      "retained_control_operations": 151,
+      "selected_opcode_counts": {
+        "BOOL_AND": 4,
+        "BOOL_NEGATE": 47,
+        "BOOL_OR": 13,
+        "BRANCHIND": 16,
+        "CALLIND": 3,
+        "CBRANCH": 120,
+        "COPY": 363,
+        "INT_2COMP": 1,
+        "INT_ADD": 284,
+        "INT_AND": 75,
+        "INT_EQUAL": 108,
+        "INT_LEFT": 7,
+        "INT_LESS": 9,
+        "INT_MULT": 41,
+        "INT_NEGATE": 1,
+        "INT_NOTEQUAL": 6,
+        "INT_OR": 2,
+        "INT_SBORROW": 5,
+        "INT_SEXT": 33,
+        "INT_SLESS": 25,
+        "INT_SRIGHT": 6,
+        "INT_SUB": 135,
+        "INT_XOR": 6,
+        "INT_ZEXT": 153,
+        "LOAD": 213,
+        "RETURN": 12,
+        "STORE": 70,
+        "SUBPIECE": 1
+      },
+      "entry_live_byte_lanes": 1377,
+      "debts": [
+        {
+          "reason": "selected native instruction contains internal P-code control",
+          "examples": [
+            {
+              "step": 961,
+              "pc": "0x580d71",
+              "instruction": "je 0x58102d"
+            },
+            {
+              "step": 956,
+              "pc": "0x580d56",
+              "instruction": "je 0x43e9d0"
+            },
+            {
+              "step": 953,
+              "pc": "0x580d4d",
+              "instruction": "js 0x580d5c"
+            },
+            {
+              "step": 949,
+              "pc": "0x580d3e",
+              "instruction": "je 0x580f68"
+            },
+            {
+              "step": 946,
+              "pc": "0x580d35",
+              "instruction": "js 0x580d44"
+            },
+            {
+              "step": 942,
+              "pc": "0x580d26",
+              "instruction": "jne 0x580f8b"
+            },
+            {
+              "step": 939,
+              "pc": "0x580d1d",
+              "instruction": "jne 0x580cfd"
+            },
+            {
+              "step": 936,
+              "pc": "0x580d0b",
+              "instruction": "js 0x580d16"
+            }
+          ],
+          "count": 120
+        }
+      ],
+      "debt_count": 1,
+      "excluded_effect_counts": {
+        "control_or_opaque_branch": 4,
+        "control_or_opaque_branchind": 16,
+        "control_or_opaque_call": 9,
+        "control_or_opaque_callind": 3,
+        "control_or_opaque_callother": 2,
+        "control_or_opaque_cbranch": 120,
+        "control_or_opaque_return": 12,
+        "native_memory_writes_outside_value_slice": 78
+      },
+      "scope": "concrete address and recorded path control closure; no effect erasure"
+    },
+    "javascript": {
+      "trace_sha256": "9da8af632fdd70392c74badc0a4a79c762232065af7eeeef41247e568b3d90f4",
+      "native_steps_in_interval": 29446,
+      "raw_dynamic_pcode_operations": 199761,
+      "baseline_value_pcode_operations": 229,
+      "address_control_pcode_operations": 80192,
+      "selected_native_steps": 25792,
+      "selected_address_dependencies": 8168,
+      "retained_control_operations": 8272,
+      "selected_opcode_counts": {
+        "BOOL_AND": 37,
+        "BOOL_NEGATE": 1716,
+        "BOOL_OR": 771,
+        "BRANCHIND": 121,
+        "CALLIND": 16,
+        "CALLOTHER": 11,
+        "CBRANCH": 7624,
+        "COPY": 11269,
+        "FLOAT_ADD": 1,
+        "FLOAT_DIV": 2,
+        "FLOAT_INT2FLOAT": 2,
+        "INT_2COMP": 14,
+        "INT_ADD": 12593,
+        "INT_AND": 2205,
+        "INT_CARRY": 1,
+        "INT_EQUAL": 7357,
+        "INT_LEFT": 159,
+        "INT_LESS": 881,
+        "INT_LESSEQUAL": 3,
+        "INT_MULT": 4723,
+        "INT_NEGATE": 13,
+        "INT_NOTEQUAL": 234,
+        "INT_OR": 229,
+        "INT_RIGHT": 312,
+        "INT_SBORROW": 85,
+        "INT_SCARRY": 1,
+        "INT_SEXT": 125,
+        "INT_SLESS": 313,
+        "INT_SRIGHT": 68,
+        "INT_SUB": 12695,
+        "INT_XOR": 188,
+        "INT_ZEXT": 7493,
+        "LOAD": 5399,
+        "RETURN": 511,
+        "STORE": 2769,
+        "SUBPIECE": 251
+      },
+      "entry_live_byte_lanes": 13676,
+      "debts": [
+        {
+          "step": 25375,
+          "pc": "0x7f108602a858",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 25371,
+          "pc": "0x7f108602a842",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 24685,
+          "pc": "0x7f108602a858",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 24681,
+          "pc": "0x7f108602a842",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 24557,
+          "pc": "0x7f1086031080",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 15442,
+          "pc": "0x7f108602721a",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 15442,
+          "pc": "0x7f108602721a",
+          "reason": "selected P-code LOAD lacks captured native read"
+        },
+        {
+          "step": 15441,
+          "pc": "0x7f1086027214",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 15441,
+          "pc": "0x7f1086027214",
+          "reason": "selected P-code LOAD lacks captured native read"
+        },
+        {
+          "step": 13125,
+          "pc": "0x7f108602721a",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 13125,
+          "pc": "0x7f108602721a",
+          "reason": "selected P-code LOAD lacks captured native read"
+        },
+        {
+          "step": 13124,
+          "pc": "0x7f1086027214",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 13124,
+          "pc": "0x7f1086027214",
+          "reason": "selected P-code LOAD lacks captured native read"
+        },
+        {
+          "step": 10783,
+          "pc": "0x7f108602721a",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 10783,
+          "pc": "0x7f108602721a",
+          "reason": "selected P-code LOAD lacks captured native read"
+        },
+        {
+          "step": 10782,
+          "pc": "0x7f1086027214",
+          "reason": "selected opaque P-code operation CALLOTHER"
+        },
+        {
+          "step": 10782,
+          "pc": "0x7f1086027214",
+          "reason": "selected P-code LOAD lacks captured native read"
+        },
+        {
+          "reason": "selected native instruction contains internal P-code control",
+          "examples": [
+            {
+              "step": 29439,
+              "pc": "0x1a0a6a2",
+              "instruction": "jne 0x1a0a6a9"
+            },
+            {
+              "step": 29437,
+              "pc": "0x1a0a699",
+              "instruction": "je 0x1a0a6b3"
+            },
+            {
+              "step": 29435,
+              "pc": "0x1a0a690",
+              "instruction": "je 0x1a0a6b3"
+            },
+            {
+              "step": 29433,
+              "pc": "0x1a0a66e",
+              "instruction": "ja 0x1a0a68d"
+            },
+            {
+              "step": 29421,
+              "pc": "0x1a0a6c2",
+              "instruction": "cmovl rbx, rcx"
+            },
+            {
+              "step": 29416,
+              "pc": "0x1a0a690",
+              "instruction": "je 0x1a0a6b3"
+            },
+            {
+              "step": 29414,
+              "pc": "0x1a0a66e",
+              "instruction": "ja 0x1a0a68d"
+            },
+            {
+              "step": 29406,
+              "pc": "0x1bc6f68",
+              "instruction": "jge 0x1bc6fa5"
+            }
+          ],
+          "count": 7622
+        }
+      ],
+      "debt_count": 18,
+      "excluded_effect_counts": {
+        "control_or_opaque_branch": 4535,
+        "control_or_opaque_branchind": 121,
+        "control_or_opaque_call": 493,
+        "control_or_opaque_callind": 16,
+        "control_or_opaque_callother": 155,
+        "control_or_opaque_cbranch": 7624,
+        "control_or_opaque_return": 511,
+        "native_memory_writes_outside_value_slice": 6017
+      },
+      "scope": "concrete address and recorded path control closure; no effect erasure"
+    }
+  },
+  "limits": [
+    "observed native address mapping still chooses LOAD/STORE targets",
+    "unknown aliasing writes and unmodeled effects remain obligations",
+    "recorded conditional, indirect and return inputs are retained; direct constant targets are not value dependencies",
+    "entry live byte lanes are external state requirements"
+  ]
+}

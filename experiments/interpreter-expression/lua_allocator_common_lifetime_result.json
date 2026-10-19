@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+  "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+  "cases": [
+    {
+      "retry_length": 94,
+      "trace_sha256": "c432096e3570c3edf16ca3a267c65e3283eb6f275643d56d9bf9f9ae5fb6ff39",
+      "native_steps": 254,
+      "stages": [
+        {
+          "label": "success_initial",
+          "native_steps": 46,
+          "native_ordered_writes_checked": 10,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Allocate",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 1,
+            "address": 4358800,
+            "requested_extent": 105,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              1
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "c432096e3570c3edf16ca3a267c65e3283eb6f275643d56d9bf9f9ae5fb6ff39",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 0,
+            "generation": 0,
+            "live_extent": 0
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "requested_extent": 105,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "label": "failure_first",
+          "native_steps": 43,
+          "native_ordered_writes_checked": 7,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "AllocationFailed",
+            "domain_id": "controlled_lua_retry_pool",
+            "requested_extent": 119,
+            "reason": "pool_occupied",
+            "lifetime_state_preserved": true,
+            "evidence": {
+              "mode": "observed",
+              "cutpoint": "allocator_failure",
+              "trace_sha256": "c432096e3570c3edf16ca3a267c65e3283eb6f275643d56d9bf9f9ae5fb6ff39"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "requested_extent": 119,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "label": "failure_internal_retry",
+          "native_steps": 43,
+          "native_ordered_writes_checked": 7,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "AllocationFailed",
+            "domain_id": "controlled_lua_retry_pool",
+            "requested_extent": 119,
+            "reason": "pool_occupied",
+            "lifetime_state_preserved": true,
+            "evidence": {
+              "mode": "observed",
+              "cutpoint": "allocator_failure",
+              "trace_sha256": "c432096e3570c3edf16ca3a267c65e3283eb6f275643d56d9bf9f9ae5fb6ff39"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "requested_extent": 119,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "label": "free_before_retry",
+          "native_steps": 38,
+          "native_ordered_writes_checked": 9,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Free",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 1,
+            "address": 4358800,
+            "requested_extent": 105,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              1
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "c432096e3570c3edf16ca3a267c65e3283eb6f275643d56d9bf9f9ae5fb6ff39",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "owned_native_after": {
+            "live": 0,
+            "generation": 1,
+            "live_extent": 0
+          },
+          "requested_extent": 105,
+          "generation": 1,
+          "live_after": 0
+        },
+        {
+          "label": "successful_new_call",
+          "native_steps": 46,
+          "native_ordered_writes_checked": 10,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Allocate",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 2,
+            "address": 4358800,
+            "requested_extent": 119,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              2
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "c432096e3570c3edf16ca3a267c65e3283eb6f275643d56d9bf9f9ae5fb6ff39",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 0,
+            "generation": 1,
+            "live_extent": 0
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 2,
+            "live_extent": 119
+          },
+          "requested_extent": 119,
+          "generation": 2,
+          "live_after": 1
+        },
+        {
+          "label": "free_after_retry",
+          "native_steps": 38,
+          "native_ordered_writes_checked": 9,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Free",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 2,
+            "address": 4358800,
+            "requested_extent": 119,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              2
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "c432096e3570c3edf16ca3a267c65e3283eb6f275643d56d9bf9f9ae5fb6ff39",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 2,
+            "live_extent": 119
+          },
+          "owned_native_after": {
+            "live": 0,
+            "generation": 2,
+            "live_extent": 0
+          },
+          "requested_extent": 119,
+          "generation": 2,
+          "live_after": 0
+        }
+      ],
+      "stale_generation_rejected_after_reallocation": true,
+      "access_rejected_after_free": true,
+      "final_live_mask": 0
+    },
+    {
+      "retry_length": 95,
+      "trace_sha256": "dc2b4e9447e847b166452abb2936d607c8a5ee9a84a47b5dae21f88e4803f234",
+      "native_steps": 254,
+      "stages": [
+        {
+          "label": "success_initial",
+          "native_steps": 46,
+          "native_ordered_writes_checked": 10,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Allocate",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 1,
+            "address": 4358800,
+            "requested_extent": 105,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              1
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "dc2b4e9447e847b166452abb2936d607c8a5ee9a84a47b5dae21f88e4803f234",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 0,
+            "generation": 0,
+            "live_extent": 0
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "requested_extent": 105,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "label": "failure_first",
+          "native_steps": 43,
+          "native_ordered_writes_checked": 7,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "AllocationFailed",
+            "domain_id": "controlled_lua_retry_pool",
+            "requested_extent": 120,
+            "reason": "pool_occupied",
+            "lifetime_state_preserved": true,
+            "evidence": {
+              "mode": "observed",
+              "cutpoint": "allocator_failure",
+              "trace_sha256": "dc2b4e9447e847b166452abb2936d607c8a5ee9a84a47b5dae21f88e4803f234"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "requested_extent": 120,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "label": "failure_internal_retry",
+          "native_steps": 43,
+          "native_ordered_writes_checked": 7,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "AllocationFailed",
+            "domain_id": "controlled_lua_retry_pool",
+            "requested_extent": 120,
+            "reason": "pool_occupied",
+            "lifetime_state_preserved": true,
+            "evidence": {
+              "mode": "observed",
+              "cutpoint": "allocator_failure",
+              "trace_sha256": "dc2b4e9447e847b166452abb2936d607c8a5ee9a84a47b5dae21f88e4803f234"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "requested_extent": 120,
+          "generation": 1,
+          "live_after": 1
+        },
+        {
+          "label": "free_before_retry",
+          "native_steps": 38,
+          "native_ordered_writes_checked": 9,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Free",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 1,
+            "address": 4358800,
+            "requested_extent": 105,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              1
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "dc2b4e9447e847b166452abb2936d607c8a5ee9a84a47b5dae21f88e4803f234",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 1,
+            "live_extent": 105
+          },
+          "owned_native_after": {
+            "live": 0,
+            "generation": 1,
+            "live_extent": 0
+          },
+          "requested_extent": 105,
+          "generation": 1,
+          "live_after": 0
+        },
+        {
+          "label": "successful_new_call",
+          "native_steps": 46,
+          "native_ordered_writes_checked": 10,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Allocate",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 2,
+            "address": 4358800,
+            "requested_extent": 120,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              2
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "dc2b4e9447e847b166452abb2936d607c8a5ee9a84a47b5dae21f88e4803f234",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 0,
+            "generation": 1,
+            "live_extent": 0
+          },
+          "owned_native_after": {
+            "live": 1,
+            "generation": 2,
+            "live_extent": 120
+          },
+          "requested_extent": 120,
+          "generation": 2,
+          "live_after": 1
+        },
+        {
+          "label": "free_after_retry",
+          "native_steps": 38,
+          "native_ordered_writes_checked": 9,
+          "target_pcode_operations_replayed": 0,
+          "logical_effect": {
+            "kind": "Free",
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_lua_retry_pool",
+            "resource_id": "pool_slot_0",
+            "generation": 2,
+            "address": 4358800,
+            "requested_extent": 120,
+            "identity": [
+              "controlled_lua_retry_pool",
+              "pool_slot_0",
+              2
+            ],
+            "evidence": {
+              "mode": "native_refined",
+              "cutpoint": "helper_return",
+              "native_cutpoint": "allocator_return",
+              "trace_sha256": "dc2b4e9447e847b166452abb2936d607c8a5ee9a84a47b5dae21f88e4803f234",
+              "native_summary_sha256": "4069f49354f00ec85c70aff64e9aadd3d93b7487c75aa1bbce0eb6e9f8331c6f",
+              "native_refinement_sha256": "e512de6ef892c22eb76a0ba1a19fa5c9ef8d0d7bd0732014df282001d4d22d33",
+              "preconditions_checked": true,
+              "binding": "observed"
+            }
+          },
+          "owned_native_before": {
+            "live": 1,
+            "generation": 2,
+            "live_extent": 120
+          },
+          "owned_native_after": {
+            "live": 0,
+            "generation": 2,
+            "live_extent": 0
+          },
+          "requested_extent": 120,
+          "generation": 2,
+          "live_after": 0
+        }
+      ],
+      "stale_generation_rejected_after_reallocation": true,
+      "access_rejected_after_free": true,
+      "final_live_mask": 0
+    }
+  ],
+  "negative_controls": {
+    "wrong_native_write": "unknown(failure_first ordered effects)",
+    "wrong_native_successor": "unknown(failure_first path shape)",
+    "wrong_native_entry_generation": "Lua logical event did not bind to native call",
+    "wrong_native_exit_live": "allocator native return mismatched observed call",
+    "wrong_native_request_register": "Lua logical event did not bind to native call"
+  },
+  "native_logical_cutpoint_contract": "the verified allocator function return is the helper_return accepted by the shared lifetime-effect schema",
+  "evidence_boundary": {
+    "successful_allocate_free": "conditional native SMT proof and target transition validation",
+    "allocation_failure": "native no-owned-state-write proof plus observed AllocationFailed logical event",
+    "lua_errmem_throw": "fixture checks LUA_ERRMEM; unwind remains outside native summary"
+  }
+}

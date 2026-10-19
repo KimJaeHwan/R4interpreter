@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "native_summary_sha256": "ee19c33f704b57f9504b8613e216688a2fd36a5923b6c2410f092d86e0de0dbc",
+  "common_summary_sha256": "eae7d2cdf794d70c1c8a457ae831c2d4f90a01f6e24fcbbb883113c50e1fff15",
+  "source_trace_sha256": "59c34814194b92da1ecb050511b98ab04f9d1bff10b31e2ebf86c8afa50052c2",
+  "positive": [
+    {
+      "input_ascii": "987654321012",
+      "length": 12,
+      "trace_sha256": "a247536965f20f18f609bdc5826e52e958cf8ba215bdb30121d966288b7b76db",
+      "status": "differentially_validated",
+      "native_steps": 182,
+      "ordered_writes_checked": 28,
+      "output_oracle": "9876543210125",
+      "target_pcode_steps_replayed": 0
+    },
+    {
+      "input_ascii": "98765432109876543",
+      "length": 17,
+      "trace_sha256": "ea2ecb09b2163f0b6a0f7ffdbde2c5ad57a1f723de5e7d430bef6f25192d802c",
+      "status": "differentially_validated",
+      "native_steps": 182,
+      "ordered_writes_checked": 28,
+      "output_oracle": "987654321098765435",
+      "target_pcode_steps_replayed": 0
+    },
+    {
+      "input_ascii": "123456789012345678",
+      "length": 18,
+      "trace_sha256": "03292436669a9c5abc25ac5d540c8ebbdefc18b6f8eef0b721e2e6cc94000e9f",
+      "status": "differentially_validated",
+      "native_steps": 182,
+      "ordered_writes_checked": 28,
+      "output_oracle": "1234567890123456785",
+      "target_pcode_steps_replayed": 0
+    }
+  ],
+  "outside_domain": [
+    {
+      "input_ascii": "12345678901",
+      "length": 11,
+      "trace_sha256": "a59223204901cbd35588317b08bc87bc12b814bdfbc6c444b6c62cb7c2142545",
+      "status": "unknown(path identity)",
+      "native_steps": 260,
+      "ordered_writes_checked": null,
+      "output_oracle": "123456789015",
+      "target_pcode_steps_replayed": null
+    },
+    {
+      "input_ascii": "1234567890123456789",
+      "length": 19,
+      "trace_sha256": "2370ab146efc5f1f31a45eed3a495d7895a09e04c497069d01d9ffc3d345b28f",
+      "status": "unknown(string input contract)",
+      "native_steps": 182,
+      "ordered_writes_checked": null,
+      "output_oracle": "12345678901234567895",
+      "target_pcode_steps_replayed": null
+    }
+  ],
+  "negative_controls": {
+    "wrong_entry_bytes": "unknown(entry string snapshot)",
+    "wrong_ordered_write": "unknown(ordered effects mismatch)",
+    "wrong_successor": "unknown(path identity)"
+  },
+  "scope": "same 182-step native path and captured entry string object; GC and final serialization unknown"
+}

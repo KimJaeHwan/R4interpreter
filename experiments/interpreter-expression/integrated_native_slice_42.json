@@ -173,6 +173,8 @@
         },
         "raw_dynamic_pcode_operations": 2195,
         "selected_store_operations": 2,
+        "selected_address_dependencies": 0,
+        "retained_control_operations": 0,
         "excluded_examples": {
           "native_memory_writes_outside_value_slice": {
             "step": 280,
@@ -610,6 +612,8 @@
         },
         "raw_dynamic_pcode_operations": 5320,
         "selected_store_operations": 5,
+        "selected_address_dependencies": 0,
+        "retained_control_operations": 0,
         "excluded_examples": {
           "control_or_opaque_branchind": {
             "step": 986,
@@ -2436,6 +2440,8 @@
         },
         "raw_dynamic_pcode_operations": 199761,
         "selected_store_operations": 35,
+        "selected_address_dependencies": 0,
+        "retained_control_operations": 0,
         "excluded_examples": {
           "control_or_opaque_branch": {
             "step": 29442,

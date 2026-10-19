@@ -200,11 +200,14 @@ def python_preconditions(case, meta, rows):
 
 def javascript_string_preconditions(case, meta, rows):
     pre = case["preconditions"]
+    digits = len(str(meta.get("input", ""))) if meta else 0
+    long_range = "minimum_digits" in pre and "maximum_digits" in pre
     if (not meta or meta.get("input_type") != "string" or
             meta.get("fixture_sha256") != pre["fixture_sha256"] or
             not meta.get("full_handler") or
             type(meta.get("input")) is not int or
-            len(str(meta["input"])) != pre["input_decimal_digits"] or
+            (not pre["minimum_digits"] <= digits <= pre["maximum_digits"]
+             if long_range else digits != pre["input_decimal_digits"]) or
             rows[0]["registers"]["rax"] & 1 != 1):
         return "unknown(string input contract)"
     immediate_address = (rows[0]["registers"]["r12"] +
@@ -217,13 +220,23 @@ def javascript_string_preconditions(case, meta, rows):
     reads = {(item["address"], item["size"]): item["before"]
              for row in rows for item in row["memory"] if item["access"] & 1}
     length = reads.get((string_address + 12, 4))
-    characters = [reads.get((string_address + 16 + index, 1))
-                  for index in range(pre["input_decimal_digits"])]
-    if (length != pre["input_decimal_digits"] or
-            any(character is None or not 48 <= character <= 57
-                for character in characters) or
-            int(bytes(characters).decode("ascii")) != meta["input"]):
+    if length != digits:
         return "unknown(string object/input mismatch)"
+    if long_range:
+        snapshot = meta.get("input_object_snapshot")
+        if (not isinstance(snapshot, dict) or
+                snapshot.get("object_address") != string_address or
+                snapshot.get("cutpoint_pc") != rows[0]["pc"] or
+                snapshot.get("length") != digits or
+                snapshot.get("ascii_hex") != str(meta["input"]).encode("ascii").hex()):
+            return "unknown(entry string snapshot)"
+    else:
+        characters = [reads.get((string_address + 16 + index, 1))
+                      for index in range(digits)]
+        if (any(character is None or not 48 <= character <= 57
+                for character in characters) or
+                int(bytes(characters).decode("ascii")) != meta["input"]):
+            return "unknown(string object/input mismatch)"
     return None
 
 

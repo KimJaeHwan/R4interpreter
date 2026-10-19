@@ -687,9 +687,9 @@
     "javascript_gc": "unknown(not analyzed)",
     "scope": "separate controlled fixtures; not lifetime effects of the branch/string benchmark programs",
     "lua_failure_retry": {
-      "binary_sha256": "28642fa8ece57f099df1c9dd269ef3962f1da608451aed358f52231a6f3db9a6",
-      "source_sha256": "db0085d29b70bf8b92fac81efa5d97f2398382d8aced41efa2841d153e1ae880",
-      "observation_sha256": "c67bb1156450650b398e8013dc06d782f102fba8abc171dcd591bb53cfae8170",
+      "binary_sha256": "e45da5c0c44b54b1afb29d3d0666b5519e1792bbb87bb4b67d2f9e407a990126",
+      "source_sha256": "943c916aa8fd37257b58c9c0bddb96d451cd86ec9aa5e15807ffb51c69e6b3c1",
+      "observation_sha256": "8ff2d9afd42c8d3157b7c73dc7c2231d911a1685d0415d8a4206e4d114e026c8",
       "events": [
         {
           "kind": "Allocate",

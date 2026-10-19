@@ -86,6 +86,19 @@ def main():
             ptrace(POKETEXT, child, entry_pc, (original & ~255) | 0xCC)
         else:
             raise RuntimeError("holdout AddSmi site was not found")
+        string_snapshot = None
+        if args.string:
+            string_address = before.rax - 1
+            input_ascii = str(args.input).encode("ascii")
+            observed_length = peek(child, string_address + 12, 4)
+            observed_bytes = read_bytes(child, string_address + 16,
+                                        len(input_ascii))
+            if observed_length != len(input_ascii) or observed_bytes != input_ascii:
+                raise RuntimeError("entry string object differs from fixture input")
+            string_snapshot = {"object_address": string_address,
+                               "length": observed_length,
+                               "ascii_hex": observed_bytes.hex(),
+                               "cutpoint_pc": entry_pc}
         rows = []
         for index in range(500 if args.full_handler else boundary["native_steps"]):
             before = getregs(child)
@@ -135,7 +148,9 @@ def main():
                 "fixture_sha256": sha256(fixture.read_bytes()).hexdigest(),
                 "input_type": ("bigint" if args.bigint_error else
                                "string" if args.string else "number"),
-                "full_handler": args.full_handler}) + "\n")
+                "full_handler": args.full_handler,
+                **({"input_object_snapshot": string_snapshot}
+                   if string_snapshot is not None else {})}) + "\n")
             stream.write(json.dumps({"type": "path", "rows": rows}) + "\n")
             stream.write(json.dumps({"type": "summary",
                                      "error" if args.bigint_error else "output": actual}) + "\n")

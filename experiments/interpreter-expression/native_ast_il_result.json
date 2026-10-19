@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "il_sha256": "661213bd7a1714030d7e443ec54bd1e9f706a71f0aebe316e1ac76f4b48a2ac7",
+  "source_summaries_sha256": {
+    "common_three_engine_transitions.json": "4efef1e57b41668b5600e1a2f3373baa3792e8083852bb1453aac4976ebd1608",
+    "js_long_string_common_summary.json": "eae7d2cdf794d70c1c8a457ae831c2d4f90a01f6e24fcbbb883113c50e1fff15"
+  },
+  "cases": [
+    {
+      "engine": "lua",
+      "source_native_steps": 23,
+      "typed_nodes": 85,
+      "roots_checked": 35,
+      "guards": 4,
+      "reads": 4,
+      "ordered_writes": 2,
+      "outputs": 22,
+      "all_root_equivalence": "unsat",
+      "changed_successor_equivalence": "sat",
+      "source_summary": "common_three_engine_transitions.json"
+    },
+    {
+      "engine": "python",
+      "source_native_steps": 116,
+      "typed_nodes": 795,
+      "roots_checked": 78,
+      "guards": 1,
+      "reads": 31,
+      "ordered_writes": 12,
+      "outputs": 21,
+      "all_root_equivalence": "unsat",
+      "changed_successor_equivalence": "sat",
+      "source_summary": "common_three_engine_transitions.json"
+    },
+    {
+      "engine": "javascript",
+      "source_native_steps": 23,
+      "typed_nodes": 226,
+      "roots_checked": 32,
+      "guards": 1,
+      "reads": 8,
+      "ordered_writes": 0,
+      "outputs": 22,
+      "all_root_equivalence": "unsat",
+      "changed_successor_equivalence": "sat",
+      "source_summary": "common_three_engine_transitions.json"
+    },
+    {
+      "engine": "javascript",
+      "source_native_steps": 182,
+      "typed_nodes": 1466,
+      "roots_checked": 125,
+      "guards": 1,
+      "reads": 45,
+      "ordered_writes": 28,
+      "outputs": 22,
+      "all_root_equivalence": "unsat",
+      "changed_successor_equivalence": "sat",
+      "source_summary": "js_long_string_common_summary.json"
+    }
+  ],
+  "limits": [
+    "SMT equivalence checks the typed IL against frozen P-code terms",
+    "source P-code proof and target applicability remain separate evidence",
+    "native call/exception semantics are not reduced by this translator",
+    "unknown memory alias and missing path branches remain unknown"
+  ]
+}

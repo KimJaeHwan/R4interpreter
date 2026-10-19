@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "input": 1073741824,
+      "binary_sha256": "525077da1068f5087ceea522ab11fb37f5086df54d160d4e3abeb8721290a8b7",
+      "source_sha256": "34782a06bd1dcfc7caceb7d2605f6b8772b2c0b81bc1ebacea2c17458cf78946",
+      "libpython_sha256": "362412239e5c87cbcd67c720f368ebf414632bfad3e0f30d1e3e95db9cc60b55",
+      "cutpoints": [
+        {
+          "label": "allocator_failure_branch",
+          "pc": 4199918,
+          "rax": 6,
+          "rsp": 140733620896720,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "allocator_null_return",
+          "pc": 4199945,
+          "rax": 0,
+          "rsp": 140733620896720,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "pylong_return",
+          "pc": 4199247,
+          "rax": 0,
+          "rsp": 140733620896864,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "exception_check_call",
+          "pc": 4199355,
+          "rax": 0,
+          "rsp": 140733620896864,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "exception_check_return",
+          "pc": 4199360,
+          "rax": 140025636573792,
+          "rsp": 140733620896864,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        }
+      ],
+      "failure_event": {
+        "type": "event",
+        "sequence": 6,
+        "kind": "AllocationFailed",
+        "slot": 4,
+        "generation": 0,
+        "live_before": 15,
+        "live_after": 15,
+        "requested": 32,
+        "pointer": 0
+      },
+      "status": "observed_cutpoints_only"
+    },
+    {
+      "input": 1073743000,
+      "binary_sha256": "525077da1068f5087ceea522ab11fb37f5086df54d160d4e3abeb8721290a8b7",
+      "source_sha256": "34782a06bd1dcfc7caceb7d2605f6b8772b2c0b81bc1ebacea2c17458cf78946",
+      "libpython_sha256": "362412239e5c87cbcd67c720f368ebf414632bfad3e0f30d1e3e95db9cc60b55",
+      "cutpoints": [
+        {
+          "label": "allocator_failure_branch",
+          "pc": 4199918,
+          "rax": 6,
+          "rsp": 140732713200784,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "allocator_null_return",
+          "pc": 4199945,
+          "rax": 0,
+          "rsp": 140732713200784,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "pylong_return",
+          "pc": 4199247,
+          "rax": 0,
+          "rsp": 140732713200928,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "exception_check_call",
+          "pc": 4199355,
+          "rax": 0,
+          "rsp": 140732713200928,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        },
+        {
+          "label": "exception_check_return",
+          "pc": 4199360,
+          "rax": 140432970429024,
+          "rsp": 140732713200928,
+          "pool_live_mask": 15,
+          "target_calls": 1
+        }
+      ],
+      "failure_event": {
+        "type": "event",
+        "sequence": 6,
+        "kind": "AllocationFailed",
+        "slot": 4,
+        "generation": 0,
+        "live_before": 15,
+        "live_after": 15,
+        "requested": 32,
+        "pointer": 0
+      },
+      "status": "observed_cutpoints_only"
+    }
+  ],
+  "boundary": "allocator failure, PyLong NULL, and PyErr_Occurred non-NULL are observed; intervening libpython instructions and exception identity are not summarized or proved"
+}
