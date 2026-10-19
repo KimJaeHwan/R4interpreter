@@ -1,0 +1,54 @@
+{
+  "schema_version": "boundary-evidence-extension-v1",
+  "base_map_sha256": "b516fcff167644acd8c2dc0b1983de5fe90cd151209040e22c64ac1c8e450e31",
+  "lua_predicate_proof_sha256": "dc0ef64cc5fc062286e7f45b6b684a08352733ecb75106205e9cb6e10753950d",
+  "cross_cursor_proof_sha256": "91e664f06d30e0313eae53cd706871c768091632d225c44104ca8b53f76453f0",
+  "upstream_negative_controls": {
+    "base_wrong_branch_edge": "rejected",
+    "lua_false_unsat_label": "rejected",
+    "python_wrong_cursor_offset": "rejected",
+    "js_wrong_trace_hash": "rejected"
+  },
+  "lua_branch_links": [
+    {
+      "boundary_id": "lua_branch_x0:vm_window",
+      "occurrence_id": "lua_branch_x0:branch:32",
+      "raw_taken_predicate": "X == 0",
+      "proof_grade": "native_pcode_predicate_under_prior_guards_two_sided_sat",
+      "alternate_paths_complete": false
+    },
+    {
+      "boundary_id": "lua_branch_x9:vm_window",
+      "occurrence_id": "lua_branch_x9:branch:32",
+      "raw_taken_predicate": "X == 0",
+      "proof_grade": "native_pcode_predicate_under_prior_guards_two_sided_sat",
+      "alternate_paths_complete": false
+    }
+  ],
+  "cursor_links": [
+    {
+      "boundary_id": "python_252:numeric_transition",
+      "engine": "python",
+      "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "opcode_byte": 45,
+      "bytecode_offset": 6,
+      "grade": "same_trace_child_cursor_fetch_table_entry_with_same_hash_manifest"
+    },
+    {
+      "boundary_id": "other_trace_javascript_43:numeric_transition",
+      "engine": "javascript",
+      "trace_sha256": "df59a6e652c5359cdf821fb7b9e92299e12f4f5e58010d956c5485a6c7cec754",
+      "opcode_byte": 75,
+      "relative_cursor_offset": 2,
+      "absolute_bytecode_offset": null,
+      "grade": "same_trace_child_cursor_fetch_table_entry_relative_offset",
+      "same_as_local_js_holdout_fixture": false
+    }
+  ],
+  "whole_program_complete": false,
+  "remaining_obligations": [
+    "other branch opposites and call/exception exits",
+    "safe object, memory and lifetime effects across handlers",
+    "compose bounded VM transitions into a readable full-program IL"
+  ]
+}
