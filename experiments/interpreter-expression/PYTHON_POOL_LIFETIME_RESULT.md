@@ -1,5 +1,7 @@
 # CPython PyLong: 제한된 풀의 객체 수명 실험
 
+> 후속 [공통 수명 효과 실험](COMMON_LIFETIME_EFFECT_RESULT.md)은 이 ledger의 자원 정체성·크기·할당·해제를 언어 중립 코어로 옮기고 기존 네이티브 요약과 합성했다.
+
 ## 질문과 실험 경계
 
 [이전 할당 경로 실험](PYTHON_ALLOCATION_EFFECT_RESULT.md)은 네이티브 `Write`를 재현했지만, 새 객체의 수명과 주소 재사용을 판단할 근거가 없었다. 이번에는 CPython 3.13.5가 실제로 호출하는 `PyLong_FromLong`에 **범위가 명시된 객체 도메인 allocator**를 연결했다. 4개의 32바이트 슬롯을 가진 정적 풀에서 생성·해제·같은 주소 재사용·고갈을 관찰하고, 기존 [공통 구간 적용기](composed_native_transition.py)로 네이티브 상태 전이를 확인했다.

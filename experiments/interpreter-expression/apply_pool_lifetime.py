@@ -7,7 +7,9 @@ from pathlib import Path
 
 import z3
 
-from composed_native_transition import apply_segment, parse_segments
+from composed_native_transition import (apply_composed_segment, apply_segment,
+                                        parse_segments)
+from common_lifetime_effects import get_resource
 from pcode_transition_summary import FLAG_OFFSETS, REGISTER_OFFSETS
 from pool_lifetime_ledger import rejection_controls, verify_history
 from prove_cross_full_flow import ROOT
@@ -35,12 +37,22 @@ def concrete_word(memory, address):
         for index in range(8)), "little")
 
 
-def apply_call(call, segment, summary, decls):
+def lifetime_words(lifetime_state):
+    entries = [get_resource(lifetime_state, "controlled_obj_pool", f"pool_slot_{slot}")
+               for slot in range(4)]
+    return [sum(1 << slot for slot, item in enumerate(entries) if item["live"]),
+            *(item["generation"] for item in entries)]
+
+
+def apply_call(call, segment, summary, decls, lifetime_state=None,
+               effect_evidence=None, summary_digest=None, proof_digest=None):
     rows = call["rows"]
     first = rows[0]["registers"]
     base, stack = first["rdi"], first["rsp"]
     slot, operation = call["slot"], call["operation"]
     before_words = state_words(call["state_before"])
+    if lifetime_state is not None and before_words != lifetime_words(lifetime_state):
+        raise ValueError("native and lifetime entry state disagree")
     bit = 1 << slot if 0 <= slot < 4 else 0
     if (first["rdi"] != call["state_address"] or
             first["rsi"] != slot or first["rdx"] != operation or
@@ -64,24 +76,38 @@ def apply_call(call, segment, summary, decls):
     if concrete_word(memory, stack) != rows[-1]["next_pc"]:
         raise ValueError("return stack word differs from proof precondition")
     label = "allocate" if call["operation"] == 1 else "release"
-    applied, reason = apply_segment(label, segment[label], rows, summary, decls,
-                                     state, flags, memory)
+    if lifetime_state is None:
+        applied, reason = apply_segment(label, segment[label], rows, summary, decls,
+                                        state, flags, memory)
+    else:
+        applied, reason = apply_composed_segment(label, segment[label], rows,
+            summary, decls, state, flags, memory, lifetime_state,
+            effect_evidence, summary_digest, proof_digest)
     if reason:
         raise ValueError(f"{label}/slot {call['slot']}: {reason}")
-    _, _, final_memory, evidence = applied
+    if lifetime_state is None:
+        _, _, final_memory, evidence = applied
+    else:
+        _, _, final_memory, next_lifetime, evidence = applied
     predicted = [concrete_word(final_memory, call["state_address"] + i * 8)
                  for i in range(5)]
     if predicted != state_words(call["state_after"]):
         raise ValueError("predicted complete pool state differs from native state")
-    return {"operation": label, "slot": call["slot"],
+    if lifetime_state is not None and predicted != lifetime_words(next_lifetime):
+        raise ValueError("native and lifetime exit state disagree")
+    result = {"operation": label, "slot": call["slot"],
             "native_steps": len(rows), "reads_checked": evidence["reads_checked"],
             "ordered_writes_checked": evidence["ordered_writes_checked"],
             "outputs_checked": evidence["outputs_checked"],
             "initial_read_bytes": initial_bytes,
             "before": state_words(call["state_before"]), "after": predicted}
+    if lifetime_state is not None:
+        result["next_lifetime"] = next_lifetime
+        result["logical_effect"] = evidence["logical_effect"]
+    return result
 
 
-def case(value, origin, summary, decls, segments):
+def load_run(value, origin, summary):
     trace = (ROOT / "artifacts" / ("python_pool_source.json.gz" if origin == "source"
               else f"python_pool_holdout_{value}.json.gz"))
     with gzip.open(trace, "rt") as stream:
@@ -99,6 +125,11 @@ def case(value, origin, summary, decls, segments):
             mapped["inode"] <= 0 or len(mapped["device"].split(":")) != 2 or
             mapped["mapping_count"] < 1):
         raise ValueError("trace, native binary or Python library identity changed")
+    return run, trace
+
+
+def case(value, origin, summary, decls, segments):
+    run, trace = load_run(value, origin, summary)
     ledger, ownership = verify_history(run["fixture_records"], value)
     controls = rejection_controls(run["fixture_records"])
     events = [r for r in run["fixture_records"] if r["type"] == "event"]

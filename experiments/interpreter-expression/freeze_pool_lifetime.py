@@ -52,6 +52,15 @@ def make_segment(call, label):
         raise ValueError("pool helper must end with a modeled near return")
     successor = load64(model.memory, model.regs[32] - 8)
     segment = {"label": label,
+        "logical_effect": {"schema_version": "common-lifetime-effect-v1",
+            "kind": "Allocate" if label == "allocate" else "Free",
+            "cutpoint": "helper_return", "required_native_label": label,
+            "required_return": {"register": "rax", "value": 1},
+            "address_space_id": "native_virtual",
+            "domain_id": "controlled_obj_pool",
+            "resource_binding": {"kind": "register_index", "register": "rsi",
+                                 "prefix": "pool_slot_"},
+            "requested_extent": 32},
         "identity": {"entry_pc": hex(rows[0]["pc"]),
             "next_pc": hex(rows[-1]["next_pc"]), "native_steps": len(rows),
             "path_shape_mode": "pc_bytes_next",
@@ -122,6 +131,7 @@ def main():
         segments.append(segment)
         proofs[label] = proof
     summary = {"schema_version": "controlled-pool-native-v1",
+        "logical_effect_schema_version": "common-lifetime-effect-v1",
         "binary_sha256": source["binary_sha256"],
         "source_trace_sha256": sha256(SOURCE.read_bytes()).hexdigest(),
         "interface": {"inputs": (

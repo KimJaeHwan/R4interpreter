@@ -6,6 +6,7 @@ native read values, ordered writes and successors without opcode semantics.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 from hashlib import sha256
 import json
 
@@ -14,6 +15,7 @@ from capstone import Cs, CS_ARCH_X86, CS_MODE_64
 from capstone.x86_const import X86_REG_FS, X86_REG_GS
 
 from apply_transition_summary import declarations, expression
+from common_lifetime_effects import apply_effect, get_resource, LifetimeError
 from pcode_transition_summary import FLAG_OFFSETS, REGISTER_OFFSETS
 
 
@@ -49,6 +51,10 @@ def parse_segments(summary, expected_labels):
         label = segment["label"]
         if label in parsed:
             raise ValueError("duplicate segment label")
+        if any(item.get("kind") != "Write" or not
+               {"pc", "width", "address", "value"} <= item.keys()
+               for item in segment["effects"]):
+            raise ValueError("unsupported native effect schema")
         parsed[label] = {
             "guard": expression(segment["guard"], "Bool", decls),
             "outputs": [(item["name"], expression(item["expression"],
@@ -63,6 +69,7 @@ def parse_segments(summary, expected_labels):
             "successor": expression(segment["successor"], "BV64", decls),
             "identity": segment["identity"],
             "preserved_state": segment.get("preserved_state", {}),
+            "logical_effect": deepcopy(segment.get("logical_effect")),
             "evidence": segment["evidence"]}
     if set(parsed) != set(expected_labels):
         raise ValueError("frozen segment roles changed")
@@ -190,3 +197,54 @@ def apply_segment(label, segment, rows, summary, decls, state, flags, memory):
             {"label": label, "native_steps": len(rows),
              "reads_checked": len(reads), "ordered_writes_checked": len(effects),
              "outputs_checked": len(outputs), "predicted_effects": effects}), None
+
+
+def apply_composed_segment(label, segment, rows, summary, decls, state, flags,
+                           memory, lifetime_state, effect_evidence,
+                           validated_summary_sha256, validated_proof_sha256):
+    """Atomically compose a native segment and one frozen logical lifetime effect."""
+    specification = segment.get("logical_effect")
+    frozen = [item.get("logical_effect") for item in summary["segments"]
+              if item.get("label") == label]
+    if (len(frozen) != 1 or specification != frozen[0] or
+            not isinstance(specification, dict) or
+            specification.get("schema_version") != "common-lifetime-effect-v1" or
+            specification.get("kind") not in ("Allocate", "Free") or
+            specification.get("cutpoint") != "helper_return" or
+            specification.get("required_native_label") != label or
+            specification.get("required_return") != {"register": "rax", "value": 1} or
+            not isinstance(specification.get("resource_binding"), dict) or
+            specification["resource_binding"].get("kind") != "register_index" or
+            specification["resource_binding"].get("register") not in state or
+            not isinstance(specification["resource_binding"].get("prefix"), str) or
+            not isinstance(specification.get("requested_extent"), int) or
+            not rows or not rows[-1]["instruction"].startswith("ret") or
+            not isinstance(effect_evidence, dict) or
+            effect_evidence.get("native_summary_sha256") != validated_summary_sha256 or
+            effect_evidence.get("native_refinement_sha256") != validated_proof_sha256):
+        return None, f"unknown({label} lifetime effect contract)"
+    native, reason = apply_segment(label, segment, rows, summary, decls,
+                                   state, flags, memory)
+    if reason:
+        return None, reason
+    next_state, next_flags, next_memory, native_evidence = native
+    if next_state["rax"] != 1:
+        return None, f"unknown({label} required native return)"
+    binding = specification["resource_binding"]
+    resource_id = binding["prefix"] + str(state[binding["register"]])
+    try:
+        resource = get_resource(lifetime_state, specification["domain_id"],
+                                resource_id)
+        request = {"kind": specification["kind"],
+                   "address_space_id": specification["address_space_id"],
+                   "domain_id": specification["domain_id"],
+                   "resource_id": resource_id, "address": resource["base"],
+                   "requested_extent": specification["requested_extent"]}
+        if specification["kind"] == "Free":
+            request["generation"] = resource["generation"]
+        next_lifetime, canonical = apply_effect(lifetime_state, request,
+                                                effect_evidence)
+    except (KeyError, LifetimeError) as error:
+        return None, f"unknown({label} lifetime {error})"
+    return (next_state, next_flags, next_memory, next_lifetime,
+            {**native_evidence, "logical_effect": canonical}), None

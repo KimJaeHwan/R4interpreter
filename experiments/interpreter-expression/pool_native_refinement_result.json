@@ -86,6 +86,6 @@
       }
     ]
   },
-  "summary_sha256": "cd5593654109d08e3b6dd386ba1934f9248232238b8b487e1516316d2e33b863",
+  "summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
   "scope": "conditional native helper refinement; full byte-memory frame included"
 }

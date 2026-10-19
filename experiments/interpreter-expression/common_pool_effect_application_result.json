@@ -1,0 +1,863 @@
+{
+  "schema_version": "common-lifetime-effect-application-v1",
+  "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+  "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+  "cases": [
+    {
+      "input": 1073741824,
+      "origin": "source",
+      "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+      "native_helper_calls": 10,
+      "common_effects": 11,
+      "effects": [
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4215088,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_2",
+          "generation": 1,
+          "address": 4215120,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_2",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_3",
+          "generation": 1,
+          "address": 4215152,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_3",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "AllocationFailed",
+          "domain_id": "controlled_obj_pool",
+          "requested_extent": 32,
+          "reason": "observed_allocator_exhaustion",
+          "lifetime_state_preserved": true,
+          "evidence": {
+            "mode": "observed",
+            "cutpoint": "allocator_failure",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4215088,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_2",
+          "generation": 1,
+          "address": 4215120,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_2",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_3",
+          "generation": 1,
+          "address": 4215152,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_3",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "48333558c16724acd184b855901d63ff40e49bdab50607cbc670d957e430ddbc",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        }
+      ],
+      "allocate": 5,
+      "free": 5,
+      "allocation_failed_observed": 1,
+      "failure_has_native_refinement": false,
+      "stale_generation_rejected": true,
+      "same_address_new_identity": [
+        [
+          "controlled_obj_pool",
+          "pool_slot_0",
+          1
+        ],
+        [
+          "controlled_obj_pool",
+          "pool_slot_0",
+          2
+        ]
+      ],
+      "final_live_mask": 0,
+      "snapshots": {
+        "constructed_objects": 5,
+        "snapshot_bytes": 160,
+        "object_identity_keys": 5
+      },
+      "status": "common_effects_composed_with_native_summary"
+    },
+    {
+      "input": 1073742000,
+      "origin": "holdout",
+      "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+      "native_helper_calls": 10,
+      "common_effects": 11,
+      "effects": [
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4215088,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_2",
+          "generation": 1,
+          "address": 4215120,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_2",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_3",
+          "generation": 1,
+          "address": 4215152,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_3",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "AllocationFailed",
+          "domain_id": "controlled_obj_pool",
+          "requested_extent": 32,
+          "reason": "observed_allocator_exhaustion",
+          "lifetime_state_preserved": true,
+          "evidence": {
+            "mode": "observed",
+            "cutpoint": "allocator_failure",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4215088,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_2",
+          "generation": 1,
+          "address": 4215120,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_2",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_3",
+          "generation": 1,
+          "address": 4215152,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_3",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "e9cb5042da03bf636e622ef6b37eee79bbca9ae79229c96eea57546f39f57b3a",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        }
+      ],
+      "allocate": 5,
+      "free": 5,
+      "allocation_failed_observed": 1,
+      "failure_has_native_refinement": false,
+      "stale_generation_rejected": true,
+      "same_address_new_identity": [
+        [
+          "controlled_obj_pool",
+          "pool_slot_0",
+          1
+        ],
+        [
+          "controlled_obj_pool",
+          "pool_slot_0",
+          2
+        ]
+      ],
+      "final_live_mask": 0,
+      "snapshots": {
+        "constructed_objects": 5,
+        "snapshot_bytes": 160,
+        "object_identity_keys": 5
+      },
+      "status": "common_effects_composed_with_native_summary"
+    },
+    {
+      "input": 1074741800,
+      "origin": "holdout",
+      "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+      "native_helper_calls": 10,
+      "common_effects": 11,
+      "effects": [
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4215088,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_2",
+          "generation": 1,
+          "address": 4215120,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_2",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_3",
+          "generation": 1,
+          "address": 4215152,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_3",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "AllocationFailed",
+          "domain_id": "controlled_obj_pool",
+          "requested_extent": 32,
+          "reason": "observed_allocator_exhaustion",
+          "lifetime_state_preserved": true,
+          "evidence": {
+            "mode": "observed",
+            "cutpoint": "allocator_failure",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4215088,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4215056,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_2",
+          "generation": 1,
+          "address": 4215120,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_2",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_obj_pool",
+          "resource_id": "pool_slot_3",
+          "generation": 1,
+          "address": 4215152,
+          "requested_extent": 32,
+          "identity": [
+            "controlled_obj_pool",
+            "pool_slot_3",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "eaa9ed78c7b6d6c007a3a6793858e796a302574f93ebaa4534b09ed283f09a1b",
+            "native_summary_sha256": "310009576162d13bef5aafd4379e9eaa1329c47bb24abbb283c1b22c7ffb733f",
+            "native_refinement_sha256": "9b25b8ec6b092c878af58b0bbad5ca3becd9ef8c40693d79975646b3ea397222",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        }
+      ],
+      "allocate": 5,
+      "free": 5,
+      "allocation_failed_observed": 1,
+      "failure_has_native_refinement": false,
+      "stale_generation_rejected": true,
+      "same_address_new_identity": [
+        [
+          "controlled_obj_pool",
+          "pool_slot_0",
+          1
+        ],
+        [
+          "controlled_obj_pool",
+          "pool_slot_0",
+          2
+        ]
+      ],
+      "final_live_mask": 0,
+      "snapshots": {
+        "constructed_objects": 5,
+        "snapshot_bytes": 160,
+        "object_identity_keys": 5
+      },
+      "status": "common_effects_composed_with_native_summary"
+    }
+  ],
+  "rejection_controls": {
+    "duplicate_allocate": "resource occupied or generation overflow",
+    "wrong_extent": "effect violates resource extent or alignment",
+    "interior_address": "effect violates resource extent or alignment",
+    "free_before_allocate": "stale, free, or mismatched object",
+    "wrong_resource": "resource is not owned by this domain",
+    "unknown_kind": "unsupported lifetime effect",
+    "generation_overflow": "resource occupied or generation overflow",
+    "failure_with_native_proof": "failure has unsupported native proof claim",
+    "cross_domain_address_overlap": "overlapping owned reservations",
+    "access_uses_requested_extent": "stale or out-of-bounds object access",
+    "missing_frozen_effect": "allocate/slot 0: unknown(allocate lifetime effect contract)",
+    "wrong_proof_reference": "allocate/slot 0: unknown(allocate lifetime effect contract)",
+    "composed_duplicate_allocate": "native and lifetime entry state disagree",
+    "composed_free_before_allocate": "native and lifetime entry state disagree",
+    "tampered_frozen_extent": "allocate/slot 0: unknown(allocate lifetime effect contract)",
+    "native_lifetime_generation_mismatch": "native and lifetime entry state disagree",
+    "native_lifetime_other_slot_live": "native and lifetime entry state disagree",
+    "post_native_capacity_failure_atomic": "allocate/slot 0: unknown(allocate lifetime effect violates resource extent or alignment)"
+  },
+  "evidence_boundary": {
+    "successful_helper": "conditional native refinement plus observed allocator binding",
+    "allocation_failure": "observed allocator event, without successful-helper native refinement",
+    "initial_resources": "fixture-owned static reservations, initially free"
+  },
+  "limits": [
+    "finite reservation authority comes from the controlled fixture",
+    "native helper proof does not prove CPython hook or object initialization",
+    "failure event has no frozen native path; byte-memory behavior outside the helper is not summarized",
+    "other allocators and arbitrary heap objects remain unknown"
+  ]
+}

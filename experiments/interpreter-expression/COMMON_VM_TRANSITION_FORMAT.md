@@ -4,9 +4,11 @@
 
 후속 [공통 구간 합성 실험](CROSS_ENGINE_SEGMENT_COMPOSITION_RESULT.md)은 JavaScript의 반복 문자열 복사와 Lua의 숫자 핸들러·fetch/decode/dispatch 연결을 같은 SMT 구간 평가 코어로 적용했다. 구간 내 식·상태·효과 계산은 공유하지만 경계 선택, 구간 순서, 바이트코드 바인딩은 여전히 대상별로 제공한다.
 
-[Python 할당 효과 실험](PYTHON_ALLOCATION_EFFECT_RESULT.md)은 같은 코어로 PyLong 객체 경로의 관측된 상태와 `Write` 효과를 재현했다. 기존 힙 바이트를 먼저 읽고 덮어쓰는 기록이 있으므로, `Write` 목록만으로 논리적 객체 수명·freshness를 증명하지 않는다. 아래의 `Allocate`는 아직 구현된 효과가 아니라 필요한 확장이다.
+[Python 할당 효과 실험](PYTHON_ALLOCATION_EFFECT_RESULT.md)은 같은 코어로 PyLong 객체 경로의 관측된 상태와 `Write` 효과를 재현했다. 기존 힙 바이트를 먼저 읽고 덮어쓰는 기록이 있으므로, `Write` 목록만으로 논리적 객체 수명·freshness를 증명하지 않는다.
 
-[제한된 CPython 풀 수명 실험](PYTHON_POOL_LIFETIME_RESULT.md)은 별도 ledger에서 `Allocate(slot, generation, extent)`, `Free(slot, generation)`, `AllocationFailed`를 모델링하고 네이티브 helper 요약과 연결했다. 공통 적용기 내부의 정식 효과로는 아직 통합되지 않았다. 고정 4슬롯 풀의 조건부 증명과 일반 힙의 소유권 주장을 구분한다.
+[제한된 CPython 풀 수명 실험](PYTHON_POOL_LIFETIME_RESULT.md)은 별도 ledger에서 `Allocate(slot, generation, extent)`, `Free(slot, generation)`, `AllocationFailed`를 모델링하고 네이티브 helper 요약과 연결했다. 그 단계에서는 공통 적용기 내부의 정식 효과로 통합되지 않았다. 고정 4슬롯 풀의 조건부 증명과 일반 힙의 소유권 주장을 구분한다.
+
+후속 [공통 수명 효과 실험](COMMON_LIFETIME_EFFECT_RESULT.md)은 유한 예약 자원의 수명 상태를 공통 코어로 옮겼다. 버전 있는 `logical_effect`가 helper 반환 지점의 `Allocate`·`Free`를 지정하고, 적용기는 네이티브 구간과 수명 상태를 원자적으로 합성한다. 이번 `AllocationFailed`는 네이티브 경로 요약이 없는 별도의 관측 효과다. 따라서 아래 설계의 `Allocate / Free / Event` 중 이 제한된 수명 부분은 구현됐지만, 임의 힙·GC·예외·호출 효과까지 구현한 것은 아니다.
 
 [Python·JavaScript 첫 교차 실험](PYTHON_JS_FIRST_RESULT.md)은 초기 값 투영에 `Z`와 `F64` sort를 추가했다. 후속 [전체 관측 핸들러 실험](THREE_ENGINE_NATIVE_TRANSITION_RESULT.md)은 고정된 숫자 경로에서 출력 레지스터·읽기·순서 있는 쓰기·다음 핸들러까지 확장했다. 다른 타입, 예외, 전체 호출 합성은 아직 이 요약 범위 밖이다.
 
