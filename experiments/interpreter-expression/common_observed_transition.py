@@ -272,9 +272,11 @@ def trace_memory_versions(rows):
     return True, read_after_write
 
 
-def segment_base_frame(rows, inputs):
+def segment_base_frame(rows, inputs, force=False):
     base_inputs = {item["binding"]["name"] for item in inputs
                    if item["binding"]["kind"] == "segment_base"}
+    if force and not base_inputs:
+        base_inputs = {"fs_base", "gs_base"}
     if not base_inputs:
         return None
     if base_inputs != {"fs_base", "gs_base"}:
@@ -295,7 +297,8 @@ def segment_base_frame(rows, inputs):
     return None
 
 
-def apply_case(common, case, binary, rows, meta=None):
+def apply_case(common, case, binary, rows, meta=None, *, seeded_state=None,
+               seeded_memory=None, return_execution=False):
     """Use the same typed expression/guard/effect evaluator for all engines."""
     expected_preconditions = {"lua": {("lua_entry_snapshot",
                                        "transition-summary-v0-candidate")},
@@ -329,12 +332,22 @@ def apply_case(common, case, binary, rows, meta=None):
             len(rows) != identity["native_steps"] or
             shape(rows, identity["path_shape_mode"]) != identity["path_shape_sha256"]):
         return {"status": "unknown(path identity)"}
-    frame_error = segment_base_frame(rows, case["interface"]["inputs"])
+    frame_error = segment_base_frame(rows, case["interface"]["inputs"],
+                                     force=return_execution or seeded_state is not None)
     if frame_error:
         return {"status": frame_error}
     memory_consistent, read_after_write_bytes = trace_memory_versions(rows)
     if not memory_consistent:
         return {"status": "unknown(trace memory version mismatch)"}
+    if seeded_state is not None:
+        entry = rows[0]["registers"]
+        if (any(entry[name] != seeded_state["registers"][name]
+                for name in REGISTER_OFFSETS.values()) or
+                any(((entry["eflags"] >> bit) & 1) != seeded_state["flags"][bit]
+                    for bit in FLAG_OFFSETS.values()) or
+                any(entry[name] != seeded_state["bases"][name]
+                    for name in ("fs_base", "gs_base"))):
+            return {"status": "unknown(composed entry state mismatch)"}
     expected_outputs = {f"R_{name.upper()}":
                         ("BV64", {"kind": "register", "name": name})
                         for name in REGISTER_OFFSETS.values()}
@@ -360,6 +373,8 @@ def apply_case(common, case, binary, rows, meta=None):
     if any(item.get("kind") != "Write" for item in case["effects"]):
         return {"status": "unknown(unsupported effect kind)"}
     pre = case["preconditions"]["kind"]
+    if pre == "lua_entry_snapshot" and seeded_memory is not None:
+        return {"status": "unknown(unsupported snapshot composition)"}
     if pre in ("python_cached_int", "python_allocated_result"):
         reason = python_preconditions(case, meta, rows)
         if reason:
@@ -389,6 +404,8 @@ def apply_case(common, case, binary, rows, meta=None):
         for index, byte in enumerate(data):
             memory = z3.Store(memory, z3.BitVecVal(base + index, 64),
                               z3.BitVecVal(byte, 8))
+    elif seeded_memory is not None:
+        memory = seeded_memory
     else:
         memory, _ = initial_memory(rows)
     if "M0" in decls:
@@ -447,17 +464,50 @@ def apply_case(common, case, binary, rows, meta=None):
                       for row in rows for access in row["memory"] if access["access"] & 2]
     if effects != actual_effects:
         return {"status": "unknown(ordered effects mismatch)"}
+    if seeded_memory is not None:
+        current = seeded_memory
+        for row in rows:
+            for access in row["memory"]:
+                if access["access"] & 1:
+                    for index in range(access["size"]):
+                        address = (access["address"] + index) & ((1 << 64) - 1)
+                        actual = (access["before"] >> (8 * index)) & 255
+                        predicted = z3.simplify(z3.Select(
+                            current, z3.BitVecVal(address, 64)))
+                        if not z3.is_bv_value(predicted) or predicted.as_long() != actual:
+                            return {"status": "unknown(composed read memory mismatch)"}
+                if access["access"] & 2:
+                    for index in range(access["size"]):
+                        address = (access["address"] + index) & ((1 << 64) - 1)
+                        current = z3.Store(current, z3.BitVecVal(address, 64),
+                            z3.BitVecVal((access["after"] >> (8 * index)) & 255, 8))
     successor = concrete_value(expression(case["successor"], "BV64", decls),
                                bindings)
     if successor != rows[-1]["next_pc"]:
         return {"status": "unknown(successor mismatch)"}
-    return {"status": "differentially_validated",
+    verdict = {"status": "differentially_validated",
             "engine": case["engine"], "native_steps": len(rows),
             "outputs_checked": len(output_values), "reads_checked": len(reads),
             "derived_outputs_checked": len(derived),
             "ordered_writes_checked": len(effects),
             "read_after_write_bytes_checked": read_after_write_bytes,
             "next_pc": hex(successor), "target_pcode_steps_replayed": 0}
+    if return_execution:
+        next_memory = memory
+        for effect in effects:
+            for index in range(effect["width"]):
+                address = (effect["address"] + index) & ((1 << 64) - 1)
+                next_memory = z3.Store(next_memory, z3.BitVecVal(address, 64),
+                    z3.BitVecVal((effect["value"] >> (8 * index)) & 255, 8))
+        verdict["_next_memory"] = next_memory
+        verdict["_next_state"] = {
+            "registers": {name: output_values[f"R_{name.upper()}"]
+                          for name in REGISTER_OFFSETS.values()},
+            "flags": {bit: output_values[f"F_{bit}"]
+                      for bit in FLAG_OFFSETS.values()},
+            "bases": {name: rows[0]["registers"][name]
+                      for name in ("fs_base", "gs_base")}}
+    return verdict
 
 
 def gzip_records(path):

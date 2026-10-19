@@ -1,0 +1,2448 @@
+{
+  "schema_version": 1,
+  "frozen_summaries_sha256": {
+    "unseen_python_generated_transition.json": "79680c9c71bdfbe6823f91f1d13b3cbac78b99fb2041bb1370e9fa3e70a4b59c",
+    "unseen_python_neighbor_transition.json": "627578c3e181fdf4425f2654a5e58b7c2754acadd275af9f26ec17c1d6e47f02",
+    "common_three_engine_transitions.json": "4efef1e57b41668b5600e1a2f3373baa3792e8083852bb1453aac4976ebd1608"
+  },
+  "cached": {
+    "input": 43,
+    "route": "cached",
+    "trace_sha256": "71335b6e87a6fcd2f013153ecbff2768ef763341a17b9f41e4cb797adf3a4d9a",
+    "first_boundary": {
+      "begin": 683,
+      "end_exclusive": 799,
+      "entry_predecessor": 682,
+      "entry_pc": "0x56227c",
+      "exit_pc": "0x56173b",
+      "native_steps": 116,
+      "internal_indirect_calls": 2
+    },
+    "second_boundary": {
+      "begin": 799,
+      "end_exclusive": 893,
+      "entry_predecessor": 798,
+      "entry_pc": "0x56173b",
+      "exit_pc": "0x56173b",
+      "native_steps": 94,
+      "internal_indirect_calls": 0
+    },
+    "prefix_native_steps_opaque": 683,
+    "composed_native_steps": 210,
+    "suffix_native_steps_opaque": 94,
+    "first_transition": {
+      "status": "differentially_validated",
+      "engine": "python",
+      "native_steps": 116,
+      "outputs_checked": 21,
+      "reads_checked": 31,
+      "derived_outputs_checked": 0,
+      "ordered_writes_checked": 12,
+      "read_after_write_bytes_checked": 65,
+      "next_pc": "0x56173b",
+      "target_pcode_steps_replayed": 0
+    },
+    "second_transition": {
+      "status": "differentially_validated",
+      "engine": "python",
+      "native_steps": 94,
+      "outputs_checked": 21,
+      "reads_checked": 27,
+      "derived_outputs_checked": 0,
+      "ordered_writes_checked": 18,
+      "read_after_write_bytes_checked": 56,
+      "next_pc": "0x56173b",
+      "target_pcode_steps_replayed": 0
+    },
+    "cross_boundary_reads_checked": 6,
+    "value_il": {
+      "sort": "BV32",
+      "expression": "X + 5",
+      "conditional_domain": "5 <= X <= 251 with frozen other entry state",
+      "proof_source": {
+        "proof_artifact": "common_numeric_refinement_result.json",
+        "proof_sha256": "b10ea5c5e43664965d6f545ee5ef474f9c5176784821fb14b06b93f602ef62eb",
+        "source_trace_sha256": "81d69fb09a40b047180a16bdf8ffaa30cc180673b1e8ce22d5193cdd5d9bdf42",
+        "domain": "5..251",
+        "grade": "source fixed-environment SMT proof"
+      },
+      "whole_domain_proved_in_this_trace": false
+    },
+    "effects": {
+      "first_native_writes": [
+        {
+          "pc": "0x562288",
+          "address": 140106126361136,
+          "width": 8,
+          "value": 140106121591710
+        },
+        {
+          "pc": "0x5622ca",
+          "address": 140106121591712,
+          "width": 1,
+          "value": 17
+        },
+        {
+          "pc": "0x5622d6",
+          "address": 140106121591712,
+          "width": 2,
+          "value": 1
+        },
+        {
+          "pc": "0x5622dd",
+          "address": 140735232491144,
+          "width": 8,
+          "value": 5645028
+        },
+        {
+          "pc": "0x5932b4",
+          "address": 140735232491136,
+          "width": 8,
+          "value": 10760208
+        },
+        {
+          "pc": "0x5932b6",
+          "address": 140735232491128,
+          "width": 8,
+          "value": 10758992
+        },
+        {
+          "pc": "0x5932b8",
+          "address": 140735232491120,
+          "width": 8,
+          "value": 140106121591714
+        },
+        {
+          "pc": "0x5932bc",
+          "address": 140735232491112,
+          "width": 8,
+          "value": 140106126361080
+        },
+        {
+          "pc": "0x5932f3",
+          "address": 140735232491096,
+          "width": 8,
+          "value": 5845750
+        },
+        {
+          "pc": "0x5e9714",
+          "address": 140735232491088,
+          "width": 8,
+          "value": 10758992
+        },
+        {
+          "pc": "0x5e9715",
+          "address": 140735232491080,
+          "width": 8,
+          "value": 10760208
+        },
+        {
+          "pc": "0x562316",
+          "address": 140106126361160,
+          "width": 8,
+          "value": 10760368
+        }
+      ],
+      "second_native_writes": [
+        {
+          "pc": "0x561746",
+          "address": 140106126361136,
+          "width": 8,
+          "value": 140106121591714
+        },
+        {
+          "pc": "0x56175f",
+          "address": 140106126361144,
+          "width": 4,
+          "value": 1
+        },
+        {
+          "pc": "0x561765",
+          "address": 11027900,
+          "width": 4,
+          "value": 997
+        },
+        {
+          "pc": "0x56176a",
+          "address": 11027928,
+          "width": 8,
+          "value": 140106126360976
+        },
+        {
+          "pc": "0x56176e",
+          "address": 140735232491144,
+          "width": 8,
+          "value": 5642099
+        },
+        {
+          "pc": "0x580cb4",
+          "address": 140735232491136,
+          "width": 8,
+          "value": 11027856
+        },
+        {
+          "pc": "0x580cb6",
+          "address": 140735232491128,
+          "width": 8,
+          "value": 36
+        },
+        {
+          "pc": "0x580cb8",
+          "address": 140735232491120,
+          "width": 8,
+          "value": 140106126360976
+        },
+        {
+          "pc": "0x580cbd",
+          "address": 140735232491112,
+          "width": 8,
+          "value": 10760368
+        },
+        {
+          "pc": "0x580cc1",
+          "address": 140735232491104,
+          "width": 8,
+          "value": 140106126360976
+        },
+        {
+          "pc": "0x580cda",
+          "address": 11027908,
+          "width": 4,
+          "value": 9997
+        },
+        {
+          "pc": "0x580cea",
+          "address": 140106126361144,
+          "width": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x580d3b",
+          "address": 140106120213056,
+          "width": 8,
+          "value": 1
+        },
+        {
+          "pc": "0x580d53",
+          "address": 140106121591504,
+          "width": 8,
+          "value": 2
+        },
+        {
+          "pc": "0x580d64",
+          "address": 11027908,
+          "width": 4,
+          "value": 9998
+        },
+        {
+          "pc": "0x580d77",
+          "address": 11028096,
+          "width": 8,
+          "value": 140106126361080
+        },
+        {
+          "pc": "0x56177b",
+          "address": 140106126361056,
+          "width": 8,
+          "value": 10760368
+        },
+        {
+          "pc": "0x561786",
+          "address": 140106126361040,
+          "width": 4,
+          "value": 4294967295
+        }
+      ],
+      "display_groups": [
+        {
+          "op": "OpaqueNativeWrites",
+          "raw_write_ordinals": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "op": "ResultSlotPointerWrite",
+          "raw_write_ordinals": [
+            11
+          ],
+          "slot": 140106126361160,
+          "pointer": 10760368
+        },
+        {
+          "op": "NextIntervalNativeWrites",
+          "raw_write_ordinals": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        }
+      ],
+      "native_writes_deleted": 0,
+      "allocator_lifetime_effect": "unknown(no Allocate/Free contract for CPython allocator)"
+    },
+    "control": {
+      "conditional_branches": [
+        {
+          "step_in_slice": 7,
+          "pc": "0x562298",
+          "mnemonic": "jbe",
+          "observed_successor": "0x56229e",
+          "opposite_successor": "0x56c390",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 14,
+          "pc": "0x5622b3",
+          "mnemonic": "je",
+          "observed_successor": "0x5622b9",
+          "opposite_successor": "0x437c88",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 40,
+          "pc": "0x5932d3",
+          "mnemonic": "je",
+          "observed_successor": "0x5932d9",
+          "opposite_successor": "0x593392",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 43,
+          "pc": "0x5932df",
+          "mnemonic": "jne",
+          "observed_successor": "0x5932e1",
+          "opposite_successor": "0x593310",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 45,
+          "pc": "0x5932e4",
+          "mnemonic": "je",
+          "observed_successor": "0x5932ea",
+          "opposite_successor": "0x5933b0",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 56,
+          "pc": "0x5e9725",
+          "mnemonic": "je",
+          "observed_successor": "0x5e972b",
+          "opposite_successor": "0x45ebe5",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 60,
+          "pc": "0x5e9739",
+          "mnemonic": "je",
+          "observed_successor": "0x5e973f",
+          "opposite_successor": "0x5e98f8",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 69,
+          "pc": "0x5e975b",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e9761",
+          "opposite_successor": "0x5e9860",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 81,
+          "pc": "0x5e978a",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e978c",
+          "opposite_successor": "0x5e97b0",
+          "opposite_status": "observed_in_other_trace",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 92,
+          "pc": "0x5932fc",
+          "mnemonic": "je",
+          "observed_successor": "0x593302",
+          "opposite_successor": "0x593401",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 102,
+          "pc": "0x5622ed",
+          "mnemonic": "js",
+          "observed_successor": "0x5622fd",
+          "opposite_successor": "0x5622ef",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 105,
+          "pc": "0x562303",
+          "mnemonic": "jns",
+          "observed_successor": "0x562309",
+          "opposite_successor": "0x569400",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 107,
+          "pc": "0x56230c",
+          "mnemonic": "je",
+          "observed_successor": "0x562312",
+          "opposite_successor": "0x56a7c5",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 143,
+          "pc": "0x580cd0",
+          "mnemonic": "jne",
+          "observed_successor": "0x580cd6",
+          "opposite_successor": "0x580e06",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 147,
+          "pc": "0x580ce0",
+          "mnemonic": "jne",
+          "observed_successor": "0x580ce6",
+          "opposite_successor": "0x580dbd",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 151,
+          "pc": "0x580cf3",
+          "mnemonic": "jle",
+          "observed_successor": "0x580cf5",
+          "opposite_successor": "0x580d1f",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 156,
+          "pc": "0x580d04",
+          "mnemonic": "je",
+          "observed_successor": "0x580d06",
+          "opposite_successor": "0x580d16",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 159,
+          "pc": "0x580d0b",
+          "mnemonic": "js",
+          "observed_successor": "0x580d16",
+          "opposite_successor": "0x580d0d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 162,
+          "pc": "0x580d1d",
+          "mnemonic": "jne",
+          "observed_successor": "0x580d1f",
+          "opposite_successor": "0x580cfd",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 165,
+          "pc": "0x580d26",
+          "mnemonic": "jne",
+          "observed_successor": "0x580d2c",
+          "opposite_successor": "0x580f8b",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 169,
+          "pc": "0x580d35",
+          "mnemonic": "js",
+          "observed_successor": "0x580d37",
+          "opposite_successor": "0x580d44",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 172,
+          "pc": "0x580d3e",
+          "mnemonic": "je",
+          "observed_successor": "0x580d44",
+          "opposite_successor": "0x580f68",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 176,
+          "pc": "0x580d4d",
+          "mnemonic": "js",
+          "observed_successor": "0x580d4f",
+          "opposite_successor": "0x580d5c",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 179,
+          "pc": "0x580d56",
+          "mnemonic": "je",
+          "observed_successor": "0x580d5c",
+          "opposite_successor": "0x43e9d0",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 184,
+          "pc": "0x580d71",
+          "mnemonic": "je",
+          "observed_successor": "0x580d77",
+          "opposite_successor": "0x58102d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        }
+      ],
+      "calls": [
+        {
+          "step_in_slice": 27,
+          "pc": "0x5622dd",
+          "target": "0x5932b0",
+          "target_kind": "observed_indirect",
+          "return_address": "0x5622e4",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        },
+        {
+          "step_in_slice": 49,
+          "pc": "0x5932f3",
+          "target": "0x5e9710",
+          "target_kind": "observed_indirect",
+          "return_address": "0x5932f6",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        },
+        {
+          "step_in_slice": 130,
+          "pc": "0x56176e",
+          "target": "0x580cb0",
+          "target_kind": "decoded_direct",
+          "return_address": "0x561773",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        }
+      ],
+      "returns": [
+        {
+          "step_in_slice": 90,
+          "pc": "0x5e97a6",
+          "observed_successor": "0x5932f6"
+        },
+        {
+          "step_in_slice": 98,
+          "pc": "0x59330c",
+          "observed_successor": "0x5622e4"
+        },
+        {
+          "step_in_slice": 192,
+          "pc": "0x580d8b",
+          "observed_successor": "0x561773"
+        }
+      ],
+      "complete": false,
+      "reason": "alternate edges, calls, exceptions and enclosing caller paths are not exhaustively proved"
+    },
+    "caller_return_pointer_observed": 10760368
+  },
+  "source": {
+    "input": 252,
+    "route": "allocated",
+    "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+    "first_boundary": {
+      "begin": 683,
+      "end_exclusive": 829,
+      "entry_predecessor": 682,
+      "entry_pc": "0x56227c",
+      "exit_pc": "0x56173b",
+      "native_steps": 146,
+      "internal_indirect_calls": 2
+    },
+    "second_boundary": {
+      "begin": 829,
+      "end_exclusive": 923,
+      "entry_predecessor": 828,
+      "entry_pc": "0x56173b",
+      "exit_pc": "0x56173b",
+      "native_steps": 94,
+      "internal_indirect_calls": 0
+    },
+    "prefix_native_steps_opaque": 683,
+    "composed_native_steps": 240,
+    "suffix_native_steps_opaque": 94,
+    "first_transition": {
+      "status": "differentially_validated",
+      "engine": "python",
+      "native_steps": 146,
+      "outputs_checked": 21,
+      "reads_checked": 42,
+      "derived_outputs_checked": 0,
+      "ordered_writes_checked": 18,
+      "read_after_write_bytes_checked": 65,
+      "next_pc": "0x56173b",
+      "target_pcode_steps_replayed": 0
+    },
+    "second_transition": {
+      "status": "differentially_validated",
+      "engine": "python",
+      "native_steps": 94,
+      "outputs_checked": 21,
+      "reads_checked": 27,
+      "derived_outputs_checked": 0,
+      "ordered_writes_checked": 18,
+      "read_after_write_bytes_checked": 56,
+      "next_pc": "0x56173b",
+      "target_pcode_steps_replayed": 0
+    },
+    "cross_boundary_reads_checked": 6,
+    "value_il": {
+      "sort": "BV32",
+      "expression": "X + 5",
+      "conditional_domain": "252 <= X <= 256 with frozen other entry state",
+      "proof_source": {
+        "proof_artifact": "unseen_python_generated_proof.json",
+        "proof_sha256": "c7b43835f6c1edcb9789fbb565eeb88de2295ef3789df20cafe829089144eb49",
+        "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+        "domain": "252..256",
+        "grade": "source fixed-environment SMT proof"
+      },
+      "whole_domain_proved_in_this_trace": true
+    },
+    "effects": {
+      "first_native_writes": [
+        {
+          "pc": "0x562288",
+          "address": 139969287512624,
+          "width": 8,
+          "value": 139969282735006
+        },
+        {
+          "pc": "0x5622ca",
+          "address": 139969282735008,
+          "width": 1,
+          "value": 17
+        },
+        {
+          "pc": "0x5622d6",
+          "address": 139969282735008,
+          "width": 2,
+          "value": 1
+        },
+        {
+          "pc": "0x5622dd",
+          "address": 140734531865752,
+          "width": 8,
+          "value": 5645028
+        },
+        {
+          "pc": "0x5932b4",
+          "address": 140734531865744,
+          "width": 8,
+          "value": 10766896
+        },
+        {
+          "pc": "0x5932b6",
+          "address": 140734531865736,
+          "width": 8,
+          "value": 10758992
+        },
+        {
+          "pc": "0x5932b8",
+          "address": 140734531865728,
+          "width": 8,
+          "value": 139969282735010
+        },
+        {
+          "pc": "0x5932bc",
+          "address": 140734531865720,
+          "width": 8,
+          "value": 139969287512568
+        },
+        {
+          "pc": "0x5932f3",
+          "address": 140734531865704,
+          "width": 8,
+          "value": 5845750
+        },
+        {
+          "pc": "0x5e9714",
+          "address": 140734531865696,
+          "width": 8,
+          "value": 10758992
+        },
+        {
+          "pc": "0x5e9715",
+          "address": 140734531865688,
+          "width": 8,
+          "value": 10766896
+        },
+        {
+          "pc": "0x5e97ff",
+          "address": 139969281048576,
+          "width": 4,
+          "value": 344
+        },
+        {
+          "pc": "0x5e9805",
+          "address": 139969281048584,
+          "width": 8,
+          "value": 139969281059568
+        },
+        {
+          "pc": "0x5e9823",
+          "address": 139969281058176,
+          "width": 8,
+          "value": 8
+        },
+        {
+          "pc": "0x5e982b",
+          "address": 139969281058168,
+          "width": 8,
+          "value": 10514112
+        },
+        {
+          "pc": "0x5e9843",
+          "address": 139969281058160,
+          "width": 8,
+          "value": 1
+        },
+        {
+          "pc": "0x5e9853",
+          "address": 139969281058184,
+          "width": 4,
+          "value": 257
+        },
+        {
+          "pc": "0x562316",
+          "address": 139969287512648,
+          "width": 8,
+          "value": 139969281058160
+        }
+      ],
+      "second_native_writes": [
+        {
+          "pc": "0x561746",
+          "address": 139969287512624,
+          "width": 8,
+          "value": 139969282735010
+        },
+        {
+          "pc": "0x56175f",
+          "address": 139969287512632,
+          "width": 4,
+          "value": 1
+        },
+        {
+          "pc": "0x561765",
+          "address": 11027900,
+          "width": 4,
+          "value": 997
+        },
+        {
+          "pc": "0x56176a",
+          "address": 11027928,
+          "width": 8,
+          "value": 139969287512464
+        },
+        {
+          "pc": "0x56176e",
+          "address": 140734531865752,
+          "width": 8,
+          "value": 5642099
+        },
+        {
+          "pc": "0x580cb4",
+          "address": 140734531865744,
+          "width": 8,
+          "value": 11027856
+        },
+        {
+          "pc": "0x580cb6",
+          "address": 140734531865736,
+          "width": 8,
+          "value": 36
+        },
+        {
+          "pc": "0x580cb8",
+          "address": 140734531865728,
+          "width": 8,
+          "value": 139969287512464
+        },
+        {
+          "pc": "0x580cbd",
+          "address": 140734531865720,
+          "width": 8,
+          "value": 139969281058160
+        },
+        {
+          "pc": "0x580cc1",
+          "address": 140734531865712,
+          "width": 8,
+          "value": 139969287512464
+        },
+        {
+          "pc": "0x580cda",
+          "address": 11027908,
+          "width": 4,
+          "value": 9997
+        },
+        {
+          "pc": "0x580cea",
+          "address": 139969287512632,
+          "width": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x580d3b",
+          "address": 139969281372736,
+          "width": 8,
+          "value": 1
+        },
+        {
+          "pc": "0x580d53",
+          "address": 139969282734800,
+          "width": 8,
+          "value": 2
+        },
+        {
+          "pc": "0x580d64",
+          "address": 11027908,
+          "width": 4,
+          "value": 9998
+        },
+        {
+          "pc": "0x580d77",
+          "address": 11028096,
+          "width": 8,
+          "value": 139969287512568
+        },
+        {
+          "pc": "0x56177b",
+          "address": 139969287512544,
+          "width": 8,
+          "value": 139969281058160
+        },
+        {
+          "pc": "0x561786",
+          "address": 139969287512528,
+          "width": 4,
+          "value": 4294967295
+        }
+      ],
+      "display_groups": [
+        {
+          "op": "OpaqueNativeWrites",
+          "raw_write_ordinals": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "op": "PyLongFieldWrites",
+          "raw_write_ordinals": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "object_pointer": 139969281058160,
+          "fields": {
+            "refcount": 1,
+            "type_pointer": 10514112,
+            "size_tag": 8,
+            "digit": 257
+          },
+          "lifetime_kind": "unknown"
+        },
+        {
+          "op": "ResultSlotPointerWrite",
+          "raw_write_ordinals": [
+            17
+          ],
+          "slot": 139969287512648,
+          "pointer": 139969281058160
+        },
+        {
+          "op": "NextIntervalNativeWrites",
+          "raw_write_ordinals": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        }
+      ],
+      "native_writes_deleted": 0,
+      "allocator_lifetime_effect": "unknown(no Allocate/Free contract for CPython allocator)"
+    },
+    "control": {
+      "conditional_branches": [
+        {
+          "step_in_slice": 7,
+          "pc": "0x562298",
+          "mnemonic": "jbe",
+          "observed_successor": "0x56229e",
+          "opposite_successor": "0x56c390",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 14,
+          "pc": "0x5622b3",
+          "mnemonic": "je",
+          "observed_successor": "0x5622b9",
+          "opposite_successor": "0x437c88",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 40,
+          "pc": "0x5932d3",
+          "mnemonic": "je",
+          "observed_successor": "0x5932d9",
+          "opposite_successor": "0x593392",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 43,
+          "pc": "0x5932df",
+          "mnemonic": "jne",
+          "observed_successor": "0x5932e1",
+          "opposite_successor": "0x593310",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 45,
+          "pc": "0x5932e4",
+          "mnemonic": "je",
+          "observed_successor": "0x5932ea",
+          "opposite_successor": "0x5933b0",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 56,
+          "pc": "0x5e9725",
+          "mnemonic": "je",
+          "observed_successor": "0x5e972b",
+          "opposite_successor": "0x45ebe5",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 60,
+          "pc": "0x5e9739",
+          "mnemonic": "je",
+          "observed_successor": "0x5e973f",
+          "opposite_successor": "0x5e98f8",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 69,
+          "pc": "0x5e975b",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e9761",
+          "opposite_successor": "0x5e9860",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 81,
+          "pc": "0x5e978a",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e97b0",
+          "opposite_successor": "0x5e978c",
+          "opposite_status": "observed_in_other_trace",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 84,
+          "pc": "0x5e97bd",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e97c3",
+          "opposite_successor": "0x5e998d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 87,
+          "pc": "0x5e97d0",
+          "mnemonic": "jne",
+          "observed_successor": "0x5e97d6",
+          "opposite_successor": "0x5e999b",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 94,
+          "pc": "0x5e97f5",
+          "mnemonic": "je",
+          "observed_successor": "0x5e97fb",
+          "opposite_successor": "0x5e99c4",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 100,
+          "pc": "0x5e980c",
+          "mnemonic": "je",
+          "observed_successor": "0x5e980e",
+          "opposite_successor": "0x5e9888",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 105,
+          "pc": "0x5e9817",
+          "mnemonic": "js",
+          "observed_successor": "0x5e981d",
+          "opposite_successor": "0x5e9935",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 110,
+          "pc": "0x5e9836",
+          "mnemonic": "jne",
+          "observed_successor": "0x5e983c",
+          "opposite_successor": "0x5e9a26",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 114,
+          "pc": "0x5e984d",
+          "mnemonic": "jne",
+          "observed_successor": "0x5e9853",
+          "opposite_successor": "0x5e99e3",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 122,
+          "pc": "0x5932fc",
+          "mnemonic": "je",
+          "observed_successor": "0x593302",
+          "opposite_successor": "0x593401",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 132,
+          "pc": "0x5622ed",
+          "mnemonic": "js",
+          "observed_successor": "0x5622fd",
+          "opposite_successor": "0x5622ef",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 135,
+          "pc": "0x562303",
+          "mnemonic": "jns",
+          "observed_successor": "0x562309",
+          "opposite_successor": "0x569400",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 137,
+          "pc": "0x56230c",
+          "mnemonic": "je",
+          "observed_successor": "0x562312",
+          "opposite_successor": "0x56a7c5",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 173,
+          "pc": "0x580cd0",
+          "mnemonic": "jne",
+          "observed_successor": "0x580cd6",
+          "opposite_successor": "0x580e06",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 177,
+          "pc": "0x580ce0",
+          "mnemonic": "jne",
+          "observed_successor": "0x580ce6",
+          "opposite_successor": "0x580dbd",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 181,
+          "pc": "0x580cf3",
+          "mnemonic": "jle",
+          "observed_successor": "0x580cf5",
+          "opposite_successor": "0x580d1f",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 186,
+          "pc": "0x580d04",
+          "mnemonic": "je",
+          "observed_successor": "0x580d06",
+          "opposite_successor": "0x580d16",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 189,
+          "pc": "0x580d0b",
+          "mnemonic": "js",
+          "observed_successor": "0x580d16",
+          "opposite_successor": "0x580d0d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 192,
+          "pc": "0x580d1d",
+          "mnemonic": "jne",
+          "observed_successor": "0x580d1f",
+          "opposite_successor": "0x580cfd",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 195,
+          "pc": "0x580d26",
+          "mnemonic": "jne",
+          "observed_successor": "0x580d2c",
+          "opposite_successor": "0x580f8b",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 199,
+          "pc": "0x580d35",
+          "mnemonic": "js",
+          "observed_successor": "0x580d37",
+          "opposite_successor": "0x580d44",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 202,
+          "pc": "0x580d3e",
+          "mnemonic": "je",
+          "observed_successor": "0x580d44",
+          "opposite_successor": "0x580f68",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 206,
+          "pc": "0x580d4d",
+          "mnemonic": "js",
+          "observed_successor": "0x580d4f",
+          "opposite_successor": "0x580d5c",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 209,
+          "pc": "0x580d56",
+          "mnemonic": "je",
+          "observed_successor": "0x580d5c",
+          "opposite_successor": "0x43e9d0",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 214,
+          "pc": "0x580d71",
+          "mnemonic": "je",
+          "observed_successor": "0x580d77",
+          "opposite_successor": "0x58102d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        }
+      ],
+      "calls": [
+        {
+          "step_in_slice": 27,
+          "pc": "0x5622dd",
+          "target": "0x5932b0",
+          "target_kind": "observed_indirect",
+          "return_address": "0x5622e4",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        },
+        {
+          "step_in_slice": 49,
+          "pc": "0x5932f3",
+          "target": "0x5e9710",
+          "target_kind": "observed_indirect",
+          "return_address": "0x5932f6",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        },
+        {
+          "step_in_slice": 160,
+          "pc": "0x56176e",
+          "target": "0x580cb0",
+          "target_kind": "decoded_direct",
+          "return_address": "0x561773",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        }
+      ],
+      "returns": [
+        {
+          "step_in_slice": 120,
+          "pc": "0x5e985f",
+          "observed_successor": "0x5932f6"
+        },
+        {
+          "step_in_slice": 128,
+          "pc": "0x59330c",
+          "observed_successor": "0x5622e4"
+        },
+        {
+          "step_in_slice": 222,
+          "pc": "0x580d8b",
+          "observed_successor": "0x561773"
+        }
+      ],
+      "complete": false,
+      "reason": "alternate edges, calls, exceptions and enclosing caller paths are not exhaustively proved"
+    },
+    "caller_return_pointer_observed": 139969281058160
+  },
+  "fresh": {
+    "input": 255,
+    "route": "allocated",
+    "trace_sha256": "a062db0bb4c7fb49b0c262d97bafbb0df0ccf7e3cf36cb0b43cff2a5554d6d6a",
+    "first_boundary": {
+      "begin": 683,
+      "end_exclusive": 829,
+      "entry_predecessor": 682,
+      "entry_pc": "0x56227c",
+      "exit_pc": "0x56173b",
+      "native_steps": 146,
+      "internal_indirect_calls": 2
+    },
+    "second_boundary": {
+      "begin": 829,
+      "end_exclusive": 923,
+      "entry_predecessor": 828,
+      "entry_pc": "0x56173b",
+      "exit_pc": "0x56173b",
+      "native_steps": 94,
+      "internal_indirect_calls": 0
+    },
+    "prefix_native_steps_opaque": 683,
+    "composed_native_steps": 240,
+    "suffix_native_steps_opaque": 94,
+    "first_transition": {
+      "status": "differentially_validated",
+      "engine": "python",
+      "native_steps": 146,
+      "outputs_checked": 21,
+      "reads_checked": 42,
+      "derived_outputs_checked": 0,
+      "ordered_writes_checked": 18,
+      "read_after_write_bytes_checked": 65,
+      "next_pc": "0x56173b",
+      "target_pcode_steps_replayed": 0
+    },
+    "second_transition": {
+      "status": "differentially_validated",
+      "engine": "python",
+      "native_steps": 94,
+      "outputs_checked": 21,
+      "reads_checked": 27,
+      "derived_outputs_checked": 0,
+      "ordered_writes_checked": 18,
+      "read_after_write_bytes_checked": 56,
+      "next_pc": "0x56173b",
+      "target_pcode_steps_replayed": 0
+    },
+    "cross_boundary_reads_checked": 6,
+    "value_il": {
+      "sort": "BV32",
+      "expression": "X + 5",
+      "conditional_domain": "252 <= X <= 256 with frozen other entry state",
+      "proof_source": {
+        "proof_artifact": "unseen_python_generated_proof.json",
+        "proof_sha256": "c7b43835f6c1edcb9789fbb565eeb88de2295ef3789df20cafe829089144eb49",
+        "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+        "domain": "252..256",
+        "grade": "source fixed-environment SMT proof"
+      },
+      "whole_domain_proved_in_this_trace": false
+    },
+    "effects": {
+      "first_native_writes": [
+        {
+          "pc": "0x562288",
+          "address": 139659104404016,
+          "width": 8,
+          "value": 139659099634590
+        },
+        {
+          "pc": "0x5622ca",
+          "address": 139659099634592,
+          "width": 1,
+          "value": 17
+        },
+        {
+          "pc": "0x5622d6",
+          "address": 139659099634592,
+          "width": 2,
+          "value": 1
+        },
+        {
+          "pc": "0x5622dd",
+          "address": 140724779407448,
+          "width": 8,
+          "value": 5645028
+        },
+        {
+          "pc": "0x5932b4",
+          "address": 140724779407440,
+          "width": 8,
+          "value": 10766992
+        },
+        {
+          "pc": "0x5932b6",
+          "address": 140724779407432,
+          "width": 8,
+          "value": 10758992
+        },
+        {
+          "pc": "0x5932b8",
+          "address": 140724779407424,
+          "width": 8,
+          "value": 139659099634594
+        },
+        {
+          "pc": "0x5932bc",
+          "address": 140724779407416,
+          "width": 8,
+          "value": 139659104403960
+        },
+        {
+          "pc": "0x5932f3",
+          "address": 140724779407400,
+          "width": 8,
+          "value": 5845750
+        },
+        {
+          "pc": "0x5e9714",
+          "address": 140724779407392,
+          "width": 8,
+          "value": 10758992
+        },
+        {
+          "pc": "0x5e9715",
+          "address": 140724779407384,
+          "width": 8,
+          "value": 10766992
+        },
+        {
+          "pc": "0x5e97ff",
+          "address": 139659097931776,
+          "width": 4,
+          "value": 344
+        },
+        {
+          "pc": "0x5e9805",
+          "address": 139659097931784,
+          "width": 8,
+          "value": 139659097942768
+        },
+        {
+          "pc": "0x5e9823",
+          "address": 139659097941376,
+          "width": 8,
+          "value": 8
+        },
+        {
+          "pc": "0x5e982b",
+          "address": 139659097941368,
+          "width": 8,
+          "value": 10514112
+        },
+        {
+          "pc": "0x5e9843",
+          "address": 139659097941360,
+          "width": 8,
+          "value": 1
+        },
+        {
+          "pc": "0x5e9853",
+          "address": 139659097941384,
+          "width": 4,
+          "value": 260
+        },
+        {
+          "pc": "0x562316",
+          "address": 139659104404040,
+          "width": 8,
+          "value": 139659097941360
+        }
+      ],
+      "second_native_writes": [
+        {
+          "pc": "0x561746",
+          "address": 139659104404016,
+          "width": 8,
+          "value": 139659099634594
+        },
+        {
+          "pc": "0x56175f",
+          "address": 139659104404024,
+          "width": 4,
+          "value": 1
+        },
+        {
+          "pc": "0x561765",
+          "address": 11027900,
+          "width": 4,
+          "value": 997
+        },
+        {
+          "pc": "0x56176a",
+          "address": 11027928,
+          "width": 8,
+          "value": 139659104403856
+        },
+        {
+          "pc": "0x56176e",
+          "address": 140724779407448,
+          "width": 8,
+          "value": 5642099
+        },
+        {
+          "pc": "0x580cb4",
+          "address": 140724779407440,
+          "width": 8,
+          "value": 11027856
+        },
+        {
+          "pc": "0x580cb6",
+          "address": 140724779407432,
+          "width": 8,
+          "value": 36
+        },
+        {
+          "pc": "0x580cb8",
+          "address": 140724779407424,
+          "width": 8,
+          "value": 139659104403856
+        },
+        {
+          "pc": "0x580cbd",
+          "address": 140724779407416,
+          "width": 8,
+          "value": 139659097941360
+        },
+        {
+          "pc": "0x580cc1",
+          "address": 140724779407408,
+          "width": 8,
+          "value": 139659104403856
+        },
+        {
+          "pc": "0x580cda",
+          "address": 11027908,
+          "width": 4,
+          "value": 9997
+        },
+        {
+          "pc": "0x580cea",
+          "address": 139659104404024,
+          "width": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x580d3b",
+          "address": 139659098255936,
+          "width": 8,
+          "value": 1
+        },
+        {
+          "pc": "0x580d53",
+          "address": 139659099634384,
+          "width": 8,
+          "value": 2
+        },
+        {
+          "pc": "0x580d64",
+          "address": 11027908,
+          "width": 4,
+          "value": 9998
+        },
+        {
+          "pc": "0x580d77",
+          "address": 11028096,
+          "width": 8,
+          "value": 139659104403960
+        },
+        {
+          "pc": "0x56177b",
+          "address": 139659104403936,
+          "width": 8,
+          "value": 139659097941360
+        },
+        {
+          "pc": "0x561786",
+          "address": 139659104403920,
+          "width": 4,
+          "value": 4294967295
+        }
+      ],
+      "display_groups": [
+        {
+          "op": "OpaqueNativeWrites",
+          "raw_write_ordinals": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "op": "PyLongFieldWrites",
+          "raw_write_ordinals": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "object_pointer": 139659097941360,
+          "fields": {
+            "refcount": 1,
+            "type_pointer": 10514112,
+            "size_tag": 8,
+            "digit": 260
+          },
+          "lifetime_kind": "unknown"
+        },
+        {
+          "op": "ResultSlotPointerWrite",
+          "raw_write_ordinals": [
+            17
+          ],
+          "slot": 139659104404040,
+          "pointer": 139659097941360
+        },
+        {
+          "op": "NextIntervalNativeWrites",
+          "raw_write_ordinals": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        }
+      ],
+      "native_writes_deleted": 0,
+      "allocator_lifetime_effect": "unknown(no Allocate/Free contract for CPython allocator)"
+    },
+    "control": {
+      "conditional_branches": [
+        {
+          "step_in_slice": 7,
+          "pc": "0x562298",
+          "mnemonic": "jbe",
+          "observed_successor": "0x56229e",
+          "opposite_successor": "0x56c390",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 14,
+          "pc": "0x5622b3",
+          "mnemonic": "je",
+          "observed_successor": "0x5622b9",
+          "opposite_successor": "0x437c88",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 40,
+          "pc": "0x5932d3",
+          "mnemonic": "je",
+          "observed_successor": "0x5932d9",
+          "opposite_successor": "0x593392",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 43,
+          "pc": "0x5932df",
+          "mnemonic": "jne",
+          "observed_successor": "0x5932e1",
+          "opposite_successor": "0x593310",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 45,
+          "pc": "0x5932e4",
+          "mnemonic": "je",
+          "observed_successor": "0x5932ea",
+          "opposite_successor": "0x5933b0",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 56,
+          "pc": "0x5e9725",
+          "mnemonic": "je",
+          "observed_successor": "0x5e972b",
+          "opposite_successor": "0x45ebe5",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 60,
+          "pc": "0x5e9739",
+          "mnemonic": "je",
+          "observed_successor": "0x5e973f",
+          "opposite_successor": "0x5e98f8",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 69,
+          "pc": "0x5e975b",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e9761",
+          "opposite_successor": "0x5e9860",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 81,
+          "pc": "0x5e978a",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e97b0",
+          "opposite_successor": "0x5e978c",
+          "opposite_status": "observed_in_other_trace",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 84,
+          "pc": "0x5e97bd",
+          "mnemonic": "ja",
+          "observed_successor": "0x5e97c3",
+          "opposite_successor": "0x5e998d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 87,
+          "pc": "0x5e97d0",
+          "mnemonic": "jne",
+          "observed_successor": "0x5e97d6",
+          "opposite_successor": "0x5e999b",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 94,
+          "pc": "0x5e97f5",
+          "mnemonic": "je",
+          "observed_successor": "0x5e97fb",
+          "opposite_successor": "0x5e99c4",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 100,
+          "pc": "0x5e980c",
+          "mnemonic": "je",
+          "observed_successor": "0x5e980e",
+          "opposite_successor": "0x5e9888",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 105,
+          "pc": "0x5e9817",
+          "mnemonic": "js",
+          "observed_successor": "0x5e981d",
+          "opposite_successor": "0x5e9935",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 110,
+          "pc": "0x5e9836",
+          "mnemonic": "jne",
+          "observed_successor": "0x5e983c",
+          "opposite_successor": "0x5e9a26",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 114,
+          "pc": "0x5e984d",
+          "mnemonic": "jne",
+          "observed_successor": "0x5e9853",
+          "opposite_successor": "0x5e99e3",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 122,
+          "pc": "0x5932fc",
+          "mnemonic": "je",
+          "observed_successor": "0x593302",
+          "opposite_successor": "0x593401",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 132,
+          "pc": "0x5622ed",
+          "mnemonic": "js",
+          "observed_successor": "0x5622fd",
+          "opposite_successor": "0x5622ef",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 135,
+          "pc": "0x562303",
+          "mnemonic": "jns",
+          "observed_successor": "0x562309",
+          "opposite_successor": "0x569400",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 137,
+          "pc": "0x56230c",
+          "mnemonic": "je",
+          "observed_successor": "0x562312",
+          "opposite_successor": "0x56a7c5",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 173,
+          "pc": "0x580cd0",
+          "mnemonic": "jne",
+          "observed_successor": "0x580cd6",
+          "opposite_successor": "0x580e06",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 177,
+          "pc": "0x580ce0",
+          "mnemonic": "jne",
+          "observed_successor": "0x580ce6",
+          "opposite_successor": "0x580dbd",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 181,
+          "pc": "0x580cf3",
+          "mnemonic": "jle",
+          "observed_successor": "0x580cf5",
+          "opposite_successor": "0x580d1f",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 186,
+          "pc": "0x580d04",
+          "mnemonic": "je",
+          "observed_successor": "0x580d06",
+          "opposite_successor": "0x580d16",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 189,
+          "pc": "0x580d0b",
+          "mnemonic": "js",
+          "observed_successor": "0x580d16",
+          "opposite_successor": "0x580d0d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 192,
+          "pc": "0x580d1d",
+          "mnemonic": "jne",
+          "observed_successor": "0x580d1f",
+          "opposite_successor": "0x580cfd",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 195,
+          "pc": "0x580d26",
+          "mnemonic": "jne",
+          "observed_successor": "0x580d2c",
+          "opposite_successor": "0x580f8b",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 199,
+          "pc": "0x580d35",
+          "mnemonic": "js",
+          "observed_successor": "0x580d37",
+          "opposite_successor": "0x580d44",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 202,
+          "pc": "0x580d3e",
+          "mnemonic": "je",
+          "observed_successor": "0x580d44",
+          "opposite_successor": "0x580f68",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 206,
+          "pc": "0x580d4d",
+          "mnemonic": "js",
+          "observed_successor": "0x580d4f",
+          "opposite_successor": "0x580d5c",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 209,
+          "pc": "0x580d56",
+          "mnemonic": "je",
+          "observed_successor": "0x580d5c",
+          "opposite_successor": "0x43e9d0",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        },
+        {
+          "step_in_slice": 214,
+          "pc": "0x580d71",
+          "mnemonic": "je",
+          "observed_successor": "0x580d77",
+          "opposite_successor": "0x58102d",
+          "opposite_status": "unknown(unexplored edge)",
+          "infeasible_proved": false
+        }
+      ],
+      "calls": [
+        {
+          "step_in_slice": 27,
+          "pc": "0x5622dd",
+          "target": "0x5932b0",
+          "target_kind": "observed_indirect",
+          "return_address": "0x5622e4",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        },
+        {
+          "step_in_slice": 49,
+          "pc": "0x5932f3",
+          "target": "0x5e9710",
+          "target_kind": "observed_indirect",
+          "return_address": "0x5932f6",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        },
+        {
+          "step_in_slice": 160,
+          "pc": "0x56176e",
+          "target": "0x580cb0",
+          "target_kind": "decoded_direct",
+          "return_address": "0x561773",
+          "return_edge": "observed_at_matching_stack_depth",
+          "exception_edge": "unknown(not enumerated)"
+        }
+      ],
+      "returns": [
+        {
+          "step_in_slice": 120,
+          "pc": "0x5e985f",
+          "observed_successor": "0x5932f6"
+        },
+        {
+          "step_in_slice": 128,
+          "pc": "0x59330c",
+          "observed_successor": "0x5622e4"
+        },
+        {
+          "step_in_slice": 222,
+          "pc": "0x580d8b",
+          "observed_successor": "0x561773"
+        }
+      ],
+      "complete": false,
+      "reason": "alternate edges, calls, exceptions and enclosing caller paths are not exhaustively proved"
+    },
+    "caller_return_pointer_observed": 139659097941360
+  },
+  "value_proof_sources": {
+    "cached": {
+      "proof_artifact": "common_numeric_refinement_result.json",
+      "proof_sha256": "b10ea5c5e43664965d6f545ee5ef474f9c5176784821fb14b06b93f602ef62eb",
+      "source_trace_sha256": "81d69fb09a40b047180a16bdf8ffaa30cc180673b1e8ce22d5193cdd5d9bdf42",
+      "domain": "5..251",
+      "grade": "source fixed-environment SMT proof"
+    },
+    "allocated": {
+      "proof_artifact": "unseen_python_generated_proof.json",
+      "proof_sha256": "c7b43835f6c1edcb9789fbb565eeb88de2295ef3789df20cafe829089144eb49",
+      "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "domain": "252..256",
+      "grade": "source fixed-environment SMT proof"
+    }
+  },
+  "program_il": {
+    "schema_version": "bounded-program-il-v1",
+    "value_il": {
+      "schema_version": "bounded-value-il-v1",
+      "inputs": [
+        {
+          "name": "X",
+          "sort": "BV32"
+        }
+      ],
+      "nodes": [
+        {
+          "id": 0,
+          "op": "input",
+          "sort": "BV32",
+          "name": "X"
+        },
+        {
+          "id": 1,
+          "op": "bv",
+          "sort": "BV32",
+          "value": 5
+        },
+        {
+          "id": 2,
+          "op": "bvadd",
+          "sort": "BV32",
+          "args": [
+            0,
+            1
+          ]
+        }
+      ],
+      "result": {
+        "node": 2,
+        "name": "Y",
+        "sort": "BV32"
+      },
+      "domain": "route conditioned: cached 5..251, allocated 252..256; each bound belongs to its pinned source proof",
+      "interpretation": "nonnegative integer; signed and unsigned values coincide in this domain"
+    },
+    "routes": [
+      {
+        "route": "cached",
+        "observed_input": 43,
+        "admission": "observed path and frozen guard only",
+        "source_proved_domain": "5..251",
+        "source_value_proof": {
+          "proof_artifact": "common_numeric_refinement_result.json",
+          "proof_sha256": "b10ea5c5e43664965d6f545ee5ef474f9c5176784821fb14b06b93f602ef62eb",
+          "source_trace_sha256": "81d69fb09a40b047180a16bdf8ffaa30cc180673b1e8ce22d5193cdd5d9bdf42",
+          "domain": "5..251",
+          "grade": "source fixed-environment SMT proof"
+        },
+        "operations": [
+          {
+            "op": "OpaqueNativePrefix",
+            "native_steps": 683
+          },
+          {
+            "op": "DecodeInput",
+            "output": "X",
+            "sort": "BV32",
+            "contract": "PyLong digit in pinned entry environment"
+          },
+          {
+            "op": "ValueIL",
+            "output": "Y",
+            "sort": "BV32",
+            "node": 2
+          },
+          {
+            "op": "NativeTransition",
+            "role": "numeric",
+            "summary_sha256": "4efef1e57b41668b5600e1a2f3373baa3792e8083852bb1453aac4976ebd1608",
+            "output_state": "state1",
+            "output_memory": "memory1",
+            "effect_groups": [
+              {
+                "op": "OpaqueNativeWrites",
+                "raw_write_ordinals": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ]
+              },
+              {
+                "op": "ResultSlotPointerWrite",
+                "raw_write_ordinals": [
+                  11
+                ],
+                "slot": 140106126361160,
+                "pointer": 10760368
+              }
+            ]
+          },
+          {
+            "op": "NativeTransition",
+            "role": "unclassified_next",
+            "summary_sha256": "627578c3e181fdf4425f2654a5e58b7c2754acadd275af9f26ec17c1d6e47f02",
+            "input_state": "state1",
+            "input_memory": "memory1",
+            "output_state": "state2",
+            "output_memory": "memory2",
+            "effect_groups": [
+              {
+                "op": "NextIntervalNativeWrites",
+                "raw_write_ordinals": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17
+                ]
+              }
+            ]
+          },
+          {
+            "op": "OpaqueNativeSuffix",
+            "native_steps": 94
+          },
+          {
+            "op": "ObservedCallerReturnPointer",
+            "value": 10760368
+          }
+        ],
+        "unresolved": [
+          "branch alternatives",
+          "exception exits",
+          "allocator lifetime",
+          "opaque prefix/suffix"
+        ]
+      },
+      {
+        "route": "allocated",
+        "observed_input": 252,
+        "admission": "observed path and frozen guard only",
+        "source_proved_domain": "252..256",
+        "source_value_proof": {
+          "proof_artifact": "unseen_python_generated_proof.json",
+          "proof_sha256": "c7b43835f6c1edcb9789fbb565eeb88de2295ef3789df20cafe829089144eb49",
+          "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+          "domain": "252..256",
+          "grade": "source fixed-environment SMT proof"
+        },
+        "operations": [
+          {
+            "op": "OpaqueNativePrefix",
+            "native_steps": 683
+          },
+          {
+            "op": "DecodeInput",
+            "output": "X",
+            "sort": "BV32",
+            "contract": "PyLong digit in pinned entry environment"
+          },
+          {
+            "op": "ValueIL",
+            "output": "Y",
+            "sort": "BV32",
+            "node": 2
+          },
+          {
+            "op": "NativeTransition",
+            "role": "numeric",
+            "summary_sha256": "79680c9c71bdfbe6823f91f1d13b3cbac78b99fb2041bb1370e9fa3e70a4b59c",
+            "output_state": "state1",
+            "output_memory": "memory1",
+            "effect_groups": [
+              {
+                "op": "OpaqueNativeWrites",
+                "raw_write_ordinals": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12
+                ]
+              },
+              {
+                "op": "PyLongFieldWrites",
+                "raw_write_ordinals": [
+                  13,
+                  14,
+                  15,
+                  16
+                ],
+                "object_pointer": 139969281058160,
+                "fields": {
+                  "refcount": 1,
+                  "type_pointer": 10514112,
+                  "size_tag": 8,
+                  "digit": 257
+                },
+                "lifetime_kind": "unknown"
+              },
+              {
+                "op": "ResultSlotPointerWrite",
+                "raw_write_ordinals": [
+                  17
+                ],
+                "slot": 139969287512648,
+                "pointer": 139969281058160
+              }
+            ]
+          },
+          {
+            "op": "NativeTransition",
+            "role": "unclassified_next",
+            "summary_sha256": "627578c3e181fdf4425f2654a5e58b7c2754acadd275af9f26ec17c1d6e47f02",
+            "input_state": "state1",
+            "input_memory": "memory1",
+            "output_state": "state2",
+            "output_memory": "memory2",
+            "effect_groups": [
+              {
+                "op": "NextIntervalNativeWrites",
+                "raw_write_ordinals": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17
+                ]
+              }
+            ]
+          },
+          {
+            "op": "OpaqueNativeSuffix",
+            "native_steps": 94
+          },
+          {
+            "op": "ObservedCallerReturnPointer",
+            "value": 139969281058160
+          }
+        ],
+        "unresolved": [
+          "branch alternatives",
+          "exception exits",
+          "allocator lifetime",
+          "opaque prefix/suffix"
+        ]
+      },
+      {
+        "route": "allocated",
+        "observed_input": 255,
+        "admission": "observed path and frozen guard only",
+        "source_proved_domain": "252..256",
+        "source_value_proof": {
+          "proof_artifact": "unseen_python_generated_proof.json",
+          "proof_sha256": "c7b43835f6c1edcb9789fbb565eeb88de2295ef3789df20cafe829089144eb49",
+          "source_trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+          "domain": "252..256",
+          "grade": "source fixed-environment SMT proof"
+        },
+        "operations": [
+          {
+            "op": "OpaqueNativePrefix",
+            "native_steps": 683
+          },
+          {
+            "op": "DecodeInput",
+            "output": "X",
+            "sort": "BV32",
+            "contract": "PyLong digit in pinned entry environment"
+          },
+          {
+            "op": "ValueIL",
+            "output": "Y",
+            "sort": "BV32",
+            "node": 2
+          },
+          {
+            "op": "NativeTransition",
+            "role": "numeric",
+            "summary_sha256": "79680c9c71bdfbe6823f91f1d13b3cbac78b99fb2041bb1370e9fa3e70a4b59c",
+            "output_state": "state1",
+            "output_memory": "memory1",
+            "effect_groups": [
+              {
+                "op": "OpaqueNativeWrites",
+                "raw_write_ordinals": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12
+                ]
+              },
+              {
+                "op": "PyLongFieldWrites",
+                "raw_write_ordinals": [
+                  13,
+                  14,
+                  15,
+                  16
+                ],
+                "object_pointer": 139659097941360,
+                "fields": {
+                  "refcount": 1,
+                  "type_pointer": 10514112,
+                  "size_tag": 8,
+                  "digit": 260
+                },
+                "lifetime_kind": "unknown"
+              },
+              {
+                "op": "ResultSlotPointerWrite",
+                "raw_write_ordinals": [
+                  17
+                ],
+                "slot": 139659104404040,
+                "pointer": 139659097941360
+              }
+            ]
+          },
+          {
+            "op": "NativeTransition",
+            "role": "unclassified_next",
+            "summary_sha256": "627578c3e181fdf4425f2654a5e58b7c2754acadd275af9f26ec17c1d6e47f02",
+            "input_state": "state1",
+            "input_memory": "memory1",
+            "output_state": "state2",
+            "output_memory": "memory2",
+            "effect_groups": [
+              {
+                "op": "NextIntervalNativeWrites",
+                "raw_write_ordinals": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17
+                ]
+              }
+            ]
+          },
+          {
+            "op": "OpaqueNativeSuffix",
+            "native_steps": 94
+          },
+          {
+            "op": "ObservedCallerReturnPointer",
+            "value": 139659097941360
+          }
+        ],
+        "unresolved": [
+          "branch alternatives",
+          "exception exits",
+          "allocator lifetime",
+          "opaque prefix/suffix"
+        ]
+      }
+    ],
+    "status": "reporting_ir_not_independently_executed",
+    "scope": "observed two-interval composition; only those intervals' native writes remain ordered and complete; ValueIL is a projection"
+  },
+  "cached_path_trace_sha256": "71335b6e87a6fcd2f013153ecbff2768ef763341a17b9f41e4cb797adf3a4d9a",
+  "negative_controls": {
+    "wrong_cross_boundary_read": "unknown(composed read memory mismatch)",
+    "wrong_prior_exit_register": "unknown(composed entry state mismatch)",
+    "wrong_prior_exit_fs_base": "unknown(composed entry state mismatch)",
+    "deleted_opaque_write": "rejected(effect partition incomplete)",
+    "wrong_object_field_binding": "rejected(field address mismatch)",
+    "omitted_branch_edge": "rejected(control inventory incomplete)",
+    "omitted_call_edge": "rejected(control inventory incomplete)",
+    "omitted_exception_obligation": "rejected(exception obligation incomplete)",
+    "wrong_observed_call_target": "rejected(call target evidence mismatch)",
+    "wrong_return_address": "rejected(return address evidence mismatch)",
+    "false_full_coverage": "rejected(unproved coverage)",
+    "cached_middle_gs_base": "unknown(segment base changed)",
+    "cached_final_fs_base": "unknown(segment base changed)"
+  },
+  "readable_view_sha256": "5fb8592e7cd9967a9ab0eb13e6554ccecb13d30c9729800d2de83bd84af6afd9",
+  "claims": {
+    "two_interval_sequential_state_and_memory_composition": true,
+    "display_only_effect_grouping": true,
+    "native_write_elimination_proved": false,
+    "cpython_allocator_lifetime_proved": false,
+    "all_branch_call_exception_paths_complete": false,
+    "entire_program_decompiled": false
+  },
+  "limits": [
+    "prefix and suffix of the caller trace remain opaque",
+    "all opposite branch edges and call exceptions need coverage evidence",
+    "full-trace first-read memory is supplied from each observed target trace",
+    "summary reuse is shown on one independent full input 255"
+  ]
+}

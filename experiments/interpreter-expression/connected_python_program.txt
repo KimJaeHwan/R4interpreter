@@ -1,0 +1,41 @@
+# Observed Python input 43; bounded path view
+opaque caller prefix: 683 native steps
+branch/call: observed in trace; other edges remain unknown
+X: BV32 = input PyLong digit
+Y: BV32 = X + 5  [source proof: 5..251 in fixed source environment; this input: differential validation]
+OpaqueNativeWrites(11)  [retained]
+result_ptr = cached PyLong(Y)  [cache image contract]
+ResultSlotPointerWrite(result_slot, result_ptr)  [raw write [11]]
+dispatch -> unclassified next interval (94 native steps)
+NextIntervalNativeWrites(18)  [retained]
+opaque caller suffix: 94 native steps
+observed caller return pointer: 0xa430b0
+lifetime: unknown; alternate branches and exception exits: unknown
+
+# Observed Python input 252; bounded path view
+opaque caller prefix: 683 native steps
+branch/call: observed in trace; other edges remain unknown
+X: BV32 = input PyLong digit
+Y: BV32 = X + 5  [source proof: 252..256 in fixed source environment; this input: differential validation]
+OpaqueNativeWrites(13)  [retained]
+PyLongFieldWrites(result_ptr, refcount=1, type=PyLong, tag=8, digit=Y)  [raw writes [13, 14, 15, 16]]
+ResultSlotPointerWrite(result_slot, result_ptr)  [raw write [17]]
+dispatch -> unclassified next interval (94 native steps)
+NextIntervalNativeWrites(18)  [retained]
+opaque caller suffix: 94 native steps
+observed caller return pointer: 0x7f4d2346e570
+lifetime: unknown; alternate branches and exception exits: unknown
+
+# Observed Python input 255; bounded path view
+opaque caller prefix: 683 native steps
+branch/call: observed in trace; other edges remain unknown
+X: BV32 = input PyLong digit
+Y: BV32 = X + 5  [source proof: 252..256 in fixed source environment; this input: differential validation]
+OpaqueNativeWrites(13)  [retained]
+PyLongFieldWrites(result_ptr, refcount=1, type=PyLong, tag=8, digit=Y)  [raw writes [13, 14, 15, 16]]
+ResultSlotPointerWrite(result_slot, result_ptr)  [raw write [17]]
+dispatch -> unclassified next interval (94 native steps)
+NextIntervalNativeWrites(18)  [retained]
+opaque caller suffix: 94 native steps
+observed caller return pointer: 0x7f04eaec2570
+lifetime: unknown; alternate branches and exception exits: unknown
