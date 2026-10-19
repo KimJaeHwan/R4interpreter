@@ -1,0 +1,573 @@
+{
+  "schema_version": "lua-common-lifetime-effect-v1",
+  "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+  "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+  "cases": [
+    {
+      "input": 0,
+      "origin": "source",
+      "trace_sha256": "12cb4c72e6d0842af0ab5253c57c3e0f9aabd49c1ddd6eba9fea7c1e2a5b0679",
+      "native_helper_calls": 6,
+      "native_steps": 129,
+      "common_effects": 6,
+      "allocate": 3,
+      "free": 3,
+      "objects": [
+        {
+          "type": "object",
+          "pointer": 4364528,
+          "data": 4364552,
+          "slot": 0,
+          "generation": 1,
+          "length": 80,
+          "checksum": 5314439272087339553
+        },
+        {
+          "type": "object",
+          "pointer": 4364656,
+          "data": 4364680,
+          "slot": 1,
+          "generation": 1,
+          "length": 80,
+          "checksum": 10851969021313150355
+        },
+        {
+          "type": "object",
+          "pointer": 4364528,
+          "data": 4364552,
+          "slot": 0,
+          "generation": 2,
+          "length": 80,
+          "checksum": 4607204914228375051
+        }
+      ],
+      "effects": [
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "12cb4c72e6d0842af0ab5253c57c3e0f9aabd49c1ddd6eba9fea7c1e2a5b0679",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4364656,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "12cb4c72e6d0842af0ab5253c57c3e0f9aabd49c1ddd6eba9fea7c1e2a5b0679",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "12cb4c72e6d0842af0ab5253c57c3e0f9aabd49c1ddd6eba9fea7c1e2a5b0679",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "12cb4c72e6d0842af0ab5253c57c3e0f9aabd49c1ddd6eba9fea7c1e2a5b0679",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "12cb4c72e6d0842af0ab5253c57c3e0f9aabd49c1ddd6eba9fea7c1e2a5b0679",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4364656,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "12cb4c72e6d0842af0ab5253c57c3e0f9aabd49c1ddd6eba9fea7c1e2a5b0679",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        }
+      ],
+      "same_address_new_generation": true,
+      "stale_generation_rejected": true,
+      "final_live_mask": 0
+    },
+    {
+      "input": 1,
+      "origin": "holdout",
+      "trace_sha256": "5ac67913db049cc640e618e578bdae3d6e60eef31d2f584b2cc2d339f98891bf",
+      "native_helper_calls": 6,
+      "native_steps": 129,
+      "common_effects": 6,
+      "allocate": 3,
+      "free": 3,
+      "objects": [
+        {
+          "type": "object",
+          "pointer": 4364528,
+          "data": 4364552,
+          "slot": 0,
+          "generation": 1,
+          "length": 80,
+          "checksum": 12105991794214086023
+        },
+        {
+          "type": "object",
+          "pointer": 4364656,
+          "data": 4364680,
+          "slot": 1,
+          "generation": 1,
+          "length": 80,
+          "checksum": 5795364507749278237
+        },
+        {
+          "type": "object",
+          "pointer": 4364528,
+          "data": 4364552,
+          "slot": 0,
+          "generation": 2,
+          "length": 80,
+          "checksum": 8190534037981685797
+        }
+      ],
+      "effects": [
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "5ac67913db049cc640e618e578bdae3d6e60eef31d2f584b2cc2d339f98891bf",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4364656,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "5ac67913db049cc640e618e578bdae3d6e60eef31d2f584b2cc2d339f98891bf",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "5ac67913db049cc640e618e578bdae3d6e60eef31d2f584b2cc2d339f98891bf",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "5ac67913db049cc640e618e578bdae3d6e60eef31d2f584b2cc2d339f98891bf",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "5ac67913db049cc640e618e578bdae3d6e60eef31d2f584b2cc2d339f98891bf",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4364656,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "5ac67913db049cc640e618e578bdae3d6e60eef31d2f584b2cc2d339f98891bf",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        }
+      ],
+      "same_address_new_generation": true,
+      "stale_generation_rejected": true,
+      "final_live_mask": 0
+    },
+    {
+      "input": 2,
+      "origin": "holdout_embedded_nul",
+      "trace_sha256": "f1ecc33cc3c9a63f0cb0e0d0596297122a21ae368e2417f08cafd666541398ea",
+      "native_helper_calls": 6,
+      "native_steps": 129,
+      "common_effects": 6,
+      "allocate": 3,
+      "free": 3,
+      "objects": [
+        {
+          "type": "object",
+          "pointer": 4364528,
+          "data": 4364552,
+          "slot": 0,
+          "generation": 1,
+          "length": 80,
+          "checksum": 11091840158083826597
+        },
+        {
+          "type": "object",
+          "pointer": 4364656,
+          "data": 4364680,
+          "slot": 1,
+          "generation": 1,
+          "length": 80,
+          "checksum": 7782924970482858862
+        },
+        {
+          "type": "object",
+          "pointer": 4364528,
+          "data": 4364552,
+          "slot": 0,
+          "generation": 2,
+          "length": 80,
+          "checksum": 2234803381745597347
+        }
+      ],
+      "effects": [
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "f1ecc33cc3c9a63f0cb0e0d0596297122a21ae368e2417f08cafd666541398ea",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4364656,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "f1ecc33cc3c9a63f0cb0e0d0596297122a21ae368e2417f08cafd666541398ea",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 1,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "f1ecc33cc3c9a63f0cb0e0d0596297122a21ae368e2417f08cafd666541398ea",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Allocate",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "f1ecc33cc3c9a63f0cb0e0d0596297122a21ae368e2417f08cafd666541398ea",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_0",
+          "generation": 2,
+          "address": 4364528,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_0",
+            2
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "f1ecc33cc3c9a63f0cb0e0d0596297122a21ae368e2417f08cafd666541398ea",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        },
+        {
+          "kind": "Free",
+          "address_space_id": "native_virtual",
+          "domain_id": "controlled_lua_string_pool",
+          "resource_id": "pool_slot_1",
+          "generation": 1,
+          "address": 4364656,
+          "requested_extent": 105,
+          "identity": [
+            "controlled_lua_string_pool",
+            "pool_slot_1",
+            1
+          ],
+          "evidence": {
+            "mode": "native_refined",
+            "cutpoint": "helper_return",
+            "trace_sha256": "f1ecc33cc3c9a63f0cb0e0d0596297122a21ae368e2417f08cafd666541398ea",
+            "native_summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+            "native_refinement_sha256": "8ca000ffe7981c149b6cf83b501e793a5f57fe0478ee32a30377579043a7d8b7",
+            "preconditions_checked": true,
+            "binding": "observed"
+          }
+        }
+      ],
+      "same_address_new_generation": true,
+      "stale_generation_rejected": true,
+      "final_live_mask": 0
+    }
+  ],
+  "rejection_controls": {
+    "wrong_request_extent": "effect violates resource extent or alignment",
+    "duplicate_live_allocation": "resource occupied or generation overflow",
+    "free_before_allocate": "stale, free, or mismatched object",
+    "wrong_generation": "stale, free, or mismatched object",
+    "native_lifetime_entry_mismatch": "native and lifetime entry state disagree",
+    "frozen_extent_tamper": "allocate/slot 0: unknown(allocate lifetime effect contract)",
+    "missing_effect": "allocate/slot 0: unknown(allocate lifetime effect contract)",
+    "missing_gc_free_event": "incomplete Lua allocator/GC observation",
+    "allocator_request_observation_changed": "allocator request differs from frozen extent"
+  },
+  "evidence_boundary": {
+    "native_helper": "conditional full-byte-memory refinement",
+    "lua_binding": "observed allocator callback, string content and GC frees",
+    "initial_resources": "fixture-declared finite static reservations"
+  },
+  "limits": [
+    "only 80-byte Lua long strings, 105-byte allocation requests, and controlled pool",
+    "other Lua allocations, arbitrary GC reachability, realloc and failure are unknown"
+  ]
+}

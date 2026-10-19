@@ -37,21 +37,22 @@ def concrete_word(memory, address):
         for index in range(8)), "little")
 
 
-def lifetime_words(lifetime_state):
-    entries = [get_resource(lifetime_state, "controlled_obj_pool", f"pool_slot_{slot}")
+def lifetime_words(lifetime_state, domain="controlled_obj_pool"):
+    entries = [get_resource(lifetime_state, domain, f"pool_slot_{slot}")
                for slot in range(4)]
     return [sum(1 << slot for slot, item in enumerate(entries) if item["live"]),
             *(item["generation"] for item in entries)]
 
 
 def apply_call(call, segment, summary, decls, lifetime_state=None,
-               effect_evidence=None, summary_digest=None, proof_digest=None):
+               effect_evidence=None, summary_digest=None, proof_digest=None,
+               domain="controlled_obj_pool"):
     rows = call["rows"]
     first = rows[0]["registers"]
     base, stack = first["rdi"], first["rsp"]
     slot, operation = call["slot"], call["operation"]
     before_words = state_words(call["state_before"])
-    if lifetime_state is not None and before_words != lifetime_words(lifetime_state):
+    if lifetime_state is not None and before_words != lifetime_words(lifetime_state, domain):
         raise ValueError("native and lifetime entry state disagree")
     bit = 1 << slot if 0 <= slot < 4 else 0
     if (first["rdi"] != call["state_address"] or
@@ -93,7 +94,7 @@ def apply_call(call, segment, summary, decls, lifetime_state=None,
                  for i in range(5)]
     if predicted != state_words(call["state_after"]):
         raise ValueError("predicted complete pool state differs from native state")
-    if lifetime_state is not None and predicted != lifetime_words(next_lifetime):
+    if lifetime_state is not None and predicted != lifetime_words(next_lifetime, domain):
         raise ValueError("native and lifetime exit state disagree")
     result = {"operation": label, "slot": call["slot"],
             "native_steps": len(rows), "reads_checked": evidence["reads_checked"],

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "proofs": {
+    "allocate": [
+      {
+        "slot": 0,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "new_generation_not_greater": "unsat",
+        "overflow_admitted": "unsat",
+        "already_live_admitted": "unsat"
+      },
+      {
+        "slot": 1,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "new_generation_not_greater": "unsat",
+        "overflow_admitted": "unsat",
+        "already_live_admitted": "unsat"
+      },
+      {
+        "slot": 2,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "new_generation_not_greater": "unsat",
+        "overflow_admitted": "unsat",
+        "already_live_admitted": "unsat"
+      },
+      {
+        "slot": 3,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "new_generation_not_greater": "unsat",
+        "overflow_admitted": "unsat",
+        "already_live_admitted": "unsat"
+      }
+    ],
+    "release": [
+      {
+        "slot": 0,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "already_free_admitted": "unsat"
+      },
+      {
+        "slot": 1,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "already_free_admitted": "unsat"
+      },
+      {
+        "slot": 2,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "already_free_admitted": "unsat"
+      },
+      {
+        "slot": 3,
+        "guard_counterexample": "unsat",
+        "full_memory_refinement_counterexample": "unsat",
+        "return_counterexample": "unsat",
+        "partition_counterexample": "unsat",
+        "generation_counterexample": "unsat",
+        "already_free_admitted": "unsat"
+      }
+    ]
+  },
+  "summary_sha256": "ab9c304e7a3d32455ad313c69fa6e2b21f415a4726158df937414694e69504d6",
+  "scope": "conditional native helper refinement; full byte-memory frame included"
+}

@@ -58,6 +58,8 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 
 [공통 수명 효과 결과](COMMON_LIFETIME_EFFECT_RESULT.md)는 별도 풀 ledger의 자원 정체성·범위·세대 규칙을 공통 코어로 옮겼다. 고정 네이티브 구간의 효과를 helper 반환 시점에 합성하고 새 입력에도 적용했다. `AllocationFailed`는 성공 helper 증명을 재사용하지 않는 관측 효과로 남겼다.
 
+[Lua 공통 수명 효과 결과](LUA_POOL_COMMON_LIFETIME_RESULT.md)는 같은 코어를 Lua 5.4.8의 긴 문자열 allocator 호출과 GC 해제에 연결했다. 고정 Lua ELF의 네이티브 helper를 별도로 증명하고 두 새 입력에 요약을 적용했다.
+
 ## 파일
 
 - `expression_probe.py`, `elf_expression_probe.py`, `lua_root_probe.py`, `lua_vm_probe.py`: 분석 코드와 대응하는 `*_result.json`.
@@ -83,6 +85,7 @@ Lua의 `luaV_execute`는 Ghidra Bundle에서 정규화되지만 3,670개 명령,
 - `verify_python_composed_core.py`: 원래 진입 상태를 고정한 공통 코어 변조 9종과 FS 상대 읽기를 포함한 Python 두 구간 연결을 확인한다.
 - `python_pool_lifetime_fixture.c`, `trace_python_pool_lifetime.py`, `freeze_pool_lifetime.py`, `pool_lifetime_ledger.py`, `apply_pool_lifetime.py`: 실제 CPython의 제한된 객체 풀 trace, 네이티브 수명 helper 증명, 별도 입력 적용. [수명 결과](PYTHON_POOL_LIFETIME_RESULT.md)에 증거와 재현 순서가 있다.
 - `common_lifetime_effects.py`, `apply_common_pool_effects.py`: 주소 공간·domain·자원·generation으로 정의한 공통 수명 효과와 네이티브 구간 합성 검증. [공통 수명 결과](COMMON_LIFETIME_EFFECT_RESULT.md)에 적용 조건과 한계가 있다.
+- `lua_pool_lifetime_fixture.c`, `trace_lua_pool_lifetime.py`, `freeze_lua_pool_lifetime.py`, `apply_lua_pool_effects.py`: 실제 Lua allocator 호출의 제한 풀 수명 효과와 GC 해제·주소 재사용 검증. [Lua 공통 수명 결과](LUA_POOL_COMMON_LIFETIME_RESULT.md)에 재현 순서가 있다.
 
 ## 재현
 
@@ -104,4 +107,4 @@ python lua_vm_probe.py artifacts/df2f4d4cd7f97ad377a617930f5942155ced9101ca18cbc
 
 ## 다음 실험
 
-[공통 수명 효과 결과](COMMON_LIFETIME_EFFECT_RESULT.md)의 다음 연구 순서는 다른 엔진의 실제 할당 경계에 동일한 효과를 적용하거나 CPython 고갈·예외 경로의 네이티브 요약을 추가하는 것이다. 이후 12자리 이상에서 바뀌는 JavaScript 앞 경로와 경계·live-in/out 자동화를 시험한다.
+[Lua 공통 수명 효과 결과](LUA_POOL_COMMON_LIFETIME_RESULT.md) 이후에는 Lua의 다른 요청 크기와 allocator 실패·재시도를 분리하고, CPython 고갈·예외 경로에도 별도 네이티브 요약을 붙인다. 이후 12자리 이상에서 바뀌는 JavaScript 앞 경로와 경계·live-in/out 자동화를 시험한다.
