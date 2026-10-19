@@ -1,6 +1,6 @@
 {
   "schema_version": "common-program-representation-v1",
-  "artifact_sha256": "94aca5aea8256aafc5dc57f880680169775aeb5042809a363cf59fc549f08520",
+  "artifact_sha256": "da2ff08796bade3ba2506a3d22d471199706e74da7e046f1ecc829ed8cce02bc",
   "routes": {
     "python_251": {
       "native_steps": 987,
@@ -57,15 +57,102 @@
     "false_branch_certificate": "rejected",
     "unknown_deletion": "rejected",
     "unknown_as_noop": "rejected",
-    "value_operand": "rejected"
+    "value_operand": "rejected",
+    "lua_branch_value": "rejected",
+    "lua_gap_promotion": "rejected",
+    "lua_guard_swap": "rejected",
+    "lua_watch_omission": "rejected",
+    "lua_watch_domain_promotion": "rejected",
+    "lua_abi_omission": "rejected",
+    "lua_lifetime_promotion": "rejected",
+    "lua_holdout_trace_swap": "rejected",
+    "pool_domain_swap": "rejected",
+    "pool_default_authority": "rejected",
+    "pool_route_attachment": "rejected",
+    "pool_effect_extent": "rejected"
   },
-  "scope": "4 exact Python full native paths; 1 Lua and 1 JS local segment",
+  "lua_value_chains": [
+    {
+      "id": "lua_branch_x0",
+      "vm_native_steps": 237,
+      "vm_conditional_branches": 20,
+      "opposite_edges_observed_elsewhere": 3,
+      "vm_calls": 1,
+      "open_obligations": 24
+    },
+    {
+      "id": "lua_branch_x9",
+      "vm_native_steps": 281,
+      "vm_conditional_branches": 24,
+      "opposite_edges_observed_elsewhere": 3,
+      "vm_calls": 2,
+      "open_obligations": 29
+    },
+    {
+      "id": "lua_branch_one",
+      "vm_native_steps": 281,
+      "vm_conditional_branches": 24,
+      "opposite_edges_observed_elsewhere": 3,
+      "vm_calls": 2,
+      "open_obligations": 29
+    },
+    {
+      "id": "lua_branch_minus1",
+      "vm_native_steps": 281,
+      "vm_conditional_branches": 24,
+      "opposite_edges_observed_elsewhere": 3,
+      "vm_calls": 2,
+      "open_obligations": 29
+    },
+    {
+      "id": "lua_branch_max",
+      "vm_native_steps": 281,
+      "vm_conditional_branches": 24,
+      "opposite_edges_observed_elsewhere": 3,
+      "vm_calls": 2,
+      "open_obligations": 29
+    },
+    {
+      "id": "lua_branch_min",
+      "vm_native_steps": 281,
+      "vm_conditional_branches": 24,
+      "opposite_edges_observed_elsewhere": 3,
+      "vm_calls": 2,
+      "open_obligations": 29
+    },
+    {
+      "id": "lua_branch_x42",
+      "vm_native_steps": 281,
+      "vm_conditional_branches": 24,
+      "opposite_edges_observed_elsewhere": 3,
+      "vm_calls": 2,
+      "open_obligations": 29
+    }
+  ],
+  "controlled_lifetime_domains": [
+    {
+      "engine": "python",
+      "domain_id": "controlled_obj_pool",
+      "runs": 3,
+      "effects": 33,
+      "attached_to_program_routes": []
+    },
+    {
+      "engine": "lua",
+      "domain_id": "controlled_lua_string_pool",
+      "runs": 3,
+      "effects": 18,
+      "attached_to_program_routes": []
+    }
+  ],
+  "scope": "4 exact Python full native paths; 1 Lua and 1 JS local segment; 7 sparse Lua input-to-printf value chains including x42 holdout",
   "whole_program_complete": false,
   "native_standalone_executable": false,
   "remaining": [
     "enumerate and prove other control/exception paths",
-    "authorize object lifetime and heap effects",
-    "compose enclosing Lua/JS paths and broader input/environment domains",
+    "authorize default allocator lifetime and heap effects",
+    "connect full native state across Lua gaps and JS enclosing paths",
+    "prove broader input/environment domains",
     "render readable whole-program logic from verified CFG"
   ]
 }
