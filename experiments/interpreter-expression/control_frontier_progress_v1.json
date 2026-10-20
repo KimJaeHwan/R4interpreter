@@ -1,0 +1,134 @@
+{
+  "schema_version": "control-frontier-progress-v1",
+  "matrix_sha256": "bc14f7685b7eff26de26aecab057e9357b50d549e277b3a767dcef80533ccc77",
+  "lua_predicate_sha256": "dc0ef64cc5fc062286e7f45b6b684a08352733ecb75106205e9cb6e10753950d",
+  "python_predicate_sha256": "4612645edf69198d415b8f4da63ef424f14ee44ba8d8d8b2b5ac60014c744475",
+  "occurrence_count": 720,
+  "classification_counts": {
+    "opposite_unresolved": 557,
+    "opposite_observed_same_prefix_and_bytecode_context": 6,
+    "normal_return_observed_exception_unknown": 61,
+    "opposite_unsat_in_source_fixed_domain": 91,
+    "opposite_observed_same_prefix_bytecode_unknown": 5
+  },
+  "observed_opposite_occurrences": 11,
+  "same_trace_bytecode_context_occurrences": 6,
+  "individually_proved_predicate_occurrences": 6,
+  "predicate_links": [
+    {
+      "occurrence_id": "lua_branch_x0:branch:32",
+      "engine": "lua",
+      "trace_sha256": "55a4aaf886836ab2bdae60b960bf166e5af6f51d5b103b0af980eb7ee0e5debd",
+      "predicate": "X == 0",
+      "proof_grade": "native_pcode_under_prior_guards_and_fixed_snapshot",
+      "bytecode_context": {
+        "grade": "same_trace_fetch_to_handler",
+        "fixture_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0"
+      },
+      "alternate_paths_complete": false
+    },
+    {
+      "occurrence_id": "lua_branch_x9:branch:32",
+      "engine": "lua",
+      "trace_sha256": "686052bb8f60aae92ad1ea10e53e88c7e9ba6dd1a365f23c3b512b43ead7422e",
+      "predicate": "X == 0",
+      "proof_grade": "native_pcode_under_prior_guards_and_fixed_snapshot",
+      "bytecode_context": {
+        "grade": "same_trace_fetch_to_handler",
+        "fixture_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0"
+      },
+      "alternate_paths_complete": false
+    },
+    {
+      "occurrence_id": "python_251:branch:764",
+      "engine": "python",
+      "trace_sha256": "2b01d30cf86bcef03c09a98d8580a723222ae657aec79cfdf4070909460bd9da",
+      "predicate": "X >= 252 within 251..256",
+      "proof_grade": "native_pcode_under_prior_guards_and_fixed_snapshot",
+      "bytecode_context": {
+        "grade": "same_trace_fetch_to_handler",
+        "fixture_offset": 6,
+        "numeric_opcode": 45,
+        "handler_entry_pc": "0x56227c"
+      },
+      "alternate_paths_complete": false
+    },
+    {
+      "occurrence_id": "python_252:branch:764",
+      "engine": "python",
+      "trace_sha256": "60459e6711961a54838136475ae714d060bc89db7536f065d15947833eb441f7",
+      "predicate": "X >= 252 within 251..256",
+      "proof_grade": "native_pcode_under_prior_guards_and_fixed_snapshot",
+      "bytecode_context": {
+        "grade": "same_trace_fetch_to_handler",
+        "fixture_offset": 6,
+        "numeric_opcode": 45,
+        "handler_entry_pc": "0x56227c"
+      },
+      "alternate_paths_complete": false
+    },
+    {
+      "occurrence_id": "python_254:branch:764",
+      "engine": "python",
+      "trace_sha256": "7c2d9d5cc26aa355c110abeb970b49283672dff64d11f0c2dfe9493261df495d",
+      "predicate": "X >= 252 within 251..256",
+      "proof_grade": "native_pcode_under_prior_guards_and_fixed_snapshot",
+      "bytecode_context": {
+        "grade": "same_trace_fetch_to_handler",
+        "fixture_offset": 6,
+        "numeric_opcode": 45,
+        "handler_entry_pc": "0x56227c"
+      },
+      "alternate_paths_complete": false
+    },
+    {
+      "occurrence_id": "python_255:branch:764",
+      "engine": "python",
+      "trace_sha256": "a062db0bb4c7fb49b0c262d97bafbb0df0ccf7e3cf36cb0b43cff2a5554d6d6a",
+      "predicate": "X >= 252 within 251..256",
+      "proof_grade": "native_pcode_under_prior_guards_and_fixed_snapshot",
+      "bytecode_context": {
+        "grade": "same_trace_fetch_to_handler",
+        "fixture_offset": 6,
+        "numeric_opcode": 45,
+        "handler_entry_pc": "0x56227c"
+      },
+      "alternate_paths_complete": false
+    }
+  ],
+  "normal_return_observed_exception_unknown": 61,
+  "excluded_earlier_divergence_probes": [
+    {
+      "id": "python_prefix_x0",
+      "target_obligation_id": "python_252:branch:158",
+      "classification": "earlier_divergence",
+      "target_trace_sha256": "ae45346a368c4e0ba44da5ffb1e9d8a2a861a8154c7dcf36d95f0f941c3ba36d",
+      "promoted_to_same_occurrence_evidence": false
+    },
+    {
+      "id": "python_numeric_x1",
+      "target_obligation_id": "python_252:branch:764",
+      "classification": "earlier_divergence",
+      "target_trace_sha256": "a5c49daf4cb3ae4d633f04b4f44d036b1f7f5e233d8ba9bd9e633930233d16bf",
+      "promoted_to_same_occurrence_evidence": false
+    }
+  ],
+  "negative_controls": {
+    "same_pc_wrong_occurrence": "rejected",
+    "foreign_fixture_context": "rejected",
+    "wrong_python_predicate_verdict": "rejected",
+    "wrong_lua_predicate_verdict": "rejected",
+    "drop_call_exception_obligation": "rejected"
+  },
+  "complete_handler_alternate_exit_sets": 0,
+  "whole_program_complete": false,
+  "remaining": [
+    "collect and prove VM-semantic branch alternatives",
+    "model calls, exceptional exits and object lifetimes",
+    "compose certified VM-state transitions into whole logic"
+  ]
+}
