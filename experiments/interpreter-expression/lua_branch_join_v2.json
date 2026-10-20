@@ -1,0 +1,447 @@
+{
+  "schema_version": "lua-branch-join-v2",
+  "binary_sha256": "8ee02c9f60199ee343594353681a0c30a3d5f8bd594ab86e540c86a234aae7bb",
+  "bytecode_sha256": "a4e22f506509bb902f8a6d2e6cf1ae16e25f8532aafd49ca371b8735bbf87446",
+  "bundle_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+  "frontier_matrix_v1_sha256": "bc14f7685b7eff26de26aecab057e9357b50d549e277b3a767dcef80533ccc77",
+  "prior_dispatch_map_v1_sha256": "718c52426314002052f5c3b3781b1b76c9a64cf4979bc79f1ced50f384a47ae6",
+  "prior_predicate_v1_sha256": "dc0ef64cc5fc062286e7f45b6b684a08352733ecb75106205e9cb6e10753950d",
+  "common_program_v1_sha256": "da2ff08796bade3ba2506a3d22d471199706e74da7e046f1ecc829ed8cce02bc",
+  "prior_control_progress_v1_sha256": "b01d712be1d5235cf29f7ed4a33e6da93c49b22111a6c11be3480fbc26ac546e",
+  "upstream_source_rebuild_equal_to_saved_artifacts": true,
+  "cases": [
+    {
+      "input_label": "x0",
+      "trace_sha256": "55a4aaf886836ab2bdae60b960bf166e5af6f51d5b103b0af980eb7ee0e5debd",
+      "frontier_occurrence_id": "lua_branch_x0:branch:32",
+      "branch_bytecode": {
+        "file_byte_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0",
+        "fetch_trace_step": 54912,
+        "dispatch_trace_step": 54915
+      },
+      "branch_native_step": 54936,
+      "branch_observed_successor": "0x415d51",
+      "branch_predicate": "X == 0",
+      "predicate_proof_grade": "native_pcode_under_prior_guards_and_source_fixed_snapshot",
+      "call_bytecode": {
+        "file_byte_offset": 67,
+        "numeric_opcode": 69,
+        "handler_entry_pc": "0x415780",
+        "dispatch_trace_step": 54983
+      },
+      "callee_bytecode": {
+        "file_byte_offset": 111,
+        "numeric_opcode": 21,
+        "handler_entry_pc": "0x4164b8",
+        "dispatch_trace_step": 55121
+      },
+      "callee_native_step": 55122,
+      "frame_base_witness": "0x2486d920",
+      "argument_slot_offset": 0,
+      "tag_slot_offset": 8,
+      "tag_size_bytes": 1,
+      "result_slot_offset": 16,
+      "argument_expression": "5",
+      "argument_witness_unsigned_bv64": "5",
+      "tag_witness": 3,
+      "argument_last_recorded_write": {
+        "native_step": 55065,
+        "native_pc": "0x406864"
+      },
+      "tag_last_recorded_write": {
+        "native_step": 55067,
+        "native_pc": "0x40686d"
+      },
+      "argument_and_tag_pcode_equivalence": "unsat",
+      "frame_base_symbolic_equivalence": "unsat",
+      "path_guard_equivalence": "unsat",
+      "result_expression": "10",
+      "result_witness_unsigned_bv64": "10",
+      "result_pcode_equivalence": "unsat",
+      "callee_prefix_native_instructions": 218,
+      "callee_prefix_pcode_operations": 1629,
+      "callee_prefix_guard_count": 106,
+      "callee_prefix_first_read_bytes": 129
+    },
+    {
+      "input_label": "x9",
+      "trace_sha256": "686052bb8f60aae92ad1ea10e53e88c7e9ba6dd1a365f23c3b512b43ead7422e",
+      "frontier_occurrence_id": "lua_branch_x9:branch:32",
+      "branch_bytecode": {
+        "file_byte_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0",
+        "fetch_trace_step": 55067,
+        "dispatch_trace_step": 55070
+      },
+      "branch_native_step": 55091,
+      "branch_observed_successor": "0x415f36",
+      "branch_predicate": "X == 0",
+      "predicate_proof_grade": "native_pcode_under_prior_guards_and_source_fixed_snapshot",
+      "call_bytecode": {
+        "file_byte_offset": 83,
+        "numeric_opcode": 69,
+        "handler_entry_pc": "0x415780",
+        "dispatch_trace_step": 55182
+      },
+      "callee_bytecode": {
+        "file_byte_offset": 111,
+        "numeric_opcode": 21,
+        "handler_entry_pc": "0x4164b8",
+        "dispatch_trace_step": 55320
+      },
+      "callee_native_step": 55321,
+      "frame_base_witness": "0xf8ee920",
+      "argument_slot_offset": 0,
+      "tag_slot_offset": 8,
+      "tag_size_bytes": 1,
+      "result_slot_offset": 16,
+      "argument_expression": "X",
+      "argument_witness_unsigned_bv64": "9",
+      "tag_witness": 3,
+      "argument_last_recorded_write": {
+        "native_step": 55264,
+        "native_pc": "0x406864"
+      },
+      "tag_last_recorded_write": {
+        "native_step": 55266,
+        "native_pc": "0x40686d"
+      },
+      "argument_and_tag_pcode_equivalence": "unsat",
+      "frame_base_symbolic_equivalence": "unsat",
+      "path_guard_equivalence": "unsat",
+      "result_expression": "(X + 5) mod 2^64",
+      "result_witness_unsigned_bv64": "14",
+      "result_pcode_equivalence": "unsat",
+      "callee_prefix_native_instructions": 262,
+      "callee_prefix_pcode_operations": 1945,
+      "callee_prefix_guard_count": 139,
+      "callee_prefix_first_read_bytes": 209
+    },
+    {
+      "input_label": "one",
+      "trace_sha256": "bc9f5424ff5c80d2f0bca82fa60cfc3c487aebdea2a79882aeda89630048042a",
+      "frontier_occurrence_id": "lua_branch_one:branch:32",
+      "branch_bytecode": {
+        "file_byte_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0",
+        "fetch_trace_step": 54934,
+        "dispatch_trace_step": 54937
+      },
+      "branch_native_step": 54958,
+      "branch_observed_successor": "0x415f36",
+      "branch_predicate": "X == 0",
+      "predicate_proof_grade": "native_pcode_under_prior_guards_and_source_fixed_snapshot",
+      "call_bytecode": {
+        "file_byte_offset": 83,
+        "numeric_opcode": 69,
+        "handler_entry_pc": "0x415780",
+        "dispatch_trace_step": 55049
+      },
+      "callee_bytecode": {
+        "file_byte_offset": 111,
+        "numeric_opcode": 21,
+        "handler_entry_pc": "0x4164b8",
+        "dispatch_trace_step": 55187
+      },
+      "callee_native_step": 55188,
+      "frame_base_witness": "0x36b26920",
+      "argument_slot_offset": 0,
+      "tag_slot_offset": 8,
+      "tag_size_bytes": 1,
+      "result_slot_offset": 16,
+      "argument_expression": "X",
+      "argument_witness_unsigned_bv64": "1",
+      "tag_witness": 3,
+      "argument_last_recorded_write": {
+        "native_step": 55131,
+        "native_pc": "0x406864"
+      },
+      "tag_last_recorded_write": {
+        "native_step": 55133,
+        "native_pc": "0x40686d"
+      },
+      "argument_and_tag_pcode_equivalence": "unsat",
+      "frame_base_symbolic_equivalence": "unsat",
+      "path_guard_equivalence": "unsat",
+      "result_expression": "(X + 5) mod 2^64",
+      "result_witness_unsigned_bv64": "6",
+      "result_pcode_equivalence": "unsat",
+      "callee_prefix_native_instructions": 262,
+      "callee_prefix_pcode_operations": 1945,
+      "callee_prefix_guard_count": 139,
+      "callee_prefix_first_read_bytes": 209
+    },
+    {
+      "input_label": "minus1",
+      "trace_sha256": "958fa60dbd72bafcc002f5d834537c189f2e9249666470a6a7692e28ae844f97",
+      "frontier_occurrence_id": "lua_branch_minus1:branch:32",
+      "branch_bytecode": {
+        "file_byte_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0",
+        "fetch_trace_step": 54971,
+        "dispatch_trace_step": 54974
+      },
+      "branch_native_step": 54995,
+      "branch_observed_successor": "0x415f36",
+      "branch_predicate": "X == 0",
+      "predicate_proof_grade": "native_pcode_under_prior_guards_and_source_fixed_snapshot",
+      "call_bytecode": {
+        "file_byte_offset": 83,
+        "numeric_opcode": 69,
+        "handler_entry_pc": "0x415780",
+        "dispatch_trace_step": 55086
+      },
+      "callee_bytecode": {
+        "file_byte_offset": 111,
+        "numeric_opcode": 21,
+        "handler_entry_pc": "0x4164b8",
+        "dispatch_trace_step": 55224
+      },
+      "callee_native_step": 55225,
+      "frame_base_witness": "0x2b29d920",
+      "argument_slot_offset": 0,
+      "tag_slot_offset": 8,
+      "tag_size_bytes": 1,
+      "result_slot_offset": 16,
+      "argument_expression": "X",
+      "argument_witness_unsigned_bv64": "18446744073709551615",
+      "tag_witness": 3,
+      "argument_last_recorded_write": {
+        "native_step": 55168,
+        "native_pc": "0x406864"
+      },
+      "tag_last_recorded_write": {
+        "native_step": 55170,
+        "native_pc": "0x40686d"
+      },
+      "argument_and_tag_pcode_equivalence": "unsat",
+      "frame_base_symbolic_equivalence": "unsat",
+      "path_guard_equivalence": "unsat",
+      "result_expression": "(X + 5) mod 2^64",
+      "result_witness_unsigned_bv64": "4",
+      "result_pcode_equivalence": "unsat",
+      "callee_prefix_native_instructions": 262,
+      "callee_prefix_pcode_operations": 1945,
+      "callee_prefix_guard_count": 139,
+      "callee_prefix_first_read_bytes": 209
+    },
+    {
+      "input_label": "max",
+      "trace_sha256": "7034996cf84f3e0049189ae7325cad788550cdf7c4e683e74a5c9effe437113e",
+      "frontier_occurrence_id": "lua_branch_max:branch:32",
+      "branch_bytecode": {
+        "file_byte_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0",
+        "fetch_trace_step": 54943,
+        "dispatch_trace_step": 54946
+      },
+      "branch_native_step": 54967,
+      "branch_observed_successor": "0x415f36",
+      "branch_predicate": "X == 0",
+      "predicate_proof_grade": "native_pcode_under_prior_guards_and_source_fixed_snapshot",
+      "call_bytecode": {
+        "file_byte_offset": 83,
+        "numeric_opcode": 69,
+        "handler_entry_pc": "0x415780",
+        "dispatch_trace_step": 55058
+      },
+      "callee_bytecode": {
+        "file_byte_offset": 111,
+        "numeric_opcode": 21,
+        "handler_entry_pc": "0x4164b8",
+        "dispatch_trace_step": 55196
+      },
+      "callee_native_step": 55197,
+      "frame_base_witness": "0x19dbb920",
+      "argument_slot_offset": 0,
+      "tag_slot_offset": 8,
+      "tag_size_bytes": 1,
+      "result_slot_offset": 16,
+      "argument_expression": "X",
+      "argument_witness_unsigned_bv64": "9223372036854775807",
+      "tag_witness": 3,
+      "argument_last_recorded_write": {
+        "native_step": 55140,
+        "native_pc": "0x406864"
+      },
+      "tag_last_recorded_write": {
+        "native_step": 55142,
+        "native_pc": "0x40686d"
+      },
+      "argument_and_tag_pcode_equivalence": "unsat",
+      "frame_base_symbolic_equivalence": "unsat",
+      "path_guard_equivalence": "unsat",
+      "result_expression": "(X + 5) mod 2^64",
+      "result_witness_unsigned_bv64": "9223372036854775812",
+      "result_pcode_equivalence": "unsat",
+      "callee_prefix_native_instructions": 262,
+      "callee_prefix_pcode_operations": 1945,
+      "callee_prefix_guard_count": 139,
+      "callee_prefix_first_read_bytes": 209
+    },
+    {
+      "input_label": "min",
+      "trace_sha256": "d2da6e01690890bd5b1f3dc34aefb4c0ee4cb389de6e3c004b9039c486d8b671",
+      "frontier_occurrence_id": "lua_branch_min:branch:32",
+      "branch_bytecode": {
+        "file_byte_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0",
+        "fetch_trace_step": 55015,
+        "dispatch_trace_step": 55018
+      },
+      "branch_native_step": 55039,
+      "branch_observed_successor": "0x415f36",
+      "branch_predicate": "X == 0",
+      "predicate_proof_grade": "native_pcode_under_prior_guards_and_source_fixed_snapshot",
+      "call_bytecode": {
+        "file_byte_offset": 83,
+        "numeric_opcode": 69,
+        "handler_entry_pc": "0x415780",
+        "dispatch_trace_step": 55130
+      },
+      "callee_bytecode": {
+        "file_byte_offset": 111,
+        "numeric_opcode": 21,
+        "handler_entry_pc": "0x4164b8",
+        "dispatch_trace_step": 55268
+      },
+      "callee_native_step": 55269,
+      "frame_base_witness": "0x2d711920",
+      "argument_slot_offset": 0,
+      "tag_slot_offset": 8,
+      "tag_size_bytes": 1,
+      "result_slot_offset": 16,
+      "argument_expression": "X",
+      "argument_witness_unsigned_bv64": "9223372036854775808",
+      "tag_witness": 3,
+      "argument_last_recorded_write": {
+        "native_step": 55212,
+        "native_pc": "0x406864"
+      },
+      "tag_last_recorded_write": {
+        "native_step": 55214,
+        "native_pc": "0x40686d"
+      },
+      "argument_and_tag_pcode_equivalence": "unsat",
+      "frame_base_symbolic_equivalence": "unsat",
+      "path_guard_equivalence": "unsat",
+      "result_expression": "(X + 5) mod 2^64",
+      "result_witness_unsigned_bv64": "9223372036854775813",
+      "result_pcode_equivalence": "unsat",
+      "callee_prefix_native_instructions": 262,
+      "callee_prefix_pcode_operations": 1945,
+      "callee_prefix_guard_count": 139,
+      "callee_prefix_first_read_bytes": 209
+    },
+    {
+      "input_label": "x42",
+      "trace_sha256": "fa6c47701925ef6eb3d408f4e5234762d88c5700ef3d2c9e39f30b8b5d034c10",
+      "frontier_occurrence_id": "lua_branch_x42:branch:32",
+      "branch_bytecode": {
+        "file_byte_offset": 51,
+        "numeric_opcode": 61,
+        "handler_entry_pc": "0x415ee0",
+        "fetch_trace_step": 54935,
+        "dispatch_trace_step": 54938
+      },
+      "branch_native_step": 54959,
+      "branch_observed_successor": "0x415f36",
+      "branch_predicate": "X == 0",
+      "predicate_proof_grade": "native_pcode_under_prior_guards_and_source_fixed_snapshot",
+      "call_bytecode": {
+        "file_byte_offset": 83,
+        "numeric_opcode": 69,
+        "handler_entry_pc": "0x415780",
+        "dispatch_trace_step": 55050
+      },
+      "callee_bytecode": {
+        "file_byte_offset": 111,
+        "numeric_opcode": 21,
+        "handler_entry_pc": "0x4164b8",
+        "dispatch_trace_step": 55188
+      },
+      "callee_native_step": 55189,
+      "frame_base_witness": "0x5ef6920",
+      "argument_slot_offset": 0,
+      "tag_slot_offset": 8,
+      "tag_size_bytes": 1,
+      "result_slot_offset": 16,
+      "argument_expression": "X",
+      "argument_witness_unsigned_bv64": "42",
+      "tag_witness": 3,
+      "argument_last_recorded_write": {
+        "native_step": 55132,
+        "native_pc": "0x406864"
+      },
+      "tag_last_recorded_write": {
+        "native_step": 55134,
+        "native_pc": "0x40686d"
+      },
+      "argument_and_tag_pcode_equivalence": "unsat",
+      "frame_base_symbolic_equivalence": "unsat",
+      "path_guard_equivalence": "unsat",
+      "result_expression": "(X + 5) mod 2^64",
+      "result_witness_unsigned_bv64": "47",
+      "result_pcode_equivalence": "unsat",
+      "callee_prefix_native_instructions": 262,
+      "callee_prefix_pcode_operations": 1945,
+      "callee_prefix_guard_count": 139,
+      "callee_prefix_first_read_bytes": 209
+    }
+  ],
+  "updated_frontier_classification_counts": {
+    "opposite_unresolved": 557,
+    "opposite_observed_same_prefix_and_bytecode_context": 11,
+    "normal_return_observed_exception_unknown": 61,
+    "opposite_unsat_in_source_fixed_domain": 91,
+    "opposite_observed_same_prefix_bytecode_unknown": 0
+  },
+  "observed_opposite_occurrences": 11,
+  "same_trace_bytecode_context_occurrences": 11,
+  "individually_proved_predicate_occurrences": 11,
+  "complete_handler_alternate_exit_sets": 0,
+  "value_join": {
+    "bytecode_file_offset": 111,
+    "numeric_opcode": 21,
+    "native_handler_entry_pc": "0x4164b8",
+    "frame_relative_argument": 0,
+    "frame_relative_tag": 8,
+    "frame_relative_result": 16,
+    "argument": "if X == 0 then 5 else X",
+    "result": "(argument + 5) mod 2^64",
+    "grade": "seven source-fixed observed paths; argument/tag and result value P-code proved"
+  },
+  "limits": [
+    "next captured bytecode fetch is not established as the immediate successor",
+    "same handler PC and frame offsets do not prove full VM-state join",
+    "input binding uses the pinned x86-64 ABI and watched-slot assumptions",
+    "native effects outside proved values and object ownership remain open",
+    "exception, GC and unobserved VM-state exits remain open"
+  ],
+  "whole_program_complete": false,
+  "negative_controls_rejected": {
+    "artifact_integrity": {
+      "foreign_trace_fetch": true,
+      "wrong_repeated_occurrence": true,
+      "wrong_frame_slot": true,
+      "changed_tag": true,
+      "changed_argument": true,
+      "changed_result": true,
+      "changed_join_cursor": true,
+      "integer_not_bv64": true
+    },
+    "native_trace_mutations": {
+      "argument_observed_write": true,
+      "tag_observed_write": true,
+      "result_observed_write": true,
+      "wrong_callee_frame": true
+    }
+  }
+}
