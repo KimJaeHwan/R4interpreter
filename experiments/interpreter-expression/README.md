@@ -2,6 +2,8 @@
 
 [실험 계획과 판정 기준](interpreter_expression_experiment_plan.md). `daasdmlkas` 기준 커밋은 `3a274f93d455d3caaebf72365e64820770341787`이며, 이 저장소는 그 프로젝트의 코드를 복사하거나 수정하지 않는다.
 
+최신 `daasdmlkas` 연산 기록을 공통 typed IL에 연결하는 단계별 증거와 남은 조건은 [공통 분석 연구 기록](DAAS_COMMON_ANALYSIS_RESEARCH.md)에 정리했다. 이 실험의 `daasdmlkas` 커밋은 결과 JSON에 별도로 기록한다.
+
 ## 현재 결과
 
 | 대상 | 분석 결과 | 확인 범위 |

@@ -1,0 +1,291 @@
+{
+  "schema_version": "daas-operation-bridge-stage1-v1",
+  "daas_commit": "660098303165c2f0fd3c8ee5532bd62a4ff813df",
+  "daas_worktree_dirty": false,
+  "r4_base_commit": "f8dc7b81ff3b1b15182a84f20e50a973ea275a8c",
+  "bridge_sha256": "9c95c356173989f28d53681fbd91e44c609b19578183b0393f91eca3fc72078f",
+  "z3_version": "4.16.0",
+  "method": "admitted Bundle -> normalized SSA -> operation record -> typed value IL",
+  "elf": {
+    "bundle_archive_sha256": "8500bbdb02e0b04924d2dbe020b26ac79c3dda1bd873c76fc37e1a41dcb0965b",
+    "binary_sha256": "12c42604d8361d51cd49dfe8fab0450c11b7ebd09b7d3d94c3469fa5858defa5",
+    "record_sha256": "b211fab11bfa6340acb765170b93cf0151c9e4b9583f92e82835d40b54dd3ea5",
+    "analysis_options": {
+      "assume_import_slots_hold_exports": true,
+      "image_info_supplied": false,
+      "assume_entry_values_not_frame": true
+    },
+    "inherited_model_assumptions": [],
+    "record": {
+      "version": 1,
+      "function": "1b1:4011a0",
+      "program": "12c42604d8361d51cd49dfe8fab0450c11b7ebd09b7d3d94c3469fa5858defa5",
+      "language": "x86:LE:64:default",
+      "endianness": "little",
+      "truncated": false,
+      "demand_complete": true,
+      "limits": {
+        "nodes": 4000,
+        "edges": 20000,
+        "depth": 256,
+        "writers": 8,
+        "demand_steps": 200000,
+        "demand_bytes": 8000000
+      },
+      "record": "summary run",
+      "exit": "1b1:4011a4",
+      "span": "register:rax",
+      "place": {
+        "object": "register_file:9da39fd9:0",
+        "kind": "register_file",
+        "start": 0,
+        "size": 8
+      },
+      "run_kind": "computed",
+      "crossed": [],
+      "debts": [],
+      "conditions": 0,
+      "writer_conditions": 0,
+      "unknown_writers": [],
+      "tail_exits": [],
+      "origins": [],
+      "root": [
+        {
+          "node": 0,
+          "bytes": [
+            0,
+            8
+          ],
+          "at": [
+            0,
+            8
+          ],
+          "span": "register:rax",
+          "def": "register:rax",
+          "loop": false
+        }
+      ],
+      "nodes": [
+        {
+          "kind": "op",
+          "key": "1b1:4011a0:1:COPY",
+          "opcode": "COPY",
+          "operands": [
+            {
+              "index": 0,
+              "width": 8,
+              "role": "value",
+              "parts": [
+                {
+                  "node": 1,
+                  "bytes": [
+                    0,
+                    8
+                  ],
+                  "at": [
+                    0,
+                    8
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": 0,
+          "address": 4198816,
+          "ordinal": 1,
+          "output": {
+            "object": "register_file:9da39fd9:0",
+            "kind": "register_file",
+            "start": 0,
+            "size": 8
+          }
+        },
+        {
+          "kind": "op",
+          "key": "1b1:4011a0:0:INT_ADD",
+          "opcode": "INT_ADD",
+          "operands": [
+            {
+              "index": 0,
+              "width": 8,
+              "role": "value",
+              "parts": [
+                {
+                  "node": 2,
+                  "bytes": [
+                    0,
+                    8
+                  ],
+                  "at": [
+                    0,
+                    8
+                  ]
+                }
+              ]
+            },
+            {
+              "index": 1,
+              "width": 8,
+              "role": "value",
+              "parts": [
+                {
+                  "node": 3,
+                  "bytes": [
+                    0,
+                    8
+                  ],
+                  "at": [
+                    0,
+                    8
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": 1,
+          "address": 4198816,
+          "ordinal": 0,
+          "output": {
+            "object": "function_unique:4c4e3e60:0",
+            "kind": "function_unique",
+            "start": 36608,
+            "size": 8
+          }
+        },
+        {
+          "kind": "entry",
+          "span": "register:rdi",
+          "register": {
+            "space": 548,
+            "offset": 56,
+            "size": 8
+          },
+          "x64": true,
+          "id": 2
+        },
+        {
+          "kind": "const",
+          "value": 7,
+          "size": 8,
+          "id": 3
+        }
+      ],
+      "partial_provenance": "assumptions that act by excluding writers or debts are not attributable to one root; the run-level assumption list is the authority"
+    },
+    "il": {
+      "schema_version": "bounded-value-projection-v1",
+      "scope": "one native function exit value; no memory/effect claim",
+      "inputs": [
+        {
+          "name": "entry_rdi",
+          "sort": "BV64"
+        }
+      ],
+      "nodes": [
+        {
+          "id": 0,
+          "op": "input",
+          "sort": "BV64",
+          "name": "entry_rdi"
+        },
+        {
+          "id": 1,
+          "op": "extract",
+          "sort": "BV64",
+          "args": [
+            0
+          ],
+          "params": [
+            63,
+            0
+          ]
+        },
+        {
+          "id": 2,
+          "op": "bv",
+          "sort": "BV64",
+          "value": 7
+        },
+        {
+          "id": 3,
+          "op": "extract",
+          "sort": "BV64",
+          "args": [
+            2
+          ],
+          "params": [
+            63,
+            0
+          ]
+        },
+        {
+          "id": 4,
+          "op": "bvadd",
+          "sort": "BV64",
+          "args": [
+            1,
+            3
+          ]
+        },
+        {
+          "id": 5,
+          "op": "extract",
+          "sort": "BV64",
+          "args": [
+            4
+          ],
+          "params": [
+            63,
+            0
+          ]
+        },
+        {
+          "id": 6,
+          "op": "extract",
+          "sort": "BV64",
+          "args": [
+            5
+          ],
+          "params": [
+            63,
+            0
+          ]
+        }
+      ],
+      "result": {
+        "node": 6,
+        "sort": "BV64",
+        "span": "register:rax"
+      }
+    },
+    "proof": {
+      "equivalence_to_bv64_rdi_plus_7": "unsat",
+      "wrong_constant_detected": "sat",
+      "truncated_record_rejected": true,
+      "explicit_root_output_selector": "accepted"
+    }
+  },
+  "lua_static_root": {
+    "bundle_archive_sha256": "2ad5a3fdadd1bf9845691b12cd40ca771df70ed9dff044303b530a7c13ab4b79",
+    "root_operation": "1b1:417ce7:5:INT_ADD",
+    "output_selector": {
+      "kind": "register_file",
+      "size_bytes": 8
+    },
+    "record_sha256": "8d9f533f20d5d2aabd7d1d5531b0a8270fc6a99731a574c12b1dc79fce0756b7",
+    "record_file": "daas_lua_static_root_record.json",
+    "record_nodes": 300,
+    "kinds": {
+      "const": 16,
+      "cut": 46,
+      "debt": 19,
+      "entry": 1,
+      "op": 181,
+      "phi": 37
+    },
+    "status": "unknown",
+    "reason": "truncated",
+    "whole_function_static_path_selected": false
+  },
+  "whole_program_complete": false
+}
