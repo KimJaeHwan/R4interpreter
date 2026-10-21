@@ -23,7 +23,7 @@ from elftools.elf.elffile import ELFFile
 LIBC = ctypes.CDLL(None, use_errno=True)
 LIBC.ptrace.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_void_p]
 LIBC.ptrace.restype = ctypes.c_long
-TRACEME, PEEKDATA, PEEKTEXT, PEEKUSER, POKETEXT, POKEUSER, CONT, SINGLESTEP, GETREGS, SETREGS = 0, 2, 1, 3, 4, 6, 7, 9, 12, 13
+TRACEME, PEEKTEXT, PEEKDATA, PEEKUSER, POKETEXT, POKEDATA, POKEUSER, CONT, SINGLESTEP, GETREGS, SETREGS = 0, 1, 2, 3, 4, 5, 6, 7, 9, 12, 13
 MASK = (1 << 64) - 1
 DEBUG_REGISTERS_OFFSET = 848  # offsetof(struct user, u_debugreg), Linux x86-64.
 
@@ -132,9 +132,33 @@ def main():
                         help="number of 0x4164b8 handler exits to capture, including intervening steps")
     parser.add_argument("--snapshot-bytes", type=int, default=256,
                         help="bytes to capture at handler entry from RBX")
+    parser.add_argument("--snapshot-addresses", type=Path,
+                        help="JSON list of byte addresses to read at --snapshot-pc")
+    parser.add_argument("--snapshot-pc", type=lambda value: int(value, 0),
+                        help="native PC where requested byte addresses are read once")
+    parser.add_argument("--override-word-pc", type=lambda value: int(value, 0),
+                        help="native PC where one 8-byte read is replaced before execution")
+    parser.add_argument("--override-word-value", type=lambda value: int(value, 0),
+                        help="replacement unsigned 64-bit word for --override-word-pc")
     args = parser.parse_args()
     if args.hardware_watch and not args.capture_full_flow:
         parser.error("--hardware-watch requires --capture-full-flow")
+    if (args.snapshot_addresses is None) != (args.snapshot_pc is None):
+        parser.error("--snapshot-addresses and --snapshot-pc must be used together")
+    if (args.override_word_pc is None) != (args.override_word_value is None):
+        parser.error("--override-word-pc and --override-word-value must be used together")
+    if args.override_word_value is not None and not 0 <= args.override_word_value <= MASK:
+        parser.error("override word must be an unsigned 64-bit value")
+    snapshot_addresses = []
+    if args.snapshot_addresses is not None:
+        raw = json.loads(args.snapshot_addresses.read_text())
+        if (not isinstance(raw, list) or len(raw) > 10000 or
+                any(not isinstance(item, (int, str)) for item in raw)):
+            parser.error("snapshot addresses must be a JSON list of at most 10000 addresses")
+        snapshot_addresses = [int(item, 0) if isinstance(item, str) else item for item in raw]
+        if len(snapshot_addresses) != len(set(snapshot_addresses)) or any(
+                address < 0 or address > MASK for address in snapshot_addresses):
+            parser.error("snapshot addresses must be unique BV64 byte addresses")
     with args.binary.open("rb") as handle:
         elf = ELFFile(handle)
         text = elf.get_section_by_name(".text")
@@ -178,6 +202,8 @@ def main():
         watch_intervals = []
         watch_self_check_passed = False
         source_reads_seen = 0
+        snapshot_captured = False
+        override_applied = False
         captured_handlers = 0
         markers = {0x401490, 0x40149B, 0x4014B3, 0x4014B6,
                    0x402A00, 0x402A04, 0x402A07, 0x403300,
@@ -196,6 +222,12 @@ def main():
             for count in range(args.limit):
                 before = getregs(child)
                 pc = before.rip
+                if args.snapshot_pc == pc and not snapshot_captured:
+                    snapshot_captured = True
+                    out.write(json.dumps({"type": "entry_snapshot", "step": count,
+                                          "pc": pc,
+                                          "bytes": {hex(address): peek(child, address, 1)
+                                                    for address in snapshot_addresses}}) + "\n")
                 if args.capture_handler and pc == 0x4164B8:
                     capturing = True
                 if args.capture_bridge and pc == 0x417E50:
@@ -220,6 +252,21 @@ def main():
                     instruction_cache[pc] = decoded[0] if decoded else None
                 insn = instruction_cache[pc]
                 accesses = [] if insn is None else memory_operands(insn, before)
+                if args.override_word_pc == pc and not override_applied:
+                    source_reads = [(address, size) for address, size, access in accesses
+                                    if access & CS_AC_READ and size == 8]
+                    if len(source_reads) != 1:
+                        raise RuntimeError("override PC must have exactly one 8-byte read")
+                    address, _ = source_reads[0]
+                    old_word = peek(child, address, 8)
+                    if old_word is None:
+                        raise RuntimeError("override source word is unreadable")
+                    ptrace(POKEDATA, child, address, args.override_word_value)
+                    override_applied = True
+                    out.write(json.dumps({"type": "input_override", "step": count,
+                                          "pc": pc, "address": address,
+                                          "before": old_word,
+                                          "after": args.override_word_value}) + "\n")
                 reads = [(a, n, access, peek(child, a, n)) for a, n, access in accesses]
                 entry_memory = None
                 if (args.capture_handler or args.capture_bridge) and pc == 0x4164B8:
@@ -326,7 +373,10 @@ def main():
                                   "hardware_watch_enabled": args.hardware_watch,
                                   "hardware_watch_self_check_passed": watch_self_check_passed,
                                   "hardware_watch_events": watch_events,
-                                  "hardware_watch_intervals": watch_intervals}) + "\n")
+                                  "hardware_watch_intervals": watch_intervals,
+                                  "source_override_applied": override_applied}) + "\n")
+            if args.override_word_value is not None and not override_applied:
+                raise RuntimeError("source override PC was never reached")
         print(f"steps={count + 1} input_word_access_steps={candidates} output={args.output}")
     finally:
         try:
